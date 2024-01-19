@@ -48,7 +48,9 @@
                     <div class="collapse menu-dropdown" id="sidebarLayouts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
+                                @can('wards.view')
                                 <a href="{{ route('wards.index') }}" class="nav-link" data-key="t-horizontal">Wards</a>
+                                @endcan
                             </li>
                         </ul>
                     </div>

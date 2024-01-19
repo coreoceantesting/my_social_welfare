@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\Masters\DivyangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ Route::middleware(['guest','PreventBackHistory'])->group(function()
     Route::get('login', [App\Http\Controllers\Admin\AuthController::class, 'showLogin'] )->name('login');
     Route::post('login', [App\Http\Controllers\Admin\AuthController::class, 'login'])->name('signin');
     Route::get('register', [App\Http\Controllers\Admin\AuthController::class, 'showRegister'] )->name('register');
-    Route::post('register', [App\Http\Controllers\Admin\AuthController::class, 'register'])->name('signup');
+    Route::post('registers', [App\Http\Controllers\Admin\AuthController::class, 'register'])->name('signup');
 
 });
 
@@ -46,14 +47,14 @@ Route::middleware(['auth','PreventBackHistory'])->group(function()
     Route::get('change-theme-mode', [App\Http\Controllers\Admin\DashboardController::class, 'changeThemeMode'])->name('change-theme-mode');
     Route::get('show-change-password', [App\Http\Controllers\Admin\AuthController::class, 'showChangePassword'] )->name('show-change-password');
     Route::post('change-password', [App\Http\Controllers\Admin\AuthController::class, 'changePassword'] )->name('change-password');
-
+    Route::get('terms_conditions', [App\Http\Controllers\Admin\DashboardController::class, 'terms_conditions'])->name('terms_conditions');
 
 
     // Masters
     Route::resource('wards', App\Http\Controllers\Admin\Masters\WardController::class );
 
-
-
+    Route::resource('hayatichaDakhlaform', DivyangController::class);
+    Route::get('/hayatichaDakhlaform/pdf-download', 'DivyangController@hayatPdfDownload')->name('hayatichaDakhlaform.pdf-download');
 
     // Users Roles n Permissions
     Route::resource('users', App\Http\Controllers\Admin\UserController::class );
@@ -62,9 +63,15 @@ Route::middleware(['auth','PreventBackHistory'])->group(function()
     Route::put('users/{user}/change-password', [App\Http\Controllers\Admin\UserController::class, 'changePassword' ])->name('users.change-password');
     Route::get('users/{user}/get-role', [App\Http\Controllers\Admin\UserController::class, 'getRole' ])->name('users.get-role');
     Route::put('users/{user}/assign-role', [App\Http\Controllers\Admin\UserController::class, 'assignRole' ])->name('users.assign-role');
+
+    //Route::get('users/terms_conditions', [App\Http\Controllers\Admin\UserController::class, 'terms_conditions' ])->name('users.terms_conditions');
     Route::resource('roles', App\Http\Controllers\Admin\RoleController::class );
 
+
+
 });
+
+
 
 
 
