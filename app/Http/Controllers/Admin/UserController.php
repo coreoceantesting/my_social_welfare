@@ -229,4 +229,8 @@ class UserController extends Controller
             return $this->respondWithAjax($e, 'changing', 'User\'s role');
         }
     }
+
+
+
+
 }

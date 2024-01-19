@@ -24,4 +24,12 @@ class DashboardController extends Controller
 
         return true;
     }
+
+    public function terms_conditions(){
+
+       // print_r('hii');exit;
+
+        return view('admin.users.terms_condition');
+
+    }
 }

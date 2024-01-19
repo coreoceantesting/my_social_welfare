@@ -29,6 +29,19 @@ class StoreUserRequest extends FormRequest
             'mobile' => 'required|unique:app_users,mobile|digits:10',
             'password' => 'required|min:8',
             'confirm_password' => 'required|same:password',
+
+            'f_name' => 'nullable',
+            'm_name' => 'nullable',
+            'l_name' => 'nullable',
+            'gender' => 'nullable',
+            'dob' => 'nullable',
+            'Age' => 'nullable',
+            'father_fname' => 'nullable',
+            'father_mname' => 'nullable',
+            'father_lname' => 'nullable',
+            'mother_name' => 'nullable',
+            'category' => 'nullable',
+            'contact' => 'nullable',
         ];
     }
 }
