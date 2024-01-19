@@ -71,11 +71,6 @@ Route::middleware(['auth','PreventBackHistory'])->group(function()
 
 });
 
-
-
-
-
-
 Route::get('/php', function(Request $request){
     if( !auth()->check() )
         return 'Unauthorized request';
