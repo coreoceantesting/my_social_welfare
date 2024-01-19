@@ -1,6 +1,6 @@
 <x-admin.layout>
-    <x-slot name="title">Schemes</x-slot>
-    <x-slot name="heading">Schemes</x-slot>
+    <x-slot name="title">Financial Year</x-slot>
+    <x-slot name="heading">Financial Year</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
 
@@ -12,27 +12,32 @@
                         @csrf
 
                         <div class="card-header">
-                            <h4 class="card-title">Add Scheme</h4>
+                            <h4 class="card-title">Add Financial Year</h4>
                         </div>
                         <div class="card-body">
                             <div class="mb-3 row">
-
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="cat_id">Select Category Type <span class="text-danger">*</span></label>
-                                    <select class="js-example-basic-single col-sm-12" name="cat_id">
-                                        <option value="">--Select Category--</option>
-                                        @foreach($category as $row)
-                                            <option value="{{ $row->id }}">{{ $row->category_name }}</option>
-                                            @endforeach
-                                    </select>
-                                    <span class="text-danger is-invalid cat_id_err"></span>
+                                    <label class="col-form-label" for="category_name">Title<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="title" name="title" type="text" placeholder="Enter Title">
+                                    <span class="text-danger is-invalid title_err"></span>
                                 </div>
 
+                                <div class="col-md-4">
+                                    <label class="col-form-label" for="from_date">From Date<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="from_date" name="from_date" type="date" placeholder="Enter Title">
+                                    <span class="text-danger is-invalid  from_date_err"></span>
+                                </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="scheme_name">Scheme Name <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="scheme_name" name="scheme_name" type="text" placeholder="Enter Scheme Name">
-                                    <span class="text-danger is-invalid scheme_name_err"></span>
+                                    <label class="col-form-label" for="to_date">To Date<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="to_date" name="to_date" type="date" placeholder="Enter Title">
+                                    <span class="text-danger is-invalid to_date_err"></span>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="col-form-label"for="checkbox-switch-1">Active<span class="text-danger">*</span></label>
+                                    <input  id="checkbox-switch-1" name="is_active" class="form-check-input" type="checkbox" style="font-size:20px; border:solid 1px;  border-color:#91C714; ">
+                                    {{-- <span class="text-danger is-invalid is_active_err"></span> --}}
                                 </div>
                             </div>
 
@@ -49,35 +54,33 @@
 
 
         {{-- Edit Form --}}
+
         <div class="row" id="editContainer" style="display:none;">
             <div class="col">
                 <form class="form-horizontal form-bordered" method="post" id="editForm">
                     @csrf
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Edit Scheme</h4>
+                            <h4 class="card-title">Edit Financial Year</h4>
                         </div>
                         <div class="card-body py-2">
                             <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
                             <div class="mb-3 row">
-
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="name">Select Category Type : </label>
-                                        <select class="js-example-basic-single" id="cat_id" name="cat_id">
-                                            <option value="">--Select Category--</option>
-                                            @foreach($category as $row)
-                                            <option value="{{ $row->id }}">{{ $row->category_name }}</option>
-                                            @endforeach
-                                        </select>
-                                        <span class="text-danger is-invalid cat_id_err"></span>
+                                    <label class="col-form-label" for="category_name">Title<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="title" name="title" type="text" placeholder="Enter Title">
+                                    <span class="text-danger is-invalid title_err"></span>
                                 </div>
-
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="scheme_name">Scheme Name <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="scheme_name" name="scheme_name" type="text" placeholder="Scheme Name">
-                                    <span class="text-danger is-invalid scheme_name_err"></span>
+                                    <label class="col-form-label" for="from_date">From Date<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="from_date" name="from_date" type="date" placeholder="Enter Title">
+                                    <span class="text-danger is-invalid  from_date_err"></span>
                                 </div>
-
+                                <div class="col-md-4">
+                                    <label class="col-form-label" for="to_date">To Date<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="to_date" name="to_date" type="date" placeholder="Enter Title">
+                                    <span class="text-danger is-invalid to_date_err"></span>
+                                </div>
                             </div>
 
                         </div>
@@ -109,19 +112,37 @@
                             <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Scheme Name</th>
-                                        <th>Category Name</th>
+                                        <th>Year</th>
+                                        <th>From Date</th>
+                                        <th>To Date</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($scheme as $schemes)
+                                    @foreach ($financial as $financials)
+
+                                    @php
+                                        $status = "";
+                                    @endphp
+
+                                    @if($financials->is_active==1)
+                                        @php
+                                            $status = "Active";
+                                        @endphp
+                                    @elseif($financials->is_active==0)
+                                        @php
+                                            $status = "Inactive";
+                                        @endphp
+                                    @endif
                                         <tr>
-                                            <td>{{$schemes->scheme_name}}</td>
-                                            <td>{{$schemes->category->category_name }}</td>
+                                            <td>{{$financials->title}}</td>
+                                            <td>{{$financials->from_date}}</td>
+                                            <td>{{$financials->to_date}}</td>
+                                            <td>{{ $status }}</td>
                                             <td>
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $schemes->id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $schemes->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit financial year" data-id="{{ $financials->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete financial year" data-id="{{ $financials->id }}"><i data-feather="trash-2"></i> </button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -146,7 +167,7 @@
 
         var formdata = new FormData(this);
         $.ajax({
-            url: '{{ route('scheme.store') }}',
+            url: '{{ route('financial.store') }}',
             type: 'POST',
             data: formdata,
             contentType: false,
@@ -157,7 +178,7 @@
                 if (!data.error2)
                     swal("Successful!", data.success, "success")
                         .then((action) => {
-                            window.location.href = '{{ route('scheme.index') }}';
+                            window.location.href = '{{ route('financial.index') }}';
                         });
                 else
                     swal("Error!", data.error2, "error");
@@ -184,8 +205,8 @@
     $("#buttons-datatables").on("click", ".edit-element", function(e) {
         e.preventDefault();
         var model_id = $(this).attr("data-id");
-        var url = "{{ route('scheme.edit', ":model_id") }}";
-        // console.log(url);
+        var url = "{{ route('financial.edit', ":model_id") }}";
+
         $.ajax({
             url: url.replace(':model_id', model_id),
             type: 'GET',
@@ -194,12 +215,12 @@
             },
             success: function(data, textStatus, jqXHR) {
                 editFormBehaviour();
-
                 if (!data.error)
                 {
-                    $("#editForm input[name='edit_model_id']").val(data.scheme.id);
-                    $("#editForm input[name='scheme_name']").val(data.scheme.scheme_name);
-                    $("#cat_id").html(data.categoryHtml);
+                    $("#editForm input[name='edit_model_id']").val(data.financial.id);
+                    $("#editForm input[name='title']").val(data.financial.title);
+                    $("#editForm input[name='from_date']").val(data.financial.from_date);
+                    $("#editForm input[name='to_date']").val(data.financial.to_date);
                 }
                 else
                 {
@@ -214,6 +235,7 @@
 </script>
 
 
+
 <!-- Update -->
 <script>
     $(document).ready(function() {
@@ -223,7 +245,7 @@
             var formdata = new FormData(this);
             formdata.append('_method', 'PUT');
             var model_id = $('#edit_model_id').val();
-            var url = "{{ route('scheme.update', ":model_id") }}";
+            var url = "{{ route('financial.update', ":model_id") }}";
             //
             $.ajax({
                 url: url.replace(':model_id', model_id),
@@ -237,7 +259,7 @@
                     if (!data.error2)
                         swal("Successful!", data.success, "success")
                             .then((action) => {
-                                window.location.href = '{{ route('scheme.index') }}';
+                                window.location.href = '{{ route('financial.index') }}';
                             });
                     else
                         swal("Error!", data.error2, "error");
@@ -265,7 +287,7 @@
     $("#buttons-datatables").on("click", ".rem-element", function(e) {
         e.preventDefault();
         swal({
-            title: "Are you sure to delete this Scheme?",
+            title: "Are you sure to delete this Financial Year?",
             // text: "Make sure if you have filled Vendor details before proceeding further",
             icon: "info",
             buttons: ["Cancel", "Confirm"]
@@ -275,7 +297,8 @@
             if (justTransfer)
             {
                 var model_id = $(this).attr("data-id");
-                var url = "{{ route('scheme.destroy', ":model_id") }}";
+                var url = "{{ route('financial.destroy', ":model_id") }}";
+
                 $.ajax({
                     url: url.replace(':model_id', model_id),
                     type: 'POST',
@@ -284,7 +307,6 @@
                         '_token': "{{ csrf_token() }}"
                     },
                     success: function(data, textStatus, jqXHR) {
-                        console.log(data)
                         if (!data.error && !data.error2) {
                             swal("Success!", data.success, "success")
                                 .then((action) => {

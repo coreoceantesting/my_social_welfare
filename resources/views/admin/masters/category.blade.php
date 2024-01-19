@@ -17,13 +17,13 @@
                         <div class="card-body">
                             <div class="mb-3 row">
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="name">Category Name <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="name" name="name" type="text" placeholder="Enter Ward Name">
-                                    <span class="text-danger is-invalid name_err"></span>
+                                    <label class="col-form-label" for="category_name">Category Name <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="category_name" name="category_name" type="text" placeholder="Enter Category Name">
+                                    <span class="text-danger is-invalid category_name_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="initial">Initial <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="initial" name="initial" type="text" placeholder="Enter Ward Initial">
+                                    <input class="form-control" id="initial" name="initial" type="text" placeholder="Enter Category Initial">
                                     <span class="text-danger is-invalid initial_err"></span>
                                 </div>
                             </div>
@@ -53,9 +53,9 @@
                             <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
                             <div class="mb-3 row">
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="name">Category Name <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="name" name="name" type="text" placeholder="Category Name">
-                                    <span class="text-danger is-invalid name_err"></span>
+                                    <label class="col-form-label" for="category_name">Category Name <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="category_name" name="category_name" type="text" placeholder="Category Name">
+                                    <span class="text-danger is-invalid category_name_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="initial">Initial <span class="text-danger">*</span></label>
@@ -94,26 +94,18 @@
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th>Initial</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($wards as $ward)
+                                    @foreach ($category as $categories)
                                         <tr>
-                                            <td>{{$ward->name}}</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
+                                            <td>{{$categories->category_name}}</td>
+                                            <td>{{$categories->initial}}</td>
                                             <td>
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit ward" data-id="{{ $ward->id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete ward" data-id="{{ $ward->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $categories->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $categories->id }}"><i data-feather="trash-2"></i> </button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -138,7 +130,7 @@
 
         var formdata = new FormData(this);
         $.ajax({
-            url: '{{ route('wards.store') }}',
+            url: '{{ route('category.store') }}',
             type: 'POST',
             data: formdata,
             contentType: false,
@@ -149,7 +141,7 @@
                 if (!data.error2)
                     swal("Successful!", data.success, "success")
                         .then((action) => {
-                            window.location.href = '{{ route('wards.index') }}';
+                            window.location.href = '{{ route('category.index') }}';
                         });
                 else
                     swal("Error!", data.error2, "error");
@@ -176,7 +168,7 @@
     $("#buttons-datatables").on("click", ".edit-element", function(e) {
         e.preventDefault();
         var model_id = $(this).attr("data-id");
-        var url = "{{ route('wards.edit', ":model_id") }}";
+        var url = "{{ route('category.edit', ":model_id") }}";
 
         $.ajax({
             url: url.replace(':model_id', model_id),
@@ -188,9 +180,9 @@
                 editFormBehaviour();
                 if (!data.error)
                 {
-                    $("#editForm input[name='edit_model_id']").val(data.ward.id);
-                    $("#editForm input[name='name']").val(data.ward.name);
-                    $("#editForm input[name='initial']").val(data.ward.initial);
+                    $("#editForm input[name='edit_model_id']").val(data.category.id);
+                    $("#editForm input[name='category_name']").val(data.category.category_name);
+                    $("#editForm input[name='initial']").val(data.category.initial);
                 }
                 else
                 {
@@ -214,7 +206,7 @@
             var formdata = new FormData(this);
             formdata.append('_method', 'PUT');
             var model_id = $('#edit_model_id').val();
-            var url = "{{ route('wards.update', ":model_id") }}";
+            var url = "{{ route('category.update', ":model_id") }}";
             //
             $.ajax({
                 url: url.replace(':model_id', model_id),
@@ -228,7 +220,7 @@
                     if (!data.error2)
                         swal("Successful!", data.success, "success")
                             .then((action) => {
-                                window.location.href = '{{ route('wards.index') }}';
+                                window.location.href = '{{ route('category.index') }}';
                             });
                     else
                         swal("Error!", data.error2, "error");
@@ -256,7 +248,7 @@
     $("#buttons-datatables").on("click", ".rem-element", function(e) {
         e.preventDefault();
         swal({
-            title: "Are you sure to delete this ward?",
+            title: "Are you sure to delete this Category?",
             // text: "Make sure if you have filled Vendor details before proceeding further",
             icon: "info",
             buttons: ["Cancel", "Confirm"]
@@ -266,7 +258,7 @@
             if (justTransfer)
             {
                 var model_id = $(this).attr("data-id");
-                var url = "{{ route('wards.destroy', ":model_id") }}";
+                var url = "{{ route('category.destroy', ":model_id") }}";
 
                 $.ajax({
                     url: url.replace(':model_id', model_id),

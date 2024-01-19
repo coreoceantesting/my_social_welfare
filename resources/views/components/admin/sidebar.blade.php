@@ -52,6 +52,27 @@
                                 <a href="{{ route('wards.index') }}" class="nav-link" data-key="t-horizontal">Wards</a>
                                 @endcan
                             </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('category.index') }}" class="nav-link" data-key="t-horizontal">Categories</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('scheme.index') }}" class="nav-link" data-key="t-horizontal">Schemes</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('document.index') }}" class="nav-link" data-key="t-horizontal">Document Type</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('financial.index') }}" class="nav-link" data-key="t-horizontal">Financial Year</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('terms-conditions.index') }}" class="nav-link" data-key="t-horizontal">Terms And Conditions</a>
+                            </li>
+
                         </ul>
                     </div>
                 </li>

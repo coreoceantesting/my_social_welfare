@@ -1,8 +1,18 @@
 <x-admin.layout>
-    <x-slot name="title">Schemes</x-slot>
-    <x-slot name="heading">Schemes</x-slot>
+    <x-slot name="title">Terms And Conditions</x-slot>
+    <x-slot name="heading">Terms And Conditions</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
+    <style>
+        .center-table {
 
+          border: 1px solid; /* Add your border style here */
+        }
+
+    p {
+        white-space: nowrap;
+    }
+
+      </style>
 
         <!-- Add Form -->
         <div class="row" id="addContainer" style="display:none;">
@@ -12,30 +22,36 @@
                         @csrf
 
                         <div class="card-header">
-                            <h4 class="card-title">Add Scheme</h4>
+                            <h4 class="card-title">Add Terms And Conditions</h4>
                         </div>
                         <div class="card-body">
                             <div class="mb-3 row">
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="cat_id">Select Category Type <span class="text-danger">*</span></label>
-                                    <select class="js-example-basic-single col-sm-12" name="cat_id">
-                                        <option value="">--Select Category--</option>
-                                        @foreach($category as $row)
-                                            <option value="{{ $row->id }}">{{ $row->category_name }}</option>
+                                    <label class="col-form-label" for="name">Select Scheme : </label>
+                                        <select class="js-example-basic-single"  name="scheme_id">
+                                            <option value="">--Select Scheme--</option>
+                                            @foreach($scheme as $schemes)
+                                            <option value="{{ $schemes->id }}">{{ $schemes->scheme_name }}</option>
                                             @endforeach
-                                    </select>
-                                    <span class="text-danger is-invalid cat_id_err"></span>
+                                        </select>
+                                        <span class="text-danger is-invalid  scheme_id_err"></span>
+                                </div>
+
+                                {{-- <div class="col-md-4">
+                                    <label class="col-form-label" for="rules_regulations">Tearms And Conditions <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="rules_regulations" name="rules_regulations" type="text" placeholder="Enter Document Name">
+                                    <span class="text-danger is-invalid rules_regulations_err"></span>
+                                </div> --}}
+
+                                <div class="col-md-8">
+                                    <label class="col-form-label" for="rules_regulations">Tearms And Conditions <span class="text-danger">*</span></label>
+                                    <textarea id="long_desc1" id="rules_regulations" name="rules_regulations"></textarea><br>
+                                    <span class="text-danger is-invalid rules_regulations_err"></span>
                                 </div>
 
 
-                                <div class="col-md-4">
-                                    <label class="col-form-label" for="scheme_name">Scheme Name <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="scheme_name" name="scheme_name" type="text" placeholder="Enter Scheme Name">
-                                    <span class="text-danger is-invalid scheme_name_err"></span>
-                                </div>
                             </div>
-
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary" id="addSubmit">Submit</button>
@@ -55,27 +71,33 @@
                     @csrf
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Edit Scheme</h4>
+                            <h4 class="card-title">Edit Terms And Conditions</h4>
                         </div>
                         <div class="card-body py-2">
                             <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
                             <div class="mb-3 row">
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="name">Select Category Type : </label>
-                                        <select class="js-example-basic-single" id="cat_id" name="cat_id">
-                                            <option value="">--Select Category--</option>
-                                            @foreach($category as $row)
-                                            <option value="{{ $row->id }}">{{ $row->category_name }}</option>
+                                    <label class="col-form-label" for="name">Select Scheme : </label>
+                                        <select class="js-example-basic-single" id="scheme_id" name="scheme_id">
+                                            <option value="">--Select Scheme--</option>
+                                            @foreach($scheme as $schemes)
+                                            <option value="{{ $schemes->id }}">{{ $schemes->scheme_name }}</option>
                                             @endforeach
                                         </select>
-                                        <span class="text-danger is-invalid cat_id_err"></span>
+                                        <span class="text-danger is-invalid  scheme_id_err"></span>
                                 </div>
 
-                                <div class="col-md-4">
-                                    <label class="col-form-label" for="scheme_name">Scheme Name <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="scheme_name" name="scheme_name" type="text" placeholder="Scheme Name">
-                                    <span class="text-danger is-invalid scheme_name_err"></span>
+                                {{-- <div class="col-md-4">
+                                    <label class="col-form-label" for="rules_regulations">Tearms And Conditions <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="rules_regulations" name="rules_regulations" type="text" placeholder="Enter Document Name">
+                                    <span class="text-danger is-invalid rules_regulations_err"></span>
+                                </div> --}}
+
+                                <div class="col-md-8">
+                                    <label class="col-form-label" for="rules_regulations">Tearms And Conditions <span class="text-danger">*</span></label>
+                                    <textarea id="long_desc2" name="rules_regulations"></textarea><br>
+                                    <span class="text-danger is-invalid rules_regulations_err"></span>
                                 </div>
 
                             </div>
@@ -109,19 +131,20 @@
                             <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Scheme Name</th>
-                                        <th>Category Name</th>
+                                        <th>Scheme</th>
+                                        <th>Tearms And Conditions</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($scheme as $schemes)
+                                    @foreach ($terms as $row)
                                         <tr>
-                                            <td>{{$schemes->scheme_name}}</td>
-                                            <td>{{$schemes->category->category_name }}</td>
+                                            <td>{{ $row->scheme->scheme_name ?? '' }}</td>
+                                            <td>{!! $row->rules_regulations !!} </td>
+
                                             <td>
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $schemes->id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $schemes->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit terms" data-id="{{ $row->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete terms" data-id="{{ $row->id }}"><i data-feather="trash-2"></i> </button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -139,14 +162,18 @@
 
 
 {{-- Add --}}
+<script src="https://cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script>
 <script>
+     CKEDITOR.replace('long_desc1');
+     CKEDITOR.replace('long_desc2');
+
     $("#addForm").submit(function(e) {
         e.preventDefault();
         $("#addSubmit").prop('disabled', true);
 
         var formdata = new FormData(this);
         $.ajax({
-            url: '{{ route('scheme.store') }}',
+            url: '{{ route('terms-conditions.store') }}',
             type: 'POST',
             data: formdata,
             contentType: false,
@@ -157,7 +184,7 @@
                 if (!data.error2)
                     swal("Successful!", data.success, "success")
                         .then((action) => {
-                            window.location.href = '{{ route('scheme.index') }}';
+                            window.location.href = '{{ route('terms-conditions.index') }}';
                         });
                 else
                     swal("Error!", data.error2, "error");
@@ -184,8 +211,9 @@
     $("#buttons-datatables").on("click", ".edit-element", function(e) {
         e.preventDefault();
         var model_id = $(this).attr("data-id");
-        var url = "{{ route('scheme.edit', ":model_id") }}";
-        // console.log(url);
+
+        var url = "{{ route('terms-conditions.edit', ":model_id") }}";
+
         $.ajax({
             url: url.replace(':model_id', model_id),
             type: 'GET',
@@ -194,12 +222,13 @@
             },
             success: function(data, textStatus, jqXHR) {
                 editFormBehaviour();
-
+                // console.log(data);
                 if (!data.error)
                 {
-                    $("#editForm input[name='edit_model_id']").val(data.scheme.id);
-                    $("#editForm input[name='scheme_name']").val(data.scheme.scheme_name);
-                    $("#cat_id").html(data.categoryHtml);
+                    $("#editForm input[name='edit_model_id']").val(data.terms.id);
+                    CKEDITOR.instances['long_desc2'].setData(data.terms.rules_regulations);
+                    $("#scheme_id").html(data.schemeHtml);
+
                 }
                 else
                 {
@@ -223,7 +252,7 @@
             var formdata = new FormData(this);
             formdata.append('_method', 'PUT');
             var model_id = $('#edit_model_id').val();
-            var url = "{{ route('scheme.update', ":model_id") }}";
+            var url = "{{ route('terms-conditions.update', ":model_id") }}";
             //
             $.ajax({
                 url: url.replace(':model_id', model_id),
@@ -237,7 +266,7 @@
                     if (!data.error2)
                         swal("Successful!", data.success, "success")
                             .then((action) => {
-                                window.location.href = '{{ route('scheme.index') }}';
+                                window.location.href = '{{ route('terms-conditions.index') }}';
                             });
                     else
                         swal("Error!", data.error2, "error");
@@ -261,35 +290,31 @@
 
 
 <!-- Delete -->
+
 <script>
-    $("#buttons-datatables").on("click", ".rem-element", function(e) {
+$("#buttons-datatables").on("click", ".rem-element", function (e) {
         e.preventDefault();
+        var model_id = $(this).attr("data-id");
+        var url = "{{ route('terms-conditions.destroy', ":model_id") }}";
+
         swal({
-            title: "Are you sure to delete this Scheme?",
-            // text: "Make sure if you have filled Vendor details before proceeding further",
+            title: "Are you sure to delete this rule?",
             icon: "info",
             buttons: ["Cancel", "Confirm"]
-        })
-        .then((justTransfer) =>
-        {
-            if (justTransfer)
-            {
-                var model_id = $(this).attr("data-id");
-                var url = "{{ route('scheme.destroy', ":model_id") }}";
+        }).then((justTransfer) => {
+            if (justTransfer) {
                 $.ajax({
                     url: url.replace(':model_id', model_id),
-                    type: 'POST',
+                    type: 'DELETE',
                     data: {
-                        '_method': "DELETE",
-                        '_token': "{{ csrf_token() }}"
+                        '_token': "{{ csrf_token() }}",
+                        'id': model_id  // Pass the model ID here
                     },
-                    success: function(data, textStatus, jqXHR) {
-                        console.log(data)
+                    success: function (data, textStatus, jqXHR) {
                         if (!data.error && !data.error2) {
-                            swal("Success!", data.success, "success")
-                                .then((action) => {
-                                    window.location.reload();
-                                });
+                            swal("Success!", data.success, "success").then((action) => {
+                                window.location.reload();
+                            });
                         } else {
                             if (data.error) {
                                 swal("Error!", data.error, "error");
@@ -298,7 +323,7 @@
                             }
                         }
                     },
-                    error: function(error, jqXHR, textStatus, errorThrown) {
+                    error: function (error, jqXHR, textStatus, errorThrown) {
                         swal("Error!", "Something went wrong", "error");
                     },
                 });

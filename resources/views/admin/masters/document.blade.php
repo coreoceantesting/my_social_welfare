@@ -1,6 +1,6 @@
 <x-admin.layout>
-    <x-slot name="title">Schemes</x-slot>
-    <x-slot name="heading">Schemes</x-slot>
+    <x-slot name="title">Document Type</x-slot>
+    <x-slot name="heading">Document Type</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
 
@@ -12,28 +12,43 @@
                         @csrf
 
                         <div class="card-header">
-                            <h4 class="card-title">Add Scheme</h4>
+                            <h4 class="card-title">Add Document Type</h4>
                         </div>
                         <div class="card-body">
                             <div class="mb-3 row">
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="cat_id">Select Category Type <span class="text-danger">*</span></label>
-                                    <select class="js-example-basic-single col-sm-12" name="cat_id">
-                                        <option value="">--Select Category--</option>
-                                        @foreach($category as $row)
-                                            <option value="{{ $row->id }}">{{ $row->category_name }}</option>
+                                    <label class="col-form-label" for="name">Select Scheme : </label>
+                                        <select class="js-example-basic-single"  name="scheme_id">
+                                            <option value="">--Select Scheme--</option>
+                                            @foreach($scheme as $schemes)
+                                            <option value="{{ $schemes->id }}">{{ $schemes->scheme_name }}</option>
                                             @endforeach
-                                    </select>
-                                    <span class="text-danger is-invalid cat_id_err"></span>
+                                        </select>
+                                        <span class="text-danger is-invalid  scheme_id_err"></span>
                                 </div>
-
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="scheme_name">Scheme Name <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="scheme_name" name="scheme_name" type="text" placeholder="Enter Scheme Name">
-                                    <span class="text-danger is-invalid scheme_name_err"></span>
+                                    <label class="col-form-label" for="document_name">Document Name <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="document_name" name="document_name" type="text" placeholder="Enter Document Name">
+                                    <span class="text-danger is-invalid document_name_err"></span>
                                 </div>
+                                <div class="col-md-4">
+                                    <label class="col-form-label" for="document_initial">Initial <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="document_initial" name="document_initial" type="text" placeholder="Enter Document Initial">
+                                    <span class="text-danger is-invalid document_initial_err"></span>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="col-form-label" for="name">Is Required : </label>
+                                        <select class="js-example-basic-single" name="is_required" id="is_required">
+                                            <option value="">--Select Is Required--</option>
+                                            <option value="1">Mandatory</option>
+                                          <option value="2">Not Mandatory</option>
+                                        </select>
+                                        <span class="text-danger is-invalid  is_required_err"></span>
+                                </div>
+
                             </div>
 
                         </div>
@@ -55,29 +70,35 @@
                     @csrf
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Edit Scheme</h4>
+                            <h4 class="card-title">Edit Document Type</h4>
                         </div>
                         <div class="card-body py-2">
                             <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
                             <div class="mb-3 row">
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="name">Select Category Type : </label>
-                                        <select class="js-example-basic-single" id="cat_id" name="cat_id">
-                                            <option value="">--Select Category--</option>
-                                            @foreach($category as $row)
-                                            <option value="{{ $row->id }}">{{ $row->category_name }}</option>
+                                    <label class="col-form-label" for="name">Select Scheme : </label>
+                                        <select class="js-example-basic-single" id="scheme_id" name="scheme_id">
+                                            <option value="">--Select Scheme--</option>
+                                            @foreach($scheme as $schemes)
+                                            <option value="{{ $schemes->id }}">{{ $schemes->scheme_name }}</option>
                                             @endforeach
                                         </select>
-                                        <span class="text-danger is-invalid cat_id_err"></span>
+                                        <span class="text-danger is-invalid  scheme_id_err"></span>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <label class="col-form-label" for="document_name">Document Name <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="document_name" name="document_name" type="text" placeholder="Enter Document Name">
+                                    <span class="text-danger is-invalid document_name_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="scheme_name">Scheme Name <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="scheme_name" name="scheme_name" type="text" placeholder="Scheme Name">
-                                    <span class="text-danger is-invalid scheme_name_err"></span>
+                                    <label class="col-form-label" for="document_initial">Initial <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="document_initial" name="document_initial" type="text" placeholder="Enter Document Initial">
+                                    <span class="text-danger is-invalid document_initial_err"></span>
                                 </div>
-
                             </div>
 
                         </div>
@@ -110,18 +131,36 @@
                                 <thead>
                                     <tr>
                                         <th>Scheme Name</th>
-                                        <th>Category Name</th>
+                                        <th>Document Name</th>
+                                        <th>Initial</th>
+                                        <th>Is Required</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($scheme as $schemes)
+                                    @foreach ($documents as $row)
+                                            @php
+                                            $require="";
+                                            @endphp
+                                             @if($row->is_required==1)
+                                             @php
+                                            $require = "YES";
+                                            @endphp
+                                            @else
+                                            @php
+                                            $require = "No";
+                                            @endphp
+                                            @endif
+
+
                                         <tr>
-                                            <td>{{$schemes->scheme_name}}</td>
-                                            <td>{{$schemes->category->category_name }}</td>
+                                            <td>{{$row->scheme->scheme_name ?? ''}}</td>
+                                            <td>{{$row->document_name}}</td>
+                                            <td>{{$row->document_initial}}</td>
+                                            <td>{{ $require }}</td>
                                             <td>
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $schemes->id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $schemes->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $row->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $row->id }}"><i data-feather="trash-2"></i> </button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -146,7 +185,7 @@
 
         var formdata = new FormData(this);
         $.ajax({
-            url: '{{ route('scheme.store') }}',
+            url: '{{ route('document.store') }}',
             type: 'POST',
             data: formdata,
             contentType: false,
@@ -157,7 +196,7 @@
                 if (!data.error2)
                     swal("Successful!", data.success, "success")
                         .then((action) => {
-                            window.location.href = '{{ route('scheme.index') }}';
+                            window.location.href = '{{ route('document.index') }}';
                         });
                 else
                     swal("Error!", data.error2, "error");
@@ -184,8 +223,8 @@
     $("#buttons-datatables").on("click", ".edit-element", function(e) {
         e.preventDefault();
         var model_id = $(this).attr("data-id");
-        var url = "{{ route('scheme.edit', ":model_id") }}";
-        // console.log(url);
+        var url = "{{ route('document.edit', ":model_id") }}";
+
         $.ajax({
             url: url.replace(':model_id', model_id),
             type: 'GET',
@@ -194,12 +233,12 @@
             },
             success: function(data, textStatus, jqXHR) {
                 editFormBehaviour();
-
                 if (!data.error)
                 {
-                    $("#editForm input[name='edit_model_id']").val(data.scheme.id);
-                    $("#editForm input[name='scheme_name']").val(data.scheme.scheme_name);
-                    $("#cat_id").html(data.categoryHtml);
+                    $("#editForm input[name='edit_model_id']").val(data.document.id);
+                    $("#editForm input[name='document_name']").val(data.document.document_name);
+                    $("#editForm input[name='document_initial']").val(data.document.document_initial);
+                    $("#scheme_id").html(data.schemeHtml);
                 }
                 else
                 {
@@ -223,7 +262,7 @@
             var formdata = new FormData(this);
             formdata.append('_method', 'PUT');
             var model_id = $('#edit_model_id').val();
-            var url = "{{ route('scheme.update', ":model_id") }}";
+            var url = "{{ route('document.update', ":model_id") }}";
             //
             $.ajax({
                 url: url.replace(':model_id', model_id),
@@ -237,7 +276,7 @@
                     if (!data.error2)
                         swal("Successful!", data.success, "success")
                             .then((action) => {
-                                window.location.href = '{{ route('scheme.index') }}';
+                                window.location.href = '{{ route('document.index') }}';
                             });
                     else
                         swal("Error!", data.error2, "error");
@@ -265,7 +304,7 @@
     $("#buttons-datatables").on("click", ".rem-element", function(e) {
         e.preventDefault();
         swal({
-            title: "Are you sure to delete this Scheme?",
+            title: "Are you sure to delete this Document?",
             // text: "Make sure if you have filled Vendor details before proceeding further",
             icon: "info",
             buttons: ["Cancel", "Confirm"]
@@ -275,7 +314,8 @@
             if (justTransfer)
             {
                 var model_id = $(this).attr("data-id");
-                var url = "{{ route('scheme.destroy', ":model_id") }}";
+
+                var url = "{{ route('document.destroy', ":model_id") }}";
                 $.ajax({
                     url: url.replace(':model_id', model_id),
                     type: 'POST',
@@ -284,7 +324,6 @@
                         '_token': "{{ csrf_token() }}"
                     },
                     success: function(data, textStatus, jqXHR) {
-                        console.log(data)
                         if (!data.error && !data.error2) {
                             swal("Success!", data.success, "success")
                                 .then((action) => {

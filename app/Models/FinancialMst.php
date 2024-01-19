@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 
-class FinancialYearMst extends Model
+class FinancialMst extends BaseModel
 {
     use HasFactory, SoftDeletes;
+
+    protected $table = 'fy_mst';
 
     protected $fillable = ['title', 'from_date', 'to_date', 'is_active', 'status'];
 

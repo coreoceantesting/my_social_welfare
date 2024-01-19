@@ -52,6 +52,12 @@ Route::middleware(['auth','PreventBackHistory'])->group(function()
 
     // Masters
     Route::resource('wards', App\Http\Controllers\Admin\Masters\WardController::class );
+    Route::resource('category', App\Http\Controllers\Admin\Masters\CategoryController::class );
+    Route::resource('scheme', App\Http\Controllers\Admin\Masters\SchemeController::class );
+    Route::resource('document', App\Http\Controllers\Admin\Masters\DocumentController::class );
+    Route::resource('financial', App\Http\Controllers\Admin\Masters\FinancialController::class );
+    Route::resource('terms-conditions', App\Http\Controllers\Admin\Masters\TermsAndConditionsController::class );
+
 
     Route::resource('hayatichaDakhlaform', DivyangController::class);
     Route::get('/hayatichaDakhlaform/pdf-download', 'DivyangController@hayatPdfDownload')->name('hayatichaDakhlaform.pdf-download');
