@@ -11,16 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('terms_conditions_mst', function (Blueprint $table) {
+        Schema::create('document_type_msts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('scheme_id')->constrained('scheme_mst');
-            $table->string('rules_regulations')->nullable();
+            $table->string('document_name')->nullable();
+            $table->string('document_initial')->nullable();
+            $table->string('is_required')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            
+
         });
     }
 
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('terms_conditions_mst');
+        Schema::dropIfExists('document_type_msts');
     }
 };
