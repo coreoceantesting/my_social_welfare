@@ -28,17 +28,15 @@
                                     </div>
 
                                     <div class="card-body p-4">
-                                              ardesrewr
-
                                         <!--end row-->
                                         <div class="mt-4">
                                             <label for="exampleFormControlTextarea1" class="form-label text-muted text-uppercase fw-semibold">NOTES</label>
-                                            <textarea class="form-control alert alert-primary" id="exampleFormControlTextarea1" placeholder="Notes" rows="2" required>All accounts are to be paid within 7 days from receipt of invoice. To be paid by cheque or credit card or direct payment online. If account is not paid within 7 days the credits details supplied as confirmation of work undertaken will be charged the agreed quoted fee noted above.</textarea>
+                                            {!! $terms->rules_regulations ?? ''!!}
                                         </div>
                                         <div class="hstack gap-2 justify-content-end d-print-none mt-4">
 
                                             <a href="{{ route('hayatichaDakhlaform.index') }}" class="btn btn-primary"> Continue</a>
-                                            <a href="{{ route('dashboard') }}" class="btn btn-secondary"> Cancle</a>
+                                            <a href="{{ route('dashboard') }}" class="btn btn-secondary"> Cancel</a>
                                         </div>
                                     </div>
                                 </form>

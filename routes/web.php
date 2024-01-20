@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\Masters\DivyangController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +47,7 @@ Route::middleware(['auth','PreventBackHistory'])->group(function()
     Route::get('change-theme-mode', [App\Http\Controllers\Admin\DashboardController::class, 'changeThemeMode'])->name('change-theme-mode');
     Route::get('show-change-password', [App\Http\Controllers\Admin\AuthController::class, 'showChangePassword'] )->name('show-change-password');
     Route::post('change-password', [App\Http\Controllers\Admin\AuthController::class, 'changePassword'] )->name('change-password');
-    Route::get('terms_conditions', [App\Http\Controllers\Admin\DashboardController::class, 'terms_conditions'])->name('terms_conditions');
+
 
 
     // Masters
@@ -58,9 +58,10 @@ Route::middleware(['auth','PreventBackHistory'])->group(function()
     Route::resource('financial', App\Http\Controllers\Admin\Masters\FinancialController::class );
     Route::resource('terms-conditions', App\Http\Controllers\Admin\Masters\TermsAndConditionsController::class );
 
-
-    Route::resource('hayatichaDakhlaform', DivyangController::class);
-    Route::get('/hayatichaDakhlaform/pdf-download', 'DivyangController@hayatPdfDownload')->name('hayatichaDakhlaform.pdf-download');
+    // User
+    Route::get('terms_conditions/{id}', [App\Http\Controllers\Admin\DashboardController::class, 'terms_conditions'])->name('terms_conditions');
+    Route::resource('hayatichaDakhlaform', App\Http\Controllers\Admin\Masters\DivyangController::class);
+    Route::get('/hayatichaDakhlaform/pdf-download', 'App\Http\Controllers\Admin\Masters\DivyangController@hayatPdfDownload')->name('hayatichaDakhlaform.pdf-download');
 
     // Users Roles n Permissions
     Route::resource('users', App\Http\Controllers\Admin\UserController::class );

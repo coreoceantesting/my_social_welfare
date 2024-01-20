@@ -40,6 +40,7 @@
                 </li>
 
 
+                @canany(['wards.view', 'category.view', 'scheme.view', 'document-type.view', 'financial-year.view', 'terms-conditions.view'])
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
                         <i class="ri-layout-3-line"></i>
@@ -53,30 +54,40 @@
                                 @endcan
                             </li>
 
+                            @can('category.view')
                             <li class="nav-item">
                                 <a href="{{ route('category.index') }}" class="nav-link" data-key="t-horizontal">Categories</a>
                             </li>
+                            @endcan
 
+                            @can('scheme.view')
                             <li class="nav-item">
                                 <a href="{{ route('scheme.index') }}" class="nav-link" data-key="t-horizontal">Schemes</a>
                             </li>
+                            @endcan
 
+                            @can('document-type.view')
                             <li class="nav-item">
                                 <a href="{{ route('document.index') }}" class="nav-link" data-key="t-horizontal">Document Type</a>
                             </li>
+                            @endcan
 
+                            @can('financial-year.view')
                             <li class="nav-item">
                                 <a href="{{ route('financial.index') }}" class="nav-link" data-key="t-horizontal">Financial Year</a>
                             </li>
+                            @endcan
 
+                            @can('terms-conditions.view')
                             <li class="nav-item">
                                 <a href="{{ route('terms-conditions.index') }}" class="nav-link" data-key="t-horizontal">Terms And Conditions</a>
                             </li>
+                            @endcan
 
                         </ul>
                     </div>
                 </li>
-
+                @endcan
 
                 @canany(['users.view', 'roles.view'])
                 <li class="nav-item">

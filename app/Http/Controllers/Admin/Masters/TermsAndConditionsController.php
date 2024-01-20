@@ -42,18 +42,16 @@ class TermsAndConditionsController extends Controller
         }
     }
 
-    public function edit($id)
+    public function edit(TermsAndConditionsMst $terms_condition)
     {
-        $terms = TermsAndConditionsMst::find($id);
-
         $scheme = SchemeMst::latest()->get();
-        $terms->load('scheme')->first();
-        if ($terms)
+        $terms_condition->load('scheme')->first();
+        if ($terms_condition)
         {
             $schemeHtml = '<span>
             <option value="">--Select Scheme--</option>';
             foreach($scheme as $schemes):
-                $is_select = $schemes->id == $terms->scheme_id ? "selected" : "";
+                $is_select = $schemes->id == $terms_condition->scheme_id ? "selected" : "";
                 $schemeHtml .= '<option value="'.$schemes->id.'" '.$is_select.'>'.$schemes->scheme_name.'</option>';
             endforeach;
             $schemeHtml .= '</span>';
@@ -61,7 +59,7 @@ class TermsAndConditionsController extends Controller
 
             $response = [
                 'result' => 1,
-                'terms' => $terms,
+                'terms' => $terms_condition,
                 'schemeHtml'=>$schemeHtml
             ];
         }
@@ -72,15 +70,15 @@ class TermsAndConditionsController extends Controller
         return $response;
     }
 
-    public function update(UpdateConditionsRequest $request, $id)
+    public function update(UpdateConditionsRequest $request, TermsAndConditionsMst $terms_condition)
     {
         try
         {
             DB::beginTransaction();
-            $terms = TermsAndConditionsMst::find($id);
+
             $input = $request->validated();
             $input['scheme_id'] = $input['scheme_id'];
-            $terms->update( Arr::only( $input, TermsAndConditionsMst::getFillables() ) );
+            $terms_condition->update( Arr::only( $input, TermsAndConditionsMst::getFillables() ) );
             DB::commit();
 
             return response()->json(['success'=> 'Terms And Conditions updated successfully!']);
@@ -93,23 +91,22 @@ class TermsAndConditionsController extends Controller
 
 
 
-    public function destroy($id)
+    public function destroy(TermsAndConditionsMst $terms_condition)
 {
-    try {
-       DB::beginTransaction();
-       $terms = TermsAndConditionsMst::find($id);
-        if ($terms) {
-            $terms->delete();
+    try
+        {
+            DB::beginTransaction();
+            $terms_condition->delete();
             DB::commit();
+
             return response()->json(['success'=> 'Terms And Conditions deleted successfully!']);
-        } else {
-            return response()->json(['error' => 'Terms And Conditions not found.']);
         }
-    } catch (\Exception $e) {
-       DB::rollBack();
-       return $this->respondWithAjax($e, 'deleting', 'Terms And Conditions');
-   }
-}
+        catch(\Exception $e)
+        {
+            return $this->respondWithAjax($e, 'deleting', 'Terms And Conditions');
+        }
+    }
+
 
 
 

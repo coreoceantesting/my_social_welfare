@@ -119,11 +119,14 @@
                                                     <div class="col-md-4">
                                                         <label class="col-form-label" for="initial">Category <span class="text-danger">*</span></label>
                                                         <select class="form-select mb-3" aria-label="Default select example" name="category" id="category">
-                                                            <option value="">Choose...</option>
-                                                            <option value="1">Divyang</option>
+                                                            <option value="">--Select Category--</option>
+                                                            @foreach($category as $row)
+                                                            <option value="{{ $row->id }}">{{ $row->category_name }}</option>
+                                                            @endforeach
+                                                            {{-- <option value="1">Divyang</option>
                                                             <option value="2">Senior Sitizen</option>
                                                             <option value="3">Below 18 Student</option>
-                                                            <option value="3">Women</option>
+                                                            <option value="3">Women</option> --}}
 
                                                         </select>
                                                         <span class="text-danger is-invalid category_err"></span>
@@ -146,9 +149,9 @@
                                                         <span class="text-danger is-invalid confirm_password_err"></span>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <label class="col-form-label" for="initial">Contact Number <span class="text-danger">*</span></label>
+                                                        <label class="col-form-label" for="mobile">Contact Number <span class="text-danger">*</span></label>
                                                         <input class="form-control" id="mobile" name="mobile" type="text" placeholder="Enter Contact Number">
-                                                        <span class="text-danger is-invalid initial_err"></span>
+                                                        <span class="text-danger is-invalid mobile_err"></span>
                                                     </div>
                                                 </div>
 

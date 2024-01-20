@@ -12,26 +12,14 @@ use App\Http\Requests\Admin\Masters\UpdateFinancialRequest;
 
 class FinancialController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $financial = FinancialMst::latest()->get();
         return view('admin.masters.financial')->with(['financial'=> $financial]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreFinancialRequest $request)
     {
         try
@@ -39,16 +27,12 @@ class FinancialController extends Controller
             DB::beginTransaction();
             $input = $request->validated();
 
-             // Check if the new financial year should be active
            $isActive = $request->has('is_active') ? 1 : 0;
 
-            // If the new financial year is set to be active,
-            // deactivate the previous active financial year
             if ($isActive) {
                 FinancialMst::where('is_active', 1)->update(['is_active' => 0]);
             }
 
-            // Set the is_active value for the new financial year
             $input['is_active'] = $isActive;
 
             FinancialMst::create(Arr::only($input, FinancialMst::getFillables()));
@@ -64,17 +48,6 @@ class FinancialController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(FinancialMst $financial)
     {
         if ($financial)
@@ -91,9 +64,7 @@ class FinancialController extends Controller
         return $response;
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(UpdateFinancialRequest $request, FinancialMst $financial)
     {
         try
@@ -111,9 +82,7 @@ class FinancialController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(FinancialMst $financial)
     {
         try

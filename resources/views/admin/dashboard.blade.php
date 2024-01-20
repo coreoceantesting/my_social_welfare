@@ -9,33 +9,32 @@
 
 
                                 <div class="row">
-                                    <div class="col-xl-3 col-md-6">
+                                    @foreach ($scheme as $schemes)
+
+
+                                    <div class="col-md-6">
                                         <!-- card -->
                                         <div class="card card-animate" style="background-color: #8c68cd;color: white;">
                                             <div class="card-body">
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-grow-1">
-                                                        <p class="text-uppercase fw-medium  mb-0" style="text-align: center;font-size: 20px;">Divyang</p>
+                                                        <p class="text-uppercase fw-medium  mb-0" style="text-align: center;font-size: 20px;">{{ $schemes->scheme_name }}</p>
                                                     </div>
 
                                                 </div>
                                                 <div class=" mt-4" >
                                                     <div class="mt-3" style="text-align: center;">
-                                                        <a href="{{ route('terms_conditions') }}" class="btn btn-success">Apply</a>
-                                                    </div>
+                                                        <a href="{{ route('terms_conditions', $schemes->id) }}" class="btn btn-success">Apply </a>
 
+                                                    </div>
 
                                                 </div>
                                             </div><!-- end card body -->
                                         </div><!-- end card -->
                                     </div><!-- end col -->
-
+                                    @endforeach
 
                                 </div> <!-- end row-->
-
-
-
-
 
             </div>
         </div>

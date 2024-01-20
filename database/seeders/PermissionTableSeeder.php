@@ -94,6 +94,124 @@ class PermissionTableSeeder extends Seeder
                 'name' => 'wards.delete',
                 'group' => 'wards',
             ],
+
+            [
+                'id' => 17,
+                'name' => 'category.view',
+                'group' => 'category',
+            ],
+
+            [
+                'id' => 18,
+                'name' => 'category.create',
+                'group' => 'category',
+            ],
+
+            [
+                'id' => 19,
+                'name' => 'category.edit',
+                'group' => 'category',
+            ],
+
+            [
+                'id' => 20,
+                'name' => 'category.delete',
+                'group' => 'category',
+            ],
+
+            [
+                'id' => 21,
+                'name' => 'scheme.view',
+                'group' => 'scheme',
+            ],
+            [
+                'id' => 22,
+                'name' => 'scheme.create',
+                'group' => 'scheme',
+            ],
+
+            [
+                'id' => 23,
+                'name' => 'scheme.edit',
+                'group' => 'scheme',
+            ],
+
+            [
+                'id' => 24,
+                'name' => 'scheme.delete',
+                'group' => 'scheme',
+            ],
+
+            [
+                'id' => 25,
+                'name' => 'document-type.view',
+                'group' => 'document-type',
+            ],
+            [
+                'id' => 26,
+                'name' => 'document-type.create',
+                'group' => 'document-type',
+            ],
+
+            [
+                'id' => 27,
+                'name' => 'document-type.edit',
+                'group' => 'document-type',
+            ],
+
+            [
+                'id' => 28,
+                'name' => 'document-type.delete',
+                'group' => 'document-type',
+            ],
+
+            [
+                'id' => 29,
+                'name' => 'financial-year.view',
+                'group' => 'financial-year',
+            ],
+            [
+                'id' => 30,
+                'name' => 'financial-year.create',
+                'group' => 'financial-year',
+            ],
+
+            [
+                'id' => 31,
+                'name' => 'financial-year.edit',
+                'group' => 'financial-year',
+            ],
+
+            [
+                'id' => 32,
+                'name' => 'financial-year.delete',
+                'group' => 'financial-year',
+            ],
+            [
+                'id' => 33,
+                'name' => 'terms-conditions.view',
+                'group' => 'terms-conditions',
+            ],
+            [
+                'id' => 34,
+                'name' => 'terms-conditions.create',
+                'group' => 'terms-conditions',
+            ],
+
+            [
+                'id' => 35,
+                'name' => 'terms-conditions.edit',
+                'group' => 'terms-conditions',
+            ],
+
+            [
+                'id' => 36,
+                'name' => 'terms-conditions.delete',
+                'group' => 'terms-conditions',
+            ],
+
+
+
         ];
 
         foreach ($permissions as $permission)

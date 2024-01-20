@@ -18,6 +18,18 @@ return new class extends Migration
             $table->string('mobile', 20)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('f_name')->nullable();
+            $table->string('m_name')->nullable();
+            $table->string('l_name')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('dob')->nullable();
+            $table->string('Age')->nullable();
+            $table->string('father_fname')->nullable();
+            $table->string('father_mname')->nullable();
+            $table->string('father_lname')->nullable();
+            $table->string('mother_name')->nullable();
+            $table->string('category')->nullable();
+            $table->string('contact')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

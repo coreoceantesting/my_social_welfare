@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Inspiring;
-
+use App\Models\CategoryMst;
 use Illuminate\Support\Arr;
 
 
@@ -140,8 +140,8 @@ class AuthController extends Controller
 
     public function showRegister()
     {
-
-        return view('admin.auth.register');
+        $category = CategoryMst::latest()->get();
+        return view('admin.auth.register')->with(['category'=> $category]);
     }
 
     public function register(Request $request)
@@ -159,7 +159,7 @@ class AuthController extends Controller
             'mother_name' => 'required',
             'category' => 'required',
             'mobile' => 'required',
-            'name' =>'nullable',
+            'name' =>'required',
             'password' => 'required',
             'confirm_password' => 'required|same:password',
         ],
@@ -202,7 +202,6 @@ class AuthController extends Controller
             {
 
                 $User = new User();
-
                 $User->f_name = $request->f_name;
                 $User->m_name = $request->m_name;
                 $User->l_name = $request->l_name;

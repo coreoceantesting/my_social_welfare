@@ -115,7 +115,7 @@
 
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary" id="addSubmit">Submit</button>
+                        <button type="submit" class="btn btn-primary" id="addSubmit">Save & Download</button>
                         <button type="reset" class="btn btn-warning">Reset</button>
                     </div>
                 </form>
@@ -150,6 +150,7 @@
                     swal("Successful!", data.success, "success")
                     .then((action) => {
                         window.location.href = '{{ route('hayatichaDakhlaform.pdf-download') }}';
+
                     });
                 else
                     swal("Error!", data.error2, "error");
