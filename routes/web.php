@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\Masters\DivyangController;
+// use App\Http\Controllers\Admin\Masters\DivyangController;
+use App\Http\Controllers\Admin\Masters\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,15 +53,21 @@ Route::middleware(['auth','PreventBackHistory'])->group(function()
 
     // Masters
     Route::resource('wards', App\Http\Controllers\Admin\Masters\WardController::class );
-    Route::resource('category', App\Http\Controllers\Admin\Masters\CategoryController::class );
+
+    Route::resource('category', CategoryController::class);
+
+    // Route::resource('category', App\Http\Controllers\Admin\Masters\CategoryController::class );
+
     Route::resource('scheme', App\Http\Controllers\Admin\Masters\SchemeController::class );
     Route::resource('document', App\Http\Controllers\Admin\Masters\DocumentController::class );
     Route::resource('financial', App\Http\Controllers\Admin\Masters\FinancialController::class );
     Route::resource('terms-conditions', App\Http\Controllers\Admin\Masters\TermsAndConditionsController::class );
 
 
-    Route::resource('hayatichaDakhlaform', DivyangController::class);
-    Route::get('/hayatichaDakhlaform/pdf-download', 'DivyangController@hayatPdfDownload')->name('hayatichaDakhlaform.pdf-download');
+    Route::resource('hayatichaDakhlaform', App\Http\Controllers\Admin\Masters\DivyangController::class);
+    Route::put('hayatichaDakhlaform/{id}/upload', [App\Http\Controllers\Admin\Masters\DivyangController::class, 'hayatuploadfile' ])->name('hayatichaDakhlaform.upload');
+
+
 
     // Users Roles n Permissions
     Route::resource('users', App\Http\Controllers\Admin\UserController::class );

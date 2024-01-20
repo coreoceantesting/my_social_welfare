@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin\Masters;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class HayatiRequest extends FormRequest
+class UpdateHayatiRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,6 +22,7 @@ class HayatiRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'h_id' => 'nullable',
             'user_id' => 'nullable',
             'house_no' => 'nullable',
             'area' => 'nullable',
@@ -31,10 +32,10 @@ class HayatiRequest extends FormRequest
             'state' => 'nullable',
             'contact' => 'nullable',
             'alternate_contact_no' => 'nullable',
-            'bank_name' => 'required',
-            'account_no' => 'required',
-            'ifsc_code' => 'required',
-            'signature' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
+            'bank_name' => 'nullable',
+            'account_no' => 'nullable',
+            'ifsc_code' => 'nullable',
+            'signature' => 'nullable',
             'status' => 'nullable',
             'sign_uploaded_live_certificate' => 'nullable',
 

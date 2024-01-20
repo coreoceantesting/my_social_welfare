@@ -128,6 +128,7 @@
 
         $("#btnCancel").click(function() {
             $("#addContainer").slideUp();
+            $("#uploadContainer").slideUp();
             $("#editContainer").slideUp();
             $(this).hide();
             $("#addToTable").show();
@@ -139,6 +140,7 @@
             e.preventDefault();
             // var id = $(this).attr('data-id');
             $("#addContainer").slideDown();
+            $("#uploadContainer").slideDown();
             $("#editContainer").slideUp();
             $("#btnCancel").show();
 
@@ -150,6 +152,15 @@
 <script>
     function resetErrors() {
         var form = document.getElementById('addForm');
+        var data = new FormData(form);
+        for (var [key, value] of data) {
+            var field = key.replace('[]', '');
+            $('.' + field + '_err').text('');
+            $("[name='"+field+"']").removeClass('is-invalid');
+            $("[name='"+field+"']").addClass('is-valid');
+        }
+
+        var form = document.getElementById('uploadForm');
         var data = new FormData(form);
         for (var [key, value] of data) {
             var field = key.replace('[]', '');
@@ -179,9 +190,19 @@
 
     function editFormBehaviour() {
         $("#addContainer").slideUp();
+        $("#uploadContainer").slideUp();
         $("#btnCancel").show();
         $("#addToTable").hide();
         $("#editContainer").slideDown();
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+    }
+
+    function uploadFormBehaviour() {
+        $("#addContainer").slideUp();
+        $("#editContainer").slideUp();
+        $("#btnCancel").show();
+        $("#addToTable").hide();
+        $("#uploadContainer").slideDown();
         $("html, body").animate({ scrollTop: 0 }, "slow");
     }
 </script>
