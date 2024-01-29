@@ -19,7 +19,6 @@ class TermsAndConditionsController extends Controller
     {
         $terms =TermsAndConditionsMst::latest()->get();
         $scheme = SchemeMst::latest()->get();
-
         return view('admin.masters.terms_conditons')->with(['scheme'=> $scheme, 'terms'=>$terms]);
     }
 
@@ -29,11 +28,8 @@ class TermsAndConditionsController extends Controller
         {
             DB::beginTransaction();
             $input = $request->validated();
-
             TermsAndConditionsMst::create(Arr::only($input, TermsAndConditionsMst::getFillables()));
-
             DB::commit();
-
             return response()->json(['success'=> 'Terms And Conditions created successfully!']);
         }
         catch(\Exception $e)
@@ -75,12 +71,10 @@ class TermsAndConditionsController extends Controller
         try
         {
             DB::beginTransaction();
-
             $input = $request->validated();
             $input['scheme_id'] = $input['scheme_id'];
             $terms_condition->update( Arr::only( $input, TermsAndConditionsMst::getFillables() ) );
             DB::commit();
-
             return response()->json(['success'=> 'Terms And Conditions updated successfully!']);
         }
         catch(\Exception $e)
@@ -98,7 +92,6 @@ class TermsAndConditionsController extends Controller
             DB::beginTransaction();
             $terms_condition->delete();
             DB::commit();
-
             return response()->json(['success'=> 'Terms And Conditions deleted successfully!']);
         }
         catch(\Exception $e)

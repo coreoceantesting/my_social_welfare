@@ -18,7 +18,6 @@ class SchemeController extends Controller
     {
         $scheme = SchemeMst::latest()->get();
         $category = CategoryMst::latest()->get();
-
         return view('admin.masters.scheme')->with(['scheme'=> $scheme, 'category'=>$category]);
     }
 
@@ -29,11 +28,10 @@ class SchemeController extends Controller
         {
             DB::beginTransaction();
             $input = $request->validated();
-
-             SchemeMst::create(Arr::only($input, SchemeMst::getFillables()));
+            $input['category_id']=implode(',', $input['category_id']);
+            SchemeMst::create(Arr::only($input, SchemeMst::getFillables()));
 
             DB::commit();
-
             return response()->json(['success'=> 'Scheme created successfully!']);
         }
         catch(\Exception $e)
@@ -46,30 +44,36 @@ class SchemeController extends Controller
     public function edit(SchemeMst $scheme)
     {
         $category = CategoryMst::latest()->get();
-        $scheme->load('category')->first();
-        if ($scheme)
-        {
-            $categoryHtml = '<span>
-            <option value="">--Select Category--</option>';
-            foreach($category as $cat):
-                $is_select = $cat->id == $scheme->cat_id ? "selected" : "";
-                $categoryHtml .= '<option value="'.$cat->id.'" '.$is_select.'>'.$cat->category_name.'</option>';
-            endforeach;
-            $categoryHtml .= '</span>';
+
+        // Use the accessor directly to get categories
+        $schemeCategories = $scheme->categories;
+
+        // $cat_id = [$scheme->category_id];
+        // $categoryHtml = '<span>';
+        // foreach($category as $data):
+        //     $is_select = in_array($data->id, $cat_id) ? "selected" : "";
+        //     $categoryHtml .= '<option value="'.$data->id.'" '.$is_select.'>'.$data->category_name.'</option>';
+        // endforeach;
+        // $categoryHtml .= '</span>';
 
 
-            $response = [
-                'result' => 1,
-                'scheme' => $scheme,
-                'categoryHtml'=>$categoryHtml
-            ];
+        $categoryHtml = '<span>';
+        foreach ($category as $cat) {
+            $is_select = $schemeCategories->contains('id', $cat->id) ? "selected" : "";
+            $categoryHtml .= '<option value="'.$cat->id.'" '.$is_select.'>'.$cat->category_name.'</option>';
         }
-        else
-        {
-            $response = ['result' => 0];
-        }
+        $categoryHtml .= '</span>';
+
+        $response = [
+            'result' => 1,
+            'scheme' => $scheme,
+            'categoryHtml' => $categoryHtml,
+        ];
+
+
         return $response;
     }
+
 
 
     public function update(UpdateSchemeRequest $request, SchemeMst $scheme)
@@ -81,7 +85,6 @@ class SchemeController extends Controller
             $input['cat_id'] = $input['cat_id'];
             $scheme->update( Arr::only( $input, SchemeMst::getFillables() ) );
             DB::commit();
-
             return response()->json(['success'=> 'Scheme updated successfully!']);
         }
         catch(\Exception $e)
@@ -98,7 +101,6 @@ class SchemeController extends Controller
             DB::beginTransaction();
             $scheme->delete();
             DB::commit();
-
             return response()->json(['success'=> 'Scheme deleted successfully!']);
         }
         catch(\Exception $e)

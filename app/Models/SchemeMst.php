@@ -12,7 +12,7 @@ class SchemeMst extends BaseModel
 
     protected $table = 'scheme_mst';
 
-    protected $fillable = ['scheme_name', 'cat_id'];
+    protected $fillable = ['scheme_name', 'category_id'];
 
     public static function booted()
     {
@@ -45,10 +45,14 @@ class SchemeMst extends BaseModel
         });
     }
 
-    public function category()
-    {
-        return $this->belongsTo(CategoryMst::class, 'cat_id', 'id');
-    }
+
+   public function getCategoriesAttribute()
+   {
+       $categoryIds = explode(',', $this->attributes['category_id']);
+       return CategoryMst::whereIn('id', $categoryIds)->get();
+   }
+
+
 
 
 }

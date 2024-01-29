@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('scheme_mst', function (Blueprint $table) {
             $table->id();
             $table->string('scheme_name')->nullable();
-            $table->foreignId('cat_id')->constrained('category_mst');
+            $table->string('category_id');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            
+
         });
     }
 

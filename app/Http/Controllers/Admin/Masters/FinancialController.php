@@ -26,19 +26,15 @@ class FinancialController extends Controller
         {
             DB::beginTransaction();
             $input = $request->validated();
-
-           $isActive = $request->has('is_active') ? 1 : 0;
+            $isActive = $request->has('is_active') ? 1 : 0;
 
             if ($isActive) {
                 FinancialMst::where('is_active', 1)->update(['is_active' => 0]);
             }
 
             $input['is_active'] = $isActive;
-
             FinancialMst::create(Arr::only($input, FinancialMst::getFillables()));
-
             DB::commit();
-
             return response()->json(['success'=> 'Scheme created successfully!']);
         }
         catch(\Exception $e)
@@ -73,7 +69,6 @@ class FinancialController extends Controller
             $input = $request->validated();
             $financial->update( Arr::only( $input, FinancialMst::getFillables() ) );
             DB::commit();
-
             return response()->json(['success'=> 'Financial Year updated successfully!']);
         }
         catch(\Exception $e)
@@ -90,7 +85,6 @@ class FinancialController extends Controller
             DB::beginTransaction();
             $financial->delete();
             DB::commit();
-
             return response()->json(['success'=> 'Financial Year deleted successfully!']);
         }
         catch(\Exception $e)

@@ -14,14 +14,19 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $scheme = DB::table('scheme_mst as t1')
-                    ->select('t1.scheme_name', 't1.id')
-                    ->leftjoin('category_mst as t2', 't2.id', '=', 't1.cat_id')
-                    ->leftjoin('users as t3', 't3.category', '=', 't2.id')
-                    ->where('t2.id', Auth::user()->category)
-                    ->whereNull('t1.deleted_at')
-                    ->orderBy('t1.created_at', 'DESC')
-                    ->get();
+
+
+       $scheme = DB::table('scheme_mst as t1')
+                        ->select('t1.scheme_name', 't1.id')
+                        ->leftJoin('category_mst as t2', function ($join) {
+                            $join->on(DB::raw('FIND_IN_SET(t2.id, t1.category_id)'), '>', DB::raw('0'));
+                        })
+                        ->where('t2.id', Auth::user()->category)
+                        ->whereNull('t1.deleted_at')
+                        ->orderBy('t1.created_at', 'DESC')
+                        ->get();
+
+
 
         return view('admin.dashboard', compact('scheme'));
     }
@@ -42,14 +47,14 @@ class DashboardController extends Controller
 
        // print_r('hii');exit;
        $terms = DB::table('terms_conditions as t1')
-                    ->select('t1.rules_regulations')
+                    ->select('t1.rules_regulations', 't2.id')
                     ->leftjoin('scheme_mst as t2', 't2.id', '=', 't1.scheme_id')
                     ->where('t1.scheme_id', $id)
                     ->whereNull('t1.deleted_at')
                     ->orderBy('t1.created_at', 'DESC')
                     ->first();
 
-        return view('admin.users.terms_condition', compact('terms'));
+        return view('users.terms_condition', compact('terms'));
 
     }
 }

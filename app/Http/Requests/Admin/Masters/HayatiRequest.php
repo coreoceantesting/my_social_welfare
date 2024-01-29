@@ -32,11 +32,18 @@ class HayatiRequest extends FormRequest
             'contact' => 'nullable',
             'alternate_contact_no' => 'nullable',
             'bank_name' => 'required',
+            'branch_name'=> 'required',
             'account_no' => 'required',
             'ifsc_code' => 'required',
+            'medical_benefit'=>'required',
+            'govt_benefit'=>'required',
+            'disability_benefit'=>'required',
             'signature' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
             'status' => 'nullable',
             'sign_uploaded_live_certificate' => 'nullable',
+            'pdfPath'=> 'nullable'
+
+
 
         ];
     }

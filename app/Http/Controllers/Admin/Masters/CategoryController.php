@@ -16,7 +16,6 @@ class CategoryController extends Controller
     public function index()
     {
         $category = CategoryMst::latest()->get();
-
         return view('admin.masters.category')->with(['category'=> $category]);
     }
 
@@ -29,7 +28,6 @@ class CategoryController extends Controller
             $input = $request->validated();
             CategoryMst::create( Arr::only( $input, CategoryMst::getFillables() ) );
             DB::commit();
-
             return response()->json(['success'=> 'Category created successfully!']);
         }
         catch(\Exception $e)
@@ -65,7 +63,6 @@ class CategoryController extends Controller
             $input = $request->validated();
             $category->update( Arr::only( $input, CategoryMst::getFillables() ) );
             DB::commit();
-
             return response()->json(['success'=> 'Category updated successfully!']);
         }
         catch(\Exception $e)
@@ -82,7 +79,6 @@ class CategoryController extends Controller
             DB::beginTransaction();
             $category->delete();
             DB::commit();
-
             return response()->json(['success'=> 'Category deleted successfully!']);
         }
         catch(\Exception $e)

@@ -46,7 +46,7 @@
 
                                 <div class="col-md-8">
                                     <label class="col-form-label" for="rules_regulations">Tearms And Conditions <span class="text-danger">*</span></label>
-                                    <textarea id="long_desc1" id="rules_regulations" name="rules_regulations"></textarea><br>
+                                    <textarea  id="rules_regulations" name="rules_regulations"></textarea><br>
                                     <span class="text-danger is-invalid rules_regulations_err"></span>
                                 </div>
 
@@ -164,7 +164,7 @@
 {{-- Add --}}
 <script src="https://cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script>
 <script>
-     CKEDITOR.replace('long_desc1');
+     CKEDITOR.replace('rules_regulations');
      CKEDITOR.replace('long_desc2');
 
     $("#addForm").submit(function(e) {
@@ -202,7 +202,27 @@
             }
         });
 
+        function resetErrors() {
+            var form = document.getElementById('addForm');
+            var data = new FormData(form);
+            for (var [key, value] of data) {
+                $('.' + key + '_err').text('');
+                $('#' + key).removeClass('is-invalid');
+                $('#' + key).addClass('is-valid');
+            }
+        }
+
+        function printErrMsg(msg) {
+            $.each(msg, function(key, value) {
+                $('.' + key + '_err').text(value);
+                $('#' + key).addClass('is-invalid');
+                $('#' + key).removeClass('is-valid');
+            });
+        }
+
     });
+
+
 </script>
 
 

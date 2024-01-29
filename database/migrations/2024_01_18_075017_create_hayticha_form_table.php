@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('hayticha_form', function (Blueprint $table) {
             $table->id('h_id');
+            $table->foreignId('fy_id')->constrained('fy_mst');
             $table->integer('user_id');
             $table->string('house_no')->nullable();
             $table->string('area')->nullable();
@@ -23,9 +24,13 @@ return new class extends Migration
             $table->string('contact')->nullable();
             $table->string('alternate_contact_no')->nullable();
             $table->string('bank_name')->nullable();
+            $table->string('branch_name')->nullable();
             $table->string('account_no')->nullable();
             $table->string('ifsc_code');
             $table->string('signature');
+            $table->string('medical_benefit')->nullable();
+            $table->string('govt_benefit')->nullable();
+            $table->string('disability_benefit')->nullable();
             $table->integer('status')->comment('0 => pending, 1 => approve, 2 => reject')->nullable();
             $table->softDeletes();
             $table->unsignedBigInteger('created_by')->nullable();

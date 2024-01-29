@@ -24,7 +24,7 @@ class StoreConditionsRequest extends FormRequest
         return [
 
             'scheme_id'=>'required',
-            'rules_regulations'=>'required',
+            'rules_regulations'=>'required'
         ];
     }
 

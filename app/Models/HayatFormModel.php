@@ -13,7 +13,7 @@ class HayatFormModel extends BaseModel
     protected $primaryKey = 'h_id';
     protected $table = 'hayticha_form';
 
-    protected $fillable = ['user_id', 'house_no','area', 'landmark','pincode', 'city','state', 'contact','alternate_contact_no', 'bank_name','account_no', 'ifsc_code','signature', 'status','sign_uploaded_live_certificate','created_by', 'updated_by','deleted_by'];
+    protected $fillable = ['fy_id','user_id', 'house_no','area', 'landmark','pincode', 'city','state', 'contact','alternate_contact_no', 'bank_name', 'branch_name','account_no', 'ifsc_code','signature','medical_benefit','govt_benefit','disability_benefit', 'status', 'pdfPath', 'sign_uploaded_live_certificate','created_by', 'updated_by','deleted_by'];
 
     public static function booted()
     {

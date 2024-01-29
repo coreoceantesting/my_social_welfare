@@ -19,13 +19,13 @@
 
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="cat_id">Select Category Type <span class="text-danger">*</span></label>
-                                    <select class="js-example-basic-single col-sm-12" name="cat_id">
-                                        <option value="">--Select Category--</option>
+                                    <select class="js-example-basic-multiple" data-placeholder="--Select Category--" name="category_id[]" multiple>
+                                        {{-- <option value="">--Select Category--</option> --}}
                                         @foreach($category as $row)
                                             <option value="{{ $row->id }}">{{ $row->category_name }}</option>
                                             @endforeach
                                     </select>
-                                    <span class="text-danger is-invalid cat_id_err"></span>
+                                    <span class="text-danger is-invalid category_id_err"></span>
                                 </div>
 
 
@@ -63,13 +63,12 @@
 
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="name">Select Category Type : </label>
-                                        <select class="js-example-basic-single" id="cat_id" name="cat_id">
-                                            <option value="">--Select Category--</option>
-                                            @foreach($category as $row)
-                                            <option value="{{ $row->id }}">{{ $row->category_name }}</option>
-                                            @endforeach
+                                        <select class="js-example-basic-multiple" id="cat_id" data-placeholder="--Select Category--" name="category_id[]" multiple>
+
+                                            <option value=""></option>
+
                                         </select>
-                                        <span class="text-danger is-invalid cat_id_err"></span>
+                                        <span class="text-danger is-invalid category_id_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
@@ -109,16 +108,24 @@
                             <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Scheme Name</th>
                                         <th>Category Name</th>
+                                        <th>Scheme Name</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($scheme as $schemes)
                                         <tr>
+                                            <td>
+                                                @if ($schemes->categories->count() > 0)
+                                                    {{ implode(', ', $schemes->categories->pluck('category_name')->toArray()) }}
+                                                @else
+                                                    No Categories
+                                                @endif
+                                            </td>
+
                                             <td>{{$schemes->scheme_name}}</td>
-                                            <td>{{$schemes->category->category_name }}</td>
+
                                             <td>
                                                 <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $schemes->id }}"><i data-feather="edit"></i></button>
                                                 <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $schemes->id }}"><i data-feather="trash-2"></i> </button>
@@ -175,6 +182,24 @@
             }
         });
 
+        function resetErrors() {
+            var form = document.getElementById('addForm');
+            var data = new FormData(form);
+            for (var [key, value] of data) {
+                $('.' + key + '_err').text('');
+                $('#' + key).removeClass('is-invalid');
+                $('#' + key).addClass('is-valid');
+            }
+        }
+
+        function printErrMsg(msg) {
+            $.each(msg, function(key, value) {
+                $('.' + key + '_err').text(value);
+                $('#' + key).addClass('is-invalid');
+                $('#' + key).removeClass('is-valid');
+            });
+        }
+
     });
 </script>
 
@@ -197,9 +222,11 @@
 
                 if (!data.error)
                 {
+
                     $("#editForm input[name='edit_model_id']").val(data.scheme.id);
                     $("#editForm input[name='scheme_name']").val(data.scheme.scheme_name);
-                    $("#cat_id").html(data.categoryHtml);
+                    $("#editForm select[name='category_id[]']").html(data.categoryHtml);
+
                 }
                 else
                 {

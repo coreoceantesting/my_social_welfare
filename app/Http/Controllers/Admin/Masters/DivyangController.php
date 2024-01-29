@@ -12,17 +12,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use App\Models\FinancialMst;
+use \Mpdf\Mpdf;
 
 class DivyangController extends Controller
 {
+
     public function index()
     {
         // $hayat = HayatFormModel::where('deleted_at', null)->first();
         $hayat = HayatFormModel::latest()->get();
-
         $users = User::where('id', Auth::user()->id)->first();
-
-        return view('admin.masters.divyaglist')->with(['users'=> $users, 'hayat' => $hayat]);
+        $fy = FinancialMst::where('is_active', 1)->whereNull('deleted_at')->first();
+        return view('admin.masters.divyaglist')->with(['users'=> $users, 'hayat' => $hayat, 'fy'=>$fy]);
 
     }
 
@@ -33,9 +36,16 @@ class DivyangController extends Controller
             DB::beginTransaction();
             $input = $request->validated();
 
-            if ($request->hasFile('signature')) {
-                $imagePath = $request->file('signature')->store('signature', 'public');
-                $input['signature'] = $imagePath;
+            if($request->hasFile("signature")){
+
+                $imagePath=$request->file("signature");
+
+                $image=time().'_'.$imagePath->getClientOriginalName();
+
+                $imagePath->move('signature/',$image);
+
+                 $input['signature'] = $imagePath;
+
             }
 
             HayatFormModel::create( Arr::only( $input, HayatFormModel::getFillables() ) );
@@ -49,6 +59,7 @@ class DivyangController extends Controller
         }
     }
 
+
     public function show($id)
 {
         // $hayat = HayatFormModel::where('user_id', Auth::user()->id)->first();
@@ -56,6 +67,17 @@ class DivyangController extends Controller
                     ->where('hayticha_form.user_id', Auth::user()->id)
                     ->select('hayticha_form.*', 'users.*') // Adjust column_name
                     ->first();
+
+         // Using mpdf/mpdf
+        // $pdf = new Mpdf();
+        // $pdf->WriteHTML(view('admin.masters.divyagformpdf', compact('hayat'))->render());
+        // $pdfData = $pdf->Output('', 'S'); // Output as string
+        // $pdfName = 'document.pdf';
+
+        // // Return the PDF for download
+        // return response($pdfData)
+        //     ->header('Content-Type', 'application/pdf')
+        //     ->header('Content-Disposition', 'inline; filename="' . $pdfName . '"');
 
         return view('admin.masters.divyagformpdf')->with(['hayat'=> $hayat]);
 }
@@ -88,10 +110,68 @@ class DivyangController extends Controller
             DB::beginTransaction();
             $input = $request->validated();
 
+
             if ($request->hasFile('signature')) {
-                $imagePath = $request->file('signature')->store('signature', 'public');
-                $input['signature'] = $imagePath;
+
+                $path1='signature/'.$input['signature'];
+
+                if(File::exists($path1)){
+
+                    File::delete($path1);
+                }
+                $file1 = $request->file('signature');
+
+                $ext1=$file1->getClientOriginalName();
+
+                $filename1=time().'.'.$ext1;
+
+                $file1->move('signature/', $filename1);
+
+                $input['signature'] = $filename1;
+
             }
+
+            if ($request->hasFile('pdfPath')) {
+
+                $pathd='sign_uploaded_live_certificate/'.$input['pdfPath'];
+
+                if(File::exists($pathd)){
+
+                    File::delete($pathd);
+                }
+                $filed = $request->file('pdfPath');
+
+                $extd=$filed->getClientOriginalName();
+
+                $filenamed=time().'.'.$extd;
+
+                $filed->move('sign_uploaded_live_certificate/', $filenamed);
+
+                $input['pdfPath'] = $filenamed;
+
+            }
+
+
+            if ($request->hasFile('sign_uploaded_live_certificate')) {
+
+                $path='sign_uploaded_live_certificate/'.$input['sign_uploaded_live_certificate'];
+
+                if(File::exists($path)){
+
+                    File::delete($path);
+                }
+                $file = $request->file('sign_uploaded_live_certificate');
+
+                $ext=$file->getClientOriginalName();
+
+                $filename=time().'.'.$ext;
+
+                $file->move('sign_uploaded_live_certificate/', $filename);
+
+                $input['sign_uploaded_live_certificate'] = $filename;
+
+            }
+
 
             $hayatichaDakhlaform->update( Arr::only( $input, HayatFormModel::getFillables() ) );
             DB::commit();
@@ -147,5 +227,8 @@ class DivyangController extends Controller
             return $this->respondWithAjax($e, 'updating', 'Life certificate');
         }
     }
+
+
+
 
 }

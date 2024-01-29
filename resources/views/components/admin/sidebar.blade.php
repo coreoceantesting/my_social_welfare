@@ -40,6 +40,64 @@
                 </li>
 
 
+              @if(Auth::user()->category == 1 || Auth::user()->category == 2)
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('hayatichaDakhlaform.index') }}">
+                        <i class="ri-layout-3-line"></i>
+                        <span data-key="t-layouts">Hayati Form</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ url('uploaded-document') }}">
+                        <i class="ri-layout-3-line"></i>
+                        <span data-key="t-layouts">Uploaded Live Certificate</span>
+                    </a>
+                </li>
+                @endif
+
+
+                {{-- <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
+                        <i class="ri-layout-3-line"></i>
+                        <span data-key="t-layouts">Scheme Form</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarLayouts">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('bus_concession.index') }}" class="nav-link" data-key="t-horizontal">Bus Concession Scheme Form</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('education_scheme.index') }}" class="nav-link" data-key="t-horizontal">Education Scheme Form</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('women_scheme.index') }}" class="nav-link" data-key="t-horizontal">Women Sewing Scheme Form</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('sports_scheme.index') }}" class="nav-link" data-key="t-horizontal">Sports Scheme Form</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('cancer_scheme.index') }}" class="nav-link" data-key="t-horizontal">Cancer Scheme Form</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('vehicle_scheme.index') }}" class="nav-link" data-key="t-horizontal">Vehicle Scheme Form</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('marriage_scheme.index') }}" class="nav-link" data-key="t-horizontal">Marriage Scheme Form</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li> --}}
+
+
+
                 @canany(['wards.view', 'category.view', 'scheme.view', 'document-type.view', 'financial-year.view', 'terms-conditions.view'])
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">

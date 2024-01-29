@@ -23,7 +23,7 @@ class StoreDocumentRequest extends FormRequest
     {
         return [
             'scheme_id' => 'required',
-            'document_name' => 'required|unique:document_type_msts,document_name',
+            'document_name' => 'required',
             'document_initial' => 'required',
             'is_required' => 'required',
         ];

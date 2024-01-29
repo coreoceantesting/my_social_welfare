@@ -23,14 +23,14 @@ class UpdateSchemeRequest extends FormRequest
     {
         return [
             'scheme_name' => 'required',
-            'cat_id' => 'required',
+            'category_id' => 'nullable',
         ];
     }
 
     public function messages()
     {
         return [
-            'cat_id.required' => 'Please select category',
+            // 'category_id.required' => 'Please select category',
 
         ];
     }

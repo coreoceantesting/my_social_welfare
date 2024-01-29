@@ -16,7 +16,8 @@
                         </div>
                         <div class="card-body">
                             <div class="mb-3 row">
-                                <input class="form-control" id="user_id" name="user_id" value="{{ $users->id }}" type="hidden" placeholder="Enter User Name">
+                                <input class="form-control" id="user_id" name="user_id" value="{{ $users->id }}" type="hidden" >
+                                <input class="form-control" id="fy_id" name="fy_id" value="{{ $fy->id }}" type="hidden" >
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="name">First Name/ पहिले नाव </label>
@@ -91,6 +92,12 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="branch_name">Branch Name / बँकेचे नाव <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="branch_name" name="branch_name" type="text" value="" >
+                                    <span class="text-danger is-invalid branch_name_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="name">Bank Account Number / बँक खाते क्रमांक <span class="text-danger">*</span></label>
                                     <input class="form-control" id="account_no" name="account_no" type="text" value="" >
                                     <span class="text-danger is-invalid account_no_err"></span>
@@ -111,6 +118,40 @@
                                 </div>
 
 
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="medical_benefit">Medical Benefit : </label>
+                                        <select class="js-example-basic-single" name="medical_benefit" >
+                                            <option value="">--Select--</option>
+                                            <option value="yes">Yes</option>
+                                          <option value="no">No</option>
+                                        </select>
+                                        <span class="text-danger is-invalid  medical_benefit_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="govt_benefit">Government Benefit : </label>
+                                        <select class="js-example-basic-single" name="govt_benefit" >
+                                            <option value="">--Select--</option>
+                                            <option value="yes">Yes</option>
+                                          <option value="no">No</option>
+                                        </select>
+                                        <span class="text-danger is-invalid  govt_benefit_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="disability_benefit">Disability Benefit : </label>
+                                        <select class="js-example-basic-single" name="disability_benefit" >
+                                            <option value="">--Select--</option>
+                                            <option value="yes">Yes</option>
+                                          <option value="no">No</option>
+                                        </select>
+                                        <span class="text-danger is-invalid  disability_benefit_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="title">Financial Year</label>
+                                    <input class="form-control"   type="text" value="{{ $fy->title }}" readonly >
+                                </div>
                             </div>
 
                         </div>
@@ -123,36 +164,6 @@
             </div>
         </div>
 
-        {{-- upload certificate --}}
-
-        <div class="row" id="uploadContainer" style="display:none;">
-            <div class="col-sm-12">
-                <div class="card">
-                    <form class="theme-form" action="POST" id="uploadForm" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" id="upload_model_id" name="upload_model_id" value="">
-                        <div class="card-header">
-                            <h4 class="card-title">Upload Live Certificate</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="mb-6 row">
-                                <div class="col-md-4 mt-3">
-                                    <label for="formFile" lass="col-form-label"> कृपया हस्ताक्षर केलेली हयातीचा दाखल अपलोड करा / Upload Signatured of live Certificate  <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="file" name="sign_uploaded_live_certificate" id="sign_uploaded_live_certificate">
-                                <span class="text-danger is-invalid sign_uploaded_live_certificate_err"></span>
-                            </div>
-
-                            </div>
-
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary" id="addSubmitfile">Submit</button>
-                            <button type="reset" class="btn btn-warning">Reset</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
 
 
 
@@ -177,6 +188,7 @@
                                     <input class="form-control" id="name" name="fname" type="text" value="{{ $users->f_name }}" readonly placeholder="Enter User Name">
                                     <span class="text-danger is-invalid name_err"></span>
                                 </div>
+
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="name">मधले नाव </label>
                                     <input class="form-control" id="name" name="mname" type="text" value="{{ $users->m_name }}" readonly placeholder="Enter User Name">
@@ -233,26 +245,26 @@
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="mobile">Alternate Contact Number/ पर्यायी संपर्क क्रमांक </label>
-                                    <input class="form-control" id="alternate_contact_no" name="alternate_contact_no" type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                                    <input class="form-control" id="alternate_contact_no" name="alternate_contact_no" readonly type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
                                         placeholder="Enter User Mobile">
                                     <span class="text-danger is-invalid mobile_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="name">Bank Name / बँकेचे नाव <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="bank_name" name="bank_name" type="text" value="" >
+                                    <input class="form-control" id="bank_name" name="bank_name" type="text" value="">
                                     <span class="text-danger is-invalid bank_name_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="name">Bank Account Number / बँक खाते क्रमांक <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="account_no" name="account_no" type="text" value="" >
+                                    <input class="form-control" id="account_no" name="account_no" type="text" value="">
                                     <span class="text-danger is-invalid account_no_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="name">IFSC Code / आय .एफ .एस .सी कोड <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="ifsc_code" name="ifsc_code" type="text" value="" >
+                                    <input class="form-control" id="ifsc_code" name="ifsc_code" type="text" value="">
                                     <span class="text-danger is-invalid ifsc_code_err"></span>
                                 </div>
 
@@ -274,6 +286,47 @@
                 </form>
             </div>
         </div>
+
+
+          {{-- upload certificate --}}
+
+          <div class="row" id="uploadContainer" style="display:none;">
+            <div class="col">
+                <form  class="form-horizontal form-bordered" method="post" id="uploadForm" enctype="multipart/form-data">
+
+                    @csrf
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Upload Live Certificate</h4>
+                        </div>
+                        <div class="card-body py-2">
+                            <input type="hidden" id="upload_model_id" name="upload_model_id" value="">
+
+                            <div class="mb-3 row">
+
+                                <div class="col-md-4 mt-3">
+                                    <label for="formFile" lass="col-form-label"> कृपया हस्ताक्षर केलेली हयातीचा दाखल अपलोड करा / Upload downloaded  live Certificate  <span class="text-danger">*</span></label>
+                                    <input class="form-control" type="file" name="pdfPath" id="pdfPath" required>
+                                <span class="text-danger is-invalid pdfPath_err"></span>
+                            </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label for="formFile" lass="col-form-label"> कृपया हस्ताक्षर केलेली हयातीचा दाखल अपलोड करा / Upload Signatured of live Certificate  <span class="text-danger">*</span></label>
+                                    <input class="form-control" type="file" name="sign_uploaded_live_certificate" id="sign_uploaded_live_certificate" required>
+                                <span class="text-danger is-invalid sign_uploaded_live_certificate_err"></span>
+                            </div>
+
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary" id="addSubmitfile">Submit</button>
+                            <button type="reset" class="btn btn-warning">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
 
 
         <div class="row">
@@ -376,14 +429,33 @@
             }
         });
 
+        function resetErrors() {
+            var form = document.getElementById('addForm');
+            var data = new FormData(form);
+            for (var [key, value] of data) {
+                $('.' + key + '_err').text('');
+                $('#' + key).removeClass('is-invalid');
+                $('#' + key).addClass('is-valid');
+            }
+        }
+
+        function printErrMsg(msg) {
+            $.each(msg, function(key, value) {
+                $('.' + key + '_err').text(value);
+                $('#' + key).addClass('is-invalid');
+                $('#' + key).removeClass('is-valid');
+            });
+        }
+
     });
+
+
 </script>
 
 {{-- upload certificate --}}
 
 <script>
     $("#buttons-datatables").on("click", ".upload-element", function(e) {
-
 
         e.preventDefault();
         var model_id = $(this).attr("data-id");
@@ -449,6 +521,8 @@
                     $("#editForm input[name='account_no']").val(data.hayatichaDakhlaform.account_no);
                     $("#editForm input[name='ifsc_code']").val(data.hayatichaDakhlaform.ifsc_code);
                     $("#editForm input[name='signature']").val(data.hayatichaDakhlaform.signature);
+                    $('#medical_benefit :selected').text();
+
 
                 }
                 else
@@ -520,7 +594,7 @@
             var formdata = new FormData(this);
             formdata.append('_method', 'PUT');
             var model_id = $('#upload_model_id').val();
-            var url = "{{ route('hayatichaDakhlaform.upload', ":model_id") }}";
+            var url = "{{ route('hayatichaDakhlaform.update', ":model_id") }}";
             //
             $.ajax({
                 url: url.replace(':model_id', model_id),

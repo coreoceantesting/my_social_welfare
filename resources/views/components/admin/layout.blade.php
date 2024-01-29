@@ -140,7 +140,7 @@
             e.preventDefault();
             // var id = $(this).attr('data-id');
             $("#addContainer").slideDown();
-            $("#uploadContainer").slideDown();
+            $("#uploadContainer").slideUp();
             $("#editContainer").slideUp();
             $("#btnCancel").show();
 

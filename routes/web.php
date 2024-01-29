@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\Masters\DivyangController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -52,11 +52,7 @@ Route::middleware(['auth','PreventBackHistory'])->group(function()
 
     // Masters
     Route::resource('wards', App\Http\Controllers\Admin\Masters\WardController::class );
-
-    Route::resource('category', CategoryController::class);
-
-    // Route::resource('category', App\Http\Controllers\Admin\Masters\CategoryController::class );
-
+    Route::resource('category', App\Http\Controllers\Admin\Masters\CategoryController::class );
     Route::resource('scheme', App\Http\Controllers\Admin\Masters\SchemeController::class );
     Route::resource('document', App\Http\Controllers\Admin\Masters\DocumentController::class );
     Route::resource('financial', App\Http\Controllers\Admin\Masters\FinancialController::class );
@@ -65,10 +61,27 @@ Route::middleware(['auth','PreventBackHistory'])->group(function()
     // User
     Route::get('terms_conditions/{id}', [App\Http\Controllers\Admin\DashboardController::class, 'terms_conditions'])->name('terms_conditions');
     Route::resource('hayatichaDakhlaform', App\Http\Controllers\Admin\Masters\DivyangController::class);
-    Route::get('/hayatichaDakhlaform/pdf-download', 'App\Http\Controllers\Admin\Masters\DivyangController@hayatPdfDownload')->name('hayatichaDakhlaform.pdf-download');
-
-    Route::resource('hayatichaDakhlaform', App\Http\Controllers\Admin\Masters\DivyangController::class);
     Route::put('hayatichaDakhlaform/{id}/upload', [App\Http\Controllers\Admin\Masters\DivyangController::class, 'hayatuploadfile' ])->name('hayatichaDakhlaform.upload');
+
+    Route::get('uploaded-document', [App\Http\Controllers\User\DivyangSchemeController::class, 'uploaded_doc']);
+    Route::resource('scheme_form', App\Http\Controllers\User\DivyangSchemeController::class);
+    Route::resource('bus_concession', App\Http\Controllers\User\BusConcessionSchemeController::class);
+    Route::resource('education_scheme', App\Http\Controllers\User\EducationSchemeController::class);
+    Route::resource('marriage_scheme', App\Http\Controllers\User\MarriageSchemeController::class);
+    Route::resource('sports_scheme', App\Http\Controllers\User\SportsSchemeController::class);
+    Route::resource('women_scheme', App\Http\Controllers\User\WomenSewingSchemeController::class);
+    Route::resource('vehicle_scheme', App\Http\Controllers\User\VehicleSchemeController::class);
+    Route::resource('cancer_scheme', App\Http\Controllers\User\CancerSchemeController::class);
+
+
+
+
+
+
+
+
+
+
 
 
 

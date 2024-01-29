@@ -22,15 +22,15 @@ class StoreSchemeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'scheme_name' => 'required|unique:scheme_mst,scheme_name',
-            'cat_id' => 'required',
+            'scheme_name' => 'required',
+            'category_id' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'cat_id.required' => 'Please select category',
+            'category_id.required' => 'Please select category',
 
         ];
     }

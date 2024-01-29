@@ -20,7 +20,6 @@ class DocumentController extends Controller
     {
         $documents = DocumentMst::latest()->get();
         $scheme = SchemeMst::latest()->get();
-
         return view('admin.masters.document')->with(['scheme'=> $scheme, 'documents'=>$documents]);
     }
 
@@ -31,11 +30,8 @@ class DocumentController extends Controller
         {
             DB::beginTransaction();
             $input = $request->validated();
-
             DocumentMst::create(Arr::only($input, DocumentMst::getFillables()));
-
             DB::commit();
-
             return response()->json(['success'=> 'Document created successfully!']);
         }
         catch(\Exception $e)
@@ -85,7 +81,6 @@ class DocumentController extends Controller
             $input['scheme_id'] = $input['scheme_id'];
             $document->update( Arr::only( $input, DocumentMst::getFillables() ) );
             DB::commit();
-
             return response()->json(['success'=> 'Document updated successfully!']);
         }
         catch(\Exception $e)
@@ -104,7 +99,6 @@ class DocumentController extends Controller
             DB::beginTransaction();
             $document->delete();
             DB::commit();
-
             return response()->json(['success'=> 'Document deleted successfully!']);
         }
         catch(\Exception $e)

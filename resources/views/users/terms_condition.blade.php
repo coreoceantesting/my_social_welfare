@@ -2,10 +2,7 @@
     <x-slot name="title">Terms and Conditions</x-slot>
     <x-slot name="heading">Terms and Conditions</x-slot>
 
-
-
                     <!-- start page title -->
-
 
                     <div class="row justify-content-center">
                         <div class="col-xxl-9">
@@ -34,8 +31,31 @@
                                             {!! $terms->rules_regulations ?? ''!!}
                                         </div>
                                         <div class="hstack gap-2 justify-content-end d-print-none mt-4">
+                                            @if(isset($terms->id))
 
-                                            <a href="{{ route('hayatichaDakhlaform.index') }}" class="btn btn-primary"> Continue</a>
+                                            @if($terms->id == 1)
+                                            <a href="{{ route('scheme_form.index') }}" class="btn btn-primary"> Continue</a>
+                                            @elseif($terms->id == 2)
+                                            <a href="{{ route('bus_concession.index') }}" class="btn btn-primary"> Continue</a>
+                                            @elseif($terms->id == 3)
+                                            <a href="{{ route('education_scheme.index') }}" class="btn btn-primary"> Continue</a>
+                                            @elseif($terms->id == 4)
+                                            <a href="{{ route('marriage_scheme.index') }}" class="btn btn-primary"> Continue</a>
+                                            @elseif($terms->id == 5)
+                                            <a href="{{ route('sports_scheme.index') }}" class="btn btn-primary"> Continue</a>
+                                            @elseif($terms->id == 6)
+                                            <a href="{{ route('women_scheme.index') }}" class="btn btn-primary"> Continue</a>
+                                            @elseif($terms->id == 7)
+                                            <a href="{{ route('cancer_scheme.index') }}" class="btn btn-primary"> Continue</a>
+                                            @elseif($terms->id == 8)
+                                            <a href="{{ route('vehicle_scheme.index') }}" class="btn btn-primary"> Continue</a>
+
+                                            @endif
+                                            @else
+                                            <a href="#" class="btn btn-primary"> Continue</a>
+                                            @endif
+
+
                                             <a href="{{ route('dashboard') }}" class="btn btn-secondary"> Cancel</a>
                                         </div>
                                     </div>
