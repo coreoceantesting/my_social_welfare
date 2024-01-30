@@ -29,11 +29,18 @@
                                     <span class="text-danger is-invalid full_address_err"></span>
                                 </div>
 
+
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="adhaar_no">3. Name of Ward <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="ward_name" name="ward_name" type="text" placeholder="Enter Ward Name">
-                                    <span class="text-danger is-invalid ward_name_err"></span>
+                                    <label class="col-form-label" for="ward_id">Ward Name:</label>
+                                        <select class="js-example-basic-single" name="ward_id" >
+                                            <option value="">--Select--</option>
+                                            @foreach ($wards as $ward)
+                                            <option value="{{ $ward->id }}">{{ $ward->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <span class="text-danger is-invalid  ward_id_err"></span>
                                 </div>
+
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="dob">4.  Date Of Birth/ वय </label>
@@ -72,17 +79,14 @@
                                     <span class="text-danger is-invalid details_err"></span>
                                 </div>
 
+                                @foreach ($document as $doc)
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="signature"> Signature</label>
-                                    <input class="form-control" id="signature" name="signature" type="file"  >
-                                    <span class="text-danger is-invalid signature_err"></span>
+                                        <label class="col-form-label" for="document_name">{{$doc->document_name}} @if($doc->is_required==1) <span class="required">*</span> @endif</label>
+                                        <input type="hidden" name="document_id[]" class="form-control" value="{{$doc->id}}">
+                                        <input type="file" name="document_file[]" class="form-control" multiple>
+                                        <span class="text-danger is-invalid document_file_err"></span>
                                 </div>
-
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="profile"> profile</label>
-                                    <input class="form-control" id="profile" name="profile" type="file"  >
-                                    <span class="text-danger is-invalid profile_err"></span>
-                                </div>
+                            @endforeach
 
                             </div>
                         </div>
@@ -119,15 +123,17 @@
                         </div>
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="adhaar_no">3. Name of Ward <span class="text-danger">*</span></label>
-                            <input class="form-control" id="ward_name" name="ward_name" type="text" placeholder="Enter Ward Name">
-                            <span class="text-danger is-invalid ward_name_err"></span>
+                            <label class="col-form-label" for="ward_id">Ward Name:</label>
+                                <select class="js-example-basic-single" name="ward_id" id="ward_id">
+
+                                </select>
+                                <span class="text-danger is-invalid  ward_id_err"></span>
                         </div>
 
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="dob">4.  Date Of Birth/ वय </label>
                             <input class="form-control" id="dob" name="dob" type="date"  placeholder="Enter Date Of Birth">
-                            <span class="text-danger is-invalid age_err"></span>
+                            <span class="text-danger is-invalid dob_err"></span>
                         </div>
 
                         <div class="col-md-4 mt-3">
@@ -161,17 +167,6 @@
                             <span class="text-danger is-invalid details_err"></span>
                         </div>
 
-                        <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="signature"> Signature</label>
-                            <input class="form-control" id="signature" name="signature" type="file"  >
-                            <span class="text-danger is-invalid signature_err"></span>
-                        </div>
-
-                        <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="profile"> profile</label>
-                            <input class="form-control" id="profile" name="profile" type="file"  >
-                            <span class="text-danger is-invalid profile_err"></span>
-                        </div>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -214,20 +209,19 @@
                                 </thead>
                                 <tbody>
 
-
-
+                                @foreach ($women as $row)
 
                                      <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $row->application_no }}</td>
+                                            <td>{{ $row->full_name }}</td>
+                                            <td>{{ $row->full_address }}</td>
+                                            <td>{{ $row->contact }}</td>
                                             <td>
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id=""><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id=""><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $row->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $row->id }}"><i data-feather="trash-2"></i> </button>
                                             </td>
                                         </tr>
-
+                                 @endforeach
                             </table>
                         </div>
                     </div>
@@ -249,7 +243,7 @@
 
         var formdata = new FormData(this);
         $.ajax({
-            url: '{{ route('education_scheme.store') }}',
+            url: '{{ route('women_scheme.store') }}',
             type: 'POST',
             data: formdata,
             contentType: false,
@@ -260,7 +254,7 @@
                 if (!data.error2)
                     swal("Successful!", data.success, "success")
                         .then((action) => {
-                            window.location.href = '{{ route('education_scheme.index') }}';
+                            window.location.href = '{{ route('women_scheme.index') }}';
                         });
                 else
                     swal("Error!", data.error2, "error");
@@ -307,7 +301,7 @@
     $("#buttons-datatables").on("click", ".edit-element", function(e) {
         e.preventDefault();
         var model_id = $(this).attr("data-id");
-        var url = "{{ route('education_scheme.edit', ":model_id") }}";
+        var url = "{{ route('women_scheme.edit', ":model_id") }}";
 
         $.ajax({
             url: url.replace(':model_id', model_id),
@@ -319,26 +313,16 @@
                 editFormBehaviour();
                 if (!data.error)
                 {
-                    $("#editForm input[name='edit_model_id']").val(data.education_scheme.id);
-                    $("#editForm input[name='full_name']").val(data.education_scheme.full_name);
-                    $("#editForm input[name='full_address']").val(data.education_scheme.full_address);
-                    $("#editForm input[name='dob']").val(data.education_scheme.dob);
-                    $("#editForm input[name='age']").val(data.education_scheme.age);
-                    $("#editForm input[name='contact']").val(data.education_scheme.contact);
-                    $("#editForm input[name='adhaar_no']").val(data.education_scheme.adhaar_no);
-                    $("#editForm input[name='email']").val(data.education_scheme.email);
-                    $("#editForm input[name='family_name']").val(data.education_scheme.family_name);
-                    $("#editForm input[name='beneficiary_relationship']").val(data.education_scheme.beneficiary_relationship);
-                    $("#editForm input[name='total_family']").val(data.education_scheme.total_family);
-                    $("#editForm input[name='residence_proof']").val(data.education_scheme.residence_proof);
-                    $("#editForm input[name='admission_certificate']").val(data.education_scheme.admission_certificate);
-                    $("#editForm input[name='income_certificate']").val(data.education_scheme.income_certificate);
-                    $("#editForm input[name='academic_certificate']").val(data.education_scheme.academic_certificate);
-                    $("#editForm input[name='passbook_copy']").val(data.education_scheme.passbook_copy);
-                    $("#editForm input[name='adhaar_copy']").val(data.education_scheme.adhaar_copy);
-                    $("#editForm input[name='recommendation_letter']").val(data.education_scheme.recommendation_letter);
-                    $("#editForm input[name='signature']").val(data.education_scheme.signature);
-                    $("#editForm input[name='profile']").val(data.education_scheme.profile);
+                    $("#editForm input[name='edit_model_id']").val(data.women_scheme.id);
+                    $("#editForm input[name='full_name']").val(data.women_scheme.full_name);
+                    $("#editForm input[name='full_address']").val(data.women_scheme.full_address);
+                    $("#ward_id").html(data.wardHtml);
+                    $("#editForm input[name='dob']").val(data.women_scheme.dob);
+                    $("#editForm input[name='age']").val(data.women_scheme.age);
+                    $("#editForm input[name='contact']").val(data.women_scheme.contact);
+                    $("#editForm input[name='duration_of_residence']").val(data.women_scheme.duration_of_residence);
+                    $("#editForm input[name='adhaar_no']").val(data.women_scheme.adhaar_no);
+                    $("#editForm input[name='details']").val(data.women_scheme.details);
 
                 }
                 else
@@ -362,7 +346,7 @@
             var formdata = new FormData(this);
             formdata.append('_method', 'PUT');
             var model_id = $('#edit_model_id').val();
-            var url = "{{ route('education_scheme.update', ":model_id") }}";
+            var url = "{{ route('women_scheme.update', ":model_id") }}";
             //
             $.ajax({
                 url: url.replace(':model_id', model_id),
@@ -376,7 +360,7 @@
                     if (!data.error2)
                         swal("Successful!", data.success, "success")
                             .then((action) => {
-                                window.location.href = '{{ route('education_scheme.index') }}';
+                                window.location.href = '{{ route('women_scheme.index') }}';
                             });
                     else
                         swal("Error!", data.error2, "error");
@@ -403,17 +387,17 @@
     $("#buttons-datatables").on("click", ".rem-element", function(e) {
         e.preventDefault();
         swal({
-            title: "Are you sure to delete this Education Scheme?",
+            title: "Are you sure to delete this Women Scheme?",
 
             icon: "info",
-            buttons: ["Cancel", "Education Scheme"]
+            buttons: ["Cancel", "Women Scheme"]
         })
         .then((justTransfer) =>
         {
             if (justTransfer)
             {
                 var model_id = $(this).attr("data-id");
-                var url = "{{ route('education_scheme.destroy', ":model_id") }}";
+                var url = "{{ route('women_scheme.destroy', ":model_id") }}";
 
                 $.ajax({
                     url: url.replace(':model_id', model_id),

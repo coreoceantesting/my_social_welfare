@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Models\FinancialMst;
-use \Mpdf\Mpdf;
+use PDF;
+
 
 class DivyangController extends Controller
 {
@@ -31,61 +32,43 @@ class DivyangController extends Controller
 
     public function store(HayatiRequest $request)
     {
-        try
-        {
+        try {
             DB::beginTransaction();
             $input = $request->validated();
 
-            if($request->hasFile("signature")){
-
-                $imagePath=$request->file("signature");
-
-                $image=time().'_'.$imagePath->getClientOriginalName();
-
-                $imagePath->move('signature/',$image);
-
-                 $input['signature'] = $imagePath;
-
+            if ($request->hasFile('signature')) {
+                $imagePath = $request->file('signature')->store('signature', 'public');
+                $input['signature'] = $imagePath;
             }
 
-            HayatFormModel::create( Arr::only( $input, HayatFormModel::getFillables() ) );
+
+            $hayatForm = HayatFormModel::create(Arr::only($input, HayatFormModel::getFillables()));
             DB::commit();
-            // $users = User::where('id', Auth::user()->id)->first();
-            return response()->json(['success' => 'Haytich Form submitted successfully!']);
-        }
-        catch(\Exception $e)
-        {
+
+            $hayat = HayatFormModel::join('users', 'hayticha_form.user_id', '=', 'users.id')
+                ->where('hayticha_form.h_id', $hayatForm->h_id)
+                ->select('hayticha_form.*', 'users.*')
+                ->first();
+            $pdf = PDF::loadView('admin.masters.divyagformpdf',compact('hayat'));
+            $fileName = 'live_certificate'.$hayatForm->h_id. '.pdf' ;
+            $filePath = public_path('pdfs/' . $fileName);
+            $pdf->save($filePath);
+
+           if (file_exists($filePath)) {
+            $url = asset('pdfs/' . $fileName);
+               return response()->json(['success' => 'Life certificate Form submitted successfully!', 'data' => $hayatForm , 'file_path' =>  $url]);
+           } else {
+               throw new \Exception('Failed to save the PDF file.');
+           }
+
+        } catch (\Exception $e) {
             return $this->respondWithAjax($e, 'creating', 'Hayat Form');
         }
     }
 
 
-    public function show($id)
-{
-        // $hayat = HayatFormModel::where('user_id', Auth::user()->id)->first();
-        $hayat = HayatFormModel::join('users', 'hayticha_form.user_id', '=', 'users.id')
-                    ->where('hayticha_form.user_id', Auth::user()->id)
-                    ->select('hayticha_form.*', 'users.*') // Adjust column_name
-                    ->first();
-
-         // Using mpdf/mpdf
-        // $pdf = new Mpdf();
-        // $pdf->WriteHTML(view('admin.masters.divyagformpdf', compact('hayat'))->render());
-        // $pdfData = $pdf->Output('', 'S'); // Output as string
-        // $pdfName = 'document.pdf';
-
-        // // Return the PDF for download
-        // return response($pdfData)
-        //     ->header('Content-Type', 'application/pdf')
-        //     ->header('Content-Disposition', 'inline; filename="' . $pdfName . '"');
-
-        return view('admin.masters.divyagformpdf')->with(['hayat'=> $hayat]);
-}
-
  public function edit(HayatFormModel $hayatichaDakhlaform)
     {
-        // $hayat = HayatFormModel::find($id);
-        //print_r($hayat);exit;
         if ($hayatichaDakhlaform)
         {
             $response = [
@@ -97,8 +80,6 @@ class DivyangController extends Controller
         {
             $response = ['result' => 0];
         }
-
-
         return $response;
 
     }
@@ -131,25 +112,7 @@ class DivyangController extends Controller
 
             }
 
-            if ($request->hasFile('pdfPath')) {
 
-                $pathd='sign_uploaded_live_certificate/'.$input['pdfPath'];
-
-                if(File::exists($pathd)){
-
-                    File::delete($pathd);
-                }
-                $filed = $request->file('pdfPath');
-
-                $extd=$filed->getClientOriginalName();
-
-                $filenamed=time().'.'.$extd;
-
-                $filed->move('sign_uploaded_live_certificate/', $filenamed);
-
-                $input['pdfPath'] = $filenamed;
-
-            }
 
 
             if ($request->hasFile('sign_uploaded_live_certificate')) {

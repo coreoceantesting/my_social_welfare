@@ -21,4 +21,10 @@ class DocumentMst extends BaseModel
         return $this->belongsTo(SchemeMst::class, 'scheme_id', 'id');
     }
 
+
+    public function marriageSchemeDocuments()
+    {
+        return $this->hasMany(MarriageSchemeDocuments_model::class, 'document_id', 'id');
+    }
+
 }

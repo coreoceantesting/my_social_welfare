@@ -33,7 +33,7 @@
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="dob">3.  Date Of Birth/ वय </label>
                                     <input class="form-control" id="dob" name="dob" type="date"  placeholder="Enter Date Of Birth">
-                                    <span class="text-danger is-invalid age_err"></span>
+                                    <span class="text-danger is-invalid dob_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
@@ -62,38 +62,6 @@
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="consent_letter">5. Consent Letter from School/College:/ शाळा / महाविद्यालयाचे संमतीपत्रक : <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="consent_letter" name="consent_letter" type="file" >
-                                    <span class="text-danger is-invalid consent_letter_err"></span>
-                                </div>
-
-
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="adhaar_copy">6. Aadhaar Card Copy :  / आधारकार्ड प्रत : <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="adhaar_copy" name="adhaar_copy" type="file" >
-                                    <span class="text-danger is-invalid adhaar_copy_err"></span>
-                                </div>
-
-
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="passbook_copy">7. Photocopy of the bank account passbook /प्रत्येक पात्र लाभार्थी खेळाडूच्या नावाचे राष्ट्रियकृत बँकेतील बँक खात्याच्या पासयूकची छायांकित प्रत जोडणे बंधनकारक राहिल <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="passbook_copy" name="passbook_copy" type="file" >
-                                    <span class="text-danger is-invalid passbook_copy_err"></span>
-                                </div>
-
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="sports_certificate">8. Photocopy of specialization certificate at State level/National level/ राज्य स्तर / राष्ट्रीय स्तर यामध्ये विशेष प्राविण्य मिळविल्याचे प्रमाणपत्राची छायांकित प्रत : <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="sports_certificate" name="sports_certificate" type="file" >
-                                    <span class="text-danger is-invalid sports_certificate_err"></span>
-                                </div>
-
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="recommendation_letter">9. Letter of recommendation from corporators/ नगरसेवकांचे शिफारस पत्र : <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="recommendation_letter" name="recommendation_letter" type="file" >
-                                    <span class="text-danger is-invalid recommendation_letter_err"></span>
-                                </div>
-
-                                <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="financial_help">10. financial help/ आर्थिक मदत :</label>
                                         <select class="js-example-basic-single" name="financial_help" >
                                             <option value="">--Select--</option>
@@ -103,19 +71,14 @@
                                         <span class="text-danger is-invalid  financial_help_err"></span>
                                 </div>
 
-
+                              @foreach ($document as $doc)
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="signature"> Signature</label>
-                                    <input class="form-control" id="signature" name="signature" type="file"  >
-                                    <span class="text-danger is-invalid signature_err"></span>
+                                        <label class="col-form-label" for="document_name">{{$doc->document_name}} @if($doc->is_required==1) <span class="required">*</span> @endif</label>
+                                        <input type="hidden" name="document_id[]" class="form-control" value="{{$doc->id}}">
+                                        <input type="file" name="document_file[]" class="form-control" multiple>
+                                        <span class="text-danger is-invalid document_file_err"></span>
                                 </div>
-
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="profile"> profile</label>
-                                    <input class="form-control" id="profile" name="profile" type="file"  >
-                                    <span class="text-danger is-invalid profile_err"></span>
-                                </div>
-
+                            @endforeach
                             </div>
                         </div>
                         <div class="card-footer">
@@ -154,7 +117,7 @@
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="dob">3.  Date Of Birth/ वय </label>
                             <input class="form-control" id="dob" name="dob" type="date"  placeholder="Enter Date Of Birth">
-                            <span class="text-danger is-invalid age_err"></span>
+                            <span class="text-danger is-invalid dob_err"></span>
                         </div>
 
                         <div class="col-md-4 mt-3">
@@ -181,39 +144,6 @@
                             <span class="text-danger is-invalid school_name_err"></span>
                         </div>
 
-
-                        <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="consent_letter">5. Consent Letter from School/College:/ शाळा / महाविद्यालयाचे संमतीपत्रक : <span class="text-danger">*</span></label>
-                            <input class="form-control" id="consent_letter" name="consent_letter" type="file" >
-                            <span class="text-danger is-invalid consent_letter_err"></span>
-                        </div>
-
-
-                        <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="adhaar_copy">6. Aadhaar Card Copy :  / आधारकार्ड प्रत : <span class="text-danger">*</span></label>
-                            <input class="form-control" id="adhaar_copy" name="adhaar_copy" type="file" >
-                            <span class="text-danger is-invalid adhaar_copy_err"></span>
-                        </div>
-
-
-                        <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="passbook_copy">7. प्रत्येक पात्र लाभार्थी खेळाडूच्या नावाचे राष्ट्रियकृत बँकेतील बँक खात्याच्या पासयूकची छायांकित प्रत जोडणे बंधनकारक राहिल <span class="text-danger">*</span></label>
-                            <input class="form-control" id="passbook_copy" name="passbook_copy" type="file" >
-                            <span class="text-danger is-invalid passbook_copy_err"></span>
-                        </div>
-
-                        <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="sports_certificate">8. Photocopy of specialization certificate at State level/National level/ राज्य स्तर / राष्ट्रीय स्तर यामध्ये विशेष प्राविण्य मिळविल्याचे प्रमाणपत्राची छायांकित प्रत : <span class="text-danger">*</span></label>
-                            <input class="form-control" id="sports_certificate" name="sports_certificate" type="file" >
-                            <span class="text-danger is-invalid sports_certificate_err"></span>
-                        </div>
-
-                        <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="recommendation_letter">9. Letter of recommendation from corporators/ नगरसेवकांचे शिफारस पत्र : <span class="text-danger">*</span></label>
-                            <input class="form-control" id="recommendation_letter" name="recommendation_letter" type="file" >
-                            <span class="text-danger is-invalid recommendation_letter_err"></span>
-                        </div>
-
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="financial_help">10. financial help/ आर्थिक मदत :</label>
                                 <select class="js-example-basic-single" name="financial_help" >
@@ -222,19 +152,6 @@
                                   <option value="relational">relational/सांधिक</option>
                                 </select>
                                 <span class="text-danger is-invalid  financial_help_err"></span>
-                        </div>
-
-
-                        <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="signature"> Signature</label>
-                            <input class="form-control" id="signature" name="signature" type="file"  >
-                            <span class="text-danger is-invalid signature_err"></span>
-                        </div>
-
-                        <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="profile"> profile</label>
-                            <input class="form-control" id="profile" name="profile" type="file"  >
-                            <span class="text-danger is-invalid profile_err"></span>
                         </div>
 
 
@@ -268,8 +185,6 @@
                             <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
                                 <thead>
 
-
-
                                     <tr>
                                         <th>Application Number</th>
                                         <th>Name</th>
@@ -280,29 +195,26 @@
                                 </thead>
                                 <tbody>
 
-
+                                @foreach ($sports as $row)
 
 
                                      <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $row->application_no }}</td>
+                                            <td>{{ $row->full_name }}</td>
+                                            <td>{{ $row->full_address }}</td>
+                                            <td>{{ $row->contact }}</td>
                                             <td>
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id=""><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id=""><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $row->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $row->id }}"><i data-feather="trash-2"></i> </button>
                                             </td>
                                         </tr>
-
+                                @endforeach
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
 
 </x-admin.layout>
 
@@ -386,25 +298,15 @@
                 if (!data.error)
                 {
                     $("#editForm input[name='edit_model_id']").val(data.sports_scheme.id);
-                    $("#editForm input[name='full_name']").val(data.education_scheme.full_name);
-                    $("#editForm input[name='full_address']").val(data.education_scheme.full_address);
-                    $("#editForm input[name='dob']").val(data.education_scheme.dob);
-                    $("#editForm input[name='age']").val(data.education_scheme.age);
-                    $("#editForm input[name='contact']").val(data.education_scheme.contact);
-                    $("#editForm input[name='adhaar_no']").val(data.education_scheme.adhaar_no);
-                    $("#editForm input[name='email']").val(data.education_scheme.email);
-                    $("#editForm input[name='family_name']").val(data.education_scheme.family_name);
-                    $("#editForm input[name='beneficiary_relationship']").val(data.education_scheme.beneficiary_relationship);
-                    $("#editForm input[name='total_family']").val(data.education_scheme.total_family);
-                    $("#editForm input[name='residence_proof']").val(data.education_scheme.residence_proof);
-                    $("#editForm input[name='admission_certificate']").val(data.education_scheme.admission_certificate);
-                    $("#editForm input[name='income_certificate']").val(data.education_scheme.income_certificate);
-                    $("#editForm input[name='academic_certificate']").val(data.education_scheme.academic_certificate);
-                    $("#editForm input[name='passbook_copy']").val(data.education_scheme.passbook_copy);
-                    $("#editForm input[name='adhaar_copy']").val(data.education_scheme.adhaar_copy);
-                    $("#editForm input[name='recommendation_letter']").val(data.education_scheme.recommendation_letter);
-                    $("#editForm input[name='signature']").val(data.education_scheme.signature);
-                    $("#editForm input[name='profile']").val(data.education_scheme.profile);
+                    $("#editForm input[name='full_name']").val(data.sports_scheme.full_name);
+                    $("#editForm input[name='full_address']").val(data.sports_scheme.full_address);
+                    $("#editForm input[name='dob']").val(data.sports_scheme.dob);
+                    $("#editForm input[name='age']").val(data.sports_scheme.age);
+                    $("#editForm input[name='contact']").val(data.sports_scheme.contact);
+                    $("#editForm input[name='school_name']").val(data.sports_scheme.school_name);
+                    $("#editForm input[name='email']").val(data.sports_scheme.email);
+                    $("#editForm select[name='financial_help']").val(data.sports_scheme.financial_help).trigger('change');
+                    $("#editForm select[name='financial_help']").val();
 
                 }
                 else

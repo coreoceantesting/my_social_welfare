@@ -18,7 +18,11 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $documents = DocumentMst::latest()->get();
+        $documents = DocumentMst::with('scheme')
+                    ->join('scheme_mst', 'document_type_msts.scheme_id', '=', 'scheme_mst.id')
+                    ->orderBy('scheme_mst.scheme_name', 'asc')
+                    ->get();
+
         $scheme = SchemeMst::latest()->get();
         return view('admin.masters.document')->with(['scheme'=> $scheme, 'documents'=>$documents]);
     }

@@ -15,7 +15,6 @@ class DashboardController extends Controller
     public function index()
     {
 
-
        $scheme = DB::table('scheme_mst as t1')
                         ->select('t1.scheme_name', 't1.id')
                         ->leftJoin('category_mst as t2', function ($join) {
@@ -23,10 +22,9 @@ class DashboardController extends Controller
                         })
                         ->where('t2.id', Auth::user()->category)
                         ->whereNull('t1.deleted_at')
-                        ->orderBy('t1.created_at', 'DESC')
+                        ->whereNull('t2.deleted_at')
+                        ->orderBy('t1.scheme_name', 'ASC')
                         ->get();
-
-
 
         return view('admin.dashboard', compact('scheme'));
     }

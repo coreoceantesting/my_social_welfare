@@ -13,6 +13,7 @@ use App\Models\Ward;
 use App\Models\DivyangSchemeDocuments_model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class DivyangSchemeController extends Controller
@@ -25,19 +26,33 @@ class DivyangSchemeController extends Controller
     }
 
 
-    public function index(){
-        $disable =DisabilityApplication::latest()->get();
-        $wards = Ward::latest()->get();
+    public function index()
+    {
+            $data = HayatFormModel::where('user_id', Auth::user()->id)->latest()->first();
 
-        $document = DB::table('document_type_msts')
-                        ->where('scheme_id', 1)
-                        ->whereNull('deleted_at')
-                        ->orderBy('created_at', 'DESC')
-                        ->get();
+            if (empty($data)) {
+            //  echo "fdg"; die;
+                return redirect()->route('hayatichaDakhlaform.index')->with('warning', 'Fill the first form before proceeding.');
+            } elseif ($data->sign_uploaded_live_certificate == "") {
 
-        return view('users.scheme_form')->with(['disable'=> $disable, 'wards' => $wards,'document'=>$document]);
+                return redirect()->route('hayatichaDakhlaform.index')->with('warning', 'Your Application status is still Pending');
+            } else {
+
+                $disable = DisabilityApplication::where('created_by', Auth::user()->id)->latest()->get();
+                $wards = Ward::latest()->get();
+
+                $document = DB::table('document_type_msts')
+                    ->where('scheme_id', 1)
+                    ->whereNull('deleted_at')
+                    ->orderBy('created_at', 'DESC')
+                    ->get();
+
+                return view('users.scheme_form')->with(['disable' => $disable, 'wards' => $wards, 'document' => $document]);
+
+            }
 
     }
+
 
     public function store(StoreApplicationRequest $request){
         try

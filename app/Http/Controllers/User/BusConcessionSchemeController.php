@@ -10,12 +10,13 @@ use App\Models\BusConcession;
 use App\Models\BusConcessionDocuments_model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class BusConcessionSchemeController extends Controller
 {
     public function index(){
-        $bus_concession = BusConcession::latest()->get();
+        $bus_concession = BusConcession::where('created_by', Auth::user()->id)->latest()->get();
 
         $document = DB::table('document_type_msts')
                         ->where('scheme_id', 2)

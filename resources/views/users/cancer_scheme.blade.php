@@ -57,7 +57,7 @@
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="dob"> Date Of Birth/ वय </label>
                                     <input class="form-control" id="dob" name="dob" type="date"  placeholder="Enter Date Of Birth">
-                                    <span class="text-danger is-invalid age_err"></span>
+                                    <span class="text-danger is-invalid dob_err"></span>
                                 </div>
 
 
@@ -93,11 +93,7 @@
                                 </div>
 
 
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="income_certificate">6.Income proof (annual income less than Rs. 6 lakhs)/ उत्पन्नाचा दाखला (वार्षीक उत्पन्न रु. ६ लाखांपेक्षा कमी)<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="income_certificate" name="income_certificate" type="file" >
-                                    <span class="text-danger is-invalid income_certificate_err"></span>
-                                </div>
+
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="type_of_disease">7.Details / type of disease / आजाराचा तपशिल /प्रकार <span class="text-danger">*</span></label>
@@ -107,7 +103,7 @@
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="diagnosis_date">Date of cancer diagnosis / कॅन्सर निदान झालेचा दिनांक <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="diagnosis_date" name="diagnosis_date" type="text" placeholder="Enter Date of cancer diagnosis">
+                                    <input class="form-control" id="diagnosis_date" name="diagnosis_date" type="date" placeholder="Enter Date of cancer diagnosis">
                                     <span class="text-danger is-invalid diagnosis_date_err"></span>
                                 </div>
 
@@ -118,23 +114,14 @@
                                     <span class="text-danger is-invalid hospital_name_err"></span>
                                 </div>
 
+                                @foreach ($document as $doc)
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="passbook_copy">8. Bank Passbook or Canceled Check for RTGS Photocopy/ Bank Account No/ RTGS साठी बँकेचे पासबूकची अथवा रद्द धनादेशाची (Cancelled Cheque) छायांकित प्रत/ बँक खाते नंबर</label>
-                                    <input class="form-control" id="passbook_copy" name="passbook_copy" type="file"  >
-                                    <span class="text-danger is-invalid passbook_copy_err"></span>
+                                        <label class="col-form-label" for="document_name">{{$doc->document_name}} @if($doc->is_required==1) <span class="required">*</span> @endif</label>
+                                        <input type="hidden" name="document_id[]" class="form-control" value="{{$doc->id}}">
+                                        <input type="file" name="document_file[]" class="form-control" multiple>
+                                        <span class="text-danger is-invalid document_file_err"></span>
                                 </div>
-
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="signature"> Signature</label>
-                                    <input class="form-control" id="signature" name="signature" type="file"  >
-                                    <span class="text-danger is-invalid signature_err"></span>
-                                </div>
-
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="profile"> profile</label>
-                                    <input class="form-control" id="profile" name="profile" type="file"  >
-                                    <span class="text-danger is-invalid profile_err"></span>
-                                </div>
+                            @endforeach
 
                             </div>
                         </div>
@@ -161,7 +148,7 @@
                     <div class="mb-3 row">
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="financial_help">1. Applicant's relationship with the beneficiary/ अर्जदाराचे लाभार्थ्याशी असलेले नाते</label>
-                                <select class="js-example-basic-single" name="financial_help" >
+                                <select class="js-example-basic-single" name="financial_help" id="financial_help">
                                     <option value="">--Select--</option>
                                     <option value="self">Self/स्वतः </option>
                                   <option value="relationship">Relationship/नाते</option>
@@ -202,18 +189,17 @@
 
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="name"> Gender/ लिंग  <span class="text-danger">*</span></label>
+                            <label class="col-form-label" for="name">3. Gender/ लिंग <span class="text-danger">*</span></label>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="radio" name="gender" id="gender" value="male" >
-                                <label class="form-check-label" for="flexRadioDefault1">
+                                <input class="form-check-input" type="radio" name="gender" id="genderMale" value="male">
+                                <label class="form-check-label" for="genderMale">
                                     Male
                                 </label>
-
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="gender" value="female" >
-                                <label class="form-check-label" for="flexRadioDefault2">
+                                <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="female">
+                                <label class="form-check-label" for="genderFemale">
                                     Female
                                 </label>
                             </div>
@@ -234,12 +220,6 @@
 
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="income_certificate">6.Income proof (annual income less than Rs. 6 lakhs)/ उत्पन्नाचा दाखला (वार्षीक उत्पन्न रु. ६ लाखांपेक्षा कमी)<span class="text-danger">*</span></label>
-                            <input class="form-control" id="income_certificate" name="income_certificate" type="file" >
-                            <span class="text-danger is-invalid income_certificate_err"></span>
-                        </div>
-
-                        <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="type_of_disease">7.Details / type of disease / आजाराचा तपशिल /प्रकार <span class="text-danger">*</span></label>
                             <input class="form-control" id="type_of_disease" name="type_of_disease" type="text" placeholder="Enter Details / type of disease">
                             <span class="text-danger is-invalid type_of_disease_err"></span>
@@ -247,7 +227,7 @@
 
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="diagnosis_date">Date of cancer diagnosis / कॅन्सर निदान झालेचा दिनांक <span class="text-danger">*</span></label>
-                            <input class="form-control" id="diagnosis_date" name="diagnosis_date" type="text" placeholder="Enter Date of cancer diagnosis">
+                            <input class="form-control" id="diagnosis_date" name="diagnosis_date" type="date" placeholder="Enter Date of cancer diagnosis">
                             <span class="text-danger is-invalid diagnosis_date_err"></span>
                         </div>
 
@@ -258,11 +238,7 @@
                             <span class="text-danger is-invalid hospital_name_err"></span>
                         </div>
 
-                        <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="passbook_copy">8. Bank Passbook or Canceled Check for RTGS Photocopy/ Bank Account No/ RTGS साठी बँकेचे पासबूकची अथवा रद्द धनादेशाची (Cancelled Cheque) छायांकित प्रत/ बँक खाते नंबर</label>
-                            <input class="form-control" id="passbook_copy" name="passbook_copy" type="file"  >
-                            <span class="text-danger is-invalid passbook_copy_err"></span>
-                        </div>
+
 
                     </div>
                 </div>
@@ -306,20 +282,19 @@
                                 </thead>
                                 <tbody>
 
-
-
+                                @foreach ($cancer as $row)
 
                                      <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $row->application_no }}</td>
+                                            <td>{{ $row->full_name }}</td>
+                                            <td>{{ $row->full_address }}</td>
+                                            <td>{{ $row->contact }}</td>
                                             <td>
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id=""><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id=""><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $row->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $row->id }}"><i data-feather="trash-2"></i> </button>
                                             </td>
                                         </tr>
-
+                                @endforeach
                             </table>
                         </div>
                     </div>
@@ -341,7 +316,7 @@
 
         var formdata = new FormData(this);
         $.ajax({
-            url: '{{ route('education_scheme.store') }}',
+            url: '{{ route('cancer_scheme.store') }}',
             type: 'POST',
             data: formdata,
             contentType: false,
@@ -352,7 +327,7 @@
                 if (!data.error2)
                     swal("Successful!", data.success, "success")
                         .then((action) => {
-                            window.location.href = '{{ route('education_scheme.index') }}';
+                            window.location.href = '{{ route('cancer_scheme.index') }}';
                         });
                 else
                     swal("Error!", data.error2, "error");
@@ -399,7 +374,7 @@
     $("#buttons-datatables").on("click", ".edit-element", function(e) {
         e.preventDefault();
         var model_id = $(this).attr("data-id");
-        var url = "{{ route('education_scheme.edit', ":model_id") }}";
+        var url = "{{ route('cancer_scheme.edit', ":model_id") }}";
 
         $.ajax({
             url: url.replace(':model_id', model_id),
@@ -411,27 +386,27 @@
                 editFormBehaviour();
                 if (!data.error)
                 {
-                    $("#editForm input[name='edit_model_id']").val(data.education_scheme.id);
-                    $("#editForm input[name='full_name']").val(data.education_scheme.full_name);
-                    $("#editForm input[name='full_address']").val(data.education_scheme.full_address);
-                    $("#editForm input[name='dob']").val(data.education_scheme.dob);
-                    $("#editForm input[name='age']").val(data.education_scheme.age);
-                    $("#editForm input[name='contact']").val(data.education_scheme.contact);
-                    $("#editForm input[name='adhaar_no']").val(data.education_scheme.adhaar_no);
-                    $("#editForm input[name='email']").val(data.education_scheme.email);
-                    $("#editForm input[name='family_name']").val(data.education_scheme.family_name);
-                    $("#editForm input[name='beneficiary_relationship']").val(data.education_scheme.beneficiary_relationship);
-                    $("#editForm input[name='total_family']").val(data.education_scheme.total_family);
-                    $("#editForm input[name='residence_proof']").val(data.education_scheme.residence_proof);
-                    $("#editForm input[name='admission_certificate']").val(data.education_scheme.admission_certificate);
-                    $("#editForm input[name='income_certificate']").val(data.education_scheme.income_certificate);
-                    $("#editForm input[name='academic_certificate']").val(data.education_scheme.academic_certificate);
-                    $("#editForm input[name='passbook_copy']").val(data.education_scheme.passbook_copy);
-                    $("#editForm input[name='adhaar_copy']").val(data.education_scheme.adhaar_copy);
-                    $("#editForm input[name='recommendation_letter']").val(data.education_scheme.recommendation_letter);
-                    $("#editForm input[name='signature']").val(data.education_scheme.signature);
-                    $("#editForm input[name='profile']").val(data.education_scheme.profile);
+                    $("#editForm input[name='edit_model_id']").val(data.cancer_scheme.id);
 
+                    $("#editForm select[name='financial_help']").val(data.cancer_scheme.financial_help).trigger('change');
+                    $("#editForm select[name='financial_help']").val();
+                    $("#editForm input[name='full_name']").val(data.cancer_scheme.full_name);
+                    $("#editForm input[name='full_address']").val(data.cancer_scheme.full_address);
+                    $("#editForm input[name='contact']").val(data.cancer_scheme.contact);
+                    $("#editForm input[name='age']").val(data.cancer_scheme.age);
+                    $("#editForm input[name='dob']").val(data.cancer_scheme.dob);
+                    $("#editForm input[name='gender']").val(data.cancer_scheme.gender);
+                    if (data.cancer_scheme.gender === 'male') {
+                        $("#genderMale").prop('checked', true);
+                    } else if (data.cancer_scheme.gender === 'female') {
+                        $("#genderFemale").prop('checked', true);
+                    }
+
+                    $("#editForm input[name='duration_of_residence']").val(data.cancer_scheme.duration_of_residence);
+                    $("#editForm input[name='adhaar_no']").val(data.cancer_scheme.adhaar_no);
+                    $("#editForm input[name='type_of_disease']").val(data.cancer_scheme.type_of_disease);
+                    $("#editForm input[name='diagnosis_date']").val(data.cancer_scheme.diagnosis_date);
+                    $("#editForm input[name='hospital_name']").val(data.cancer_scheme.hospital_name);
                 }
                 else
                 {
@@ -454,7 +429,7 @@
             var formdata = new FormData(this);
             formdata.append('_method', 'PUT');
             var model_id = $('#edit_model_id').val();
-            var url = "{{ route('education_scheme.update', ":model_id") }}";
+            var url = "{{ route('cancer_scheme.update', ":model_id") }}";
             //
             $.ajax({
                 url: url.replace(':model_id', model_id),
@@ -495,17 +470,16 @@
     $("#buttons-datatables").on("click", ".rem-element", function(e) {
         e.preventDefault();
         swal({
-            title: "Are you sure to delete this Education Scheme?",
-
+            title: "Are you sure to delete this Cancer Scheme?",
             icon: "info",
-            buttons: ["Cancel", "Education Scheme"]
+            buttons: ["Cancel", "Cancer Scheme"]
         })
         .then((justTransfer) =>
         {
             if (justTransfer)
             {
                 var model_id = $(this).attr("data-id");
-                var url = "{{ route('education_scheme.destroy', ":model_id") }}";
+                var url = "{{ route('cancer_scheme.destroy', ":model_id") }}";
 
                 $.ajax({
                     url: url.replace(':model_id', model_id),

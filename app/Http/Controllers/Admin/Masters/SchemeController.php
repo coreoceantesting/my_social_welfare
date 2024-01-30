@@ -48,15 +48,6 @@ class SchemeController extends Controller
         // Use the accessor directly to get categories
         $schemeCategories = $scheme->categories;
 
-        // $cat_id = [$scheme->category_id];
-        // $categoryHtml = '<span>';
-        // foreach($category as $data):
-        //     $is_select = in_array($data->id, $cat_id) ? "selected" : "";
-        //     $categoryHtml .= '<option value="'.$data->id.'" '.$is_select.'>'.$data->category_name.'</option>';
-        // endforeach;
-        // $categoryHtml .= '</span>';
-
-
         $categoryHtml = '<span>';
         foreach ($category as $cat) {
             $is_select = $schemeCategories->contains('id', $cat->id) ? "selected" : "";
@@ -82,7 +73,7 @@ class SchemeController extends Controller
         {
             DB::beginTransaction();
             $input = $request->validated();
-            $input['cat_id'] = $input['cat_id'];
+            $input['category_id']=implode(',', $input['category_id']);
             $scheme->update( Arr::only( $input, SchemeMst::getFillables() ) );
             DB::commit();
             return response()->json(['success'=> 'Scheme updated successfully!']);

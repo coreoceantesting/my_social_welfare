@@ -7,15 +7,16 @@ use App\Http\Requests\User\StoreEducationRequest;
 use App\Http\Requests\User\UpdateEducationRequest;
 use App\Models\EducationScheme;
 use App\Models\EducationSchemeDocuments_model;
-
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class EducationSchemeController extends Controller
 {
     public function index(){
-        $education_scheme = EducationScheme::latest()->get();
+        $education_scheme = EducationScheme::where('created_by', Auth::user()->id)->latest()->get();
+
 
         $document = DB::table('document_type_msts')
                         ->where('scheme_id', 3)

@@ -33,7 +33,7 @@
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="name"> Gender/ लिंग  <span class="text-danger">*</span></label>
                                     <div class="form-check mb-2">
-                                        <input class="form-check-input" type="radio" name="gender" id="gender" value="male" >
+                                        <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1" value="male" >
                                         <label class="form-check-label" for="flexRadioDefault1">
                                             Male
                                         </label>
@@ -41,7 +41,7 @@
                                     </div>
 
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gender" id="gender" value="female" >
+                                        <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2" value="female" >
                                         <label class="form-check-label" for="flexRadioDefault2">
                                             Female
                                         </label>
@@ -56,9 +56,15 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name_address_father_or_husband">4. Name and address of father/husband/वडिलांचे/पतीचे नाव व पत्ता <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="name_address_father_or_husband" name="name_address_father_or_husband" type="text" placeholder="Enter Name and address of father/husband">
-                                    <span class="text-danger is-invalid name_address_father_or_husband_err"></span>
+                                    <label class="col-form-label" for="father_name">4. Name and address of father/husband/वडिलांचे/पतीचे नाव व पत्ता <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="father_name" name="father_name" type="text" placeholder="Enter Name of father/husband">
+                                    <span class="text-danger is-invalid father_name_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="father_address">4. Name and address of father/husband/वडिलांचे/पतीचे नाव व पत्ता <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="father_address" name="father_address" type="text" placeholder="Enter Name of father/husband">
+                                    <span class="text-danger is-invalid father_address_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
@@ -129,57 +135,24 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="ward_name">Ward Name</label>
-                                    <input class="form-control" id="ward_name" name="ward_name" type="text" placeholder="Enter Name of Ward Shri Corporator/Municipality">
-
-                                    <span class="text-danger is-invalid ward_name_err"></span>
+                                    <label class="col-form-label" for="ward_id">Ward Name:</label>
+                                        <select class="js-example-basic-single" name="ward_id" >
+                                            <option value="">--Select--</option>
+                                            @foreach ($wards as $ward)
+                                            <option value="{{ $ward->id }}">{{ $ward->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <span class="text-danger is-invalid  ward_id_err"></span>
                                 </div>
 
+                                @foreach ($document as $doc)
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="identity_proof"> Proof Of Identity Card – Aadhaar Card / Voter ID Card.</label>
-                                    <input class="form-control" id="identity_proof" name="identity_proof" type="file"  >
-                                    <span class="text-danger is-invalid identity_proof_err"></span>
+                                        <label class="col-form-label" for="document_name">{{$doc->document_name}} @if($doc->is_required==1) <span class="required">*</span> @endif</label>
+                                        <input type="hidden" name="document_id[]" class="form-control" value="{{$doc->id}}">
+                                        <input type="file" name="document_file[]" class="form-control" multiple>
+                                        <span class="text-danger is-invalid document_file_err"></span>
                                 </div>
-
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="passbook_copy"> Photocopy of Passbook of Nationalized Bank/ राष्ट्रियकृत बँकेच्या पासबूकची छायांकित प्रतः</label>
-                                    <input class="form-control" id="passbook_copy" name="passbook_copy" type="file"  >
-                                    <span class="text-danger is-invalid passbook_copy_err"></span>
-
-                                </div>
-
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="marriage_certificate"> Attach The Marriage Registration Certificate</label>
-                                    <input class="form-control" id="marriage_certificate" name="marriage_certificate" type="file"  >
-                                    <span class="text-danger is-invalid marriage_certificate_err"></span>
-
-                                </div>
-
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="wedding_photo"> Wedding Photo Of Bride And Groom Together.</label>
-                                    <input class="form-control" id="wedding_photo" name="wedding_photo" type="file"  >
-                                    <span class="text-danger is-invalid wedding_photo_err"></span>
-
-                                </div>
-
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="self_declaration_letter"> Self-Declaration Letter Of Non-Benefited From Other Scheme Of Central / State Govt. On Rs.100/- Stamp Paper.</label>
-                                    <input class="form-control" id="self_declaration_letter" name="self_declaration_letter" type="file"  >
-                                    <span class="text-danger is-invalid self_declaration_letter_err"></span>
-
-                                </div>
-
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="signature"> Signature</label>
-                                    <input class="form-control" id="signature" name="signature" type="file"  >
-                                    <span class="text-danger is-invalid signature_err"></span>
-                                </div>
-
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="profile"> profile</label>
-                                    <input class="form-control" id="profile" name="profile" type="file"  >
-                                    <span class="text-danger is-invalid profile_err"></span>
-                                </div>
+                            @endforeach
 
                             </div>
                         </div>
@@ -203,7 +176,7 @@
                 </div>
                 <div class="card-body py-2">
                     <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
-                    <div class="mb-3 row">
+                    <div class="mb-3 row" id="yourDocumentsContainer">
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="name"> संपूर्ण नाव</label>
                             <input class="form-control"  type="text"  name="full_name"  value="" placeholder="Enter Full Name ">
@@ -220,7 +193,7 @@
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="name"> Gender/ लिंग  <span class="text-danger">*</span></label>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="radio" name="gender" id="gender" value="male" >
+                                <input class="form-check-input" type="radio" name="gender" id="genderMale" value="male" >
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Male
                                 </label>
@@ -228,7 +201,7 @@
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="gender" value="female" >
+                                <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="female" >
                                 <label class="form-check-label" for="flexRadioDefault2">
                                     Female
                                 </label>
@@ -243,9 +216,15 @@
                         </div>
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="name_address_father_or_husband">4. Name and address of father/husband/वडिलांचे/पतीचे नाव व पत्ता <span class="text-danger">*</span></label>
-                            <input class="form-control" id="name_address_father_or_husband" name="name_address_father_or_husband" type="text" placeholder="Enter Name and address of father/husband">
-                            <span class="text-danger is-invalid name_address_father_or_husband_err"></span>
+                            <label class="col-form-label" for="father_name">4. Name and address of father/husband/वडिलांचे/पतीचे नाव व पत्ता <span class="text-danger">*</span></label>
+                            <input class="form-control" id="father_name" name="father_name" type="text" placeholder="Enter Name of father/husband">
+                            <span class="text-danger is-invalid father_name_err"></span>
+                        </div>
+
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="father_address">4. Name and address of father/husband/वडिलांचे/पतीचे नाव व पत्ता <span class="text-danger">*</span></label>
+                            <input class="form-control" id="father_address" name="father_address" type="text" placeholder="Enter Name of father/husband">
+                            <span class="text-danger is-invalid father_address_err"></span>
                         </div>
 
                         <div class="col-md-4 mt-3">
@@ -316,60 +295,18 @@
                         </div>
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="ward_name">Ward Name:</label>
-                            <input class="form-control" id="ward_name" name="ward_name" type="text" placeholder="Enter Name of Ward Shri Corporator/Municipality">
+                            <label class="col-form-label" for="ward_id">Ward Name:</label>
+                                <select class="js-example-basic-single" id="ward_id" name="ward_id" >
 
-                            <span class="text-danger is-invalid ward_name_err"></span>
+
+                                </select>
+                                <span class="text-danger is-invalid  ward_id_err"></span>
                         </div>
 
-                        <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="identity_proof"> Proof Of Identity Card – Aadhaar Card / Voter ID Card.</label>
-                            <input class="form-control" id="identity_proof" name="identity_proof" type="file"  >
-                            <span class="text-danger is-invalid identity_proof_err"></span>
-                        </div>
 
-                        <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="passbook_copy"> Photocopy of Passbook of Nationalized Bank/ राष्ट्रियकृत बँकेच्या पासबूकची छायांकित प्रतः</label>
-                            <input class="form-control" id="passbook_copy" name="passbook_copy" type="file"  >
-                            <span class="text-danger is-invalid passbook_copy_err"></span>
 
-                        </div>
-
-                        <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="marriage_certificate"> Attach The Marriage Registration Certificate</label>
-                            <input class="form-control" id="marriage_certificate" name="marriage_certificate" type="file"  >
-                            <span class="text-danger is-invalid marriage_certificate_err"></span>
-
-                        </div>
-
-                        <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="wedding_photo"> Wedding Photo Of Bride And Groom Together.</label>
-                            <input class="form-control" id="wedding_photo" name="wedding_photo" type="file"  >
-                            <span class="text-danger is-invalid wedding_photo_err"></span>
-
-                        </div>
-
-                        <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="self_declaration_letter"> Self-Declaration Letter Of Non-Benefited From Other Scheme Of Central / State Govt. On Rs.100/- Stamp Paper.</label>
-                            <input class="form-control" id="self_declaration_letter" name="self_declaration_letter" type="file"  >
-                            <span class="text-danger is-invalid self_declaration_letter_err"></span>
-
-                        </div>
-
-                        <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="signature"> Signature</label>
-                            <input class="form-control" id="signature" name="signature" type="file"  >
-                            <span class="text-danger is-invalid signature_err"></span>
-                        </div>
-
-                        <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="profile"> profile</label>
-                            <input class="form-control" id="profile" name="profile" type="file"  >
-                            <span class="text-danger is-invalid profile_err"></span>
-                        </div>
 
                     </div>
-
                 </div>
                 <div class="card-footer">
                     <button class="btn btn-primary" id="editSubmit">Submit</button>
@@ -402,6 +339,7 @@
 
 
                                     <tr>
+                                        <th>Application Number</th>
                                         <th>Name</th>
                                         <th>Full Address</th>
                                         <th>Contact</th>
@@ -410,16 +348,20 @@
                                 </thead>
                                 <tbody>
 
+                                    @foreach ($marriage as $row)
+
+
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $row->application_no }}</td>
+                                            <td>{{ $row->full_name }}</td>
+                                            <td>{{ $row->full_address }}</td>
+                                            <td>{{ $row->contact }}</td>
                                             <td>
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id=""><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id=""><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $row->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $row->id }}"><i data-feather="trash-2"></i> </button>
                                             </td>
                                         </tr>
-
+                                        @endforeach
                             </table>
                         </div>
                     </div>
@@ -441,7 +383,7 @@
 
         var formdata = new FormData(this);
         $.ajax({
-            url: '{{ route('scheme_form.store') }}',
+            url: '{{ route('marriage_scheme.store') }}',
             type: 'POST',
             data: formdata,
             contentType: false,
@@ -452,7 +394,7 @@
                 if (!data.error2)
                     swal("Successful!", data.success, "success")
                         .then((action) => {
-                            window.location.href = '{{ route('scheme_form.index') }}';
+                            window.location.href = '{{ route('marriage_scheme.index') }}';
                         });
                 else
                     swal("Error!", data.error2, "error");
@@ -499,7 +441,7 @@
     $("#buttons-datatables").on("click", ".edit-element", function(e) {
         e.preventDefault();
         var model_id = $(this).attr("data-id");
-        var url = "{{ route('scheme_form.edit', ":model_id") }}";
+        var url = "{{ route('marriage_scheme.edit', ":model_id") }}";
 
         $.ajax({
             url: url.replace(':model_id', model_id),
@@ -511,46 +453,54 @@
                 editFormBehaviour();
                 if (!data.error)
                 {
-                    $("#editForm input[name='edit_model_id']").val(data.scheme_form.id);
-                    $("#editForm input[name='name']").val(data.scheme_form.name);
-                    $("#editForm input[name='full_address']").val(data.scheme_form.full_address);
-                    $("#editForm input[name='gender']").val(data.scheme_form.gender);
-                    if (data.scheme_form.gender === 'male') {
+                    $("#editForm input[name='edit_model_id']").val(data.marriage_scheme.id);
+                    $("#editForm input[name='full_name']").val(data.marriage_scheme.full_name);
+                    $("#editForm input[name='full_address']").val(data.marriage_scheme.full_address);
+                    $("#editForm input[name='gender']").val(data.marriage_scheme.gender);
+                    if (data.marriage_scheme.gender === 'male') {
                         $("#genderMale").prop('checked', true);
-                    } else if (data.scheme_form.gender === 'female') {
+                    } else if (data.marriage_scheme.gender === 'female') {
                         $("#genderFemale").prop('checked', true);
                     }
 
-                    $("#editForm input[name='age']").val(data.scheme_form.age);
-                    $("#editForm input[name='name_address_father_or_husband']").val(data.scheme_form.name_address_father_or_husband);
-                    $("#editForm input[name='contact']").val(data.scheme_form.contact);
-                    $("#editForm input[name='alternate_contact_no']").val(data.scheme_form.alternate_contact_no);
-                    $("#editForm input[name='type_of_disability']").val(data.scheme_form.type_of_disability);
-                    $("#editForm input[name='percentage']").val(data.scheme_form.percentage);
-                    $("#editForm input[name='bank_name']").val(data.scheme_form.bank_name);
-                    $("#editForm input[name='branch_name']").val(data.scheme_form.branch_name);
-                    $("#editForm input[name='account_no']").val(data.scheme_form.account_no);
-                    $("#editForm input[name='ifsc_code']").val(data.scheme_form.ifsc_code);
-                    $("#editForm input[name='authority_name']").val(data.scheme_form.authority_name);
-                    $("#editForm input[name='adhaar_no']").val(data.scheme_form.adhaar_no);
-                    $("#editForm input[name='profession']").val(data.scheme_form.profession);
-                    $("#editForm input[name='number_of_family']").val(data.scheme_form.number_of_family);
-                    $("#editForm input[name='agriculture']").val(data.scheme_form.agriculture);
+                    $("#editForm input[name='age']").val(data.marriage_scheme.age);
+                    $("#editForm input[name='father_name']").val(data.marriage_scheme.father_name);
+                    $("#editForm input[name='father_address']").val(data.marriage_scheme.father_address);
+                    $("#editForm input[name='contact']").val(data.marriage_scheme.contact);
+                    $("#editForm input[name='bank_name']").val(data.marriage_scheme.bank_name);
+                    $("#editForm input[name='branch_name']").val(data.marriage_scheme.branch_name);
+                    $("#editForm input[name='account_no']").val(data.marriage_scheme.account_no);
+                    $("#editForm input[name='ifsc_code']").val(data.marriage_scheme.ifsc_code);
+                    $("#editForm input[name='adhaar_no']").val(data.marriage_scheme.adhaar_no);
+                    $("#editForm input[name='profession']").val(data.marriage_scheme.profession);
+                    $("#editForm input[name='agriculture']").val(data.marriage_scheme.agriculture);
+                    $("#editForm input[name='caste']").val(data.marriage_scheme.caste);
+                    $("#editForm input[name='ward_no']").val(data.marriage_scheme.ward_no);
+                    $("#ward_id").html(data.wardHtml);
 
-                    $("#editForm select[name='personal_benefit']").val(data.scheme_form.personal_benefit).trigger('change');
-                    var selectedValue = $("#editForm select[name='personal_benefit']").val();
-                    // console.log(selectedValue);
-                    $("#editForm input[name='received_year']").val(data.scheme_form.received_year);
-                    $("#editForm select[name='welfare_schemes']").val(data.scheme_form.welfare_schemes).trigger('change');
-                    $("#editForm select[name='welfare_schemes']").val();
+                    if (data.documents && data.documents.length > 0) {
+                    var documentsHtml = '';
 
-                    $("#editForm select[name='govt_scheme']").val(data.scheme_form.govt_scheme).trigger('change');
-                    $("#editForm select[name='govt_scheme']").val();
+                    $.each(data.documents, function(index, document) {
+                        var documentUrl = "{{ asset('marriage_scheme_file/') }}/" + document.document_file;
+                        var documentName = document.document ? document.document.document_name : '';
 
-                    $("#editForm input[name='poverty_number']").val(data.scheme_form.poverty_number);
-                    $("#editForm input[name='caste']").val(data.scheme_form.caste);
-                    $("#editForm input[name='ward_no']").val(data.scheme_form.ward_no);
-                    $("#editForm input[name='ward_name']").val(data.scheme_form.ward_name);
+
+                        documentsHtml += '<div class="col-md-4 mt-3">';
+                        documentsHtml += '<label class="col-form-label" for="document_name">' + documentName;
+                        if (document.is_required == 1) {
+                            documentsHtml += ' <span class="required">*</span>';
+                        }
+                        documentsHtml += '</label>';
+                        // documentsHtml += '<input type="hidden" name="document_id[]" class="form-control" value="' + document.id + '">';
+                        documentsHtml += '<input type="file" name="document_file[]" class="form-control" multiple>';
+                        documentsHtml += '<a href="' + documentUrl + '" class="btn btn-sm btn-primary" target="_blank"> View Document</a>';
+                        documentsHtml += '<span class="text-danger is-invalid document_file_err"></span>';
+                        documentsHtml += '</div>';
+                    });
+
+                    $("#yourDocumentsContainer").append(documentsHtml);
+                }
 
                 }
                 else
@@ -574,7 +524,7 @@
             var formdata = new FormData(this);
             formdata.append('_method', 'PUT');
             var model_id = $('#edit_model_id').val();
-            var url = "{{ route('scheme_form.update', ":model_id") }}";
+            var url = "{{ route('marriage_scheme.update', ":model_id") }}";
             //
             $.ajax({
                 url: url.replace(':model_id', model_id),
@@ -588,7 +538,7 @@
                     if (!data.error2)
                         swal("Successful!", data.success, "success")
                             .then((action) => {
-                                window.location.href = '{{ route('scheme_form.index') }}';
+                                window.location.href = '{{ route('marriage_scheme.index') }}';
                             });
                     else
                         swal("Error!", data.error2, "error");
@@ -615,17 +565,17 @@
     $("#buttons-datatables").on("click", ".rem-element", function(e) {
         e.preventDefault();
         swal({
-            title: "Are you sure to delete this Disability Application?",
+            title: "Are you sure to delete this Marriage Application?",
             // text: "Make sure if you have filled Vendor details before proceeding further",
             icon: "info",
-            buttons: ["Cancel", "Disability Application"]
+            buttons: ["Cancel", "Marriage Application"]
         })
         .then((justTransfer) =>
         {
             if (justTransfer)
             {
                 var model_id = $(this).attr("data-id");
-                var url = "{{ route('scheme_form.destroy', ":model_id") }}";
+                var url = "{{ route('marriage_scheme.destroy', ":model_id") }}";
 
                 $.ajax({
                     url: url.replace(':model_id', model_id),

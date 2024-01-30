@@ -156,7 +156,7 @@
 
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary" id="addSubmit">Submit</button>
+                            <button type="submit" class="btn btn-primary" id="addSubmit">Submit & Download</button>
                             <button type="reset" class="btn btn-warning">Reset</button>
                         </div>
                     </form>
@@ -304,11 +304,7 @@
 
                             <div class="mb-3 row">
 
-                                <div class="col-md-4 mt-3">
-                                    <label for="formFile" lass="col-form-label"> कृपया हस्ताक्षर केलेली हयातीचा दाखल अपलोड करा / Upload downloaded  live Certificate  <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="file" name="pdfPath" id="pdfPath" required>
-                                <span class="text-danger is-invalid pdfPath_err"></span>
-                            </div>
+
 
                                 <div class="col-md-4 mt-3">
                                     <label for="formFile" lass="col-form-label"> कृपया हस्ताक्षर केलेली हयातीचा दाखल अपलोड करा / Upload Signatured of live Certificate  <span class="text-danger">*</span></label>
@@ -394,63 +390,51 @@
 
 {{-- Add --}}
 <script>
-    $("#addForm").submit(function(e) {
-        e.preventDefault();
-        $("#addSubmit").prop('disabled', true);
+    $("#addForm").submit(function (e) {
+     e.preventDefault();
+     $("#addSubmit").prop('disabled', true);
 
-        var formdata = new FormData(this);
-        $.ajax({
-            url: '{{ route('hayatichaDakhlaform.store') }}',
-            type: 'POST',
-            data: formdata,
-            contentType: false,
-            processData: false,
-            success: function(data)
-            {
-                $("#addSubmit").prop('disabled', false);
-                if (!data.error2)
-                    swal("Successful!", data.success, "success")
-                        .then((action) => {
-                            window.location.href = '{{ route('hayatichaDakhlaform.index') }}';
-                        });
-                else
-                    swal("Error!", data.error2, "error");
-            },
-            statusCode: {
-                422: function(responseObject, textStatus, jqXHR) {
-                    $("#addSubmit").prop('disabled', false);
-                    resetErrors();
-                    printErrMsg(responseObject.responseJSON.errors);
-                },
-                500: function(responseObject, textStatus, errorThrown) {
-                    $("#addSubmit").prop('disabled', false);
-                    swal("Error occured!", "Something went wrong please try again", "error");
-                }
-            }
-        });
+     var formdata = new FormData(this);
+     $.ajax({
+         url: '{{ route('hayatichaDakhlaform.store') }}',
+         type: 'POST',
+         data: formdata,
+         contentType: false,
+         processData: false,
+         success: function (data) {
+             $("#addSubmit").prop('disabled', false);
 
-        function resetErrors() {
-            var form = document.getElementById('addForm');
-            var data = new FormData(form);
-            for (var [key, value] of data) {
-                $('.' + key + '_err').text('');
-                $('#' + key).removeClass('is-invalid');
-                $('#' + key).addClass('is-valid');
-            }
-        }
+             if (!data.error2) {
 
-        function printErrMsg(msg) {
-            $.each(msg, function(key, value) {
-                $('.' + key + '_err').text(value);
-                $('#' + key).addClass('is-invalid');
-                $('#' + key).removeClass('is-valid');
-            });
-        }
+                 swal("Successful!", data.success, "success");
+                 setTimeout(function () {
+                     var iframe = document.createElement('iframe');
+                     iframe.style.display = 'none';
+                     iframe.src = data.file_path;
+                     document.body.appendChild(iframe);
+                     window.open(data.file_path, '_blank');
+                     window.location.reload();
+                 }, 1000);
+             } else {
+                 swal("Error!", data.error2, "error");
+             }
+         },
+         statusCode: {
+             422: function (responseObject, textStatus, jqXHR) {
+                 $("#addSubmit").prop('disabled', false);
+                 resetErrors();
+                 printErrMsg(responseObject.responseJSON.errors);
+             },
+             500: function (responseObject, textStatus, errorThrown) {
+                 $("#addSubmit").prop('disabled', false);
+                 swal("Error occurred!", "Something went wrong, please try again", "error");
+             }
+         }
+     });
+ });
 
-    });
+ </script>
 
-
-</script>
 
 {{-- upload certificate --}}
 
@@ -676,4 +660,59 @@
             }
         });
     });
+</script>
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script>
+    @if(Session::has('message'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.success("{{ session('message') }}");
+    @endif
+
+    @if(Session::has('error'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.error("{{ session('error') }}");
+    @endif
+
+    @if(Session::has('info'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.info("{{ session('info') }}");
+    @endif
+
+    @if(Session::has('warning'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.warning("{{ session('warning') }}");
+    @endif
+</script>
+
+<script type="text/javascript">
+
+    function check()
+    {
+        if (document.getElementById('application_no').value==""
+         || document.getElementById('application_no').value==undefined)
+        {
+            alert ("Please Enter a Application Number");
+            return false;
+        }
+        return true;
+    }
+
 </script>

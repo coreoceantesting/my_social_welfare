@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'registereduser' => [
+            'driver' => 'session',
+            'provider' => 'registeredusers',
+        ],
     ],
 
     /*
@@ -63,6 +68,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'registeredusers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\HayatFormModel::class,
         ],
 
         // 'users' => [

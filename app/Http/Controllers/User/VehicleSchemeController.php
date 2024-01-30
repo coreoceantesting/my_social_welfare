@@ -10,11 +10,12 @@ use App\Models\VehicleScheme;
 use App\Models\VehicleSchemeDocuments_model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class VehicleSchemeController extends Controller
 {
     public function index(){
-        $vehicles = VehicleScheme::latest()->get();
+        $vehicles = VehicleScheme::where('created_by', Auth::user()->id)->latest()->get();
 
         $document = DB::table('document_type_msts')
                         ->where('scheme_id', 8)
