@@ -38,6 +38,7 @@ class UpdateHayatiRequest extends FormRequest
             'signature' => 'nullable',
             'status' => 'nullable',
             'sign_uploaded_live_certificate' => 'nullable',
+            'download_pdf'=>'nullable',
             'pdfPath'=> 'nullable',
 
         ];

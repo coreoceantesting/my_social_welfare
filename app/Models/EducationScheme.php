@@ -10,7 +10,7 @@ class EducationScheme extends BaseModel
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'education_scheme';
+    protected $table = 'trans_education_scheme';
 
     protected $fillable =
     [
@@ -65,5 +65,10 @@ class EducationScheme extends BaseModel
                 ]);
             }
         });
+    }
+
+    public function educationSchemeDocuments()
+    {
+        return $this->hasMany(EducationSchemeDocuments_model::class, 'education_id')->with('document');
     }
 }

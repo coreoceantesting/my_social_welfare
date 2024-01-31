@@ -120,6 +120,8 @@
     <script src="{{ asset('admin/datatables/ajax/libs/pdfmake/0.1.53/vfs_fonts.js') }}"></script>
     <script src="{{ asset('admin/datatables/ajax/libs/jszip/3.1.3/jszip.min.js') }}"></script>
     <script src="{{ asset('admin/js/pages/datatables.init.js') }}"></script>
+
+
 </body>
 
 {{-- AddForm n EditForm Open/Close jquery --}}

@@ -11,7 +11,7 @@ class BusConcession extends BaseModel
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'bus_concession';
+    protected $table = 'trans_bus_concession_scheme';
 
     protected $fillable =
     [
@@ -56,6 +56,11 @@ class BusConcession extends BaseModel
                 ]);
             }
         });
+    }
+
+    public function busConcessionSchemeDocuments()
+    {
+        return $this->hasMany(BusConcessionDocuments_model::class, 'bus_concession_id')->with('document');
     }
 
 }

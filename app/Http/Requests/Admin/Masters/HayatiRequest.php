@@ -41,6 +41,7 @@ class HayatiRequest extends FormRequest
             'signature' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
             'status' => 'nullable',
             'sign_uploaded_live_certificate' => 'nullable',
+            'download_pdf'=>'nullable',
             'pdfPath'=> 'nullable'
 
 

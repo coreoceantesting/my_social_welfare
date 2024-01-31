@@ -10,7 +10,7 @@ class CancerScheme extends BaseModel
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'cancer_schemes';
+    protected $table = 'trans_cancer_scheme';
 
     protected $fillable =
     [

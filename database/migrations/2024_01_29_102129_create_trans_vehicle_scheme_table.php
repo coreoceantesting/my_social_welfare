@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vehicle_schemes', function (Blueprint $table) {
+        Schema::create('trans_vehicle_scheme', function (Blueprint $table) {
             $table->id();
             $table->string('application_no')->unique();
             $table->string('full_name')->nullable();
@@ -29,17 +29,25 @@ return new class extends Migration
             $table->integer('ac_status')->comment('0 => pending, 1 => approve, 2 => reject')->default(0);
             $table->integer('amc_status')->comment('0 => pending, 1 => approve, 2 => reject')->default(0);
             $table->integer('dmc_status')->comment('0 => pending, 1 => approve, 2 => reject')->default(0);
+            $table->unsignedBigInteger('approve_by_hod')->nullable();
             $table->string('hod_approval_date')->nullable();
+            $table->unsignedBigInteger('approve_by_ac')->nullable();
             $table->string('ac_approval_date')->nullable();
+            $table->unsignedBigInteger('approve_by_amc')->nullable();
             $table->string('amc_approval_date')->nullable();
+            $table->unsignedBigInteger('approve_by_dmc')->nullable();
             $table->string('dmc_approval_date')->nullable();
             $table->string('hod_reject_reason')->nullable();
-            $table->string('ac_reject_reason')->nullable();
-            $table->string('amc_reject_reason')->nullable();
-            $table->string('dmc_reject_reason')->nullable();
+            $table->unsignedBigInteger('reject_by_hod')->nullable();
             $table->string('hod_reject_date')->nullable();
+            $table->string('ac_reject_reason')->nullable();
+            $table->unsignedBigInteger('reject_by_ac')->nullable();
             $table->string('ac_reject_date')->nullable();
+            $table->string('amc_reject_reason')->nullable();
+            $table->unsignedBigInteger('reject_by_amc')->nullable();
             $table->string('amc_reject_date')->nullable();
+            $table->string('dmc_reject_reason')->nullable();
+            $table->unsignedBigInteger('reject_by_dmc')->nullable();
             $table->string('dmc_reject_date')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();

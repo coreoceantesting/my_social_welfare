@@ -1,6 +1,6 @@
 <x-admin.layout>
-    <x-slot name="title">Divyang List</x-slot>
-    <x-slot name="heading">Divyang List</x-slot>
+    <x-slot name="title">Hayaticha Dakhla Form List</x-slot>
+    <x-slot name="heading">Hayaticha Dakhla Form List</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
 
@@ -304,6 +304,11 @@
 
                             <div class="mb-3 row">
 
+                                <div class="col-md-4 mt-3">
+                                    <label for="formFile" lass="col-form-label"> upload Downloaded PDF <span class="text-danger">*</span></label>
+                                    <input class="form-control" type="file" name="download_pdf" id="download_pdf" required>
+                                <span class="text-danger is-invalid download_pdf_err"></span>
+                            </div>
 
 
                                 <div class="col-md-4 mt-3">

@@ -27,4 +27,19 @@ class DocumentMst extends BaseModel
         return $this->hasMany(MarriageSchemeDocuments_model::class, 'document_id', 'id');
     }
 
+    public function divyangSchemeDocuments()
+    {
+        return $this->hasMany(DivyangSchemeDocuments_model::class, 'document_id', 'id');
+    }
+
+    public function busConcessionSchemeDocuments()
+    {
+        return $this->hasMany(BusConcessionDocuments_model::class, 'document_id', 'id');
+    }
+
+    public function educationSchemeDocuments()
+    {
+        return $this->hasMany(EducationSchemeDocuments_model::class, 'document_id', 'id');
+    }
+
 }

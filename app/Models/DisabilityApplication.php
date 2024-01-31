@@ -10,7 +10,7 @@ class DisabilityApplication extends BaseModel
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'disability_application';
+    protected $table = 'trans_disability_scheme';
 
     protected $fillable =
     [
@@ -81,4 +81,9 @@ class DisabilityApplication extends BaseModel
         return $this->belongsTo(Ward::class, 'ward_id', 'id');
     }
 
+
+    public function divyangSchemeDocuments()
+    {
+        return $this->hasMany(DivyangSchemeDocuments_model::class, 'divyang_id')->with('document');
+    }
 }

@@ -56,45 +56,58 @@
                 </li>
                 @endif
 
-
-                {{-- <li class="nav-item">
+                @canany(['hod.status'])
+                <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
                         <i class="ri-layout-3-line"></i>
-                        <span data-key="t-layouts">Scheme Form</span>
+                        <span data-key="t-layouts">Divyang Scheme Application</span>
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarLayouts">
                         <ul class="nav nav-sm flex-column">
+
                             <li class="nav-item">
-                                <a href="{{ route('bus_concession.index') }}" class="nav-link" data-key="t-horizontal">Bus Concession Scheme Form</a>
+                                <a href="{{ url('divyang_registration_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending</a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ route('education_scheme.index') }}" class="nav-link" data-key="t-horizontal">Education Scheme Form</a>
+                                <a href="{{ url('divyang_registration_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved</a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ route('women_scheme.index') }}" class="nav-link" data-key="t-horizontal">Women Sewing Scheme Form</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="{{ route('sports_scheme.index') }}" class="nav-link" data-key="t-horizontal">Sports Scheme Form</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="{{ route('cancer_scheme.index') }}" class="nav-link" data-key="t-horizontal">Cancer Scheme Form</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="{{ route('vehicle_scheme.index') }}" class="nav-link" data-key="t-horizontal">Vehicle Scheme Form</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="{{ route('marriage_scheme.index') }}" class="nav-link" data-key="t-horizontal">Marriage Scheme Form</a>
+                                <a href="{{ url('divyang_registration_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected</a>
                             </li>
 
                         </ul>
                     </div>
-                </li> --}}
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
+                        <i class="ri-layout-3-line"></i>
+                        <span data-key="t-layouts">Bus Concession Scheme Application</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarLayouts">
+                        <ul class="nav nav-sm flex-column">
+
+                            <li class="nav-item">
+                                <a href="{{ url('bus_concession_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ url('bus_concession_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ url('bus_concession_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+
+
+                @endcan
+
 
 
 

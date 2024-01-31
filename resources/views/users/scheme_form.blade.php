@@ -104,8 +104,6 @@
                                     <span class="text-danger is-invalid adhaar_no_err"></span>
                                 </div>
 
-
-
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="name">9. Bank Name / बँकेचे नाव <span class="text-danger">*</span></label>
                                     <input class="form-control" id="bank_name" name="bank_name" type="text"  placeholder="Enter Bank Name" value="">
@@ -477,7 +475,9 @@
                                 <span class="text-danger is-invalid  ward_id_err"></span>
                         </div>
 
+                    </div>
 
+                    <div class="mb-3 row" id="yourDocumentsContainer">
 
                     </div>
 
@@ -664,6 +664,30 @@
                     $("#editForm input[name='ward_no']").val(data.scheme_form.ward_no);
                     // $("#editForm input[name='ward_name']").val(data.scheme_form.ward_name);
                     $("#ward_id").html(data.wardHtml);
+
+                    if (data.documents && data.documents.length > 0) {
+                        $("#yourDocumentsContainer").empty();
+                    var documentsHtml = '';
+
+                    $.each(data.documents, function(index, document) {
+                        var documentUrl = "{{ asset('divyang_nodani_file/') }}/" + document.document_file;
+                        var documentName = document.document ? document.document.document_name : '';
+                        documentsHtml += '<div class="col-md-4 mt-3">';
+                        documentsHtml += '<label class="col-form-label" for="document_name">' + documentName;
+                        if (document.is_required == 1) {
+                            documentsHtml += ' <span class="required">*</span>';
+                        }
+                        documentsHtml += '</label>';
+                        // documentsHtml += '<input type="hidden" name="document_id[]" class="form-control" value="' + document.id + '">';
+                        documentsHtml += '<input type="file" name="document_file[]" class="form-control" multiple>';
+                        documentsHtml += '<a href="' + documentUrl + '" class="btn btn-sm btn-primary" target="_blank"> View Document</a>';
+                        documentsHtml += '<span class="text-danger is-invalid document_file_err"></span>';
+                        documentsHtml += '</div>';
+                    });
+
+                    $("#yourDocumentsContainer").append(documentsHtml);
+                }
+
                 }
                 else
                 {

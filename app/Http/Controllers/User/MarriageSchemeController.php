@@ -113,6 +113,7 @@ class MarriageSchemeController extends Controller
         try
         {
             DB::beginTransaction();
+            $marriage_scheme->marriageSchemeDocuments()->delete();
             $marriage_scheme->delete();
             DB::commit();
             return response()->json(['success'=> 'Marriage Scheme deleted successfully!']);

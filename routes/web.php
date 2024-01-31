@@ -34,8 +34,6 @@ Route::middleware(['guest','PreventBackHistory'])->group(function()
 });
 
 
-
-
 // Authenticated users
 Route::middleware(['auth','PreventBackHistory'])->group(function()
 {
@@ -48,8 +46,6 @@ Route::middleware(['auth','PreventBackHistory'])->group(function()
     Route::get('show-change-password', [App\Http\Controllers\Admin\AuthController::class, 'showChangePassword'] )->name('show-change-password');
     Route::post('change-password', [App\Http\Controllers\Admin\AuthController::class, 'changePassword'] )->name('change-password');
 
-
-
     // Masters
     Route::resource('wards', App\Http\Controllers\Admin\Masters\WardController::class );
     Route::resource('category', App\Http\Controllers\Admin\Masters\CategoryController::class );
@@ -58,7 +54,7 @@ Route::middleware(['auth','PreventBackHistory'])->group(function()
     Route::resource('financial', App\Http\Controllers\Admin\Masters\FinancialController::class );
     Route::resource('terms-conditions', App\Http\Controllers\Admin\Masters\TermsAndConditionsController::class );
 
-    // User
+    // User Panel
     Route::get('terms_conditions/{id}', [App\Http\Controllers\Admin\DashboardController::class, 'terms_conditions'])->name('terms_conditions');
     Route::resource('hayatichaDakhlaform', App\Http\Controllers\Admin\Masters\DivyangController::class);
     Route::put('hayatichaDakhlaform/{id}/upload', [App\Http\Controllers\Admin\Masters\DivyangController::class, 'hayatuploadfile' ])->name('hayatichaDakhlaform.upload');
@@ -74,6 +70,17 @@ Route::middleware(['auth','PreventBackHistory'])->group(function()
     Route::resource('cancer_scheme', App\Http\Controllers\User\CancerSchemeController::class);
 
 
+    // Hod Panel
+    // Divyang Scheme Application
+    Route::get('divyang_registration_list/{status}', [App\Http\Controllers\Hod\HodDivyangSchemeController::class, 'divyangRegistrationList']);
+    Route::get('divyang_registration_view/{id}/{status}', [App\Http\Controllers\Hod\HodDivyangSchemeController::class, 'divyangRegistrationView']);
+    Route::post('divyang_application_reject_by_hod/{id}', [App\Http\Controllers\Hod\HodDivyangSchemeController::class, 'rejectDivyangApplication']);
+    Route::get('divyang_application_approve_by_hod/{id}', [App\Http\Controllers\Hod\HodDivyangSchemeController::class, 'approveDivyangApplication']);
+    // Bus Concession Scheme Application
+    Route::get('bus_concession_application_list/{status}', [App\Http\Controllers\Hod\HodBusConcessionSchemeController::class, 'busConcessionApplicationList']);
+    Route::get('bus_concession_application_view/{id}/{status}', [App\Http\Controllers\Hod\HodBusConcessionSchemeController::class, 'busConcessionApplicationView']);
+    Route::post('bus_concession_application_reject_by_hod/{id}', [App\Http\Controllers\Hod\HodBusConcessionSchemeController::class, 'rejectBusConcessionApplication']);
+    Route::get('bus_concession_application_approve_by_hod/{id}', [App\Http\Controllers\Hod\HodBusConcessionSchemeController::class, 'approveBusConcessionApplication']);
 
 
 

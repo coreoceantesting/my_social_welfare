@@ -63,11 +63,14 @@ class BusConcessionSchemeController extends Controller
 
 
     public function edit(BusConcession $bus_concession){
+
+        $bus_concession->load(['busConcessionSchemeDocuments.document']);
         if ($bus_concession)
         {
             $response = [
                 'result' => 1,
                 'bus_concession' => $bus_concession,
+                'documents' => $bus_concession->busConcessionSchemeDocuments,
             ];
         }
         else

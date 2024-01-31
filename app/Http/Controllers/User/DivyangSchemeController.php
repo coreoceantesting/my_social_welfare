@@ -91,7 +91,8 @@ class DivyangSchemeController extends Controller
     public function edit(DisabilityApplication $scheme_form)
     {
         $wards = Ward::latest()->get();
-        $scheme_form->load('wardss')->first();
+        $scheme_form->load(['wardss', 'divyangSchemeDocuments.document']);
+        // $scheme_form->load('wardss')->first();
 
         if ($scheme_form)
         {
@@ -107,6 +108,7 @@ class DivyangSchemeController extends Controller
                 'result' => 1,
                 'scheme_form' => $scheme_form,
                 'wardHtml'=>$wardHtml,
+                'documents' => $scheme_form->divyangSchemeDocuments,
             ];
         }
         else
@@ -137,6 +139,9 @@ class DivyangSchemeController extends Controller
         try
         {
             DB::beginTransaction();
+
+            $scheme_form->divyangSchemeDocuments()->delete();
+
             $scheme_form->delete();
             DB::commit();
             return response()->json(['success'=> 'Disability Application deleted successfully!']);

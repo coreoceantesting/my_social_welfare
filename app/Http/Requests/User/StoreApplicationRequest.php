@@ -50,7 +50,7 @@ class StoreApplicationRequest extends FormRequest
             'poverty_number'=>'required',
             'caste'=>'required',
             'divyang_id'=>'nullable',
-            'document_id'=>'required',
+            'document_id'=>'nullable',
             'document_file'=>'required',
         ];
     }

@@ -11,52 +11,42 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('disability_application', function (Blueprint $table) {
+        Schema::create('trans_bus_concession_scheme', function (Blueprint $table) {
             $table->id();
             $table->string('application_no')->unique();
-            $table->string('ward_no')->nullable();
-            $table->foreignId('ward_id')->constrained('wards');
             $table->string('full_name')->nullable();
             $table->string('full_address')->nullable();
-            $table->string('gender')->nullable();
+            $table->string('dob')->nullable();
             $table->string('age')->nullable();
-            $table->string('father_name')->nullable();
-            $table->string('father_address')->nullable();
             $table->string('contact')->nullable();
-            $table->string('alternate_contact_no')->nullable();
-            $table->string('type_of_disability')->nullable();
-            $table->string('percentage');
-            $table->string('bank_name')->nullable();
-            $table->string('branch_name')->nullable();
-            $table->string('account_no')->nullable();
-            $table->string('ifsc_code');
-            $table->string('authority_name')->nullable();
             $table->string('adhaar_no')->nullable();
-            $table->string('profession')->nullable();
-            $table->string('number_of_family')->nullable();
-            $table->string('agriculture')->nullable();
-            $table->string('personal_benefit')->nullable();
-            $table->string('received_year')->nullable();
-            $table->string('welfare_schemes')->nullable();
-            $table->string('govt_scheme')->nullable();
-            $table->string('poverty_number')->nullable();
-            $table->string('caste')->nullable();
+            $table->string('class_name')->nullable();
+            $table->string('school_name')->nullable();
+            $table->string('type_of_discount')->nullable();
             $table->integer('status')->comment('0 => pending, 1 => approve, 2 => reject')->default(0);
             $table->integer('hod_status')->comment('0 => pending, 1 => approve, 2 => reject')->default(0);
             $table->integer('ac_status')->comment('0 => pending, 1 => approve, 2 => reject')->default(0);
             $table->integer('amc_status')->comment('0 => pending, 1 => approve, 2 => reject')->default(0);
             $table->integer('dmc_status')->comment('0 => pending, 1 => approve, 2 => reject')->default(0);
+            $table->unsignedBigInteger('approve_by_hod')->nullable();
             $table->string('hod_approval_date')->nullable();
+            $table->unsignedBigInteger('approve_by_ac')->nullable();
             $table->string('ac_approval_date')->nullable();
+            $table->unsignedBigInteger('approve_by_amc')->nullable();
             $table->string('amc_approval_date')->nullable();
+            $table->unsignedBigInteger('approve_by_dmc')->nullable();
             $table->string('dmc_approval_date')->nullable();
             $table->string('hod_reject_reason')->nullable();
-            $table->string('ac_reject_reason')->nullable();
-            $table->string('amc_reject_reason')->nullable();
-            $table->string('dmc_reject_reason')->nullable();
+            $table->unsignedBigInteger('reject_by_hod')->nullable();
             $table->string('hod_reject_date')->nullable();
+            $table->string('ac_reject_reason')->nullable();
+            $table->unsignedBigInteger('reject_by_ac')->nullable();
             $table->string('ac_reject_date')->nullable();
+            $table->string('amc_reject_reason')->nullable();
+            $table->unsignedBigInteger('reject_by_amc')->nullable();
             $table->string('amc_reject_date')->nullable();
+            $table->string('dmc_reject_reason')->nullable();
+            $table->unsignedBigInteger('reject_by_dmc')->nullable();
             $table->string('dmc_reject_date')->nullable();
             $table->softDeletes();
             $table->unsignedBigInteger('created_by')->nullable();
@@ -71,6 +61,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('disability_application');
+        Schema::dropIfExists('bus_concession');
     }
 };

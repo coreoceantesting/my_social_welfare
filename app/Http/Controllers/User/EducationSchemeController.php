@@ -63,11 +63,14 @@ class EducationSchemeController extends Controller
 
     public function edit(EducationScheme $education_scheme){
 
+        $education_scheme->load('educationSchemeDocuments.document');
+
         if ($education_scheme)
         {
             $response = [
                 'result' => 1,
                 'education_scheme' => $education_scheme,
+                'documents' => $education_scheme->educationSchemeDocuments,
 
             ];
         }
@@ -85,24 +88,6 @@ class EducationSchemeController extends Controller
             DB::beginTransaction();
             $input = $request->validated();
             $education_scheme->update( Arr::only( $input, EducationScheme::getFillables() ) );
-
-            // $documentTypeIds = $request->input('document_id');
-
-            // if ($request->hasFile("document_file")) {
-            //     $files = $request->file("document_file");
-
-            //     foreach ($files as $key => $file) {
-            //         $documentTypeId = $documentTypeIds[$key];
-            //         $imageName = time() . '_' . $file->getClientOriginalName();
-            //         $file->move('education_scheme_file/', $imageName);
-
-            //         EducationSchemeDocuments_model::where('id', $documentTypeId)
-            //                             ->update([ "document_file" => $imageName]);
-
-
-            //     }
-            // }
-
             DB::commit();
             return response()->json(['success'=> 'Education Scheme updated successfully!']);
         }

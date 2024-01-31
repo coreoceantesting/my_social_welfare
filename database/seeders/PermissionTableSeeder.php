@@ -210,6 +210,12 @@ class PermissionTableSeeder extends Seeder
                 'group' => 'terms-conditions',
             ],
 
+            [
+                'id' => 37,
+                'name' => 'hod.status',
+                'group' => 'hod',
+            ],
+
 
 
         ];

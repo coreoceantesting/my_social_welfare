@@ -10,7 +10,7 @@ class VehicleScheme extends BaseModel
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'vehicle_schemes';
+    protected $table = 'trans_vehicle_scheme';
 
     protected $fillable =
     [

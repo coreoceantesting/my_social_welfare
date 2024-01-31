@@ -114,6 +114,26 @@ class DivyangController extends Controller
 
 
 
+            if ($request->hasFile('download_pdf')) {
+
+                $dpath='sign_uploaded_live_certificate/'.$input['download_pdf'];
+
+                if(File::exists($dpath)){
+
+                    File::delete($dpath);
+                }
+                $dfile = $request->file('download_pdf');
+
+                $dext=$dfile->getClientOriginalName();
+
+                $dfilename=time().'.'.$dext;
+
+                $dfile->move('sign_uploaded_live_certificate/', $dfilename);
+
+                $input['download_pdf'] = $dfilename;
+
+            }
+
 
             if ($request->hasFile('sign_uploaded_live_certificate')) {
 

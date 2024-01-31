@@ -176,7 +176,7 @@
                 </div>
                 <div class="card-body py-2">
                     <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
-                    <div class="mb-3 row" id="yourDocumentsContainer">
+                    <div class="mb-3 row">
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="name"> संपूर्ण नाव</label>
                             <input class="form-control"  type="text"  name="full_name"  value="" placeholder="Enter Full Name ">
@@ -298,13 +298,12 @@
                             <label class="col-form-label" for="ward_id">Ward Name:</label>
                                 <select class="js-example-basic-single" id="ward_id" name="ward_id" >
 
-
                                 </select>
                                 <span class="text-danger is-invalid  ward_id_err"></span>
                         </div>
+                    </div>
 
-
-
+                    <div class="mb-3 row" id="yourDocumentsContainer">
 
                     </div>
                 </div>
@@ -479,13 +478,12 @@
                     $("#ward_id").html(data.wardHtml);
 
                     if (data.documents && data.documents.length > 0) {
+                        $("#yourDocumentsContainer").empty();
                     var documentsHtml = '';
 
                     $.each(data.documents, function(index, document) {
                         var documentUrl = "{{ asset('marriage_scheme_file/') }}/" + document.document_file;
                         var documentName = document.document ? document.document.document_name : '';
-
-
                         documentsHtml += '<div class="col-md-4 mt-3">';
                         documentsHtml += '<label class="col-form-label" for="document_name">' + documentName;
                         if (document.is_required == 1) {
