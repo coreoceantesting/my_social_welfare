@@ -12,18 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('f_name')->after('password');
-            $table->string('m_name')->after('f_name');
-            $table->string('l_name')->after('m_name');
-            $table->string('gender')->after('l_name');
-            $table->string('dob')->after('gender');
-            $table->string('Age')->after('dob');
-            $table->string('father_fname')->after('Age');
-            $table->string('father_mname')->after('father_fname');
-            $table->string('father_lname')->after('father_mname');
-            $table->string('mother_name')->after('father_lname');
-            $table->string('category')->after('mother_name');
-            $table->string('contact')->after('category');
+            $table->string('f_name')->nullable()->after('password');
+            $table->string('m_name')->nullable()->after('f_name');
+            $table->string('l_name')->nullable()->after('m_name');
+            $table->string('gender')->nullable()->after('l_name');
+            $table->string('dob')->nullable()->after('gender');
+            $table->string('Age')->nullable()->after('dob');
+            $table->string('father_fname')->nullable()->after('Age');
+            $table->string('father_mname')->nullable()->after('father_fname');
+            $table->string('father_lname')->nullable()->after('father_mname');
+            $table->string('mother_name')->nullable()->after('father_lname');
+            $table->string('category')->nullable()->after('mother_name');
+            $table->string('contact')->nullable()->after('category');
         });
     }
 
