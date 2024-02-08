@@ -50,6 +50,12 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="dob"> Dob/ वय </label>
+                                    <input class="form-control" id="dob" name="dob" type="date"  onchange="calculateAge()" placeholder="Enter dob">
+                                    <span class="text-danger is-invalid dob_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="Age"> Age/ वय </label>
                                     <input class="form-control" id="age" name="age" type="text"  placeholder="Enter Age">
                                     <span class="text-danger is-invalid age_err"></span>
@@ -542,6 +548,15 @@
 
 
 </x-admin.layout>
+
+<script>
+    function calculateAge() {
+        var dob = new Date(document.getElementById('dob').value);
+        var today = new Date();
+        var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
+        document.getElementById('age').value = age;
+    }
+</script>
 
 
 {{-- Add --}}
