@@ -17,7 +17,6 @@
                         <div class="card-body">
                             <div class="mb-3 row">
                                 <input class="form-control" id="user_id" name="user_id" value="{{ $users->id }}" type="hidden" >
-                                <input class="form-control" id="fy_id" name="fy_id" value="{{ $fy->id }}" type="hidden" >
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="name">First Name/ पहिले नाव </label>
@@ -148,10 +147,7 @@
                                         <span class="text-danger is-invalid  disability_benefit_err"></span>
                                 </div>
 
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="title">Financial Year</label>
-                                    <input class="form-control"   type="text" value="{{ $fy->title }}" readonly >
-                                </div>
+                               
                             </div>
 
                         </div>
