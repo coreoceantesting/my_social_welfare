@@ -15,12 +15,32 @@
     <link href="{{ asset('admin/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
 <style>
-    .card-title {
+    /* .card-title {
     font-size: 23px;
     color: #8c68cd;
     font-weight: bold;
     margin: 0 0 7px 0;
+} */
+
+.form-select {
+    color: #212529;
 }
+
+.form-control {
+    color: #212529;
+}
+
+.card-bg-fill{
+    background-color: #fff;
+}
+
+label {
+    color: #212529;
+}
+.form-control:focus {
+    color: #000;
+}
+
 </style>
 </head>
 
@@ -43,8 +63,7 @@
                                             @csrf
 
                                             <div class="card-header" style="text-align: center;">
-
-                                                <h4 class="card-title">Register Account</h4>
+                                                <h1 style="color: #212529;">Register Account</h1>
                                             </div>
                                             <div class="card-body">
                                                 <div class="mb-3 row">
@@ -84,7 +103,7 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label class="col-form-label" for="initial">Date Of Birth <span class="text-danger">*</span></label>
-                                                        <input class="form-control" id="dob" aria-describedby="dob" name="dob" type="date" placeholder="Select Date Of Birth">
+                                                        <input class="form-control" id="dob" name="dob" type="date" placeholder="Select Date Of Birth">
                                                         <span class="text-danger is-invalid dob_err"></span>
                                                     </div>
                                                     <div class="col-md-4">
@@ -133,7 +152,7 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label class="col-form-label" for="initial">Username <span class="text-danger">*</span></label>
-                                                        <input class="form-control" id="name" name="name" type="text" placeholder="Enter Username">
+                                                        <input class="form-control" id="name" name="name" type="text" placeholder="Enter Username" >
                                                         <span class="text-danger is-invalid name_err"></span>
                                                     </div>
                                                 </div>
