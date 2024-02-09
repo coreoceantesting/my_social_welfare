@@ -49,6 +49,8 @@ class StoreApplicationRequest extends FormRequest
             'govt_scheme'=>'required',
             'poverty_number'=>'required',
             'caste'=>'required',
+            'candidate_signature'=> 'required',
+            'passport_size_photo'=> 'required',
             'divyang_id'=>'nullable',
             'document_id'=>'nullable',
             'document_file'=>'required',

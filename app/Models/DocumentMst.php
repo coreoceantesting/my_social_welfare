@@ -42,4 +42,24 @@ class DocumentMst extends BaseModel
         return $this->hasMany(EducationSchemeDocuments_model::class, 'document_id', 'id');
     }
 
+    public function cancerSchemeDocuments()
+    {
+        return $this->hasMany(CancerSchemeDocuments_model::class, 'document_id', 'id');
+    }
+
+    public function sportsSchemeDocuments()
+    {
+        return $this->hasMany(SportsSchemeDocuments_model::class, 'document_id', 'id');
+    }
+
+    public function vehicleSchemeDocuments()
+    {
+        return $this->hasMany(VehicleSchemeDocuments_model::class, 'document_id', 'id');
+    }
+
+    public function womenSchemeDocuments()
+    {
+        return $this->hasMany(WomenSchemeDocuments_model::class, 'document_id', 'id');
+    }
+
 }

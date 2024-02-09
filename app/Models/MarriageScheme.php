@@ -32,6 +32,8 @@ class MarriageScheme extends BaseModel
            'profession',
            'agriculture',
            'caste',
+           'candidate_signature',
+           'passport_size_photo',
 
     ];
 

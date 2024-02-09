@@ -36,6 +36,7 @@ return new class extends Migration
             $table->unsignedBigInteger('approve_by_amc')->nullable();
             $table->string('amc_approval_date')->nullable();
             $table->unsignedBigInteger('approve_by_dmc')->nullable();
+            $table->string('dmc_sign')->nullable();
             $table->string('dmc_approval_date')->nullable();
             $table->string('hod_reject_reason')->nullable();
             $table->unsignedBigInteger('reject_by_hod')->nullable();

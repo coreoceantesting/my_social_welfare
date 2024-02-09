@@ -23,7 +23,7 @@ class MarriageSchemeController extends Controller
                         ->whereNull('deleted_at')
                         ->orderBy('created_at', 'DESC')
                         ->get();
-        return view('users.marriage_scheme')->with(['marriage'=>$marriage,'wards' => $wards,'document'=>$document]);
+        return view('users.marriage_scheme.marriage_scheme')->with(['marriage'=>$marriage,'wards' => $wards,'document'=>$document]);
     }
 
     public function store(StoreMarriageRequest $request){
@@ -31,6 +31,15 @@ class MarriageSchemeController extends Controller
         {
             DB::beginTransaction();
             $input = $request->validated();
+            if ($request->hasFile('candidate_signature')) {
+                $imagePath = $request->file('candidate_signature')->store('marriage_scheme_file/candidate_signature', 'public');
+                $input['candidate_signature']=$imagePath;
+            }
+
+            if ($request->hasFile('passport_size_photo')) {
+                $imagePath1 = $request->file('passport_size_photo')->store('marriage_scheme_file/passport_size_photo', 'public');
+                $input['passport_size_photo']=$imagePath1;
+            }
             $unique_id = "MAR-SCH".rand(100000,10000000);
             $input['application_no'] = $unique_id;
             $marriage = MarriageScheme::create( Arr::only( $input, MarriageScheme::getFillables() ) );
@@ -124,5 +133,43 @@ class MarriageSchemeController extends Controller
         }
     }
 
+
+    public function generateCertificate($id){
+
+        $data =  DB::table('trans_marriage_scheme AS t1')
+                    ->select('t1.*', 't2.name')
+                    ->leftJoin('wards AS t2', 't2.id', '=', 't1.ward_id')
+                    ->where('t1.id', '=', $id)
+                    ->whereNull('t1.deleted_at')
+                    ->whereNull('t2.deleted_at')
+                    ->orderBy('t1.id', 'DESC')
+                    ->first();
+
+        return view('users.marriage_scheme.generate_certificate', compact('data'));
+    }
+
+
+    public function marriageSchemeApplicationView($id){
+
+        $data =  DB::table('trans_marriage_scheme AS t1')
+                    ->select('t1.*', 't2.name')
+                    ->leftJoin('wards AS t2', 't2.id', '=', 't1.ward_id')
+                    ->where('t1.id', '=', $id)
+                    ->whereNull('t1.deleted_at')
+                    ->whereNull('t2.deleted_at')
+                    ->orderBy('t1.id', 'DESC')
+                    ->first();
+
+
+        $document = DB::table('trans_marriage_scheme_documents AS t1')
+                        ->select('t1.*', 't2.document_name')
+                        ->leftJoin('document_type_msts AS t2', 't2.id', '=', 't1.document_id')
+                        ->whereNull('t1.deleted_at')
+                        ->where('t1.marriage_id',$data->id)
+                        ->get();
+
+      return view('users.marriage_scheme.view', compact('data', 'document'));
+
+    }
 
 }

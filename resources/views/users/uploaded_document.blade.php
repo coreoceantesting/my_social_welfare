@@ -30,13 +30,13 @@
                                     @foreach ($hayat as $key=> $data)
 
                                         <tr>
-                                            @if(isset($data->sign_uploaded_live_certificate))
+                                            {{-- @if(isset($data->sign_uploaded_live_certificate)) --}}
                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{$users->title }}</td>
-                                                <td><a href="{{ asset('sign_uploaded_live_certificate/'.$data->download_pdf)}}" class="btn btn-primary shadow btn-xs sharp me-1" target="_blank"> <i class="fas fa-eye"></i></a></td>
-                                                <td><a href="{{ asset('sign_uploaded_live_certificate/'.$data->sign_uploaded_live_certificate)}}" class="btn btn-primary shadow btn-xs sharp me-1" target="_blank"> <i class="fas fa-eye"></i></a></td>
+                                                <td><a href="{{ asset('pdfs/'.$data->download_pdf) }}" class="btn btn-primary shadow btn-xs sharp me-1"  download><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                                <td>@if(isset($data->sign_uploaded_live_certificate))<a href="{{ asset('sign_uploaded_live_certificate/'.$data->sign_uploaded_live_certificate)}}" class="btn btn-primary shadow btn-xs sharp me-1" target="_blank"> <i class="fas fa-eye"></i></a>@endif</td>
 
-                                                @endif
+                                                {{-- @endif --}}
                                         </tr>
                                     @endforeach
                                     @else

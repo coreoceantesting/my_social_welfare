@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Hod;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\DisabilityApplication;
 use Illuminate\Support\Facades\Auth;
 use App\Models\BusConcession;
 

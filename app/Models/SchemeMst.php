@@ -12,7 +12,7 @@ class SchemeMst extends BaseModel
 
     protected $table = 'scheme_mst';
 
-    protected $fillable = ['scheme_name', 'category_id'];
+    protected $fillable = ['scheme_name', 'scheme_marathi_name', 'category_id'];
 
     public static function booted()
     {

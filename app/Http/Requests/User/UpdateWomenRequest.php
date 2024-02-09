@@ -31,6 +31,8 @@ class UpdateWomenRequest extends FormRequest
             'adhaar_no'=>'required',
             'duration_of_residence'=>'required',
             'details'=>'required',
+            'candidate_signature'=> 'nullable',
+            'passport_size_photo'=> 'nullable',
         ];
     }
 }

@@ -23,6 +23,8 @@ class WomenScheme extends BaseModel
     'adhaar_no',
     'duration_of_residence',
     'details',
+    'candidate_signature',
+    'passport_size_photo',
 ];
 
 public static function booted()
@@ -59,5 +61,10 @@ public static function booted()
     public function wardss()
     {
         return $this->belongsTo(Ward::class, 'ward_id', 'id');
+    }
+
+    public function womenSchemeDocuments()
+    {
+        return $this->hasMany(WomenSchemeDocuments_model::class, 'women_id');
     }
 }

@@ -25,6 +25,8 @@ class VehicleScheme extends BaseModel
        'details',
        'four_wheeler',
        'receipt_no',
+       'candidate_signature',
+       'passport_size_photo',
     ];
 
     public static function booted()
@@ -58,5 +60,9 @@ class VehicleScheme extends BaseModel
         });
     }
 
+    public function vehicleSchemeDocuments()
+    {
+        return $this->hasMany(VehicleSchemeDocuments_model::class, 'vehicle_id');
+    }
 
 }

@@ -22,6 +22,8 @@ class SportsScheme extends BaseModel
     'financial_help',
     'email',
     'school_name',
+    'candidate_signature',
+    'passport_size_photo',
    ];
 
    public static function booted()
@@ -53,5 +55,10 @@ class SportsScheme extends BaseModel
                 ]);
             }
         });
+    }
+
+    public function sportsSchemeDocuments()
+    {
+        return $this->hasMany(SportsSchemeDocuments_model::class, 'sports_id');
     }
 }

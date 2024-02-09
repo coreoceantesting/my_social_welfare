@@ -31,16 +31,8 @@ class UpdateEducationRequest extends FormRequest
             'family_name'=>'required',
             'beneficiary_relationship'=>'required',
             'total_family'=>'required',
-            // 'admission_certificate'=>'nullable',
-            // 'residence_proof'=>'nullable',
-            // 'income_certificate'=>'nullable',
-            // 'academic_certificate'=>'nullable',
-            // 'passbook_copy'=>'nullable',
-            // 'adhaar_no'=>'required',
-            // 'adhaar_copy'=>'nullable',
-            // 'recommendation_letter'=>'nullable',
-            // 'signature'=>'nullable',
-            // 'profile'=>'nullable',
+            'candidate_signature'=> 'nullable',
+            'passport_size_photo'=> 'nullable',
         ];
     }
 }

@@ -34,6 +34,9 @@ class UpdateCancerRequest extends FormRequest
        'type_of_disease'=>'required',
        'diagnosis_date'=>'required',
        'hospital_name'=>'required',
+       'account_no'=>'required',
+       'candidate_signature'=> 'nullable',
+       'passport_size_photo'=> 'nullable',
         ];
     }
 }

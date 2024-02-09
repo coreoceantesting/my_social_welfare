@@ -23,6 +23,8 @@
     <link href="{{ asset('admin/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{{-- toastr --}}
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     @stack('styles')
 </head>
@@ -121,6 +123,8 @@
     <script src="{{ asset('admin/datatables/ajax/libs/jszip/3.1.3/jszip.min.js') }}"></script>
     <script src="{{ asset('admin/js/pages/datatables.init.js') }}"></script>
 
+   {{-- toastr --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 </body>
 
@@ -207,6 +211,59 @@
         $("#uploadContainer").slideDown();
         $("html, body").animate({ scrollTop: 0 }, "slow");
     }
+</script>
+
+<script>
+    @if(Session::has('message'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.success("{{ session('message') }}");
+    @endif
+
+    @if(Session::has('error'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.error("{{ session('error') }}");
+    @endif
+
+    @if(Session::has('info'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.info("{{ session('info') }}");
+    @endif
+
+    @if(Session::has('warning'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.warning("{{ session('warning') }}");
+    @endif
+</script>
+
+<script type="text/javascript">
+
+    function check()
+    {
+        if (document.getElementById('application_no').value==""
+         || document.getElementById('application_no').value==undefined)
+        {
+            alert ("Please Enter a Application Number");
+            return false;
+        }
+        return true;
+    }
+
 </script>
 
 

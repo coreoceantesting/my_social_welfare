@@ -21,7 +21,7 @@ class SportsSchemeController extends Controller
                         ->whereNull('deleted_at')
                         ->orderBy('created_at', 'DESC')
                         ->get();
-        return view('users.sports_scheme')->with(['sports'=>$sports,'document'=>$document]);
+        return view('users.sports_scheme.sports_scheme')->with(['sports'=>$sports,'document'=>$document]);
     }
 
     public function store(StoreSportsRequest $request){
@@ -29,6 +29,17 @@ class SportsSchemeController extends Controller
         {
             DB::beginTransaction();
             $input = $request->validated();
+
+            if ($request->hasFile('candidate_signature')) {
+                $imagePath = $request->file('candidate_signature')->store('sports_scheme_file/candidate_signature', 'public');
+                $input['candidate_signature']=$imagePath;
+            }
+
+            if ($request->hasFile('passport_size_photo')) {
+                $imagePath1 = $request->file('passport_size_photo')->store('sports_scheme_file/passport_size_photo', 'public');
+                $input['passport_size_photo']=$imagePath1;
+            }
+
             $unique_id = "SPO-SCH".rand(100000,10000000);
             $input['application_no'] = $unique_id;
             $sports = SportsScheme::create( Arr::only( $input, SportsScheme::getFillables() ) );
@@ -58,11 +69,13 @@ class SportsSchemeController extends Controller
     }
 
     public function edit(SportsScheme $sports_scheme){
+        $sports_scheme->load(['sportsSchemeDocuments.document']);
         if ($sports_scheme)
         {
             $response = [
                 'result' => 1,
                 'sports_scheme' => $sports_scheme,
+                'documents' => $sports_scheme->sportsSchemeDocuments,
             ];
         }
         else
@@ -102,5 +115,41 @@ class SportsSchemeController extends Controller
         {
             return $this->respondWithAjax($e, 'deleting', 'Sports Scheme');
         }
+    }
+
+    public function generateCertificate($id){
+
+        $data =  DB::table('trans_sports_scheme AS t1')
+                    ->where('t1.id', '=', $id)
+                    ->whereNull('t1.deleted_at')
+                    ->orderBy('t1.id', 'DESC')
+                    ->first();
+
+        return view('users.sports_scheme.generate_certificate', compact('data'));
+    }
+
+    public function sportsSchemeApplicationView($id){
+
+        $data =  DB::table('trans_sports_scheme AS t1')
+                    ->where('t1.id', '=', $id)
+                    ->whereNull('t1.deleted_at')
+                    ->orderBy('t1.id', 'DESC')
+                    ->first();
+
+        $document = DB::table('trans_sports_scheme_documents AS t1')
+                        ->select('t1.*', 't2.document_name')
+                        ->leftJoin('document_type_msts AS t2', 't2.id', '=', 't1.document_id')
+                        ->whereNull('t1.deleted_at')
+                        ->where('t1.sports_id',$data->id)
+                        ->get();
+
+      return view('users.sports_scheme.view', compact('data', 'document'));
+
+    }
+
+    public function sportsSchemeCertificate(){
+
+        return view('users.sports_scheme.sports_scheme_certificate_view');
+
     }
 }

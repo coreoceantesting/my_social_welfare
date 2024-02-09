@@ -21,7 +21,7 @@ class CancerSchemeController extends Controller
                         ->whereNull('deleted_at')
                         ->orderBy('created_at', 'DESC')
                         ->get();
-        return view('users.cancer_scheme')->with(['cancer'=>$cancer,'document'=>$document]);
+        return view('users.cancer_scheme.cancer_scheme')->with(['cancer'=>$cancer,'document'=>$document]);
     }
 
     public function store(StoreCancerRequest $request){
@@ -29,6 +29,17 @@ class CancerSchemeController extends Controller
         {
             DB::beginTransaction();
             $input = $request->validated();
+
+            if ($request->hasFile('candidate_signature')) {
+                $imagePath = $request->file('candidate_signature')->store('cancer_scheme_file/candidate_signature', 'public');
+                $input['candidate_signature']=$imagePath;
+            }
+
+            if ($request->hasFile('passport_size_photo')) {
+                $imagePath1 = $request->file('passport_size_photo')->store('cancer_scheme_file/passport_size_photo', 'public');
+                $input['passport_size_photo']=$imagePath1;
+            }
+
             $unique_id = "CAN-SCH".rand(100000,10000000);
             $input['application_no'] = $unique_id;
             $cancer = CancerScheme::create( Arr::only( $input, CancerScheme::getFillables() ) );
@@ -58,11 +69,15 @@ class CancerSchemeController extends Controller
     }
 
     public function edit(CancerScheme $cancer_scheme){
+
+        $cancer_scheme->load(['cancerSchemeDocuments.document']);
+
         if ($cancer_scheme)
         {
             $response = [
                 'result' => 1,
                 'cancer_scheme' => $cancer_scheme,
+                'documents' => $cancer_scheme->cancerSchemeDocuments,
             ];
         }
         else
@@ -102,5 +117,42 @@ class CancerSchemeController extends Controller
         {
             return $this->respondWithAjax($e, 'deleting', 'Cancer Scheme');
         }
+    }
+
+
+    public function generateCertificate($id){
+
+        $data =  DB::table('trans_cancer_scheme AS t1')
+                    ->where('t1.id', '=', $id)
+                    ->whereNull('t1.deleted_at')
+                    ->orderBy('t1.id', 'DESC')
+                    ->first();
+
+        return view('users.cancer_scheme.generate_certificate', compact('data'));
+    }
+
+    public function cancerSchemeApplicationView($id){
+
+        $data =  DB::table('trans_cancer_scheme AS t1')
+                    ->where('t1.id', '=', $id)
+                    ->whereNull('t1.deleted_at')
+                    ->orderBy('t1.id', 'DESC')
+                    ->first();
+
+        $document = DB::table('trans_cancer_scheme_documents AS t1')
+                        ->select('t1.*', 't2.document_name')
+                        ->leftJoin('document_type_msts AS t2', 't2.id', '=', 't1.document_id')
+                        ->whereNull('t1.deleted_at')
+                        ->where('t1.cancer_id',$data->id)
+                        ->get();
+
+      return view('users.cancer_scheme.view', compact('data', 'document'));
+
+    }
+
+    public function cancerSchemeCertificate(){
+
+        return view('users.cancer_scheme.cancer_scheme_certificate_view');
+
     }
 }

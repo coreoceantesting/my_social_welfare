@@ -23,7 +23,7 @@ class EducationSchemeController extends Controller
                         ->whereNull('deleted_at')
                         ->orderBy('created_at', 'DESC')
                         ->get();
-        return view('users.education_scheme')->with(['education_scheme'=> $education_scheme, 'document'=>$document]);
+        return view('users.education_scheme.education_scheme')->with(['education_scheme'=> $education_scheme, 'document'=>$document]);
     }
 
     public function store(StoreEducationRequest $request){
@@ -31,6 +31,17 @@ class EducationSchemeController extends Controller
         {
             DB::beginTransaction();
             $input = $request->validated();
+
+            if ($request->hasFile('candidate_signature')) {
+                $imagePath = $request->file('candidate_signature')->store('education_scheme_file/candidate_signature', 'public');
+                $input['candidate_signature']=$imagePath;
+            }
+
+            if ($request->hasFile('passport_size_photo')) {
+                $imagePath1 = $request->file('passport_size_photo')->store('education_scheme_file/passport_size_photo', 'public');
+                $input['passport_size_photo']=$imagePath1;
+            }
+
             $unique_id = "EDU-SCH".rand(100000,10000000);
             $input['application_no'] = $unique_id;
             $education =EducationScheme::create( Arr::only( $input, EducationScheme::getFillables() ) );
@@ -87,6 +98,32 @@ class EducationSchemeController extends Controller
         {
             DB::beginTransaction();
             $input = $request->validated();
+
+              if ($request->hasFile('candidate_signature')) {
+                $imagePath = $request->file('candidate_signature')->store('education_scheme_file/candidate_signature', 'public');
+                $input['candidate_signature']=$imagePath;
+            }
+
+            if ($request->hasFile('passport_size_photo')) {
+                $imagePath1 = $request->file('passport_size_photo')->store('education_scheme_file/passport_size_photo', 'public');
+                $input['passport_size_photo']=$imagePath1;
+            }
+
+            if($education_scheme['hod_status'] == 1 && $education_scheme['ac_status'] == 1 && $education_scheme['amc_status'] == 1 && $education_scheme['dmc_status'] == 2
+            || $education_scheme['hod_status'] == 1 && $education_scheme['ac_status'] == 1 && $education_scheme['amc_status'] == 2 && $education_scheme['dmc_status'] == 1
+            || $education_scheme['hod_status'] == 1 && $education_scheme['ac_status'] == 2 && $education_scheme['amc_status'] == 1 && $education_scheme['dmc_status'] == 1
+            || $education_scheme['hod_status'] == 2 && $education_scheme['ac_status'] == 1 && $education_scheme['amc_status'] == 1 && $education_scheme['dmc_status'] == 1
+            || $education_scheme['hod_status'] == 2 && $education_scheme['ac_status'] == 2 && $education_scheme['amc_status'] == 2 && $education_scheme['dmc_status'] == 2
+            || $education_scheme['hod_status'] == 1 && $education_scheme['ac_status'] == 1 && $education_scheme['amc_status'] == 1 && $education_scheme['dmc_status'] == 2
+            || $education_scheme['hod_status'] == 1 && $education_scheme['ac_status'] == 2 && $education_scheme['amc_status'] == 0 && $education_scheme['dmc_status'] == 0
+            || $education_scheme['hod_status'] == 2 && $education_scheme['ac_status'] == 0 && $education_scheme['amc_status'] == 0 && $education_scheme['dmc_status'] == 0
+            || $education_scheme['hod_status'] == 1 && $education_scheme['ac_status'] == 1 && $education_scheme['amc_status'] == 2 && $education_scheme['dmc_status'] == 0)
+            {
+            $education_scheme['hod_status'] = 0;
+            $education_scheme['ac_status']  = 0;
+            $education_scheme['amc_status'] = 0;
+            $education_scheme['dmc_status'] = 0;
+            }
             $education_scheme->update( Arr::only( $input, EducationScheme::getFillables() ) );
             DB::commit();
             return response()->json(['success'=> 'Education Scheme updated successfully!']);
@@ -111,5 +148,53 @@ class EducationSchemeController extends Controller
         {
             return $this->respondWithAjax($e, 'deleting', 'Education Scheme');
         }
+    }
+
+    public function eductationSchemeApplicationView($id){
+
+        $data =  DB::table('trans_education_scheme AS t1')
+                    ->where('t1.id', '=', $id)
+                    ->whereNull('t1.deleted_at')
+                    ->orderBy('t1.id', 'DESC')
+                    ->first();
+
+        $document = DB::table('trans_education_scheme_documents AS t1')
+                        ->select('t1.*', 't2.document_name')
+                        ->leftJoin('document_type_msts AS t2', 't2.id', '=', 't1.document_id')
+                        ->whereNull('t1.deleted_at')
+                        ->where('t1.education_id',$data->id)
+                        ->get();
+
+      return view('users.education_scheme.view', compact('data', 'document'));
+
+    }
+
+    public function generateCertificate($id){
+
+        $data =  DB::table('trans_education_scheme AS t1')
+                    ->where('t1.id', '=', $id)
+                    ->whereNull('t1.deleted_at')
+                    ->orderBy('t1.id', 'DESC')
+                    ->first();
+
+        return view('users.education_scheme.generate_certificate', compact('data'));
+    }
+
+    public function educationSchemeCertificate($id){
+        $data =  DB::table('trans_education_scheme AS t1')
+                    ->where('t1.id', '=', $id)
+                    ->whereNull('t1.deleted_at')
+                    ->orderBy('t1.id', 'DESC')
+                    ->first();
+
+        $document = DB::table('trans_education_scheme_documents AS t1')
+                        ->select('t1.*', 't2.document_name')
+                        ->leftJoin('document_type_msts AS t2', 't2.id', '=', 't1.document_id')
+                        ->whereNull('t1.deleted_at')
+                        ->where('t1.education_id',$data->id)
+                        ->get();
+
+        return view('users.education_scheme.education_scheme_certificate_view', compact('data', 'document'));
+
     }
 }

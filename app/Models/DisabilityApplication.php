@@ -15,6 +15,7 @@ class DisabilityApplication extends BaseModel
     protected $fillable =
     [
         'application_no',
+        'hayat_id',
         'ward_id',
         'ward_no',
         'full_name',
@@ -42,6 +43,8 @@ class DisabilityApplication extends BaseModel
         'govt_scheme',
         'poverty_number',
         'caste',
+        'candidate_signature',
+        'passport_size_photo'
 
     ];
 

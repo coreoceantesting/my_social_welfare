@@ -22,7 +22,7 @@
                                     <select class="js-example-basic-multiple" data-placeholder="--Select Category--" name="category_id[]" multiple>
                                         {{-- <option value="">--Select Category--</option> --}}
                                         @foreach($category as $row)
-                                            <option value="{{ $row->id }}">{{ $row->category_name }}</option>
+                                            <option value="{{ $row->id }}">{{ $row->category_name ?? ''}}</option>
                                             @endforeach
                                     </select>
                                     <span class="text-danger is-invalid category_id_err"></span>
@@ -30,10 +30,18 @@
 
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="scheme_name">Scheme Name <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="scheme_name">Scheme English Name <span class="text-danger">*</span></label>
                                     <input class="form-control" id="scheme_name" name="scheme_name" type="text" placeholder="Enter Scheme Name">
                                     <span class="text-danger is-invalid scheme_name_err"></span>
                                 </div>
+
+                                <div class="col-md-4">
+                                    <label class="col-form-label" for="scheme_marathi_name">Scheme Marathi Name <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="scheme_marathi_name" name="scheme_marathi_name" type="text" placeholder="Enter Scheme Name">
+                                    <span class="text-danger is-invalid scheme_marathi_name_err"></span>
+                                </div>
+
+
                             </div>
 
                         </div>
@@ -75,6 +83,12 @@
                                     <label class="col-form-label" for="scheme_name">Scheme Name <span class="text-danger">*</span></label>
                                     <input class="form-control" id="scheme_name" name="scheme_name" type="text" placeholder="Scheme Name">
                                     <span class="text-danger is-invalid scheme_name_err"></span>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="col-form-label" for="scheme_marathi_name">Scheme Marathi Name <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="scheme_marathi_name" name="scheme_marathi_name" type="text" placeholder="Enter Scheme Name">
+                                    <span class="text-danger is-invalid scheme_marathi_name_err"></span>
                                 </div>
 
                             </div>
@@ -225,6 +239,8 @@
 
                     $("#editForm input[name='edit_model_id']").val(data.scheme.id);
                     $("#editForm input[name='scheme_name']").val(data.scheme.scheme_name);
+                    $("#editForm input[name='scheme_marathi_name']").val(data.scheme.scheme_marathi_name);
+
                     $("#editForm select[name='category_id[]']").html(data.categoryHtml);
 
                 }

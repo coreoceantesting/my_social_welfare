@@ -21,10 +21,35 @@
     font-weight: bold;
     margin: 0 0 7px 0;
 }
+
+.form-select {
+    color: #212529;
+}
+
+.form-control {
+    color: #212529;
+}
+
+.card-bg-fill{
+    background-color: #fff;
+}
+
+label {
+    color: #212529;
+}
+.form-control:focus {
+    color: #000;
+}
+
+
 </style>
 </head>
 
 <body>
+
+
+
+
     <!-- auth-page wrapper -->
     <div class="auth-page-wrapper auth-bg-cover py-5 d-flex justify-content-center align-items-center min-vh-100">
         <div class="bg-overlay"></div>
@@ -95,6 +120,11 @@
                                                 </div>
                                                 <div class="mb-3 row">
                                                     <div class="col-md-4">
+                                                        <label class="col-form-label" for="mobile">Contact Number <span class="text-danger">*</span></label>
+                                                        <input class="form-control" id="mobile" name="mobile" type="text" placeholder="Enter Contact Number">
+                                                        <span class="text-danger is-invalid mobile_err"></span>
+                                                    </div>
+                                                    <div class="col-md-4">
                                                         <label class="col-form-label" for="name">Father First Name <span class="text-danger">*</span></label>
                                                         <input class="form-control" id="father_fname" name="father_fname" type="text" placeholder="Enter Father First Name">
                                                         <span class="text-danger is-invalid father_fname_err"></span>
@@ -104,13 +134,14 @@
                                                         <input class="form-control" id="father_mname" name="father_mname" type="text" placeholder="Enter Father Middle Name">
                                                         <span class="text-danger is-invalid father_mname_err"></span>
                                                     </div>
+
+                                                </div>
+                                                <div class="mb-3 row">
                                                     <div class="col-md-4">
                                                         <label class="col-form-label" for="initial">Father Last Name <span class="text-danger">*</span></label>
                                                         <input class="form-control" id="father_lname" name="father_lname" type="text" placeholder="Enter Father Last Name">
                                                         <span class="text-danger is-invalid father_lname_err"></span>
                                                     </div>
-                                                </div>
-                                                <div class="mb-3 row">
                                                     <div class="col-md-4">
                                                         <label class="col-form-label" for="name">Mother Name <span class="text-danger">*</span></label>
                                                         <input class="form-control" id="mother_name" name="mother_name" type="text" placeholder="Enter Mother Name">
@@ -131,13 +162,14 @@
                                                         </select>
                                                         <span class="text-danger is-invalid category_err"></span>
                                                     </div>
+
+                                                </div>
+                                                <div class="mb-3 row">
                                                     <div class="col-md-4">
                                                         <label class="col-form-label" for="initial">Username <span class="text-danger">*</span></label>
                                                         <input class="form-control" id="name" name="name" type="text" placeholder="Enter Username">
                                                         <span class="text-danger is-invalid name_err"></span>
                                                     </div>
-                                                </div>
-                                                <div class="mb-3 row">
                                                     <div class="col-md-4">
                                                         <label class="col-form-label" for="name"> Password <span class="text-danger">*</span></label>
                                                         <input class="form-control" id="password" name="password" type="password" placeholder="Enter PAssword">
@@ -148,11 +180,7 @@
                                                         <input class="form-control" id="confirm_password" name="confirm_password" type="password" placeholder="Enter Confirm Password">
                                                         <span class="text-danger is-invalid confirm_password_err"></span>
                                                     </div>
-                                                    <div class="col-md-4">
-                                                        <label class="col-form-label" for="mobile">Contact Number <span class="text-danger">*</span></label>
-                                                        <input class="form-control" id="mobile" name="mobile" type="text" placeholder="Enter Contact Number">
-                                                        <span class="text-danger is-invalid mobile_err"></span>
-                                                    </div>
+
                                                 </div>
 
                                             </div>

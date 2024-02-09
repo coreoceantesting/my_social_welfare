@@ -49,6 +49,11 @@ class UpdateApplicationRequest extends FormRequest
             'govt_scheme'=>'required',
             'poverty_number'=>'required',
             'caste'=>'required',
+            'candidate_signature'=> 'nullable',
+            'passport_size_photo'=> 'nullable',
+            // 'divyang_id'=>'nullable',
+            // 'document_id'=>'nullable',
+            // 'document_file'=>'nullable',
 
         ];
     }

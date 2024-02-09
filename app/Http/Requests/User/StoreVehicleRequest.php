@@ -32,8 +32,10 @@ class StoreVehicleRequest extends FormRequest
             'details'=>'required',
             'four_wheeler'=>'nullable',
             'receipt_no'=>'required',
+            'candidate_signature'=> 'required',
+            'passport_size_photo'=> 'required',
             'vehicle_id'=>'nullable',
-            'document_id'=>'required',
+            'document_id'=>'nullable',
             'document_file'=>'required',
         ];
     }

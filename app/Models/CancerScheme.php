@@ -27,6 +27,9 @@ class CancerScheme extends BaseModel
        'type_of_disease',
        'diagnosis_date',
        'hospital_name',
+       'account_no',
+       'candidate_signature',
+       'passport_size_photo',
     ];
 
 
@@ -59,5 +62,10 @@ class CancerScheme extends BaseModel
                 ]);
             }
         });
+    }
+
+    public function cancerSchemeDocuments()
+    {
+        return $this->hasMany(CancerSchemeDocuments_model::class, 'cancer_id')->with('document');
     }
 }

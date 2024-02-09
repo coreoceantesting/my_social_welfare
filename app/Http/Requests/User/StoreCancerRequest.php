@@ -34,8 +34,11 @@ class StoreCancerRequest extends FormRequest
        'type_of_disease'=>'required',
        'diagnosis_date'=>'required',
        'hospital_name'=>'required',
+       'account_no'=>'required',
+       'candidate_signature'=> 'required',
+       'passport_size_photo'=> 'required',
        'cancer_id'=>'nullable',
-       'document_id'=>'required',
+       'document_id'=>'nullable',
        'document_file'=>'required',
         ];
     }

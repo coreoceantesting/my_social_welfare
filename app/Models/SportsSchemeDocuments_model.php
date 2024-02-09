@@ -50,4 +50,9 @@ class SportsSchemeDocuments_model extends BaseModel
             }
         });
     }
+
+    public function document()
+    {
+        return $this->belongsTo(DocumentMst::class, 'document_id', 'id');
+    }
 }

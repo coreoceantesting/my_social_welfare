@@ -24,7 +24,7 @@ class WomenSewingSchemeController extends Controller
                         ->whereNull('deleted_at')
                         ->orderBy('created_at', 'DESC')
                         ->get();
-        return view('users.women_scheme')->with(['women'=>$women,'wards' => $wards,'document'=>$document]);
+        return view('users.women_scheme.women_scheme')->with(['women'=>$women,'wards' => $wards,'document'=>$document]);
     }
 
     public function store(StoreWomenRequest $request){
@@ -32,6 +32,17 @@ class WomenSewingSchemeController extends Controller
         {
             DB::beginTransaction();
             $input = $request->validated();
+
+            if ($request->hasFile('candidate_signature')) {
+                $imagePath = $request->file('candidate_signature')->store('women_scheme_file/candidate_signature', 'public');
+                $input['candidate_signature']=$imagePath;
+            }
+
+            if ($request->hasFile('passport_size_photo')) {
+                $imagePath1 = $request->file('passport_size_photo')->store('women_scheme_file/passport_size_photo', 'public');
+                $input['passport_size_photo']=$imagePath1;
+            }
+
             $unique_id = "WOM-SCH".rand(100000,10000000);
             $input['application_no'] = $unique_id;
             $women = WomenScheme::create( Arr::only( $input, WomenScheme::getFillables() ) );
@@ -63,11 +74,11 @@ class WomenSewingSchemeController extends Controller
     public function edit(WomenScheme $women_scheme){
 
         $wards = Ward::latest()->get();
-        $women_scheme->load('wardss')->first();
+        // $women_scheme->load('wardss')->first();
+        $women_scheme->load(['wardss', 'womenSchemeDocuments.document']);
 
         if ($women_scheme)
         {
-
             $wardHtml = '<span>
             <option value="">--Select Scheme--</option>';
             foreach($wards as $ward):
@@ -80,6 +91,7 @@ class WomenSewingSchemeController extends Controller
                 'result' => 1,
                 'women_scheme' => $women_scheme,
                 'wardHtml'=>$wardHtml,
+                'documents' => $women_scheme->womenSchemeDocuments
             ];
         }
         else
@@ -118,5 +130,50 @@ class WomenSewingSchemeController extends Controller
         {
             return $this->respondWithAjax($e, 'deleting', 'Women Scheme');
         }
+    }
+
+
+    public function womenSchemeApplicationView($id){
+
+        $data =  DB::table('trans_women_scheme AS t1')
+                    ->select('t1.*', 't2.name')
+                    ->leftJoin('wards AS t2', 't2.id', '=', 't1.ward_id')
+                    ->where('t1.id', '=', $id)
+                    ->whereNull('t1.deleted_at')
+                    ->whereNull('t2.deleted_at')
+                    ->orderBy('t1.id', 'DESC')
+                    ->first();
+
+
+        $document = DB::table('trans_women_scheme_documents AS t1')
+                        ->select('t1.*', 't2.document_name')
+                        ->leftJoin('document_type_msts AS t2', 't2.id', '=', 't1.document_id')
+                        ->whereNull('t1.deleted_at')
+                        ->where('t1.women_id',$data->id)
+                        ->get();
+
+      return view('users.women_scheme.view', compact('data', 'document'));
+
+    }
+
+    public function generateCertificate($id){
+
+        $data =  DB::table('trans_women_scheme AS t1')
+                    ->select('t1.*', 't2.name')
+                    ->leftJoin('wards AS t2', 't2.id', '=', 't1.ward_id')
+                    ->where('t1.id', '=', $id)
+                    ->whereNull('t1.deleted_at')
+                    ->whereNull('t2.deleted_at')
+                    ->orderBy('t1.id', 'DESC')
+                    ->first();
+
+        return view('users.women_scheme.generate_certificate', compact('data'));
+    }
+
+
+    public function womenSchemeCertificate(){
+
+        return view('users.women_scheme.women_scheme_certificate_view');
+
     }
 }

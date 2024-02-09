@@ -39,8 +39,10 @@ class StoreMarriageRequest extends FormRequest
             'profession'=>'required',
             'agriculture'=>'required',
             'caste'=>'required',
+            'candidate_signature'=> 'required',
+            'passport_size_photo'=> 'required',
             'marriage_id'=>'nullable',
-            'document_id'=>'required',
+            'document_id'=>'nullable',
             'document_file'=>'required',
         ];
     }

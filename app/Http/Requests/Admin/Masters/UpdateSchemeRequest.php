@@ -23,6 +23,7 @@ class UpdateSchemeRequest extends FormRequest
     {
         return [
             'scheme_name' => 'required',
+            'scheme_marathi_name' => 'required',
             'category_id' => 'nullable',
         ];
     }

@@ -25,6 +25,8 @@ class BusConcession extends BaseModel
     'class_name',
     'school_name',
     'type_of_discount',
+    'candidate_signature',
+    'passport_size_photo',
     ];
 
     public static function booted()

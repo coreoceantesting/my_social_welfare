@@ -27,16 +27,14 @@ class StoreBusConcessionRequest extends FormRequest
             'dob'=>'required',
             'age'=>'required',
             'contact'=>'required',
-            // 'id_proof'=>'required',
             'adhaar_no'=>'required',
-            // 'adhaar_copy'=>'required',
             'class_name'=>'required',
             'school_name'=>'required',
-            // 'admission_certificate'=>'required',
             'type_of_discount'=>'required',
-            // 'disability_certificate'=>'nullable'
+            'candidate_signature'=> 'required',
+            'passport_size_photo'=> 'required',
             'bus_concession_id'=>'nullable',
-            'document_id'=>'required',
+            'document_id'=>'nullable',
             'document_file'=>'required',
         ];
     }

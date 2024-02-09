@@ -27,14 +27,13 @@ class UpdateBusConcessionRequest extends FormRequest
             'dob'=>'required',
             'age'=>'required',
             'contact'=>'required',
-            // 'id_proof'=>'nullable',
             'adhaar_no'=>'required',
-            // 'adhaar_copy'=>'nullable',
             'class_name'=>'required',
             'school_name'=>'required',
-            // 'admission_certificate'=>'nullable',
             'type_of_discount'=>'required',
-            // 'disability_certificate'=>'nullable'
+            'candidate_signature'=> 'nullable',
+            'passport_size_photo'=> 'nullable',
+
         ];
     }
 }

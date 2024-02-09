@@ -22,7 +22,7 @@ class VehicleSchemeController extends Controller
                         ->whereNull('deleted_at')
                         ->orderBy('created_at', 'DESC')
                         ->get();
-        return view('users.vehicle')->with(['vehicles'=>$vehicles,'document'=>$document]);
+        return view('users.vehicle_scheme.vehicle_scheme')->with(['vehicles'=>$vehicles,'document'=>$document]);
     }
 
     public function store(StoreVehicleRequest $request){
@@ -30,6 +30,17 @@ class VehicleSchemeController extends Controller
         {
             DB::beginTransaction();
             $input = $request->validated();
+
+            if ($request->hasFile('candidate_signature')) {
+                $imagePath = $request->file('candidate_signature')->store('vehicle_scheme_file/candidate_signature', 'public');
+                $input['candidate_signature']=$imagePath;
+            }
+
+            if ($request->hasFile('passport_size_photo')) {
+                $imagePath1 = $request->file('passport_size_photo')->store('vehicle_scheme_file/passport_size_photo', 'public');
+                $input['passport_size_photo']=$imagePath1;
+            }
+
             $unique_id = "VEH-SCH".rand(100000,10000000);
             $input['application_no'] = $unique_id;
             $vehicle_scheme = VehicleScheme::create( Arr::only( $input, VehicleScheme::getFillables() ) );
@@ -60,11 +71,15 @@ class VehicleSchemeController extends Controller
     }
 
     public function edit(VehicleScheme $vehicle_scheme){
+
+        $vehicle_scheme->load(['vehicleSchemeDocuments.document']);
+
         if ($vehicle_scheme)
         {
             $response = [
                 'result' => 1,
                 'vehicle_scheme' => $vehicle_scheme,
+                'documents' => $vehicle_scheme->vehicleSchemeDocuments,
             ];
         }
         else
@@ -105,6 +120,44 @@ class VehicleSchemeController extends Controller
         {
             return $this->respondWithAjax($e, 'deleting', 'Vehicle Scheme');
         }
+    }
+
+
+    public function generateCertificate($id){
+
+        $data =  DB::table('trans_vehicle_scheme AS t1')
+                    ->where('t1.id', '=', $id)
+                    ->whereNull('t1.deleted_at')
+                    ->orderBy('t1.id', 'DESC')
+                    ->first();
+
+        return view('users.vehicle_scheme.generate_certificate', compact('data'));
+    }
+
+
+    public function vehicleSchemeApplicationView($id){
+
+        $data =  DB::table('trans_vehicle_scheme AS t1')
+                    ->where('t1.id', '=', $id)
+                    ->whereNull('t1.deleted_at')
+                    ->orderBy('t1.id', 'DESC')
+                    ->first();
+
+        $document = DB::table('trans_vehicle_scheme_documents AS t1')
+                        ->select('t1.*', 't2.document_name')
+                        ->leftJoin('document_type_msts AS t2', 't2.id', '=', 't1.document_id')
+                        ->whereNull('t1.deleted_at')
+                        ->where('t1.vehicle_id',$data->id)
+                        ->get();
+
+      return view('users.vehicle_scheme.view', compact('data', 'document'));
+
+    }
+
+    public function vehicleSchemeCertificate(){
+
+        return view('users.vehicle_scheme.vehicle_scheme_certificate_view');
+
     }
 
 }

@@ -32,6 +32,8 @@ class UpdateVehicleRequest extends FormRequest
             'details'=>'required',
             'four_wheeler'=>'nullable',
             'receipt_no'=>'required',
+            'candidate_signature'=> 'nullable',
+            'passport_size_photo'=> 'nullable',
 
         ];
     }

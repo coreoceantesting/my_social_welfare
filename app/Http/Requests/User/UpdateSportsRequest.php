@@ -30,6 +30,8 @@ class UpdateSportsRequest extends FormRequest
             'financial_help'=>'required',
             'email'=>'required',
             'school_name'=>'required',
+            'candidate_signature'=> 'nullable',
+            'passport_size_photo'=> 'nullable',
         ];
     }
 }

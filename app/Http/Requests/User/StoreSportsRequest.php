@@ -30,8 +30,10 @@ class StoreSportsRequest extends FormRequest
             'financial_help'=>'required',
             'email'=>'required',
             'school_name'=>'required',
+            'candidate_signature'=> 'required',
+            'passport_size_photo'=> 'required',
             'sports_id'=>'nullable',
-            'document_id'=>'required',
+            'document_id'=>'nullable',
             'document_file'=>'required',
         ];
     }

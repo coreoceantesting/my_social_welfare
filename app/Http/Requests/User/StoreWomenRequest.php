@@ -31,8 +31,10 @@ class StoreWomenRequest extends FormRequest
             'adhaar_no'=>'required',
             'duration_of_residence'=>'required',
             'details'=>'required',
+            'candidate_signature'=> 'required',
+            'passport_size_photo'=> 'required',
             'women_id'=>'nullable',
-            'document_id'=>'required',
+            'document_id'=>'nullable',
             'document_file'=>'required',
         ];
     }

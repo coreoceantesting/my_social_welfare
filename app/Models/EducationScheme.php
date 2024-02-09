@@ -24,16 +24,9 @@ class EducationScheme extends BaseModel
         'family_name',
         'beneficiary_relationship',
         'total_family',
-        // 'admission_certificate',
-        // 'residence_proof',
-        // 'income_certificate',
-        // 'academic_certificate',
-        // 'passbook_copy',
         'adhaar_no',
-        // 'adhaar_copy',
-        // 'recommendation_letter',
-        // 'signature',
-        // 'profile',
+        'candidate_signature',
+        'passport_size_photo',
     ];
 
     public static function booted()

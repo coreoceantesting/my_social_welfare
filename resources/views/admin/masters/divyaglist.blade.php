@@ -35,11 +35,8 @@
                                     <span class="text-danger is-invalid name_err"></span>
                                 </div>
 
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">Flat No./House No./ building No. /Company No/ Apartmen /फ्लॅट क्रमांक/घर क्रमांक/ इमारत क्रमांक/कंपनी क्रमांक/ अपार्टमेंट <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="house_no" name="house_no" type="text" placeholder="Enter House No">
-                                    <span class="text-danger is-invalid name_err"></span>
-                                </div>
+
+
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="name">Area / Street / क्षेत्र / रस्ता</label>
@@ -52,6 +49,8 @@
                                     <input class="form-control" id="landmark" name="landmark" type="text" placeholder="Enter Landmark">
                                     <span class="text-danger is-invalid name_err"></span>
                                 </div>
+
+
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="email"> Pincode / पिन कोड <span class="text-danger">*</span></label>
@@ -70,6 +69,8 @@
                                     <input class="form-control" id="state" name="state" type="text" value="Maharashtra" readonly >
                                     <span class="text-danger is-invalid name_err"></span>
                                 </div>
+
+
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="mobile">User Contact Number / वापरकर्ता संपर्क क्रमांक </label>
@@ -91,8 +92,10 @@
                                     <span class="text-danger is-invalid bank_name_err"></span>
                                 </div>
 
+
+
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="branch_name">Branch Name / बँकेचे नाव <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="branch_name">Branch Name / शाखा नाव <span class="text-danger">*</span></label>
                                     <input class="form-control" id="branch_name" name="branch_name" type="text" value="" >
                                     <span class="text-danger is-invalid branch_name_err"></span>
                                 </div>
@@ -112,14 +115,19 @@
 
 
                                 <div class="col-md-4 mt-3">
-                                        <label for="formFile" lass="col-form-label">Upload Signature / thumb <span class="text-danger">*</span></label>
+                                        <label for="formFile" lass="col-form-label">Upload Signature / thumb /अर्जदाराची सही / अगंठा <span class="text-danger">*</span></label>
                                         <input class="form-control" type="file" name="signature" id="signature">
                                     <span class="text-danger is-invalid signature_err"></span>
                                 </div>
+                                <div class="col-md-12 mb-3">
+                                    <label class="col-form-label" for="name">Flat No./House No./ building No. / Apartmen /फ्लॅट क्रमांक/घर क्रमांक/ इमारत क्रमांक/कंपनी क्रमांक/ अपार्टमेंट <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="house_no" name="house_no" type="text" placeholder="Enter House No">
+                                    <span class="text-danger is-invalid name_err"></span>
+                                </div>
 
 
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="medical_benefit">Medical Benefit : </label>
+                                <div class="col-md-12 mb-5">
+                                    <label class="col-form-label" for="medical_benefit">मी प्रतिज्ञापत्रावर जाहीर करतो/करते की, दि. / २० अखेर सपंणाऱ्या कालावधीत मी कोणतीही सरकारी/निमसरकारी व लष्करी नोकरी करुन त्याबद्दल मोहबदला घेतला नाही. तसेच वरील अल्पावधीत केंद्र शासनाच्या वैद्यकीय सुविधांचा लाभ घेतलेला आहे/ नाही : </label>
                                         <select class="js-example-basic-single" name="medical_benefit" >
                                             <option value="">--Select--</option>
                                             <option value="yes">Yes</option>
@@ -128,8 +136,8 @@
                                         <span class="text-danger is-invalid  medical_benefit_err"></span>
                                 </div>
 
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="govt_benefit">Government Benefit : </label>
+                                <div class="col-md-12 mb-3">
+                                    <label class="col-form-label" for="govt_benefit">मी प्रतिज्ञेवर लिहुन देतो/देते की, मला दोन शासकीय लाभ मिळत नाही/मिळत आहेत. त्यांचा तपशिल जोडत आहे. </label>
                                         <select class="js-example-basic-single" name="govt_benefit" >
                                             <option value="">--Select--</option>
                                             <option value="yes">Yes</option>
@@ -138,8 +146,10 @@
                                         <span class="text-danger is-invalid  govt_benefit_err"></span>
                                 </div>
 
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="disability_benefit">Disability Benefit : </label>
+
+
+                                <div class="col-md-12 mt-3">
+                                    <label class="col-form-label" for="disability_benefit">I write on the affidavit that I have / have not received Disability Fund Benefit in the past./ मी प्रतिज्ञेवर लिहुन देतो/देते की, मला यापूर्वी दिव्यांग निधी लाभ प्राप्त झाले आहे / नाही.</label>
                                         <select class="js-example-basic-single" name="disability_benefit" >
                                             <option value="">--Select--</option>
                                             <option value="yes">Yes</option>
@@ -149,11 +159,11 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="title">Financial Year</label>
-                                    <input class="form-control"   type="text" value="{{ $fy->title }}" readonly >
+                                    {{-- <label class="col-form-label" for="title">Financial Year</label> --}}
+                                    <input class="form-control"   type="hidden" value="{{ $fy->title }}" readonly >
                                 </div>
-                            </div>
 
+                            </div>
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary" id="addSubmit">Submit & Download</button>
@@ -268,10 +278,44 @@
                                     <span class="text-danger is-invalid ifsc_code_err"></span>
                                 </div>
 
+
                                 <div class="col-md-4 mt-3">
                                         <label for="formFile" lass="col-form-label">Upload Signature / thumb <span class="text-danger">*</span></label>
                                         <input class="form-control" type="file" name="signature" id="signature">
+                                        <a class="btn btn-sm btn-primary" id="signature" target="_blank" href="" >View Document</a>
                                     <span class="text-danger is-invalid signature_err"></span>
+                                </div>
+
+                                <div class="col-md-12 mb-5">
+                                    <label class="col-form-label" for="medical_benefit">मी प्रतिज्ञापत्रावर जाहीर करतो/करते की, दि. / २० अखेर सपंणाऱ्या कालावधीत मी कोणतीही सरकारी/निमसरकारी व लष्करी नोकरी करुन त्याबद्दल मोहबदला घेतला नाही. तसेच वरील अल्पावधीत केंद्र शासनाच्या वैद्यकीय सुविधांचा लाभ घेतलेला आहे/ नाही : </label>
+                                        <select class="js-example-basic-single" name="medical_benefit" >
+                                            <option value="">--Select--</option>
+                                            <option value="yes">Yes</option>
+                                          <option value="no">No</option>
+                                        </select>
+                                        <span class="text-danger is-invalid  medical_benefit_err"></span>
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <label class="col-form-label" for="govt_benefit">मी प्रतिज्ञेवर लिहुन देतो/देते की, मला दोन शासकीय लाभ मिळत नाही/मिळत आहेत. त्यांचा तपशिल जोडत आहे. </label>
+                                        <select class="js-example-basic-single" name="govt_benefit" >
+                                            <option value="">--Select--</option>
+                                            <option value="yes">Yes</option>
+                                          <option value="no">No</option>
+                                        </select>
+                                        <span class="text-danger is-invalid  govt_benefit_err"></span>
+                                </div>
+
+
+
+                                <div class="col-md-12 mt-3">
+                                    <label class="col-form-label" for="disability_benefit">I write on the affidavit that I have / have not received Disability Fund Benefit in the past./ मी प्रतिज्ञेवर लिहुन देतो/देते की, मला यापूर्वी दिव्यांग निधी लाभ प्राप्त झाले आहे / नाही.</label>
+                                        <select class="js-example-basic-single" name="disability_benefit" >
+                                            <option value="">--Select--</option>
+                                            <option value="yes">Yes</option>
+                                          <option value="no">No</option>
+                                        </select>
+                                        <span class="text-danger is-invalid  disability_benefit_err"></span>
                                 </div>
 
 
@@ -304,16 +348,16 @@
 
                             <div class="mb-3 row">
 
-                                <div class="col-md-4 mt-3">
+                                {{-- <div class="col-md-4 mt-3">
                                     <label for="formFile" lass="col-form-label"> upload Downloaded PDF <span class="text-danger">*</span></label>
                                     <input class="form-control" type="file" name="download_pdf" id="download_pdf" required>
                                 <span class="text-danger is-invalid download_pdf_err"></span>
-                            </div>
+                            </div> --}}
 
 
                                 <div class="col-md-4 mt-3">
                                     <label for="formFile" lass="col-form-label"> कृपया हस्ताक्षर केलेली हयातीचा दाखल अपलोड करा / Upload Signatured of live Certificate  <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="file" name="sign_uploaded_live_certificate" id="sign_uploaded_live_certificate" required>
+                                    <input class="form-control" type="file" name="sign_uploaded_live_certificate" id="sign_uploaded_live_certificate">
                                 <span class="text-danger is-invalid sign_uploaded_live_certificate_err"></span>
                             </div>
 
@@ -350,10 +394,11 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Contact</th>
-                                        <th>Category</th>
+                                        {{-- <th>Category</th> --}}
                                         <th>Age</th>
                                         <th>Bank Name</th>
                                         <th>Action</th>
+                                        <th>Upload Signatured of live Certificate</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -364,15 +409,16 @@
                                             {{-- @foreach ($users as $key=> $data1) --}}
                                                 <td>{{$users->f_name}} {{$users->m_name}} {{$users->l_name}}</td>
                                                 <td>{{$users->contact}}</td>
-                                                <td>{{$users->category}}</td>
+                                                {{-- <td>{{$users->category}}</td> --}}
                                                 <td>{{$users->Age}}</td>
                                                 <td>{{ $data->bank_name }}</td>
 
                                             <td>
                                                 <button class="edit-element btn text-secondary px-2 py-1" title="Edit live certificate" data-id="{{ $data->h_id }}"><i data-feather="edit"></i></button>
                                                 <button class="btn text-danger rem-element px-2 py-1" title="Delete live certificate" data-id="{{ $data->h_id }}"><i data-feather="trash-2"></i> </button>
-                                                <button class="upload-element btn text-success px-2 py-1" title="Upload live certificate" data-id="{{ $data->h_id }}"><i data-feather="upload"></i> </button>
+
                                             </td>
+                                            <td> <button class="upload-element btn text-success px-2 py-1" title="Upload live certificate" data-id="{{ $data->h_id }}"><i data-feather="upload"></i> </button></td>
                                         </tr>
                                     @endforeach
                                     @else
@@ -509,9 +555,13 @@
                     $("#editForm input[name='bank_name']").val(data.hayatichaDakhlaform.bank_name);
                     $("#editForm input[name='account_no']").val(data.hayatichaDakhlaform.account_no);
                     $("#editForm input[name='ifsc_code']").val(data.hayatichaDakhlaform.ifsc_code);
-                    $("#editForm input[name='signature']").val(data.hayatichaDakhlaform.signature);
-                    $('#medical_benefit :selected').text();
-
+                    $("#editForm a#signature").attr('href', "{{ asset('storage/') }}/" + data.hayatichaDakhlaform.signature);
+                    $("#editForm select[name='medical_benefit']").val(data.hayatichaDakhlaform.medical_benefit).trigger('change');
+                    var selectedValue = $("#editForm select[name='medical_benefit']").val();
+                    $("#editForm select[name='govt_benefit']").val(data.hayatichaDakhlaform.govt_benefit).trigger('change');
+                    $("#editForm select[name='govt_benefit']").val();
+                    $("#editForm select[name='disability_benefit']").val(data.hayatichaDakhlaform.disability_benefit).trigger('change');
+                    $("#editForm select[name='disability_benefit']").val();
 
                 }
                 else
@@ -667,57 +717,5 @@
     });
 </script>
 
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<script>
-    @if(Session::has('message'))
-    toastr.options =
-    {
-        "closeButton" : true,
-        "progressBar" : true
-    }
-            toastr.success("{{ session('message') }}");
-    @endif
 
-    @if(Session::has('error'))
-    toastr.options =
-    {
-        "closeButton" : true,
-        "progressBar" : true
-    }
-            toastr.error("{{ session('error') }}");
-    @endif
 
-    @if(Session::has('info'))
-    toastr.options =
-    {
-        "closeButton" : true,
-        "progressBar" : true
-    }
-            toastr.info("{{ session('info') }}");
-    @endif
-
-    @if(Session::has('warning'))
-    toastr.options =
-    {
-        "closeButton" : true,
-        "progressBar" : true
-    }
-            toastr.warning("{{ session('warning') }}");
-    @endif
-</script>
-
-<script type="text/javascript">
-
-    function check()
-    {
-        if (document.getElementById('application_no').value==""
-         || document.getElementById('application_no').value==undefined)
-        {
-            alert ("Please Enter a Application Number");
-            return false;
-        }
-        return true;
-    }
-
-</script>

@@ -56,6 +56,8 @@ class DivyangController extends Controller
 
            if (file_exists($filePath)) {
             $url = asset('pdfs/' . $fileName);
+            HayatFormModel::where('h_id', $hayatForm->h_id)->update(['download_pdf' => $fileName]);
+
                return response()->json(['success' => 'Life certificate Form submitted successfully!', 'data' => $hayatForm , 'file_path' =>  $url]);
            } else {
                throw new \Exception('Failed to save the PDF file.');
@@ -112,27 +114,6 @@ class DivyangController extends Controller
 
             }
 
-
-
-            if ($request->hasFile('download_pdf')) {
-
-                $dpath='sign_uploaded_live_certificate/'.$input['download_pdf'];
-
-                if(File::exists($dpath)){
-
-                    File::delete($dpath);
-                }
-                $dfile = $request->file('download_pdf');
-
-                $dext=$dfile->getClientOriginalName();
-
-                $dfilename=time().'.'.$dext;
-
-                $dfile->move('sign_uploaded_live_certificate/', $dfilename);
-
-                $input['download_pdf'] = $dfilename;
-
-            }
 
 
             if ($request->hasFile('sign_uploaded_live_certificate')) {
@@ -212,6 +193,10 @@ class DivyangController extends Controller
     }
 
 
+    public function pdf(){
+
+        return view('admin.masters.pdf');
+    }
 
 
 }

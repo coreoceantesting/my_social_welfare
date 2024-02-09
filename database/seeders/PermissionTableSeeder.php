@@ -212,10 +212,27 @@ class PermissionTableSeeder extends Seeder
 
             [
                 'id' => 37,
-                'name' => 'hod.status',
+                'name' => 'hod.application',
                 'group' => 'hod',
             ],
 
+            [
+                'id' => 38,
+                'name' => 'ac.application',
+                'group' => 'ac',
+            ],
+
+            [
+                'id' => 39,
+                'name' => 'amc.application',
+                'group' => 'amc',
+            ],
+
+            [
+                'id' => 40,
+                'name' => 'dmc.application',
+                'group' => 'amc',
+            ],
 
 
         ];

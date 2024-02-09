@@ -15,7 +15,7 @@
                             <div class="mb-3 row">
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">1. Name of disabled person/ दिव्यांग व्यक्‍तीचे नाव</label>
+                                    <label class="col-form-label" for="name">1. Full Name/संपूर्ण नाव</label>
                                     <input class="form-control"  type="text"  name="full_name"  value="{{ $data->full_name }}" readonly>
                                 </div>
 
@@ -80,7 +80,7 @@
                                     <label class="col-md-3"></label>
                                     <div class="col-md-9" style="display: flex; justify-content: flex-end;">
                                         <a href="{{ url('bus_concession_application_list/0') }}"><button type="button"  class="btn btn-danger">Cancel</button></a>&nbsp;&nbsp;
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rejectModal" >Reject</button>&nbsp;&nbsp;
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#rejectModal">Reject</button>&nbsp;&nbsp;
 
                                         <!-- <button type="button" class="btn btn-success waves-effect m-r-20" data-toggle="modal" data-target="#largeModal">Approve</button> -->
                                         <a href="{{ url('bus_concession_application_approve_by_hod/'.$data->id) }}"><button  type="button" class="btn btn-success">Approve </button> </a>
@@ -91,7 +91,7 @@
                                     <label class="col-md-3"></label>
                                     <div class="col-md-9" style="display: flex; justify-content: flex-end;">
                                         <a href="{{ url('bus_concession_application_list/1') }}"><button type="button"  class="btn btn-danger">Cancel</button></a>&nbsp;&nbsp;
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rejectModal">Reject</button>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#rejectModal">Reject</button>
                                     </div>
                                 </div>
                             <?php } elseif($data->hod_status == 2){ ?>
@@ -110,8 +110,8 @@
             </div>
         </div>
 
-        <div class="modal fade" id="rejectModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
+        <div class="modal fade" id="rejectModal" tabindex="-1" aria-labelledby="rejectModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="title text-danger" id="largeModalLabel">Reject By Hod</h4>
@@ -145,8 +145,7 @@
 
 </x-admin.layout>
 
-{{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
+
 
 
 

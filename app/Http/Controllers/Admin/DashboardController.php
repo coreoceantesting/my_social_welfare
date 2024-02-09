@@ -16,7 +16,7 @@ class DashboardController extends Controller
     {
 
        $scheme = DB::table('scheme_mst as t1')
-                        ->select('t1.scheme_name', 't1.id')
+                        ->select('t1.*')
                         ->leftJoin('category_mst as t2', function ($join) {
                             $join->on(DB::raw('FIND_IN_SET(t2.id, t1.category_id)'), '>', DB::raw('0'));
                         })

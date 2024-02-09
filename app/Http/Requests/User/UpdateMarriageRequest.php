@@ -39,6 +39,8 @@ class UpdateMarriageRequest extends FormRequest
             'profession'=>'required',
             'agriculture'=>'required',
             'caste'=>'required',
+            'candidate_signature'=> 'nullable',
+            'passport_size_photo'=> 'nullable',
         ];
     }
 }
