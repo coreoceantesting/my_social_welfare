@@ -115,7 +115,7 @@
 
                                 <div class="col-md-4 mt-3">
                                         <label for="formFile" lass="col-form-label">Upload Signature / thumb /अर्जदाराची सही / अगंठा <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="file" name="signature" id="signature">
+                                        <input class="form-control" type="file" name="signature" id="signature" accept=".png, .jpg, .jpeg">
                                     <span class="text-danger is-invalid signature_err"></span>
                                 </div>
                                 <div class="col-md-12 mb-3">
@@ -280,7 +280,7 @@
 
                                 <div class="col-md-4 mt-3">
                                         <label for="formFile" lass="col-form-label">Upload Signature / thumb <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="file" name="signature" id="signature">
+                                        <input class="form-control" type="file" name="signature" id="signature" accept=".png, .jpg, .jpeg">
                                         <a class="btn btn-sm btn-primary" id="signature" target="_blank" href="" >View Document</a>
                                     <span class="text-danger is-invalid signature_err"></span>
                                 </div>

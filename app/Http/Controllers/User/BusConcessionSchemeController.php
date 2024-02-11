@@ -11,21 +11,62 @@ use App\Models\BusConcessionDocuments_model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\HayatFormModel;
 
 
 class BusConcessionSchemeController extends Controller
 {
-    public function index(){
-        $bus_concession = BusConcession::where('created_by', Auth::user()->id)->latest()->get();
+    // public function index(){
+    //     $bus_concession = BusConcession::where('created_by', Auth::user()->id)->latest()->get();
 
-        $document = DB::table('document_type_msts')
-                        ->where('scheme_id', 2)
-                        ->whereNull('deleted_at')
-                        ->orderBy('created_at', 'DESC')
-                        ->get();
+    //     $document = DB::table('document_type_msts')
+    //                     ->where('scheme_id', 2)
+    //                     ->whereNull('deleted_at')
+    //                     ->orderBy('created_at', 'DESC')
+    //                     ->get();
 
-        return view('users.bus_concession.bus_concession')->with(['bus_concession'=> $bus_concession, 'document'=>$document]);
+    //     return view('users.bus_concession.bus_concession')->with(['bus_concession'=> $bus_concession, 'document'=>$document]);
+    // }
+
+    public function index() {
+        $userCategory = Auth::user()->category;
+        if ($userCategory == 1 || $userCategory == 2) {
+            $data = HayatFormModel::where('user_id', Auth::user()->id)
+                                   ->latest()
+                                   ->first();
+    
+        if (empty($data)) {
+            return redirect()->route('hayatichaDakhlaform.index')->with('warning', 'Fill the first form before proceeding.');
+        } elseif ($data->sign_uploaded_live_certificate == "") {
+            return redirect()->route('hayatichaDakhlaform.index')->with('warning', 'Your Application status is still Pending');
+        } else {
+            $bus_concession = BusConcession::where('created_by', Auth::user()->id)
+                                            ->latest()
+                                            ->get();
+
+            $document = DB::table('document_type_msts')
+                            ->where('scheme_id', 2)
+                            ->whereNull('deleted_at')
+                            ->orderBy('created_at', 'DESC')
+                            ->get();
+
+            return view('users.bus_concession.bus_concession')->with(['bus_concession'=> $bus_concession, 'document'=>$document]);
+            }
+        } else {
+            $bus_concession = BusConcession::where('created_by', Auth::user()->id)
+            ->latest()
+            ->get();
+
+            $document = DB::table('document_type_msts')
+            ->where('scheme_id', 2)
+            ->whereNull('deleted_at')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
+          return view('users.bus_concession.bus_concession')->with(['bus_concession'=> $bus_concession, 'document'=>$document]);
+        }
     }
+    
 
     public function store(StoreBusConcessionRequest $request){
         try

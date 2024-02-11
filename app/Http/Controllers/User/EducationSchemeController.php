@@ -11,12 +11,24 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
+use App\Models\HayatFormModel;
 
 class EducationSchemeController extends Controller
 {
     public function index(){
-        $education_scheme = EducationScheme::where('created_by', Auth::user()->id)->latest()->get();
 
+        $userCategory = Auth::user()->category;
+        if ($userCategory == 1 || $userCategory == 2) {
+            $data = HayatFormModel::where('user_id', Auth::user()->id)
+                                   ->latest()
+                                   ->first();
+    
+        if (empty($data)) {
+            return redirect()->route('hayatichaDakhlaform.index')->with('warning', 'Fill the first form before proceeding.');
+        } elseif ($data->sign_uploaded_live_certificate == "") {
+            return redirect()->route('hayatichaDakhlaform.index')->with('warning', 'Your Application status is still Pending');
+        } else {
+        $education_scheme = EducationScheme::where('created_by', Auth::user()->id)->latest()->get();
 
         $document = DB::table('document_type_msts')
                         ->where('scheme_id', 3)
@@ -25,6 +37,18 @@ class EducationSchemeController extends Controller
                         ->get();
         return view('users.education_scheme.education_scheme')->with(['education_scheme'=> $education_scheme, 'document'=>$document]);
     }
+}
+else {
+    $education_scheme = EducationScheme::where('created_by', Auth::user()->id)->latest()->get();
+
+    $document = DB::table('document_type_msts')
+                    ->where('scheme_id', 3)
+                    ->whereNull('deleted_at')
+                    ->orderBy('created_at', 'DESC')
+                    ->get();
+    return view('users.education_scheme.education_scheme')->with(['education_scheme'=> $education_scheme, 'document'=>$document]);
+}
+}
 
     public function store(StoreEducationRequest $request){
         try

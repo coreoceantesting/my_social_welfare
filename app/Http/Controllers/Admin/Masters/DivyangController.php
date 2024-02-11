@@ -23,7 +23,7 @@ class DivyangController extends Controller
     public function index()
     {
         // $hayat = HayatFormModel::where('deleted_at', null)->first();
-        $hayat = HayatFormModel::latest()->get();
+        $hayat = HayatFormModel::where('user_id', Auth::user()->id)->latest()->get();
         $users = User::where('id', Auth::user()->id)->first();
         $fy = FinancialMst::where('is_active', 1)->whereNull('deleted_at')->first();
         return view('admin.masters.divyaglist')->with(['users'=> $users, 'hayat' => $hayat, 'fy'=>$fy]);
