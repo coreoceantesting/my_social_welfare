@@ -2,6 +2,11 @@
     <x-slot name="title">Marriage Scheme Application</x-slot>
     <x-slot name="heading">Marriage Scheme Application</x-slot>
 
+<style>
+  .error {
+    color: red;
+  }
+</style>
         <div class="row" >
             <div class="col-sm-12">
                 <div class="card">
@@ -35,7 +40,7 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="contact">4. Mobile No/ मोबाईल नं.:</label>
+                                    <label class="col-form-label" for="contact">Mobile No/ मोबाईल नं.:</label>
                                     <input class="form-control"  type="text" name="contact"  value="{{ $data->contact }}" readonly>
                                 </div>
 
@@ -57,7 +62,7 @@
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">9. Bank Name / बँकेचे नाव <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="name">Bank Name / बँकेचे नाव <span class="text-danger">*</span></label>
                                     <input class="form-control" id="bank_name" name="bank_name" type="text"  value="{{ $data->bank_name }}" readonly>
                                 </div>
 
@@ -84,18 +89,18 @@
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="agriculture">13. Agriculture / शेती</label>
+                                    <label class="col-form-label" for="agriculture">Agriculture / शेती</label>
                                     <input class="form-control" id="agriculture" name="agriculture" type="text" value="{{ $data->agriculture }}" readonly>
                                 </div>
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="caste">19. Caste Category / जातीचा प्रवर्ग</label>
+                                    <label class="col-form-label" for="caste">Caste Category / जातीचा प्रवर्ग</label>
                                     <input class="form-control" id="caste" name="caste" type="text"  value="{{ $data->caste }}" readonly>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="ward_no">20. Ward No / प्रभाग क्र.:</label>
+                                    <label class="col-form-label" for="ward_no">Ward No / प्रभाग क्र.:</label>
                                     <input class="form-control" id="ward_no" name="ward_no" type="text" value="{{ $data->ward_no }}" readonly>
                                 </div>
 
@@ -162,7 +167,7 @@
                         <h4 class="title text-danger" id="largeModalLabel">Reject By Hod</h4>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="{{ url('marriage_scheme_application_reject_by_hod', $data->id ) }}" enctype="multipart/form-data">
+                        <form id="rejectForm" method="POST" action="{{ url('marriage_scheme_application_reject_by_hod', $data->id ) }}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" class="form-control " id="application_no" name="application_no" value="{{ $data->application_no }}" >
                               <input type="hidden" class="form-control " id="contact" name="contact" value="{{ $data->contact }}" >
@@ -170,6 +175,7 @@
                                 <label class="col-sm-4"><strong>नकाराचे कारण / <br>  Reason for Rejection  :  <span style="color:red;">*</span></strong></label>
                                 <div class="col-sm-8 col-md-8 p-2">
                                     <textarea  class="form-control" name ="hod_reject_reason" id="hod_reject_reason" value="" style="height:120px;"></textarea>
+                                    <span id="reason-error" class="error"></span>
                                 </div>
                             </div>
 
@@ -186,13 +192,28 @@
             </div>
         </div>
 
-
-
-
-
-
 </x-admin.layout>
 
+<script>
+    function validateForm() {
+        var reason = document.getElementById("hod_reject_reason").value;
+        var errorMessage = document.getElementById("reason-error");
+
+        if (reason.trim() === "") {
+            errorMessage.textContent = "Please provide a rejection reason.";
+            return false; 
+        }
+        errorMessage.textContent = "";
+        return true; 
+    }
+
+    document.getElementById("rejectForm").addEventListener("submit", function(event) {
+        if (!validateForm()) {
+            event.preventDefault(); 
+        }
+    });
+</script>
+    
 
 
 
