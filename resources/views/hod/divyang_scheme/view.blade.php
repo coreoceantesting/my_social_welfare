@@ -57,12 +57,12 @@
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="father_name">Name and address of father/husband/वडिलांचे/पतीचे नाव व पत्ता <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="father_name">Name  of father/husband/वडिलांचे/पतीचे नाव  <span class="text-danger">*</span></label>
                                     <input class="form-control"  name="father_name" type="text" value="{{ $data->father_name }}" readonly>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="father_address">Name and address of father/husband/वडिलांचे/पतीचे नाव व पत्ता <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="father_address">Address of father/husband/वडिलांचे/पतीचे पत्ता <span class="text-danger">*</span></label>
                                     <input class="form-control"  name="father_address" type="text" value="{{ $data->father_address }}" readonly>
                                 </div>
 
@@ -159,7 +159,7 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="ward_id">Ward Name:</label>
+                                    <label class="col-form-label" for="ward_id">Ward Name/ प्रभाग नाव:</label>
                                     <input class="form-control" id="ward_id" name="ward_id" type="text" value="{{ $data->name }}" readonly>
                                 </div>
 
