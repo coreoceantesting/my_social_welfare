@@ -87,7 +87,7 @@
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="name">Bank Name (बँकेचे नाव) <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="bank_name" name="bank_name" type="text" value="" >
+                                    <input class="form-control" id="bank_name" name="bank_name" type="text" placeholder="Enter Bank Name" value="" >
                                     <span class="text-danger is-invalid bank_name_err"></span>
                                 </div>
 
@@ -95,19 +95,19 @@
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="branch_name">Branch Name (शाखा नाव) <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="branch_name" name="branch_name" type="text" value="" >
+                                    <input class="form-control" id="branch_name" name="branch_name" type="text" placeholder="Enter Branch Name" value="" >
                                     <span class="text-danger is-invalid branch_name_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="name">Bank Account Number (बँक खाते क्रमांक) <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="account_no" name="account_no" type="text" value="" >
+                                    <input class="form-control" id="account_no" name="account_no" placeholder="Enter Account Number" type="text" value="" >
                                     <span class="text-danger is-invalid account_no_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="name">IFSC Code (आय .एफ .एस .सी कोड) <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="ifsc_code" name="ifsc_code" type="text" value="" >
+                                    <input class="form-control" id="ifsc_code" name="ifsc_code" placeholder="Enter IFSC Code" type="text" value="" >
                                     <span class="text-danger is-invalid ifsc_code_err"></span>
                                 </div>
 
