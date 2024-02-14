@@ -19,34 +19,34 @@
                                 <input class="form-control" id="user_id" name="user_id" value="{{ $users->id }}" type="hidden" >
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">First Name (पहिले नाव) </label>
-                                    <input class="form-control" id="name" name="fname" type="text" value="{{ $users->f_name }}" readonly placeholder="Enter User Name">
-                                    <span class="text-danger is-invalid name_err"></span>
+                                    <label class="col-form-label" for="name">First Name (पहिले नाव) <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="name" name="fname" type="text" value="{{ $users->f_name }}"  placeholder="Enter User Name">
+                                    <span class="text-danger is-invalid fname_err"></span>
                                 </div>
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">Middle Name (मधले नाव) </label>
-                                    <input class="form-control" id="name" name="mname" type="text" value="{{ $users->m_name }}" readonly placeholder="Enter User Name">
-                                    <span class="text-danger is-invalid name_err"></span>
+                                    <label class="col-form-label" for="name">Middle Name (मधले नाव) <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="name" name="mname" type="text" value="{{ $users->m_name }}" placeholder="Enter User Name">
+                                    <span class="text-danger is-invalid mname_err"></span>
                                 </div>
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">Last Name (आडनाव) </label>
-                                    <input class="form-control" id="name" name="lname" type="text" value="{{ $users->l_name }}" readonly placeholder="Enter User Name">
-                                    <span class="text-danger is-invalid name_err"></span>
+                                    <label class="col-form-label" for="name">Last Name (आडनाव) <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="name" name="lname" type="text" value="{{ $users->l_name }}" placeholder="Enter User Name">
+                                    <span class="text-danger is-invalid lname_err"></span>
                                 </div>
 
 
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">Area / Street (क्षेत्र / रस्ता)</label>
+                                    <label class="col-form-label" for="name">Area / Street (क्षेत्र / रस्ता) <span class="text-danger">*</span></label>
                                     <input class="form-control" id="area" name="area" type="text" placeholder="Enter Area">
-                                    <span class="text-danger is-invalid name_err"></span>
+                                    <span class="text-danger is-invalid area_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="name">Landmark (महत्त्वाची खूण)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="landmark" name="landmark" type="text" placeholder="Enter Landmark">
-                                    <span class="text-danger is-invalid name_err"></span>
+                                    <span class="text-danger is-invalid landmark_err"></span>
                                 </div>
 
 
@@ -54,35 +54,35 @@
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="email"> Pincode (पिन कोड) <span class="text-danger">*</span></label>
                                     <input class="form-control" id="pincode" name="pincode" type="text" placeholder="Enter User Email">
-                                    <span class="text-danger is-invalid email_err"></span>
+                                    <span class="text-danger is-invalid pincode_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">Town / City (शहर) </label>
-                                    <input class="form-control" id="city" name="city" type="text" value="Panvel" readonly>
-                                    <span class="text-danger is-invalid name_err"></span>
+                                    <label class="col-form-label" for="name">Town / City (शहर) <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="city" name="city" type="text" value="Panvel">
+                                    <span class="text-danger is-invalid city_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">State (राज्य) </label>
-                                    <input class="form-control" id="state" name="state" type="text" value="Maharashtra" readonly >
-                                    <span class="text-danger is-invalid name_err"></span>
+                                    <label class="col-form-label" for="name">State (राज्य) <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="state" name="state" type="text" value="Maharashtra" >
+                                    <span class="text-danger is-invalid state_err"></span>
                                 </div>
 
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="mobile">User Contact Number (वापरकर्ता संपर्क क्रमांक) </label>
-                                    <input class="form-control" id="contact" name="contact" type="number" min="0" value="{{ $users->mobile }}" readonly onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                                    <label class="col-form-label" for="mobile">User Contact Number (वापरकर्ता संपर्क क्रमांक) <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="contact" name="contact" type="number" min="0" value="{{ $users->mobile }}" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
                                         placeholder="Enter User Mobile">
-                                    <span class="text-danger is-invalid mobile_err"></span>
+                                    <span class="text-danger is-invalid contact_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="mobile">Alternate Contact Number(पर्यायी संपर्क क्रमांक) </label>
+                                    <label class="col-form-label" for="mobile">Alternate Contact Number(पर्यायी संपर्क क्रमांक) <span class="text-danger">*</span></label>
                                     <input class="form-control" id="alternate_contact_no" name="alternate_contact_no" type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
                                         placeholder="Enter User Mobile">
-                                    <span class="text-danger is-invalid mobile_err"></span>
+                                    <span class="text-danger is-invalid alternate_contact_no_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
@@ -118,25 +118,14 @@
                                         <input class="form-control" type="file" name="signature" id="signature" accept=".png, .jpg, .jpeg">
                                     <span class="text-danger is-invalid signature_err"></span>
                                 </div>
-                                <div class="col-md-12 mb-3">
-                                    <label class="col-form-label" for="name">Flat No./House No./ building No. / Apartmen (फ्लॅट क्रमांक/घर क्रमांक/ इमारत क्रमांक/कंपनी क्रमांक/ अपार्टमेंट) <span class="text-danger">*</span></label>
+                                <div class="col-md-4 mb-3">
+                                    <label class="col-form-label" for="name">Flat No./House No./ building No. / Apartmen (फ्लॅट क्र./घर क्र./ इमारत क्र./कंपनी क्र./ अपार्टमेंट) <span class="text-danger">*</span></label>
                                     <input class="form-control" id="house_no" name="house_no" type="text" placeholder="Enter House No">
-                                    <span class="text-danger is-invalid name_err"></span>
+                                    <span class="text-danger is-invalid house_no_err"></span>
                                 </div>
 
-
-                                <div class="col-md-12 mb-5">
-                                    <label class="col-form-label" for="medical_benefit">I do on affidavit that, dt. / In the last 20 days, I did not mention the temptation of changing the government/Nimsar and fighting the battle. Also availed of all the facilities of Central Govt. in short term: (मी प्रतिज्ञापत्रावर जाहीर करतो/करते की, दि. / २० अखेर सपंणाऱ्या कालावधीत मी कोणतीही सरकारी/निमसरकारी व लष्करी नोकरी करुन त्याबद्दल मोहबदला घेतला नाही. तसेच वरील अल्पावधीत केंद्र शासनाच्या वैद्यकीय सुविधांचा लाभ घेतलेला आहे/ नाही ): </label>
-                                        <select class="js-example-basic-single" name="medical_benefit" >
-                                            <option value="">--Select--</option>
-                                            <option value="yes">Yes</option>
-                                          <option value="no">No</option>
-                                        </select>
-                                        <span class="text-danger is-invalid  medical_benefit_err"></span>
-                                </div>
-
-                                <div class="col-md-12 mb-3">
-                                    <label class="col-form-label" for="govt_benefit">I write on the affidavit that I am/are not getting two government benefits. Adding their details. (मी प्रतिज्ञेवर लिहुन देतो/देते की, मला दोन शासकीय लाभ मिळत नाही/मिळत आहेत. त्यांचा तपशिल जोडत आहे.) </label>
+                                <div class="col-md-4 mb-3">
+                                    <label class="col-form-label" for="govt_benefit">I write on the affidavit that I am/are not getting two government benefits. Adding their details. (मी प्रतिज्ञेवर लिहुन देतो/देते की, मला दोन शासकीय लाभ मिळत नाही/मिळत आहेत. त्यांचा तपशिल जोडत आहे.) <span class="text-danger">*</span></label>
                                         <select class="js-example-basic-single" name="govt_benefit" >
                                             <option value="">--Select--</option>
                                             <option value="yes">Yes</option>
@@ -145,16 +134,23 @@
                                         <span class="text-danger is-invalid  govt_benefit_err"></span>
                                 </div>
 
-
-
-                                <div class="col-md-12 mt-3">
-                                    <label class="col-form-label" for="disability_benefit">I write on the affidavit that I have / have not received Disability Fund Benefit in the past. (मी प्रतिज्ञेवर लिहुन देतो/देते की, मला यापूर्वी दिव्यांग निधी लाभ प्राप्त झाले आहे / नाही.)</label>
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="disability_benefit">I write on the affidavit that I have / have not received Disability Fund Benefit in the past. (मी प्रतिज्ञेवर लिहुन देतो/देते की, मला यापूर्वी दिव्यांग निधी लाभ प्राप्त झाले आहे / नाही.) <span class="text-danger">*</span></label>
                                         <select class="js-example-basic-single" name="disability_benefit" >
                                             <option value="">--Select--</option>
                                             <option value="yes">Yes</option>
                                           <option value="no">No</option>
                                         </select>
                                         <span class="text-danger is-invalid  disability_benefit_err"></span>
+                                </div>
+                                <div class="col-md-4 mb-5">
+                                    <label class="col-form-label" for="medical_benefit">I do on affidavit that, dt. / In the last 20 days, I did not mention the temptation of changing the government/Nimsar and fighting the battle. Also availed of all the facilities of Central Govt. in short term: (मी प्रतिज्ञापत्रावर जाहीर करतो/करते की, दि. / २० अखेर सपंणाऱ्या कालावधीत मी कोणतीही सरकारी/निमसरकारी व लष्करी नोकरी करुन त्याबद्दल मोहबदला घेतला नाही. तसेच वरील अल्पावधीत केंद्र शासनाच्या वैद्यकीय सुविधांचा लाभ घेतलेला आहे/ नाही ): <span class="text-danger">*</span></label>
+                                        <select class="js-example-basic-single" name="medical_benefit" >
+                                            <option value="">--Select--</option>
+                                            <option value="yes">Yes</option>
+                                          <option value="no">No</option>
+                                        </select>
+                                        <span class="text-danger is-invalid  medical_benefit_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
@@ -193,70 +189,70 @@
                                 {{-- <input class="form-control" id="user_id" name="user_id" value="{{ $users->id }}" type="hidden" placeholder="Enter User Name"> --}}
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">First Name (पहिले नाव) </label>
-                                    <input class="form-control" id="name" name="fname" type="text" value="{{ $users->f_name }}" readonly placeholder="Enter User Name">
-                                    <span class="text-danger is-invalid name_err"></span>
+                                    <label class="col-form-label" for="name">First Name (पहिले नाव) <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="name" name="fname" type="text" value="{{ $users->f_name }}" placeholder="Enter User Name">
+                                    <span class="text-danger is-invalid fname_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">Middle Name (मधले नाव) </label>
-                                    <input class="form-control" id="name" name="mname" type="text" value="{{ $users->m_name }}" readonly placeholder="Enter User Name">
-                                    <span class="text-danger is-invalid name_err"></span>
+                                    <label class="col-form-label" for="name">Middle Name (मधले नाव) <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="name" name="mname" type="text" value="{{ $users->m_name }}"  placeholder="Enter User Name">
+                                    <span class="text-danger is-invalid mname_err"></span>
                                 </div>
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">Last Name (आडनाव) </label>
-                                    <input class="form-control" id="name" name="lname" type="text" value="{{ $users->l_name }}" readonly placeholder="Enter User Name">
-                                    <span class="text-danger is-invalid name_err"></span>
+                                    <label class="col-form-label" for="name">Last Name (आडनाव) <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="name" name="lname" type="text" value="{{ $users->l_name }}"  placeholder="Enter User Name">
+                                    <span class="text-danger is-invalid lname_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">Flat No./House No./ building No. /Company No/ Apartmen (फ्लॅट क्रमांक/घर क्रमांक/ इमारत क्रमांक/कंपनी क्रमांक/ अपार्टमेंट) <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="name">Flat No./House No./ building No. /Company No/ Apartmen (फ्लॅट क्र./घर क्र./ इमारत क्र./कंपनी क्र./ अपार्टमेंट) <span class="text-danger">*</span></label>
                                     <input class="form-control" id="house_no" name="house_no" type="text" placeholder="Enter House No">
-                                    <span class="text-danger is-invalid name_err"></span>
+                                    <span class="text-danger is-invalid house_no_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">Area / Street (क्षेत्र / रस्ता)</label>
+                                    <label class="col-form-label" for="name">Area / Street (क्षेत्र / रस्ता) <span class="text-danger">*</span></label>
                                     <input class="form-control" id="area" name="area" type="text" placeholder="Enter Area">
-                                    <span class="text-danger is-invalid name_err"></span>
+                                    <span class="text-danger is-invalid area_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="name">Landmark (महत्त्वाची खूण)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="landmark" name="landmark" type="text" placeholder="Enter Landmark">
-                                    <span class="text-danger is-invalid name_err"></span>
+                                    <span class="text-danger is-invalid landmark_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="email"> Pincode (पिन कोड) <span class="text-danger">*</span></label>
                                     <input class="form-control" id="pincode" name="pincode" type="text" placeholder="Enter User Email">
-                                    <span class="text-danger is-invalid email_err"></span>
+                                    <span class="text-danger is-invalid pincode_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">Town / City (शहर) </label>
-                                    <input class="form-control" id="city" name="city" type="text" value="Panvel" readonly>
-                                    <span class="text-danger is-invalid name_err"></span>
+                                    <label class="col-form-label" for="name">Town / City (शहर) <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="city" name="city" type="text" value="Panvel" >
+                                    <span class="text-danger is-invalid city_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">State (राज्य) </label>
-                                    <input class="form-control" id="state" name="state" type="text" value="Maharashtra" readonly >
-                                    <span class="text-danger is-invalid name_err"></span>
+                                    <label class="col-form-label" for="name">State (राज्य) <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="state" name="state" type="text" value="Maharashtra"  >
+                                    <span class="text-danger is-invalid state_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="mobile">User Contact Number (वापरकर्ता संपर्क क्रमांक) </label>
-                                    <input class="form-control" id="contact" name="contact" type="number" min="0" value="{{ $users->mobile }}" readonly onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                                    <label class="col-form-label" for="mobile">User Contact Number (वापरकर्ता संपर्क क्रमांक) <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="contact" name="contact" type="number" min="0" value="{{ $users->mobile }}"  onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
                                         placeholder="Enter User Mobile">
-                                    <span class="text-danger is-invalid mobile_err"></span>
+                                    <span class="text-danger is-invalid contact_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="mobile">Alternate Contact Number (पर्यायी संपर्क क्रमांक) </label>
-                                    <input class="form-control" id="alternate_contact_no" name="alternate_contact_no" readonly type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                                    <label class="col-form-label" for="mobile">Alternate Contact Number (पर्यायी संपर्क क्रमांक) <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="alternate_contact_no" name="alternate_contact_no" type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
                                         placeholder="Enter User Mobile">
-                                    <span class="text-danger is-invalid mobile_err"></span>
+                                    <span class="text-danger is-invalid alternate_contact_no_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
@@ -285,18 +281,10 @@
                                     <span class="text-danger is-invalid signature_err"></span>
                                 </div>
 
-                                <div class="col-md-12 mb-5">
-                                    <label class="col-form-label" for="medical_benefit">I declare on affidavit that, dt. / During the period ending 20th, I have not received any compensation for doing any government/semi-government and military job. Also availed / not availed the medical facilities of the Central Government during the above short period: (मी प्रतिज्ञापत्रावर जाहीर करतो/करते की, दि. / २० अखेर सपंणाऱ्या कालावधीत मी कोणतीही सरकारी/निमसरकारी व लष्करी नोकरी करुन त्याबद्दल मोहबदला घेतला नाही. तसेच वरील अल्पावधीत केंद्र शासनाच्या वैद्यकीय सुविधांचा लाभ घेतलेला आहे/ नाही) : </label>
-                                        <select class="js-example-basic-single" name="medical_benefit" >
-                                            <option value="">--Select--</option>
-                                            <option value="yes">Yes</option>
-                                          <option value="no">No</option>
-                                        </select>
-                                        <span class="text-danger is-invalid  medical_benefit_err"></span>
-                                </div>
+                                
 
-                                <div class="col-md-12 mb-3">
-                                    <label class="col-form-label" for="govt_benefit">I write on the affidavit that I am/are not getting two government benefits. Adding their details. (मी प्रतिज्ञेवर लिहुन देतो/देते की, मला दोन शासकीय लाभ मिळत नाही/मिळत आहेत. त्यांचा तपशिल जोडत आहे.) </label>
+                                <div class="col-md-4 mb-3">
+                                    <label class="col-form-label" for="govt_benefit">I write on the affidavit that I am/are not getting two government benefits. Adding their details. (मी प्रतिज्ञेवर लिहुन देतो/देते की, मला दोन शासकीय लाभ मिळत नाही/मिळत आहेत. त्यांचा तपशिल जोडत आहे.) <span class="text-danger">*</span></label>
                                         <select class="js-example-basic-single" name="govt_benefit" >
                                             <option value="">--Select--</option>
                                             <option value="yes">Yes</option>
@@ -307,14 +295,24 @@
 
 
 
-                                <div class="col-md-12 mt-3">
-                                    <label class="col-form-label" for="disability_benefit">I write on the affidavit that I have / have not received Disability Fund Benefit in the past./ मी प्रतिज्ञेवर लिहुन देतो/देते की, मला यापूर्वी दिव्यांग निधी लाभ प्राप्त झाले आहे / नाही.</label>
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="disability_benefit">I write on the affidavit that I have / have not received Disability Fund Benefit in the past./ मी प्रतिज्ञेवर लिहुन देतो/देते की, मला यापूर्वी दिव्यांग निधी लाभ प्राप्त झाले आहे / नाही. <span class="text-danger">*</span></label>
                                         <select class="js-example-basic-single" name="disability_benefit" >
                                             <option value="">--Select--</option>
                                             <option value="yes">Yes</option>
                                           <option value="no">No</option>
                                         </select>
                                         <span class="text-danger is-invalid  disability_benefit_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mb-5">
+                                    <label class="col-form-label" for="medical_benefit">I declare on affidavit that, dt. / During the period ending 20th, I have not received any compensation for doing any government/semi-government and military job. Also availed / not availed the medical facilities of the Central Government during the above short period: (मी प्रतिज्ञापत्रावर जाहीर करतो/करते की, दि. / २० अखेर सपंणाऱ्या कालावधीत मी कोणतीही सरकारी/निमसरकारी व लष्करी नोकरी करुन त्याबद्दल मोहबदला घेतला नाही. तसेच वरील अल्पावधीत केंद्र शासनाच्या वैद्यकीय सुविधांचा लाभ घेतलेला आहे/ नाही) : <span class="text-danger">*</span></label>
+                                        <select class="js-example-basic-single" name="medical_benefit" >
+                                            <option value="">--Select--</option>
+                                            <option value="yes">Yes</option>
+                                          <option value="no">No</option>
+                                        </select>
+                                        <span class="text-danger is-invalid  medical_benefit_err"></span>
                                 </div>
 
 
@@ -356,7 +354,7 @@
 
                                 <div class="col-md-4 mt-3">
                                     <label for="formFile" lass="col-form-label"> कृपया हस्ताक्षर केलेली हयातीचा दाखल अपलोड करा / Upload Signatured of live Certificate  <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="file" name="sign_uploaded_live_certificate" id="sign_uploaded_live_certificate">
+                                    <input class="form-control" type="file" name="sign_uploaded_live_certificate" id="sign_uploaded_live_certificate" required>
                                 <span class="text-danger is-invalid sign_uploaded_live_certificate_err"></span>
                             </div>
 
@@ -413,11 +411,11 @@
                                                 <td>{{ $data->bank_name }}</td>
 
                                             <td>
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit live certificate" data-id="{{ $data->h_id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete live certificate" data-id="{{ $data->h_id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn btn-secondary px-2 py-1" title="Edit live certificate" data-id="{{ $data->h_id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn btn-danger rem-element px-2 py-1" title="Delete live certificate" data-id="{{ $data->h_id }}"><i data-feather="trash-2"></i> </button>
 
                                             </td>
-                                            <td> <button class="upload-element btn text-success px-2 py-1" title="Upload live certificate" data-id="{{ $data->h_id }}"><i data-feather="upload"></i> </button></td>
+                                            <td> <button class="upload-element btn btn-primary  px-2 py-1" title="Upload live certificate" data-id="{{ $data->h_id }}">Upload </button></td>
                                         </tr>
                                     @endforeach
                                     @else
