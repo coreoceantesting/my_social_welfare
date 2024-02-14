@@ -139,20 +139,20 @@
                     <div class="collapse menu-dropdown" id="sidebarLayouts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('bus_concession_application') }}" class="nav-link" data-key="t-horizontal">Bus Concession Scheme Application List</a>
+                                <a href="{{ url('bus_concession_application') }}" class="nav-link" data-key="t-horizontal">Bus Concession Scheme Application List (बस सवलत योजना)</a>
                             </li>
                                @if(Auth::user()->category == 1 || Auth::user()->category == 2)
                             <li class="nav-item">
-                                <a href="{{ url('divyang_application') }}" class="nav-link" data-key="t-horizontal">Divyang Scheme Application List</a>
+                                <a href="{{ url('divyang_application') }}" class="nav-link" data-key="t-horizontal">Divyang Scheme Application List (दिव्यांग योजना)</a>
                             </li>
                             
                              
                                <li class="nav-item">
-                                <a href="{{ url('education_scheme_application') }}" class="nav-link" data-key="t-horizontal">Education Scheme Application List</a>
+                                <a href="{{ url('education_scheme_application') }}" class="nav-link" data-key="t-horizontal">Education Scheme Application List (शिक्षण योजना)</a>
                             </li>
                             
                              <li class="nav-item">
-                                <a href="{{ url('marriage_scheme_application') }}" class="nav-link" data-key="t-horizontal">Marriage Scheme Application List</a>
+                                <a href="{{ url('marriage_scheme_application') }}" class="nav-link" data-key="t-horizontal">Marriage Scheme Application List (विवाह योजना)</a>
                             </li>
                             
                              @endif
