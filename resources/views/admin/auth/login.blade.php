@@ -35,12 +35,10 @@
 
                                 <div class="col-lg-6">
                                     <div class="p-lg-5 p-4">
-                                        <div class="d-flex align-items-center justify-content-center">
-                                            {{-- <h5 class="text-primary">Welcome Back !</h5> --}}
-                                            {{-- <p class="text-muted">Sign in to continue to {{ config('app.name') }}.</p> --}}
-
-                                                <img src="{{ asset('admin/images/users/b - logo.png') }}" alt="" height="50%" width="50%" />
-
+                                        <div class="text-center">
+                                            <img  src="{{ asset('admin/images/users/b - logo.png') }}" height="60%" width="60%" alt="">
+                                            <h5 class="text-white text-center pt-3">लॉगिन मध्ये आपले स्वागत आहे</h5>
+                                            {{-- <p class="text-muted text-center">Sign in to continue to {{ config('app.name') }}.</p> --}}
                                         </div>
 
                                         <div class="mt-4">

@@ -23,12 +23,23 @@
     margin: 0 0 7px 0;
 } */
 
-.form-select {
-    color: #212529;
+.form-select option {
+    color: #000;  /* Set the text color for default options to black */
+}
+
+/* Style for selected option */
+.form-select:focus option:checked {
+    background-color: #fff;  /* Set the background color for selected option to white */
+    color: #000;  /* Set the text color for selected option to black */
+}
+
+.form-check-input[type="radio"] {
+    border: 2px solid #ccc;  /* Set the initial border color */
+    border-radius: 50%;  /* Make it circular */
 }
 
 .form-control {
-    color: #212529;
+    color: #fff;
 }
 
 .card-bg-fill{
@@ -36,10 +47,10 @@
 }
 
 label {
-    color: #212529;
+    color: #fff;
 }
 .form-control:focus {
-    color: #000;
+    color: #fff;
 }
 
 
@@ -65,12 +76,12 @@ label {
 
                             <div class="row" id="addContainer" >
                                 <div class="col-sm-12">
-                                    <div class="card">
+                                    <div class="card mb-0 bg-dark text-white">
                                         <form class="theme-form" name="addRegiForm" id="addRegiForm" enctype="multipart/form-data">
                                             @csrf
 
-                                            <div class="card-header" style="text-align: center;">
-                                                <h1 style="color: #212529;">Register Account (खाते नोंदणी करा)</h1>
+                                            <div class="card-header bg-dark text-center" style="height: 70px">
+                                                <h1 class="text-white">Register Account (खाते नोंदणी करा)</h1>
                                             </div>
                                             <div class="card-body">
                                                 <div class="mb-3 row">
@@ -173,21 +184,32 @@ label {
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label class="col-form-label" for="name"> Password (पासवर्ड) <span class="text-danger">*</span></label>
-                                                        <input class="form-control" id="password" name="password" type="password" placeholder="Enter PAssword">
-                                                        <span class="text-danger is-invalid password_err"></span>
+                                                        <div class="position-relative auth-pass-inputgroup mb-3">
+                                                            <input type="password" class="form-control pe-5 password-input" placeholder="Enter password" id="password" name="password" >
+                                                            <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
+                                                            <span class="text-danger is-invalid password_err"></span>
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label class="col-form-label" for="initial">Confirm Password (पासवर्डची पुष्टी करा)<span class="text-danger">*</span></label>
-                                                        <input class="form-control" id="confirm_password" name="confirm_password" type="password" placeholder="Enter Confirm Password">
-                                                        <span class="text-danger is-invalid confirm_password_err"></span>
+                                                        <div class="position-relative auth-pass-inputgroup mb-3">
+                                                            <input type="password" class="form-control pe-5 password-input" placeholder="Enter Confirm Password" id="confirm_password" name="confirm_password" >
+                                                            <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
+                                                            <span class="text-danger is-invalid confirm_password_err"></span>
+                                                        </div>
+                                                        {{-- <input class="form-control" id="confirm_password" name="confirm_password" type="password" placeholder="Enter Confirm Password">
+                                                        <span class="text-danger is-invalid confirm_password_err"></span> --}}
                                                     </div>
 
                                                 </div>
 
                                             </div>
-                                            <div class="card-footer" style="text-align: center;">
+                                            <div class="card-footer border-0" style="text-align: center;">
 
-                                              <button class="btn btn-primary w-50" type="submit" id="RegisterForm_submit">Sign Up</button>
+                                              <button class="btn btn-primary" style="width: 20%" type="submit" id="RegisterForm_submit">Sign Up</button>
+                                              <div class="mt-3 text-center">
+                                                <p class="mb-0">Already Signed Up ? <a href="{{ route('login') }}" class="fw-semibold text-primary text-decoration-underline"> Log In</a> </p>
+                                            </div>
 
                                             </div>
 
