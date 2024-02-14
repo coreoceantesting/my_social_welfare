@@ -113,11 +113,15 @@
                             </div>
                         </div>
                     </div>
+                    @php
+                        $num = 1;
+                    @endphp
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
                                 <thead>
                                     <tr>
+                                        <th>Sr.No</th>
                                         <th>Year</th>
                                         <th>From Date</th>
                                         <th>To Date</th>
@@ -142,13 +146,14 @@
                                         @endphp
                                     @endif
                                         <tr>
+                                            <td>{{ $num++ }}</td>
                                             <td>{{$financials->title}}</td>
                                             <td>{{$financials->from_date}}</td>
                                             <td>{{$financials->to_date}}</td>
                                             <td>{{ $status }}</td>
                                             <td>
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit financial year" data-id="{{ $financials->id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete financial year" data-id="{{ $financials->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn btn-primary text-white px-2 py-1" title="Edit financial year" data-id="{{ $financials->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn btn-danger text-white rem-element px-2 py-1" title="Delete financial year" data-id="{{ $financials->id }}"><i data-feather="trash-2"></i> </button>
                                             </td>
                                         </tr>
                                     @endforeach

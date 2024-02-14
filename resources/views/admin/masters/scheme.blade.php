@@ -117,11 +117,15 @@
                             </div>
                         </div>
                     </div>
+                    @php
+                        $num = 1;
+                    @endphp
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
                                 <thead>
                                     <tr>
+                                        <th>Sr.No</th>
                                         <th>Category Name</th>
                                         <th>Scheme Name</th>
                                         <th>Action</th>
@@ -130,6 +134,7 @@
                                 <tbody>
                                     @foreach ($scheme as $schemes)
                                         <tr>
+                                            <td>{{ $num++ }}</td>
                                             <td>
                                                 @if ($schemes->categories->count() > 0)
                                                     {{ implode(', ', $schemes->categories->pluck('category_name')->toArray()) }}
@@ -141,8 +146,8 @@
                                             <td>{{$schemes->scheme_name}}</td>
 
                                             <td>
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $schemes->id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $schemes->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn btn-primary text-white px-2 py-1" title="Edit category" data-id="{{ $schemes->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn btn-danger text-white rem-element px-2 py-1" title="Delete category" data-id="{{ $schemes->id }}"><i data-feather="trash-2"></i> </button>
                                             </td>
                                         </tr>
                                     @endforeach

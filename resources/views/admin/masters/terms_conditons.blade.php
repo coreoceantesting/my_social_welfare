@@ -126,11 +126,15 @@
                             </div>
                         </div>
                     </div>
+                    @php
+                        $num = 1;
+                    @endphp
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
                                 <thead>
                                     <tr>
+                                        <th>Sr.No</th>
                                         <th>Scheme</th>
                                         <th>Tearms And Conditions</th>
                                         <th>Action</th>
@@ -139,12 +143,13 @@
                                 <tbody>
                                     @foreach ($terms as $row)
                                         <tr>
+                                            <td>{{ $num++ }}</td>
                                             <td>{{ $row->scheme->scheme_name ?? '' }}</td>
                                             <td>{!! substr($row->rules_regulations, 0, 100) !!} </td>
 
                                             <td>
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit terms" data-id="{{ $row->id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete terms" data-id="{{ $row->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn btn-primary text-white px-2 py-1" title="Edit terms" data-id="{{ $row->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn btn-danger text-white rem-element px-2 py-1" title="Delete terms" data-id="{{ $row->id }}"><i data-feather="trash-2"></i> </button>
                                             </td>
                                         </tr>
                                     @endforeach
