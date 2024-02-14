@@ -112,7 +112,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-
+                    @php
+                        $serialNumber = 1;
+                    @endphp
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
@@ -121,6 +123,7 @@
 
 
                                     <tr>
+                                        <th>Sr.No</th>
                                         <th>Application Number</th>
                                         <th>Name</th>
                                         <th>Full Address</th>
@@ -137,6 +140,7 @@
                                 <tbody>
                                     @foreach($bus_concession as $value)
                                      <tr>
+                                            <td>{{ $serialNumber++ }}</td>
                                             <td>{{ $value->application_no }}</td>
                                             <td>{{ $value->full_name }}</td>
                                             <td>{{ $value->full_address }}</td>

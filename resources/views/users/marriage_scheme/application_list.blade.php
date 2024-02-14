@@ -171,7 +171,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-
+                    @php
+                     $serialNumber = 1;
+                    @endphp
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
@@ -180,6 +182,7 @@
 
 
                                     <tr>
+                                        <th>Sr.No</th>
                                         <th>Application Number</th>
                                         <th>Name</th>
                                         <th>Full Address</th>
@@ -200,6 +203,7 @@
 
 
                                         <tr>
+                                            <td>{{ $serialNumber++ }}</td>
                                             <td>{{ $row->application_no }}</td>
                                             <td>{{ $row->full_name }}</td>
                                             <td>{{ $row->full_address }}</td>

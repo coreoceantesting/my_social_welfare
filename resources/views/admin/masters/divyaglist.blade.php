@@ -384,11 +384,15 @@
                             </div>
                         </div>
                     </div>
+                    @php
+                        $serialNumber = 1;
+                    @endphp
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
                                 <thead>
                                     <tr>
+                                        <th>Sr.No</th>
                                         <th>Name</th>
                                         <th>Contact</th>
                                         {{-- <th>Category</th> --}}
@@ -403,6 +407,7 @@
                                     @foreach ($hayat as $key=> $data)
 
                                         <tr>
+                                                <td>{{ $serialNumber++ }}</td>
                                             {{-- @foreach ($users as $key=> $data1) --}}
                                                 <td>{{$users->f_name}} {{$users->m_name}} {{$users->l_name}}</td>
                                                 <td>{{$users->contact}}</td>
