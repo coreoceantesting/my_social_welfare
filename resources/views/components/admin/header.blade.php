@@ -15,12 +15,12 @@
 
                     <a href="{{url('dashboard')}}" class="logo logo-light">
                         <span class="logo-sm">
-                            <img src="{{ asset('admin/images/users/b - logo.png') }}" alt="" height="22" />
-                            <!--<img src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="" height="22" />-->
+                            <img src="{{ asset('admin/images/logo.png') }}" alt="" height="22" />
+                            <!--<img src="{{ asset('admin/images/logo.png') }}" alt="" height="22" />-->
                         </span>
                         <span class="logo-lg">
                             <!--<img src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="" height="60" />-->
-                            <img src="{{ asset('admin/images/users/b - logo.png') }}" alt="" height="60" />
+                            <img src="{{ asset('admin/images/logo.png') }}" alt="" height="60" />
                         </span>
                     </a>
                 </div>
@@ -180,12 +180,12 @@
                         </span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
-                        <h6 class="dropdown-header">
+                        <h5 class="dropdown-header">
                             Welcome {{ ucfirst(auth()->user()->name) }}!
-                        </h6>
-                        <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
+                        </h5>
+                        {{-- <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
                             <span class="align-middle">Profile</span>
-                        </a>
+                        </a> --}}
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>
                             <span class="align-middle" data-key="t-logout">Logout</span>
