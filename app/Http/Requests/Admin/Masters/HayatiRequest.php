@@ -39,10 +39,10 @@ class HayatiRequest extends FormRequest
             'govt_benefit'=>'required',
             'disability_benefit'=>'required',
             'signature' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
-            'status' => 'required',
-            'sign_uploaded_live_certificate' => 'required',
-            'download_pdf'=>'required',
-            'pdfPath'=> 'required'
+            'status' => 'nullable',
+            'sign_uploaded_live_certificate' => 'nullable',
+            'download_pdf'=>'nullable',
+            'pdfPath'=> 'nullable'
 
 
 

@@ -630,7 +630,7 @@
             var formdata = new FormData(this);
             formdata.append('_method', 'PUT');
             var model_id = $('#upload_model_id').val();
-            var url = "{{ route('hayatichaDakhlaform.update', ":model_id") }}";
+            var url = "{{ route('hayatichaDakhlaform.upload', ":model_id") }}";
             //
             $.ajax({
                 url: url.replace(':model_id', model_id),

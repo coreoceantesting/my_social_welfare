@@ -164,14 +164,18 @@ class DivyangController extends Controller
         }
     }
 
-    public function hayatuploadfile(UpdateHayatiRequest $request, HayatFormModel $hayatichaDakhlaform)
+    public function hayatuploadfile(Request $request)
     {
 
         try {
             DB::beginTransaction();
 
             // Validate the request and get the input data
-            $input = $request->validated();
+            // $input = $request->validated();
+            $validatedData = $request->validate([
+                'sign_uploaded_live_certificate' => 'required|mimes:png,jpge,pdf',
+                // Add more fields and their validation rules as needed
+            ]);
 
             // Handle file upload
             if ($request->hasFile('sign_uploaded_live_certificate')) {
@@ -180,7 +184,10 @@ class DivyangController extends Controller
             }
 
             // Update the model
-            $hayatichaDakhlaform->update($input);
+            // $hayatichaDakhlaform->update($input);
+            DB::table('hayticha_form')->where('h_id',$request->upload_model_id)->update([
+                'sign_uploaded_live_certificate' => $input['sign_uploaded_live_certificate'],
+            ]);
 
             DB::commit();
 
