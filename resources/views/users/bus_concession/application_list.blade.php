@@ -316,7 +316,7 @@
             title: "Are you sure to delete this Bus Concession?",
             // text: "Make sure if you have filled Vendor details before proceeding further",
             icon: "info",
-            buttons: ["Cancel", "Bus Concession"]
+            buttons: ["Cancel", "Delete"]
         })
         .then((justTransfer) =>
         {
