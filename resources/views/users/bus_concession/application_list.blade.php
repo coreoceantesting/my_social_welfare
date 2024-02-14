@@ -15,18 +15,18 @@
                     <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
                     <div class="mb-3 row">
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="name">Full Name (संपूर्ण नाव)</label>
+                            <label class="col-form-label" for="name">Full Name (संपूर्ण नाव) <span class="text-danger">*</span></label>
                             <input class="form-control"  type="text"  name="full_name"  value="" placeholder="Enter Full Name ">
                             <span class="text-danger is-invalid full_name_err"></span>
                         </div>
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="full_address">Full Address (संपूर्ण पत्ता)</label>
+                            <label class="col-form-label" for="full_address">Full Address (संपूर्ण पत्ता) <span class="text-danger">*</span></label>
                             <input class="form-control"   type="text" name="full_address" value=""  placeholder="Enter Full Address">
                             <span class="text-danger is-invalid full_address_err"></span>
                         </div>
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="dob">Date Of Birth (जन्म तारीख) </label>
+                            <label class="col-form-label" for="dob">Date Of Birth (जन्म तारीख) <span class="text-danger">*</span></label>
                             <input class="form-control" id="dob" name="dob" type="date"  onchange="calculateAge()" placeholder="Enter Date Of Birth">
                             <span class="text-danger is-invalid age_err"></span>
                         </div>
@@ -34,7 +34,7 @@
 
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="Age"> Age (वय) </label>
+                            <label class="col-form-label" for="Age"> Age (वय) <span class="text-danger">*</span></label>
                             <input class="form-control" id="age" name="age" type="text"  placeholder="Enter Age">
                             <span class="text-danger is-invalid age_err"></span>
                         </div>
@@ -42,7 +42,7 @@
 
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="contact">Mobile No (मोबाईल क्र)</label>
+                            <label class="col-form-label" for="contact">Mobile No (मोबाईल क्र) <span class="text-danger">*</span></label>
                             <input class="form-control" id="contact" name="contact"  type="number"  placeholder="Enter Mobile No" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
                             <span class="text-danger is-invalid contact_err"></span>
                         </div>
@@ -69,7 +69,7 @@
                         </div>
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="type_of_discount">type of discount (सवलतीचा प्रकार) :</label>
+                            <label class="col-form-label" for="type_of_discount">type of discount (सवलतीचा प्रकार) : <span class="text-danger">*</span></label>
                                 <select class="js-example-basic-single" name="type_of_discount" >
                                     <option value="">--Select--</option>
                                     <option value="daily_commute">daily commute/ दैनंदिन </option>
@@ -79,14 +79,14 @@
                         </div>
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="candidate_signature">Upload Signature (अर्जदाराची सही) / thumb (अगंठा) </label>
+                            <label class="col-form-label" for="candidate_signature">Upload Signature (अर्जदाराची सही) / thumb (अगंठा) <span class="text-danger">*</span></label>
                             <input class="form-control" id="candidate_signature" name="candidate_signature" type="file" accept=".png, .jpg, .jpeg">
                             <a class="btn btn-sm btn-primary" id="candidate_signature" target="_blank" href="" >View Document</a>
                             <span class="text-danger is-invalid candidate_signature_err"></span>
                         </div>
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="passport_size_photo">Passport Size Photo (अर्जदाराची फोटो)</label>
+                            <label class="col-form-label" for="passport_size_photo">Passport Size Photo (अर्जदाराची फोटो) <span class="text-danger">*</span></label>
                             <input class="form-control" id="passport_size_photo" name="passport_size_photo" type="file" accept=".png, .jpg, .jpeg">
                             <a class="btn btn-sm btn-primary" id="passport_size_photo" target="_blank" href="" >View Document</a>
                             <span class="text-danger is-invalid passport_size_photo_err"></span>
@@ -161,14 +161,14 @@
 
                                             <td>
                                                 @if($value->hod_status == 0 && $value->ac_status == 0 && $value->amc_status == 0 && $value->dmc_status == 0)
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $value->id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $value->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn btn-primary text-white px-2 py-1" title="Edit category" data-id="{{ $value->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn text-white btn-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $value->id }}"><i data-feather="trash-2"></i> </button>
                                                 @elseif($value->hod_status == 2 || $value->ac_status == 2|| $value->amc_status == 2 || $value->dmc_status == 2)
                                                 <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $value->id }}"><i data-feather="edit"></i></button>
                                                 <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $value->id }}"><i data-feather="trash-2"></i> </button>
                                                 @endif
 
-                                                <a href="{{ url('bus_concession_certificate_view/'.$value->id) }}" class="btn btn-primary shadow btn-xs sharp me-1"> <i class="fas fa-eye"></i></a>
+                                                <a href="{{ url('bus_concession_certificate_view/'.$value->id) }}" class="btn btn-info shadow btn-xs sharp me-1 px-2 py-1"> <i class="fas fa-eye"></i></a>
                                             </td>
 
 
@@ -237,7 +237,7 @@
                         documentsHtml += '<div class="col-md-4 mt-3">';
                         documentsHtml += '<label class="col-form-label" for="document_name">' + documentName;
                         if (document.is_required == 1) {
-                            documentsHtml += ' <span class="required">*</span>';
+                            documentsHtml += ' <span class="text-danger">*</span>';
                         }
                         documentsHtml += '</label>';
                         // documentsHtml += '<input type="hidden" name="document_id[]" class="form-control" value="' + document.id + '">';
