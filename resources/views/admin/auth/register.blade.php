@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
-    <link rel="shortcut icon" href="{{ asset('admin/images/favicon.ico') }}">
+    <!--<link rel="shortcut icon" href="{{ asset('admin/images/favicon.ico') }}">-->
+    <link rel="shortcut icon" href="{{ asset('admin/images/users/PMC-logo.png') }}">
     <script src="{{ asset('admin/js/layout.js') }}"></script>
     <link href="{{ asset('admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
@@ -69,29 +70,29 @@ label {
                                             @csrf
 
                                             <div class="card-header" style="text-align: center;">
-                                                <h1 style="color: #212529;">Register Account</h1>
+                                                <h1 style="color: #212529;">Register Account (खाते नोंदणी करा)</h1>
                                             </div>
                                             <div class="card-body">
                                                 <div class="mb-3 row">
                                                     <div class="col-md-4">
-                                                        <label class="col-form-label" for="name">First Name <span class="text-danger">*</span></label>
+                                                        <label class="col-form-label" for="name">First Name (प्रथम नाव)<span class="text-danger">*</span></label>
                                                         <input class="form-control" id="f_name" name="f_name" type="text" placeholder="Enter First Name">
                                                         <span class="text-danger is-invalid f_name_err"></span>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <label class="col-form-label" for="initial">Middle Name <span class="text-danger">*</span></label>
+                                                        <label class="col-form-label" for="initial">Middle Name(मधले नाव) <span class="text-danger">*</span></label>
                                                         <input class="form-control" id="m_name" name="m_name" type="text" placeholder="Enter Middle Name">
                                                         <span class="text-danger is-invalid m_name_err"></span>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <label class="col-form-label" for="initial">Last Name<span class="text-danger">*</span></label>
+                                                        <label class="col-form-label" for="initial">Last Name (आडनाव)<span class="text-danger">*</span></label>
                                                         <input class="form-control" id="l_name" name="l_name" type="text" placeholder="Enter Last Name">
                                                         <span class="text-danger is-invalid l_name_err"></span>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3 row">
                                                     <div class="col-md-4">
-                                                        <label class="col-form-label" for="name">Gender <span class="text-danger">*</span></label>
+                                                        <label class="col-form-label" for="name">Gender(लिंग) <span class="text-danger">*</span></label>
                                                         <div class="form-check mb-2">
                                                             <input class="form-check-input" type="radio" name="gender" id="gender" value="male" {{ old('gender') == 'male' ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="flexRadioDefault1">
@@ -108,29 +109,29 @@ label {
                                                         <span class="text-danger is-invalid gender_err"></span>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <label class="col-form-label" for="initial">Date Of Birth <span class="text-danger">*</span></label>
+                                                        <label class="col-form-label" for="initial">Date Of Birth(जन्मतारीख) <span class="text-danger">*</span></label>
                                                         <input class="form-control" id="dob" name="dob" type="date" placeholder="Select Date Of Birth">
                                                         <span class="text-danger is-invalid dob_err"></span>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <label class="col-form-label" for="initial">Age <span class="text-danger">*</span></label>
+                                                        <label class="col-form-label" for="initial">Age(वय) <span class="text-danger">*</span></label>
                                                         <input class="form-control" id="Age" name="Age" type="text" placeholder="Enter Age">
                                                         <span class="text-danger is-invalid Age_err"></span>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3 row">
                                                     <div class="col-md-4">
-                                                        <label class="col-form-label" for="mobile">Contact Number <span class="text-danger">*</span></label>
+                                                        <label class="col-form-label" for="mobile">Contact Number(संपर्क क्रमांक) <span class="text-danger">*</span></label>
                                                         <input class="form-control" id="mobile" name="mobile" type="text" placeholder="Enter Contact Number">
                                                         <span class="text-danger is-invalid mobile_err"></span>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <label class="col-form-label" for="name">Father First Name <span class="text-danger">*</span></label>
+                                                        <label class="col-form-label" for="name">Father First Name(वडिलांचे नाव) <span class="text-danger">*</span></label>
                                                         <input class="form-control" id="father_fname" name="father_fname" type="text" placeholder="Enter Father First Name">
                                                         <span class="text-danger is-invalid father_fname_err"></span>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <label class="col-form-label" for="initial">Father Middle Name <span class="text-danger">*</span></label>
+                                                        <label class="col-form-label" for="initial">Father Middle Name(वडिलांचे मधले नाव) <span class="text-danger">*</span></label>
                                                         <input class="form-control" id="father_mname" name="father_mname" type="text" placeholder="Enter Father Middle Name">
                                                         <span class="text-danger is-invalid father_mname_err"></span>
                                                     </div>
@@ -138,17 +139,17 @@ label {
                                                 </div>
                                                 <div class="mb-3 row">
                                                     <div class="col-md-4">
-                                                        <label class="col-form-label" for="initial">Father Last Name <span class="text-danger">*</span></label>
+                                                        <label class="col-form-label" for="initial">Father Last Name(वडिलांचे आडनाव) <span class="text-danger">*</span></label>
                                                         <input class="form-control" id="father_lname" name="father_lname" type="text" placeholder="Enter Father Last Name">
                                                         <span class="text-danger is-invalid father_lname_err"></span>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <label class="col-form-label" for="name">Mother Name <span class="text-danger">*</span></label>
+                                                        <label class="col-form-label" for="name">Mother Name (आईचे नाव)<span class="text-danger">*</span></label>
                                                         <input class="form-control" id="mother_name" name="mother_name" type="text" placeholder="Enter Mother Name">
                                                         <span class="text-danger is-invalid mother_err"></span>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <label class="col-form-label" for="initial">Category <span class="text-danger">*</span></label>
+                                                        <label class="col-form-label" for="initial">Category(श्रेणी) <span class="text-danger">*</span></label>
                                                         <select class="form-select mb-3" aria-label="Default select example" name="category" id="category">
                                                             <option value="">--Select Category--</option>
                                                             @foreach($category as $row)
@@ -166,17 +167,17 @@ label {
                                                 </div>
                                                 <div class="mb-3 row">
                                                     <div class="col-md-4">
-                                                        <label class="col-form-label" for="initial">Username <span class="text-danger">*</span></label>
+                                                        <label class="col-form-label" for="initial">Username(वापरकर्ता नाव) <span class="text-danger">*</span></label>
                                                         <input class="form-control" id="name" name="name" type="text" placeholder="Enter Username" >
                                                         <span class="text-danger is-invalid name_err"></span>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <label class="col-form-label" for="name"> Password <span class="text-danger">*</span></label>
+                                                        <label class="col-form-label" for="name"> Password (पासवर्ड) <span class="text-danger">*</span></label>
                                                         <input class="form-control" id="password" name="password" type="password" placeholder="Enter PAssword">
                                                         <span class="text-danger is-invalid password_err"></span>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <label class="col-form-label" for="initial">Confirm Password <span class="text-danger">*</span></label>
+                                                        <label class="col-form-label" for="initial">Confirm Password (पासवर्डची पुष्टी करा)<span class="text-danger">*</span></label>
                                                         <input class="form-control" id="confirm_password" name="confirm_password" type="password" placeholder="Enter Confirm Password">
                                                         <span class="text-danger is-invalid confirm_password_err"></span>
                                                     </div>

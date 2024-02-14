@@ -4,7 +4,7 @@
             <div class="d-flex">
                 <!-- LOGO -->
                 <div class="navbar-brand-box horizontal-logo">
-                    {{-- <a href="index.html" class="logo logo-dark"> --}}
+                    {{-- <a href="{{url('dashboard')}}" class="logo logo-dark"> --}}
                         {{-- <span class="logo-sm">
                             <img src="{{ asset('admin/images/logo-sm.png') }}" alt="" height="22" />
                         </span> --}}
@@ -13,12 +13,14 @@
                         </span> --}}
                     {{-- </a> --}}
 
-                    <a href="index.html" class="logo logo-light">
+                    <a href="{{url('dashboard')}}" class="logo logo-light">
                         <span class="logo-sm">
-                            <img src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="" height="22" />
+                            <img src="{{ asset('admin/images/users/b - logo.png') }}" alt="" height="22" />
+                            <!--<img src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="" height="22" />-->
                         </span>
                         <span class="logo-lg">
-                            <img src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="" height="60" />
+                            <!--<img src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="" height="60" />-->
+                            <img src="{{ asset('admin/images/users/b - logo.png') }}" alt="" height="60" />
                         </span>
                     </a>
                 </div>

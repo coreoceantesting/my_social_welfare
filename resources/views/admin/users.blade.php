@@ -1,6 +1,6 @@
 <x-admin.layout>
     <x-slot name="title">Users</x-slot>
-    <x-slot name="heading">Users</x-slot>
+    <x-slot name="heading">Users (वापरकर्ते)</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
 
@@ -19,26 +19,26 @@
                         <div class="mb-3 row">
 
                             <div class="col-md-4 mt-3">
-                                <label class="col-form-label" for="name">User Name <span class="text-danger">*</span></label>
+                                <label class="col-form-label" for="name">User Name (वापरकर्ता नाव)<span class="text-danger">*</span></label>
                                 <input class="form-control" id="name" name="name" type="text" placeholder="Enter User Name">
                                 <span class="text-danger is-invalid name_err"></span>
                             </div>
 
                             <div class="col-md-4 mt-3">
-                                <label class="col-form-label" for="email">User Email <span class="text-danger">*</span></label>
+                                <label class="col-form-label" for="email">User Email (वापरकर्ता ईमेल)<span class="text-danger">*</span></label>
                                 <input class="form-control" id="email" name="email" type="email" placeholder="Enter User Email">
                                 <span class="text-danger is-invalid email_err"></span>
                             </div>
 
                             <div class="col-md-4 mt-3">
-                                <label class="col-form-label" for="mobile">User Mobile <span class="text-danger">*</span></label>
+                                <label class="col-form-label" for="mobile">User Mobile (वापरकर्ता मोबाइल)<span class="text-danger">*</span></label>
                                 <input class="form-control" id="mobile" name="mobile" type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
                                     placeholder="Enter User Mobile">
                                 <span class="text-danger is-invalid mobile_err"></span>
                             </div>
 
                             <div class="col-md-4 mt-3">
-                                <label class="col-form-label" for="role">Select User Type / Role <span class="text-danger">*</span></label>
+                                <label class="col-form-label" for="role">Select User Type / Role (वापरकर्ता प्रकार / भूमिका निवडा)<span class="text-danger">*</span></label>
                                 <select class="js-example-basic-single col-sm-12" id="role" name="role">
                                     <option value="">--Select Role--</option>
                                     @foreach ($roles as $role)
@@ -49,13 +49,13 @@
                             </div>
 
                             <div class="col-md-4 mt-3">
-                                <label class="col-form-label" for="password">Password <span class="text-danger">*</span></label>
+                                <label class="col-form-label" for="password">Password (पासवर्ड)<span class="text-danger">*</span></label>
                                 <input class="form-control" id="password" name="password" type="password" placeholder="********">
                                 <span class="text-danger is-invalid password_err"></span>
                             </div>
 
                             <div class="col-md-4 mt-3">
-                                <label class="col-form-label" for="confirm_password">Confirm Password <span class="text-danger">*</span></label>
+                                <label class="col-form-label" for="confirm_password">Confirm Password (पासवर्डची पुष्टी करा)<span class="text-danger">*</span></label>
                                 <input class="form-control" id="confirm_password" name="confirm_password" type="password" placeholder="********">
                                 <span class="text-danger is-invalid confirm_password_err"></span>
                             </div>
@@ -89,26 +89,26 @@
                         <div class="mb-3 row">
 
                             <div class="col-md-4">
-                                <label class="col-form-label" for="name">User Name <span class="text-danger">*</span></label>
+                                <label class="col-form-label" for="name">User Name (वापरकर्ता नाव)<span class="text-danger">*</span></label>
                                 <input class="form-control" name="name" type="text" placeholder="Enter User Name">
                                 <span class="text-danger is-invalid name_err"></span>
                             </div>
 
                             <div class="col-md-4">
-                                <label class="col-form-label" for="email">User Email <span class="text-danger">*</span></label>
+                                <label class="col-form-label" for="email">User Email (वापरकर्ता ईमेल)<span class="text-danger">*</span></label>
                                 <input class="form-control" name="email" type="email" placeholder="Enter User Email">
                                 <span class="text-danger is-invalid email_err"></span>
                             </div>
 
                             <div class="col-md-4">
-                                <label class="col-form-label" for="mobile">User Mobile <span class="text-danger">*</span></label>
+                                <label class="col-form-label" for="mobile">User Mobile (वापरकर्ता मोबाइल)<span class="text-danger">*</span></label>
                                 <input class="form-control" name="mobile" type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
                                     placeholder="Enter User Mobile">
                                 <span class="text-danger is-invalid mobile_err"></span>
                             </div>
 
                             <div class="col-md-4 mt-3">
-                                <label class="col-form-label">Select User Type / Role <span class="text-danger">*</span></label>
+                                <label class="col-form-label">Select User Type / Role (वापरकर्ता प्रकार / भूमिका निवडा)<span class="text-danger">*</span></label>
                                 <select class="js-example-basic-single col-sm-12" name="role">
                                     <option value="">--Select Role--</option>
                                     @foreach ($roles as $role)

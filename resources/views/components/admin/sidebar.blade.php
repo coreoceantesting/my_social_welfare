@@ -129,6 +129,64 @@
                     </a>
                 </li>
                 @endif
+                
+                  @canany(['users.applicationList'])
+                  <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
+                        <i class="ri-layout-3-line"></i>
+                        <span data-key="t-layouts">Total Application</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarLayouts">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ url('bus_concession_application') }}" class="nav-link" data-key="t-horizontal">Bus Concession Scheme Application List</a>
+                            </li>
+                               @if(Auth::user()->category == 1 || Auth::user()->category == 2)
+                            <li class="nav-item">
+                                <a href="{{ url('divyang_application') }}" class="nav-link" data-key="t-horizontal">Divyang Scheme Application List</a>
+                            </li>
+                            
+                             
+                               <li class="nav-item">
+                                <a href="{{ url('education_scheme_application') }}" class="nav-link" data-key="t-horizontal">Education Scheme Application List</a>
+                            </li>
+                            
+                             <li class="nav-item">
+                                <a href="{{ url('marriage_scheme_application') }}" class="nav-link" data-key="t-horizontal">Marriage Scheme Application List</a>
+                            </li>
+                            
+                             @endif
+                             
+                              @if(Auth::user()->category == 4 )
+                              
+                                <li class="nav-item">
+                                <a href="{{ url('education_scheme_application') }}" class="nav-link" data-key="t-horizontal">Education Scheme Application List</a>
+                            </li>
+
+                              <li class="nav-item">
+                                <a href="{{ url('cancer_scheme_application') }}" class="nav-link" data-key="t-horizontal">Cancer Scheme Application List</a>
+                            </li>
+
+                             <li class="nav-item">
+                                <a href="{{ url('sports_scheme_application') }}" class="nav-link" data-key="t-horizontal">Sports Scheme Application List</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ url('vehicle_scheme_application') }}" class="nav-link" data-key="t-horizontal">Vehicle Scheme Application List</a>
+                            </li>
+
+                             <li class="nav-item">
+                                <a href="{{ url('women_scheme_application') }}" class="nav-link" data-key="t-horizontal">Women Sewing/Beautisians Scheme Application List</a>
+                            </li>
+                            
+                              @endif
+
+                        </ul>
+                    </div>
+                </li>
+                
+          @endcan
+                
 
                   {{-- HOD Panel --}}
                 @canany(['hod.application'])
@@ -140,28 +198,28 @@
                     <div class="collapse menu-dropdown" id="sidebarLayouts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('divyang_registration_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Divyang Scheme Application</a>
+                                <a href="{{ url('divyang_registration_list', 0) }}" class="nav-link" data-key="t-horizontal"> Divyang Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('bus_concession_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Bus Concession Scheme Application</a>
+                                <a href="{{ url('bus_concession_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Bus Concession Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('education_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending  Education Scheme Application</a>
+                                <a href="{{ url('education_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Education Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('marriage_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending  Marriage Scheme Application</a>
+                                <a href="{{ url('marriage_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Marriage Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('cancer_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending  Cancer Scheme Application</a>
+                                <a href="{{ url('cancer_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Cancer Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Sports Scheme Application</a>
+                                <a href="{{ url('sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Sports Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Vehicle Scheme Application</a>
+                                <a href="{{ url('vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Vehicle Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('women_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Women Sewing/Beautisians Scheme Application</a>
+                                <a href="{{ url('women_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Women Sewing/Beautisians Scheme Application</a>
                             </li>
                         </ul>
                     </div>
@@ -178,25 +236,25 @@
                                 <a href="{{ url('divyang_registration_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Divyang Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('bus_concession_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Bus Concession Scheme Application</a>
+                                <a href="{{ url('bus_concession_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Bus Concession Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('education_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Education Scheme Application</a>
+                                <a href="{{ url('education_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Education Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('marriage_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Marriage Scheme Application</a>
+                                <a href="{{ url('marriage_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Marriage Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('cancer_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Cancer Scheme Application</a>
+                                <a href="{{ url('cancer_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Cancer Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Sports Scheme Application</a>
+                                <a href="{{ url('sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Sports Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Vehicle Scheme Application</a>
+                                <a href="{{ url('vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Vehicle Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('women_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Women Sewing/Beautisians Scheme Application</a>
+                                <a href="{{ url('women_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Women Sewing/Beautisians Scheme Application</a>
                             </li>
                         </ul>
                     </div>
@@ -214,25 +272,25 @@
                                 <a href="{{ url('divyang_registration_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Divyang Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('bus_concession_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Bus Concession Scheme Application</a>
+                                <a href="{{ url('bus_concession_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Bus Concession Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('education_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Education Scheme Application</a>
+                                <a href="{{ url('education_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Education Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('marriage_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Marriage Scheme Application</a>
+                                <a href="{{ url('marriage_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Marriage Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('cancer_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Cancer Scheme Application</a>
+                                <a href="{{ url('cancer_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Cancer Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Sports Scheme Application</a>
+                                <a href="{{ url('sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Vehicle Scheme Application</a>
+                                <a href="{{ url('vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Vehicle Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('women_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Women Sewing/Beautisians Scheme Application</a>
+                                <a href="{{ url('women_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Women Sewing/Beautisians Scheme Application</a>
                             </li>
                         </ul>
                     </div>
@@ -249,28 +307,28 @@
                     <div class="collapse menu-dropdown" id="sidebarLayouts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('ac_divyang_registration_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Divyang Scheme Application</a>
+                                <a href="{{ url('ac_divyang_registration_list', 0) }}" class="nav-link" data-key="t-horizontal">Divyang Scheme Application</a>
                             </li>
                              <li class="nav-item">
-                                <a href="{{ url('ac_bus_concession_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Bus Concession Scheme Application</a>
+                                <a href="{{ url('ac_bus_concession_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Bus Concession Scheme Application</a>
                             </li>
                            <li class="nav-item">
-                                <a href="{{ url('ac_education_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending  Education Scheme Application</a>
+                                <a href="{{ url('ac_education_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Education Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('ac_marriage_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending  Marriage Scheme Application</a>
+                                <a href="{{ url('ac_marriage_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Marriage Scheme Application</a>
                             </li>
                            <li class="nav-item">
-                                <a href="{{ url('ac_cancer_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending  Cancer Scheme Application</a>
+                                <a href="{{ url('ac_cancer_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Cancer Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('ac_sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Sports Scheme Application</a>
+                                <a href="{{ url('ac_sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('ac_vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Vehicle Scheme Application</a>
+                                <a href="{{ url('ac_vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Vehicle Scheme Application</a>
                             </li>
                              <li class="nav-item">
-                                <a href="{{ url('ac_women_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Women Sewing/Beautisians Scheme Application</a>
+                                <a href="{{ url('ac_women_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Women Sewing/Beautisians Scheme Application</a>
                             </li>
                         </ul>
                     </div>
@@ -284,28 +342,28 @@
                     <div class="collapse menu-dropdown" id="sidebarLayouts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('ac_divyang_registration_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Divyang Scheme Application</a>
+                                <a href="{{ url('ac_divyang_registration_list', 1) }}" class="nav-link" data-key="t-horizontal"> Divyang Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('ac_bus_concession_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Bus Concession Scheme Application</a>
+                                <a href="{{ url('ac_bus_concession_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Bus Concession Scheme Application</a>
                             </li>
                              <li class="nav-item">
-                                <a href="{{ url('ac_education_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Education Scheme Application</a>
+                                <a href="{{ url('ac_education_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Education Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('ac_marriage_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Marriage Scheme Application</a>
+                                <a href="{{ url('ac_marriage_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Marriage Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('ac_cancer_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Cancer Scheme Application</a>
+                                <a href="{{ url('ac_cancer_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Cancer Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('ac_sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Sports Scheme Application</a>
+                                <a href="{{ url('ac_sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('ac_vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Vehicle Scheme Application</a>
+                                <a href="{{ url('ac_vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Vehicle Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('ac_women_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Women Sewing/Beautisians Scheme Application</a>
+                                <a href="{{ url('ac_women_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Women Sewing/Beautisians Scheme Application</a>
                             </li>
                         </ul>
                     </div>
@@ -320,28 +378,28 @@
                     <div class="collapse menu-dropdown" id="sidebarLayouts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('ac_divyang_registration_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Divyang Scheme Application</a>
+                                <a href="{{ url('ac_divyang_registration_list', 2) }}" class="nav-link" data-key="t-horizontal"> Divyang Scheme Application</a>
                             </li>
                              <li class="nav-item">
-                                <a href="{{ url('ac_bus_concession_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Bus Concession Scheme Application</a>
+                                <a href="{{ url('ac_bus_concession_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Bus Concession Scheme Application</a>
                             </li>
                            <li class="nav-item">
-                                <a href="{{ url('ac_education_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Education Scheme Application</a>
+                                <a href="{{ url('ac_education_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Education Scheme Application</a>
                             </li>
                            <li class="nav-item">
-                                <a href="{{ url('ac_marriage_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Marriage Scheme Application</a>
+                                <a href="{{ url('ac_marriage_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Marriage Scheme Application</a>
                             </li>
                              <li class="nav-item">
-                                <a href="{{ url('ac_cancer_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Cancer Scheme Application</a>
+                                <a href="{{ url('ac_cancer_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Cancer Scheme Application</a>
                             </li>
                            <li class="nav-item">
-                                <a href="{{ url('ac_sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Sports Scheme Application</a>
+                                <a href="{{ url('ac_sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
                             </li>
                               <li class="nav-item">
-                                <a href="{{ url('ac_vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Vehicle Scheme Application</a>
+                                <a href="{{ url('ac_vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Vehicle Scheme Application</a>
                             </li>
                            <li class="nav-item">
-                                <a href="{{ url('ac_women_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Women Sewing/Beautisians Scheme Application</a>
+                                <a href="{{ url('ac_women_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Women Sewing/Beautisians Scheme Application</a>
                             </li>
                         </ul>
                     </div>
@@ -359,28 +417,28 @@
                     <div class="collapse menu-dropdown" id="sidebarLayouts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('amc_divyang_registration_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Divyang Scheme Application</a>
+                                <a href="{{ url('amc_divyang_registration_list', 0) }}" class="nav-link" data-key="t-horizontal"> Divyang Scheme Application</a>
                             </li>
                              <li class="nav-item">
-                                <a href="{{ url('amc_bus_concession_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Bus Concession Scheme Application</a>
+                                <a href="{{ url('amc_bus_concession_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Bus Concession Scheme Application</a>
                             </li>
                            <li class="nav-item">
-                                <a href="{{ url('amc_education_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending  Education Scheme Application</a>
+                                <a href="{{ url('amc_education_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">  Education Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('amc_marriage_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending  Marriage Scheme Application</a>
+                                <a href="{{ url('amc_marriage_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">  Marriage Scheme Application</a>
                             </li>
                            <li class="nav-item">
-                                <a href="{{ url('amc_cancer_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending  Cancer Scheme Application</a>
+                                <a href="{{ url('amc_cancer_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">  Cancer Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('amc_sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Sports Scheme Application</a>
+                                <a href="{{ url('amc_sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('amc_vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Vehicle Scheme Application</a>
+                                <a href="{{ url('amc_vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Vehicle Scheme Application</a>
                             </li>
                              <li class="nav-item">
-                                <a href="{{ url('amc_women_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Women Sewing/Beautisians Scheme Application</a>
+                                <a href="{{ url('amc_women_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Women Sewing/Beautisians Scheme Application</a>
                             </li>
                         </ul>
                     </div>
@@ -394,28 +452,28 @@
                     <div class="collapse menu-dropdown" id="sidebarLayouts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('amc_divyang_registration_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Divyang Scheme Application</a>
+                                <a href="{{ url('amc_divyang_registration_list', 1) }}" class="nav-link" data-key="t-horizontal"> Divyang Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('amc_bus_concession_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Bus Concession Scheme Application</a>
+                                <a href="{{ url('amc_bus_concession_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Bus Concession Scheme Application</a>
                             </li>
                              <li class="nav-item">
-                                <a href="{{ url('amc_education_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Education Scheme Application</a>
+                                <a href="{{ url('amc_education_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Education Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('amc_marriage_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Marriage Scheme Application</a>
+                                <a href="{{ url('amc_marriage_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Marriage Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('amc_cancer_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Cancer Scheme Application</a>
+                                <a href="{{ url('amc_cancer_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Cancer Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('amc_sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Sports Scheme Application</a>
+                                <a href="{{ url('amc_sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('amc_vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Vehicle Scheme Application</a>
+                                <a href="{{ url('amc_vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Vehicle Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('amc_women_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Women Sewing/Beautisians Scheme Application</a>
+                                <a href="{{ url('amc_women_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Women Sewing/Beautisians Scheme Application</a>
                             </li>
                         </ul>
                     </div>
@@ -430,28 +488,28 @@
                     <div class="collapse menu-dropdown" id="sidebarLayouts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('amc_divyang_registration_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Divyang Scheme Application</a>
+                                <a href="{{ url('amc_divyang_registration_list', 2) }}" class="nav-link" data-key="t-horizontal"> Divyang Scheme Application</a>
                             </li>
                              <li class="nav-item">
-                                <a href="{{ url('amc_bus_concession_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Bus Concession Scheme Application</a>
+                                <a href="{{ url('amc_bus_concession_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Bus Concession Scheme Application</a>
                             </li>
                            <li class="nav-item">
-                                <a href="{{ url('amc_education_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Education Scheme Application</a>
+                                <a href="{{ url('amc_education_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Education Scheme Application</a>
                             </li>
                            <li class="nav-item">
-                                <a href="{{ url('amc_marriage_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Marriage Scheme Application</a>
+                                <a href="{{ url('amc_marriage_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Marriage Scheme Application</a>
                             </li>
                              <li class="nav-item">
-                                <a href="{{ url('amc_cancer_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Cancer Scheme Application</a>
+                                <a href="{{ url('amc_cancer_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Cancer Scheme Application</a>
                             </li>
                            <li class="nav-item">
-                                <a href="{{ url('amc_sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Sports Scheme Application</a>
+                                <a href="{{ url('amc_sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
                             </li>
                               <li class="nav-item">
-                                <a href="{{ url('amc_vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Vehicle Scheme Application</a>
+                                <a href="{{ url('amc_vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Vehicle Scheme Application</a>
                             </li>
                            <li class="nav-item">
-                                <a href="{{ url('amc_women_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Women Sewing/Beautisians Scheme Application</a>
+                                <a href="{{ url('amc_women_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Women Sewing/Beautisians Scheme Application</a>
                             </li>
                         </ul>
                     </div>
@@ -469,28 +527,28 @@
                     <div class="collapse menu-dropdown" id="sidebarLayouts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('dmc_divyang_registration_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Divyang Scheme Application</a>
+                                <a href="{{ url('dmc_divyang_registration_list', 0) }}" class="nav-link" data-key="t-horizontal"> Divyang Scheme Application</a>
                             </li>
                              <li class="nav-item">
-                                <a href="{{ url('dmc_bus_concession_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Bus Concession Scheme Application</a>
+                                <a href="{{ url('dmc_bus_concession_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Bus Concession Scheme Application</a>
                             </li>
                            <li class="nav-item">
-                                <a href="{{ url('dmc_education_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending  Education Scheme Application</a>
+                                <a href="{{ url('dmc_education_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">  Education Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('dmc_marriage_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending  Marriage Scheme Application</a>
+                                <a href="{{ url('dmc_marriage_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">  Marriage Scheme Application</a>
                             </li>
                            <li class="nav-item">
-                                <a href="{{ url('dmc_cancer_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending  Cancer Scheme Application</a>
+                                <a href="{{ url('dmc_cancer_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">  Cancer Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('dmc_sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Sports Scheme Application</a>
+                                <a href="{{ url('dmc_sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('dmc_vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Vehicle Scheme Application</a>
+                                <a href="{{ url('dmc_vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Vehicle Scheme Application</a>
                             </li>
                              <li class="nav-item">
-                                <a href="{{ url('dmc_women_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Pending Women Sewing/Beautisians Scheme Application</a>
+                                <a href="{{ url('dmc_women_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Women Sewing/Beautisians Scheme Application</a>
                             </li>
                         </ul>
                     </div>
@@ -504,28 +562,28 @@
                     <div class="collapse menu-dropdown" id="sidebarLayouts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('dmc_divyang_registration_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Divyang Scheme Application</a>
+                                <a href="{{ url('dmc_divyang_registration_list', 1) }}" class="nav-link" data-key="t-horizontal"> Divyang Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('dmc_bus_concession_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Bus Concession Scheme Application</a>
+                                <a href="{{ url('dmc_bus_concession_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Bus Concession Scheme Application</a>
                             </li>
                              <li class="nav-item">
-                                <a href="{{ url('dmc_education_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Education Scheme Application</a>
+                                <a href="{{ url('dmc_education_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Education Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('dmc_marriage_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Marriage Scheme Application</a>
+                                <a href="{{ url('dmc_marriage_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Marriage Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('dmc_cancer_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Cancer Scheme Application</a>
+                                <a href="{{ url('dmc_cancer_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Cancer Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('dmc_sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Sports Scheme Application</a>
+                                <a href="{{ url('dmc_sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('dmc_vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Vehicle Scheme Application</a>
+                                <a href="{{ url('dmc_vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Vehicle Scheme Application</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('dmc_women_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Women Sewing/Beautisians Scheme Application</a>
+                                <a href="{{ url('dmc_women_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Women Sewing/Beautisians Scheme Application</a>
                             </li>
                         </ul>
                     </div>
@@ -540,28 +598,28 @@
                     <div class="collapse menu-dropdown" id="sidebarLayouts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('dmc_divyang_registration_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Divyang Scheme Application</a>
+                                <a href="{{ url('dmc_divyang_registration_list', 2) }}" class="nav-link" data-key="t-horizontal"> Divyang Scheme Application</a>
                             </li>
                              <li class="nav-item">
-                                <a href="{{ url('dmc_bus_concession_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Bus Concession Scheme Application</a>
+                                <a href="{{ url('dmc_bus_concession_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Bus Concession Scheme Application</a>
                             </li>
                            <li class="nav-item">
-                                <a href="{{ url('dmc_education_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Education Scheme Application</a>
+                                <a href="{{ url('dmc_education_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Education Scheme Application</a>
                             </li>
                            <li class="nav-item">
-                                <a href="{{ url('dmc_marriage_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Marriage Scheme Application</a>
+                                <a href="{{ url('dmc_marriage_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Marriage Scheme Application</a>
                             </li>
                              <li class="nav-item">
-                                <a href="{{ url('dmc_cancer_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Cancer Scheme Application</a>
+                                <a href="{{ url('dmc_cancer_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Cancer Scheme Application</a>
                             </li>
                            <li class="nav-item">
-                                <a href="{{ url('dmc_sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Sports Scheme Application</a>
+                                <a href="{{ url('dmc_sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
                             </li>
                               <li class="nav-item">
-                                <a href="{{ url('dmc_vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Vehicle Scheme Application</a>
+                                <a href="{{ url('dmc_vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Vehicle Scheme Application</a>
                             </li>
                            <li class="nav-item">
-                                <a href="{{ url('dmc_women_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Women Sewing/Beautisians Scheme Application</a>
+                                <a href="{{ url('dmc_women_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Women Sewing/Beautisians Scheme Application</a>
                             </li>
                         </ul>
                     </div>

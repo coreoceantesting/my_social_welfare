@@ -19,11 +19,21 @@ use Illuminate\Support\Facades\Auth;
 class DivyangSchemeController extends Controller
 {
     public function uploaded_doc(){
-        $hayat = HayatFormModel::latest()->get();
+      
+        $hayat = HayatFormModel::where('user_id', Auth::user()->id)->latest()->get();
         $users = FinancialMst::where('is_active', 1)->first();
 
         return view('users.uploaded_document')->with(['users'=> $users, 'hayat' => $hayat]);
     }
+    
+    
+    
+     public function list()
+    {
+        $disable = DisabilityApplication::where('created_by', Auth::user()->id)->latest()->get();
+        return view('users.divyang_scheme.application_list')->with(['disable' => $disable]);
+    }
+    
 
 
     public function index()
@@ -38,7 +48,12 @@ class DivyangSchemeController extends Controller
                 return redirect()->route('hayatichaDakhlaform.index')->with('warning', 'Your Application status is still Pending');
             } else {
 
-                $disable = DisabilityApplication::where('created_by', Auth::user()->id)->latest()->get();
+             $disable = DisabilityApplication::where('created_by', Auth::user()->id)->latest()->first();
+
+                if (!empty($disable)) {
+                    return redirect('divyang_application')->with('warning','You Have already apply for this form');
+                }else{
+              
                 $wards = Ward::latest()->get();
 
                 $document = DB::table('document_type_msts')
@@ -47,8 +62,10 @@ class DivyangSchemeController extends Controller
                     ->orderBy('created_at', 'DESC')
                     ->get();
 
-                return view('users.divyang_scheme.scheme_form')->with(['disable' => $disable, 'wards' => $wards, 'document' => $document]);
+                return view('users.divyang_scheme.scheme_form')->with(['wards' => $wards, 'document' => $document]);
 
+            }
+            
             }
 
     }

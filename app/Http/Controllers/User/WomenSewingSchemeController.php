@@ -15,8 +15,18 @@ use Illuminate\Support\Facades\Auth;
 
 class WomenSewingSchemeController extends Controller
 {
-    public function index(){
+    
+     public function list()
+    {
         $women = WomenScheme::where('created_by', Auth::user()->id)->latest()->get();
+        return view('users.women_scheme.application_list')->with(['women'=>$women]);
+    }
+    
+    public function index(){
+        $women = WomenScheme::where('created_by', Auth::user()->id)->latest()->first();
+        if(!empty($women)){
+            return redirect('women_scheme_application')->with('warning','You Have already apply for this form');
+        }
         $wards = Ward::latest()->get();
 
         $document = DB::table('document_type_msts')

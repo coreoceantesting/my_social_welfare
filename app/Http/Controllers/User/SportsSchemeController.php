@@ -13,15 +13,24 @@ use Illuminate\Support\Facades\Auth;
 
 class SportsSchemeController extends Controller
 {
+    public function list()
+    {
+        $sports = SportsScheme::where('created_by', Auth::user()->id)->latest()->get();
+        return view('users.sports_scheme.application_list')->with(['sports'=>$sports]);
+    }
+
     public function index(){
 
-        $sports = SportsScheme::where('created_by', Auth::user()->id)->latest()->get();
+         $sports = SportsScheme::where('created_by', Auth::user()->id)->latest()->first();
+        if(!empty($sports)){
+            return redirect('sports_scheme_application')->with('warning','You Have already apply for this form');
+        }
         $document = DB::table('document_type_msts')
                         ->where('scheme_id', 5)
                         ->whereNull('deleted_at')
                         ->orderBy('created_at', 'DESC')
                         ->get();
-        return view('users.sports_scheme.sports_scheme')->with(['sports'=>$sports,'document'=>$document]);
+        return view('users.sports_scheme.sports_scheme')->with(['document'=>$document]);
     }
 
     public function store(StoreSportsRequest $request){

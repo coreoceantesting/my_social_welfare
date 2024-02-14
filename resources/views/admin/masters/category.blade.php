@@ -1,6 +1,6 @@
 <x-admin.layout>
     <x-slot name="title">Categories</x-slot>
-    <x-slot name="heading">Categories</x-slot>
+    <x-slot name="heading">Categories (श्रेणी)</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
 
@@ -17,12 +17,12 @@
                         <div class="card-body">
                             <div class="mb-3 row">
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="category_name">Category Name <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="category_name">Category Name (श्रेणीचे नाव) <span class="text-danger">*</span></label>
                                     <input class="form-control" id="category_name" name="category_name" type="text" placeholder="Enter Category Name">
                                     <span class="text-danger is-invalid category_name_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="initial">Initial <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="initial">Initial (इनिशियल)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="initial" name="initial" type="text" placeholder="Enter Category Initial">
                                     <span class="text-danger is-invalid initial_err"></span>
                                 </div>
@@ -53,12 +53,12 @@
                             <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
                             <div class="mb-3 row">
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="category_name">Category Name <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="category_name">Category Name (श्रेणीचे नाव) <span class="text-danger">*</span></label>
                                     <input class="form-control" id="category_name" name="category_name" type="text" placeholder="Category Name">
                                     <span class="text-danger is-invalid category_name_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="initial">Initial <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="initial">Initial (इनिशियल)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="initial" name="initial" type="text" placeholder="Enter Category Initial">
                                     <span class="text-danger is-invalid initial_err"></span>
                                 </div>

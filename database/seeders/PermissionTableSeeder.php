@@ -233,6 +233,12 @@ class PermissionTableSeeder extends Seeder
                 'name' => 'dmc.application',
                 'group' => 'amc',
             ],
+            
+             [
+                'id' => 41,
+                'name' => 'users.applicationList',
+                'group' => 'users',
+            ],
 
 
         ];

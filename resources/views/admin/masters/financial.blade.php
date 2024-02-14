@@ -1,6 +1,6 @@
 <x-admin.layout>
     <x-slot name="title">Financial Year</x-slot>
-    <x-slot name="heading">Financial Year</x-slot>
+    <x-slot name="heading">Financial Year (आर्थिक वर्ष)</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
 
@@ -12,30 +12,30 @@
                         @csrf
 
                         <div class="card-header">
-                            <h4 class="card-title">Add Financial Year</h4>
+                            <h4 class="card-title">Add Financial Year (आर्थिक वर्ष जोडा)</h4>
                         </div>
                         <div class="card-body">
                             <div class="mb-3 row">
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="category_name">Title<span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="category_name">Title (शीर्षक)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="title" name="title" type="text" placeholder="Enter Title">
                                     <span class="text-danger is-invalid title_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="from_date">From Date<span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="from_date">From Date (या तारखेपासून)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="from_date" name="from_date" type="date" placeholder="Enter Title">
                                     <span class="text-danger is-invalid  from_date_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="to_date">To Date<span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="to_date">To Date (आजपर्यंत)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="to_date" name="to_date" type="date" placeholder="Enter Title">
                                     <span class="text-danger is-invalid to_date_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label"for="checkbox-switch-1">Active<span class="text-danger">*</span></label>
+                                    <label class="col-form-label"for="checkbox-switch-1">Active (सक्रिय)<span class="text-danger">*</span></label>
                                     <input  id="checkbox-switch-1" name="is_active" class="form-check-input" type="checkbox" style="font-size:20px; border:solid 1px;  border-color:#91C714; ">
                                     {{-- <span class="text-danger is-invalid is_active_err"></span> --}}
                                 </div>
@@ -61,25 +61,31 @@
                     @csrf
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Edit Financial Year</h4>
+                            <h4 class="card-title">Edit Financial Year (आर्थिक वर्ष संपादित करा)</h4>
                         </div>
                         <div class="card-body py-2">
                             <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
                             <div class="mb-3 row">
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="category_name">Title<span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="category_name">Title (शीर्षक)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="title" name="title" type="text" placeholder="Enter Title">
                                     <span class="text-danger is-invalid title_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="from_date">From Date<span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="from_date">From Date (या तारखेपासून)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="from_date" name="from_date" type="date" placeholder="Enter Title">
                                     <span class="text-danger is-invalid  from_date_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="to_date">To Date<span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="to_date">To Date (आजपर्यंत)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="to_date" name="to_date" type="date" placeholder="Enter Title">
                                     <span class="text-danger is-invalid to_date_err"></span>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <label class="col-form-label"for="checkbox-switch-1">Active (सक्रिय)<span class="text-danger">*</span></label>
+                                    <input  id="checkbox-switch-1" name="is_active" class="form-check-input" type="checkbox" style="font-size:20px; border:solid 1px;  border-color:#91C714; ">
+                                    {{-- <span class="text-danger is-invalid is_active_err"></span> --}}
                                 </div>
                             </div>
 
@@ -241,6 +247,8 @@
                     $("#editForm input[name='title']").val(data.financial.title);
                     $("#editForm input[name='from_date']").val(data.financial.from_date);
                     $("#editForm input[name='to_date']").val(data.financial.to_date);
+                   $("#editForm input[name='is_active']").prop('checked', data.financial.is_active == 1);
+
                 }
                 else
                 {

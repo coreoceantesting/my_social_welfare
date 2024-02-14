@@ -1,6 +1,6 @@
 <x-admin.layout>
     <x-slot name="title">Terms and Conditions</x-slot>
-    <x-slot name="heading">Terms and Conditions</x-slot>
+    <x-slot name="heading">Terms and Conditions (नियम आणि अटी)</x-slot>
 
                     <!-- start page title -->
 
@@ -12,7 +12,7 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="">
-                                                    <h4 class="mb-sm-0" style="text-align: center !important;">आटी व शर्ती </h4>
+                                               <h4 class="mb-sm-0" style="text-align: center !important;"><strong>अटी व शर्ती</strong> </h4>
                                                 </div>
                                                 <div>
 
@@ -27,7 +27,7 @@
                                     <div class="card-body p-4">
                                         <!--end row-->
                                         <div class="mt-4">
-                                            <label for="exampleFormControlTextarea1" class="form-label text-muted text-uppercase fw-semibold">NOTES</label>
+                                            <!--<label for="exampleFormControlTextarea1" class="form-label text-muted text-uppercase fw-semibold">NOTES</label>-->
                                             {!! $terms->rules_regulations ?? ''!!}
                                         </div>
                                         <div class="hstack gap-2 justify-content-end d-print-none mt-4">

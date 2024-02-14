@@ -1,6 +1,11 @@
 <x-admin.layout>
     <x-slot name="title">Education Scheme Application</x-slot>
     <x-slot name="heading">Education Scheme Application</x-slot>
+    <style>
+  .error {
+    color: red;
+  }
+</style>
 
         <div class="row" >
             <div class="col-sm-12">
@@ -25,7 +30,7 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="dob">Date Of Birth/ वय  </label>
+                                    <label class="col-form-label" for="dob">Date Of Birth/ जन्म तारीख  </label>
                                     <input class="form-control"  type="text"  name="dob" value="{{ $data->dob }}" readonly>
                                 </div>
 
@@ -123,7 +128,7 @@
                         <h4 class="title text-danger" id="largeModalLabel">Reject By AMC</h4>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="{{ url('education_scheme_application_reject_by_amc', $data->id ) }}" enctype="multipart/form-data">
+                        <form id="rejectForm" method="POST" action="{{ url('education_scheme_application_reject_by_amc', $data->id ) }}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" class="form-control " id="application_no" name="application_no" value="{{ $data->application_no }}" >
                               <input type="hidden" class="form-control " id="contact" name="contact" value="{{ $data->contact }}" >
@@ -131,6 +136,7 @@
                                 <label class="col-sm-4"><strong>नकाराचे कारण / <br>  Reason for Rejection  :  <span style="color:red;">*</span></strong></label>
                                 <div class="col-sm-8 col-md-8 p-2">
                                     <textarea  class="form-control" name ="amc_reject_reason" id="amc_reject_reason" value="" style="height:120px;"></textarea>
+                                     <span id="reason-error" class="error"></span>
                                 </div>
                             </div>
 
@@ -152,7 +158,25 @@
 </x-admin.layout>
 
 
+<script>
+    function validateForm() {
+        var reason = document.getElementById("amc_reject_reason").value;
+        var errorMessage = document.getElementById("reason-error");
 
+        if (reason.trim() === "") {
+            errorMessage.textContent = "Please provide a rejection reason.";
+            return false; 
+        }
+        errorMessage.textContent = "";
+        return true; 
+    }
+
+    document.getElementById("rejectForm").addEventListener("submit", function(event) {
+        if (!validateForm()) {
+            event.preventDefault(); 
+        }
+    });
+</script>
 
 
 

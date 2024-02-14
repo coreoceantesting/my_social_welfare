@@ -67,40 +67,51 @@ Route::middleware(['auth','PreventBackHistory'])->group(function()
     Route::get('divyang_certificate/{id}', [App\Http\Controllers\User\DivyangSchemeController::class, 'generateCertificate']);
     Route::get('divyang_view/{id}', [App\Http\Controllers\User\DivyangSchemeController::class, 'divyangRegistrationView']);
     Route::get('divyang_certificate_view/{id}', [App\Http\Controllers\User\DivyangSchemeController::class, 'divyangCertificate']);
+     Route::get('divyang_application', [App\Http\Controllers\User\DivyangSchemeController::class, 'list'])->name('divyang.application');
+     
     // Bus Concession Scheme Application
     Route::resource('bus_concession', App\Http\Controllers\User\BusConcessionSchemeController::class);
     Route::get('bus_concession_certificate/{id}', [App\Http\Controllers\User\BusConcessionSchemeController::class, 'generateCertificate']);
     Route::get('bus_concession_view/{id}', [App\Http\Controllers\User\BusConcessionSchemeController::class, 'busConcessionApplicationView']);
     Route::get('bus_concession_certificate_view/{id}', [App\Http\Controllers\User\BusConcessionSchemeController::class, 'busConcessionCertificate']);
+    Route::get('bus_concession_application', [App\Http\Controllers\User\BusConcessionSchemeController::class, 'list'])->name('bus.concession.application');
     // Cancer Scheme Application
     Route::resource('cancer_scheme', App\Http\Controllers\User\CancerSchemeController::class);
     Route::get('cancer_certificate/{id}', [App\Http\Controllers\User\CancerSchemeController::class, 'generateCertificate']);
     Route::get('cancer_view/{id}', [App\Http\Controllers\User\CancerSchemeController::class, 'cancerSchemeApplicationView']);
     Route::get('cancer_scheme_certificate_view', [App\Http\Controllers\User\CancerSchemeController::class, 'cancerSchemeCertificate']);
+    Route::get('cancer_scheme_application', [App\Http\Controllers\User\CancerSchemeController::class, 'list'])->name('cancer_scheme.application');
     // Education Scheme Application
     Route::resource('education_scheme', App\Http\Controllers\User\EducationSchemeController::class);
     Route::get('education_certificate/{id}', [App\Http\Controllers\User\EducationSchemeController::class, 'generateCertificate']);
     Route::get('education_view/{id}', [App\Http\Controllers\User\EducationSchemeController::class, 'eductationSchemeApplicationView']);
     Route::get('education_scheme_certificate_view/{id}', [App\Http\Controllers\User\EducationSchemeController::class, 'educationSchemeCertificate']);
+    Route::get('education_scheme_application', [App\Http\Controllers\User\EducationSchemeController::class, 'list'])->name('education_scheme.application');
     // Marriage Scheme Application
     Route::resource('marriage_scheme', App\Http\Controllers\User\MarriageSchemeController::class);
     Route::get('marriage_certificate/{id}', [App\Http\Controllers\User\MarriageSchemeController::class, 'generateCertificate']);
     Route::get('marriage_view/{id}', [App\Http\Controllers\User\MarriageSchemeController::class, 'marriageSchemeApplicationView']);
+    Route::get('marriage_scheme_application', [App\Http\Controllers\User\MarriageSchemeController::class, 'list'])->name('marriage_scheme.application');
+    Route::get('marriage_scheme_application', [App\Http\Controllers\User\MarriageSchemeController::class, 'list'])->name('marriage_scheme.application');
     // Sports Scheme Application
     Route::resource('sports_scheme', App\Http\Controllers\User\SportsSchemeController::class);
     Route::get('sports_certificate/{id}', [App\Http\Controllers\User\SportsSchemeController::class, 'generateCertificate']);
     Route::get('sports_view/{id}', [App\Http\Controllers\User\SportsSchemeController::class, 'sportsSchemeApplicationView']);
     Route::get('sports_scheme_certificate_view', [App\Http\Controllers\User\SportsSchemeController::class, 'sportsSchemeCertificate']);
+    Route::get('sports_scheme_application', [App\Http\Controllers\User\SportsSchemeController::class, 'list'])->name('sports_scheme.application');
     // Vehicle Scheme Application
     Route::resource('vehicle_scheme', App\Http\Controllers\User\VehicleSchemeController::class);
     Route::get('vehicle_certificate/{id}', [App\Http\Controllers\User\VehicleSchemeController::class, 'generateCertificate']);
     Route::get('vehicle_view/{id}', [App\Http\Controllers\User\VehicleSchemeController::class, 'vehicleSchemeApplicationView']);
     Route::get('vehicle_scheme_certificate_view', [App\Http\Controllers\User\VehicleSchemeController::class, 'vehicleSchemeCertificate']);
+    Route::get('vehicle_scheme_application', [App\Http\Controllers\User\VehicleSchemeController::class, 'list'])->name('vehicle_scheme.application');
+    
     // Women Sewing/Beautisians Scheme Application
     Route::resource('women_scheme', App\Http\Controllers\User\WomenSewingSchemeController::class);
     Route::get('women_certificate/{id}', [App\Http\Controllers\User\WomenSewingSchemeController::class, 'generateCertificate']);
     Route::get('women_view/{id}', [App\Http\Controllers\User\WomenSewingSchemeController::class, 'womenSchemeApplicationView']);
     Route::get('women_scheme_certificate_view', [App\Http\Controllers\User\WomenSewingSchemeController::class, 'womenSchemeCertificate']);
+    Route::get('women_scheme_application', [App\Http\Controllers\User\WomenSewingSchemeController::class, 'list'])->name('women_scheme.application');
 
     // Hod Panel
     // Divyang Scheme Application

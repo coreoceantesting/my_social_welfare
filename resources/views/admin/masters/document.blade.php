@@ -1,6 +1,6 @@
 <x-admin.layout>
     <x-slot name="title">Document Type</x-slot>
-    <x-slot name="heading">Document Type</x-slot>
+    <x-slot name="heading">Document Type (दस्तऐवज प्रकार)</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
 
@@ -12,13 +12,13 @@
                         @csrf
 
                         <div class="card-header">
-                            <h4 class="card-title">Add Document Type</h4>
+                            <h4 class="card-title">Add Document Type (दस्तऐवज प्रकार जोडा)</h4>
                         </div>
                         <div class="card-body">
                             <div class="mb-3 row">
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="name">Select Scheme : </label>
+                                    <label class="col-form-label" for="name">Select Scheme (योजना निवडा) : </label>
                                         <select class="js-example-basic-single"  name="scheme_id">
                                             <option value="">--Select Scheme--</option>
                                             @foreach($scheme as $schemes)
@@ -29,18 +29,18 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="document_name">Document Name <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="document_name">Document Name (दस्तऐवजाचे नाव) <span class="text-danger">*</span></label>
                                     <input class="form-control" id="document_name" name="document_name" type="text" placeholder="Enter Document Name">
                                     <span class="text-danger is-invalid document_name_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="document_initial">Initial <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="document_initial">Initial (इनिशियल)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="document_initial" name="document_initial" type="text" placeholder="Enter Document Initial">
                                     <span class="text-danger is-invalid document_initial_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="name">Is Required : </label>
+                                    <label class="col-form-label" for="name">Is Required (आवश्यक आहे?) : </label>
                                         <select class="js-example-basic-single" name="is_required" id="is_required">
                                             <option value="">--Select Is Required--</option>
                                             <option value="1">Mandatory</option>
@@ -77,7 +77,7 @@
                             <div class="mb-3 row">
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="name">Select Scheme : </label>
+                                    <label class="col-form-label" for="name">Select Scheme (योजना निवडा) : </label>
                                         <select class="js-example-basic-single" id="scheme_id" name="scheme_id">
                                             <option value="">--Select Scheme--</option>
                                             @foreach($scheme as $schemes)
@@ -89,15 +89,25 @@
 
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="document_name">Document Name <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="document_name">Document Name (दस्तऐवजाचे नाव)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="document_name" name="document_name" type="text" placeholder="Enter Document Name">
                                     <span class="text-danger is-invalid document_name_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="document_initial">Initial <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="document_initial">Initial (इनिशियल)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="document_initial" name="document_initial" type="text" placeholder="Enter Document Initial">
                                     <span class="text-danger is-invalid document_initial_err"></span>
+                                </div>
+                                
+                                  <div class="col-md-4">
+                                    <label class="col-form-label" for="name">Is Required (आवश्यक आहे?) : </label>
+                                        <select class="js-example-basic-single" name="is_required" id="is_required">
+                                            <option value="">--Select Is Required--</option>
+                                            <option value="1">Mandatory</option>
+                                          <option value="2">Not Mandatory</option>
+                                        </select>
+                                        <span class="text-danger is-invalid  is_required_err"></span>
                                 </div>
                             </div>
 
@@ -259,6 +269,8 @@
                     $("#editForm input[name='document_name']").val(data.document.document_name);
                     $("#editForm input[name='document_initial']").val(data.document.document_initial);
                     $("#scheme_id").html(data.schemeHtml);
+                    $("#editForm select[name='is_required']").val(data.document.is_required).trigger('change');
+                    $("#editForm select[name='is_required']").val();
                 }
                 else
                 {

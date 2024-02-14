@@ -1,6 +1,6 @@
 <x-admin.layout>
     <x-slot name="title">Roles</x-slot>
-    <x-slot name="heading">Roles</x-slot>
+    <x-slot name="heading">Roles (भूमिका)</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
 
@@ -17,7 +17,7 @@
 
                         <div class="mb-3 row">
                             <div class="col-md-4">
-                                <label class="col-form-label" for="name">Role Name <span class="text-danger">*</span></label>
+                                <label class="col-form-label" for="name">Role Name (भूमिकेचे नाव)<span class="text-danger">*</span></label>
                                 <input class="form-control" id="name" name="name" type="text" placeholder="Enter Role Name">
                                 <span class="text-danger is-invalid name_err"></span>
                             </div>
@@ -79,7 +79,7 @@
 
                         <div class="mb-3 row">
                             <div class="col-md-4">
-                                <label class="col-form-label" for="edit_name">Role Name <span class="text-danger">*</span></label>
+                                <label class="col-form-label" for="edit_name">Role Name (भूमिकेचे नाव)<span class="text-danger">*</span></label>
                                 <input class="form-control" id="edit_name" name="edit_name" type="text" placeholder="Enter Role Name">
                                 <span class="text-danger is-invalid edit_name_err"></span>
                             </div>

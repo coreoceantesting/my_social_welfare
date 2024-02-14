@@ -1,6 +1,6 @@
 <x-admin.layout>
     <x-slot name="title">Uploaded List</x-slot>
-    <x-slot name="heading">Uploaded List</x-slot>
+    <x-slot name="heading">Uploaded List (अपलोड केलेली यादी)</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
 

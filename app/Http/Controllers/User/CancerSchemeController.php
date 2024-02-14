@@ -14,14 +14,24 @@ use Illuminate\Support\Facades\Auth;
 
 class CancerSchemeController extends Controller
 {
-    public function index(){
+    
+    public function list()
+    {
         $cancer = CancerScheme::where('created_by', Auth::user()->id)->latest()->get();
+        return view('users.cancer_scheme.application_list')->with(['cancer'=>$cancer]);
+    }
+    
+    public function index(){
+       $cancer = CancerScheme::where('created_by', Auth::user()->id)->latest()->first();
+        if(!empty($cancer)){
+            return redirect('cancer_scheme_application')->with('warning','You Have already apply for this form');
+        }
         $document = DB::table('document_type_msts')
                         ->where('scheme_id', 7)
                         ->whereNull('deleted_at')
                         ->orderBy('created_at', 'DESC')
                         ->get();
-        return view('users.cancer_scheme.cancer_scheme')->with(['cancer'=>$cancer,'document'=>$document]);
+        return view('users.cancer_scheme.cancer_scheme')->with(['document'=>$document]);
     }
 
     public function store(StoreCancerRequest $request){

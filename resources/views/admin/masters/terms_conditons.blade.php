@@ -1,6 +1,6 @@
 <x-admin.layout>
     <x-slot name="title">Terms And Conditions</x-slot>
-    <x-slot name="heading">Terms And Conditions</x-slot>
+    <x-slot name="heading">Terms And Conditions (नियम आणि अटी)</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
     <style>
         .center-table {
@@ -22,13 +22,13 @@
                         @csrf
 
                         <div class="card-header">
-                            <h4 class="card-title">Add Terms And Conditions</h4>
+                            <h4 class="card-title">Add Terms And Conditions (अटी आणि नियम जोडा)</h4>
                         </div>
                         <div class="card-body">
                             <div class="mb-3 row">
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="name">Select Scheme : </label>
+                                    <label class="col-form-label" for="name">Select Scheme (योजना निवडा) : </label>
                                         <select class="js-example-basic-single"  name="scheme_id">
                                             <option value="">--Select Scheme--</option>
                                             @foreach($scheme as $schemes)
@@ -39,13 +39,13 @@
                                 </div>
 
                                 {{-- <div class="col-md-4">
-                                    <label class="col-form-label" for="rules_regulations">Tearms And Conditions <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="rules_regulations">Tearms And Conditions (नियम आणि अटी)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="rules_regulations" name="rules_regulations" type="text" placeholder="Enter Document Name">
                                     <span class="text-danger is-invalid rules_regulations_err"></span>
                                 </div> --}}
 
                                 <div class="col-md-8">
-                                    <label class="col-form-label" for="rules_regulations">Tearms And Conditions <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="rules_regulations">Tearms And Conditions (नियम आणि अटी)<span class="text-danger">*</span></label>
                                     <textarea  id="rules_regulations" name="rules_regulations"></textarea><br>
                                     <span class="text-danger is-invalid rules_regulations_err"></span>
                                 </div>
@@ -71,14 +71,14 @@
                     @csrf
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Edit Terms And Conditions</h4>
+                            <h4 class="card-title">Edit Terms And Conditions (अटी आणि नियम संपादित करा)</h4>
                         </div>
                         <div class="card-body py-2">
                             <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
                             <div class="mb-3 row">
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="name">Select Scheme : </label>
+                                    <label class="col-form-label" for="name">Select Scheme (योजना निवडा) : </label>
                                         <select class="js-example-basic-single" id="scheme_id" name="scheme_id">
                                             <option value="">--Select Scheme--</option>
                                             @foreach($scheme as $schemes)
@@ -95,7 +95,7 @@
                                 </div> --}}
 
                                 <div class="col-md-8">
-                                    <label class="col-form-label" for="rules_regulations">Tearms And Conditions <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="rules_regulations">Tearms And Conditions (नियम आणि अटी) <span class="text-danger">*</span></label>
                                     <textarea id="long_desc2" name="rules_regulations"></textarea><br>
                                     <span class="text-danger is-invalid rules_regulations_err"></span>
                                 </div>
@@ -164,11 +164,25 @@
 {{-- Add --}}
 <script src="https://cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script>
 <script>
-     CKEDITOR.replace('rules_regulations');
-     CKEDITOR.replace('long_desc2');
+    //  CKEDITOR.replace('rules_regulations');
+    //  CKEDITOR.replace('long_desc2');
+     
+     CKEDITOR.replace('rules_regulations', {
+    inline: false  // Disable automatic inline editing
+});
+
+
+ CKEDITOR.replace('long_desc2', {
+    inline: false  // Disable automatic inline editing
+});
 
     $("#addForm").submit(function(e) {
         e.preventDefault();
+        
+         if (CKEDITOR.instances['rules_regulations']) {
+        CKEDITOR.instances['rules_regulations'].updateElement(); 
+    }
+    
         $("#addSubmit").prop('disabled', true);
 
         var formdata = new FormData(this);
@@ -268,6 +282,9 @@
     $(document).ready(function() {
         $("#editForm").submit(function(e) {
             e.preventDefault();
+            
+            CKEDITOR.instances['long_desc2'].updateElement();
+    
             $("#editSubmit").prop('disabled', true);
             var formdata = new FormData(this);
             formdata.append('_method', 'PUT');

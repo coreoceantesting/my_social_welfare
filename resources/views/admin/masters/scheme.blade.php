@@ -1,6 +1,6 @@
 <x-admin.layout>
     <x-slot name="title">Schemes</x-slot>
-    <x-slot name="heading">Schemes</x-slot>
+    <x-slot name="heading">Schemes (योजना)</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
 
@@ -18,7 +18,7 @@
                             <div class="mb-3 row">
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="cat_id">Select Category Type <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="cat_id">Select Category Type (श्रेणी प्रकार निवडा) <span class="text-danger">*</span></label>
                                     <select class="js-example-basic-multiple" data-placeholder="--Select Category--" name="category_id[]" multiple>
                                         {{-- <option value="">--Select Category--</option> --}}
                                         @foreach($category as $row)
@@ -30,13 +30,13 @@
 
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="scheme_name">Scheme English Name <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="scheme_name">Scheme Name In English (योजनेचे नाव इंग्रजीत) <span class="text-danger">*</span></label>
                                     <input class="form-control" id="scheme_name" name="scheme_name" type="text" placeholder="Enter Scheme Name">
                                     <span class="text-danger is-invalid scheme_name_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="scheme_marathi_name">Scheme Marathi Name <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="scheme_marathi_name">Scheme Name In Marathi (योजनेचे नाव मराठीत) <span class="text-danger">*</span></label>
                                     <input class="form-control" id="scheme_marathi_name" name="scheme_marathi_name" type="text" placeholder="Enter Scheme Name">
                                     <span class="text-danger is-invalid scheme_marathi_name_err"></span>
                                 </div>
@@ -70,7 +70,7 @@
                             <div class="mb-3 row">
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="name">Select Category Type : </label>
+                                    <label class="col-form-label" for="name">Select Category Type (श्रेणी प्रकार निवडा) : </label>
                                         <select class="js-example-basic-multiple" id="cat_id" data-placeholder="--Select Category--" name="category_id[]" multiple>
 
                                             <option value=""></option>
@@ -80,13 +80,13 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="scheme_name">Scheme Name <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="scheme_name">Scheme Name In English (योजनेचे नाव इंग्रजीत)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="scheme_name" name="scheme_name" type="text" placeholder="Scheme Name">
                                     <span class="text-danger is-invalid scheme_name_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="scheme_marathi_name">Scheme Marathi Name <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="scheme_marathi_name">Scheme Name In Marathi (योजनेचे नाव मराठीत)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="scheme_marathi_name" name="scheme_marathi_name" type="text" placeholder="Enter Scheme Name">
                                     <span class="text-danger is-invalid scheme_marathi_name_err"></span>
                                 </div>

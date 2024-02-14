@@ -14,8 +14,18 @@ use Illuminate\Support\Facades\Auth;
 
 class VehicleSchemeController extends Controller
 {
-    public function index(){
+      public function list()
+    {
         $vehicles = VehicleScheme::where('created_by', Auth::user()->id)->latest()->get();
+        return view('users.vehicle_scheme.application_list')->with(['vehicles'=>$vehicles]);
+    }
+    
+    public function index(){
+        $vehicles = VehicleScheme::where('created_by', Auth::user()->id)->latest()->first();
+
+        if(!empty($vehicles)){
+            return redirect('vehicle_scheme_application')->with('warning','You Have already apply for this form');
+        }
 
         $document = DB::table('document_type_msts')
                         ->where('scheme_id', 8)

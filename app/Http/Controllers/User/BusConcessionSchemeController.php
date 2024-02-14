@@ -16,17 +16,11 @@ use App\Models\HayatFormModel;
 
 class BusConcessionSchemeController extends Controller
 {
-    // public function index(){
-    //     $bus_concession = BusConcession::where('created_by', Auth::user()->id)->latest()->get();
-
-    //     $document = DB::table('document_type_msts')
-    //                     ->where('scheme_id', 2)
-    //                     ->whereNull('deleted_at')
-    //                     ->orderBy('created_at', 'DESC')
-    //                     ->get();
-
-    //     return view('users.bus_concession.bus_concession')->with(['bus_concession'=> $bus_concession, 'document'=>$document]);
-    // }
+   public function list()
+    {
+        $bus_concession = BusConcession::where('created_by', Auth::user()->id)->latest()->get();
+        return view('users.bus_concession.application_list')->with(['bus_concession'=> $bus_concession,]);
+    }
 
     public function index() {
         $userCategory = Auth::user()->category;
@@ -40,9 +34,11 @@ class BusConcessionSchemeController extends Controller
         } elseif ($data->sign_uploaded_live_certificate == "") {
             return redirect()->route('hayatichaDakhlaform.index')->with('warning', 'Your Application status is still Pending');
         } else {
-            $bus_concession = BusConcession::where('created_by', Auth::user()->id)
-                                            ->latest()
-                                            ->get();
+            $bus_concession = BusConcession::where('created_by', Auth::user()->id)->latest()->first();
+
+            if (!empty($bus_concession)) {
+                return redirect('bus_concession_application')->with('warning','You Have already apply for this form');
+            }
 
             $document = DB::table('document_type_msts')
                             ->where('scheme_id', 2)
@@ -51,12 +47,14 @@ class BusConcessionSchemeController extends Controller
                             ->get();
 
             return view('users.bus_concession.bus_concession')->with(['bus_concession'=> $bus_concession, 'document'=>$document]);
-            }
+            
+        }
         } else {
-            $bus_concession = BusConcession::where('created_by', Auth::user()->id)
-            ->latest()
-            ->get();
+             $bus_concession = BusConcession::where('created_by', Auth::user()->id)->latest()->first();
 
+            if (!empty($bus_concession)) {
+                return redirect('bus_concession_application')->with('warning','You Have already apply for this form');
+            }
             $document = DB::table('document_type_msts')
             ->where('scheme_id', 2)
             ->whereNull('deleted_at')
@@ -65,8 +63,8 @@ class BusConcessionSchemeController extends Controller
 
           return view('users.bus_concession.bus_concession')->with(['bus_concession'=> $bus_concession, 'document'=>$document]);
         }
-    }
     
+    }
 
     public function store(StoreBusConcessionRequest $request){
         try

@@ -1,6 +1,6 @@
 <x-admin.layout>
     <x-slot name="title">Wards</x-slot>
-    <x-slot name="heading">Wards</x-slot>
+    <x-slot name="heading">Wards (प्रभाग)</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
 
@@ -12,17 +12,17 @@
                         @csrf
 
                         <div class="card-header">
-                            <h4 class="card-title">Add Ward</h4>
+                            <h4 class="card-title">Add Ward (प्रभाग जोडा)</h4>
                         </div>
                         <div class="card-body">
                             <div class="mb-3 row">
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="name">Ward Name <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="name">Ward Name (प्रभागाचे नाव)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="name" name="name" type="text" placeholder="Enter Ward Name">
                                     <span class="text-danger is-invalid name_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="initial">Initial <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="initial">Initial (इनिशियल)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="initial" name="initial" type="text" placeholder="Enter Ward Initial">
                                     <span class="text-danger is-invalid initial_err"></span>
                                 </div>
@@ -47,18 +47,18 @@
                     @csrf
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Edit Ward</h4>
+                            <h4 class="card-title">Edit Ward (प्रभाग संपादित करा)</h4>
                         </div>
                         <div class="card-body py-2">
                             <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
                             <div class="mb-3 row">
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="name">Ward Name <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="name">Ward Name (प्रभागाचे नाव) <span class="text-danger">*</span></label>
                                     <input class="form-control" id="name" name="name" type="text" placeholder="Ward Name">
                                     <span class="text-danger is-invalid name_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="initial">Initial <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="initial">Initial (इनिशियल) <span class="text-danger">*</span></label>
                                     <input class="form-control" id="initial" name="initial" type="text" placeholder="Enter Ward Initial">
                                     <span class="text-danger is-invalid initial_err"></span>
                                 </div>
