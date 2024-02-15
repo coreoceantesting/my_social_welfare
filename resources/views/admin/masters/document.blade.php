@@ -41,7 +41,7 @@
 
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="name">Is Required (आवश्यक आहे?) : </label>
-                                        <select class="js-example-basic-single" name="is_required" id="is_required">
+                                        <select class="form-control" name="is_required" id="is_required">
                                             <option value="">--Select Is Required--</option>
                                             <option value="1">Mandatory</option>
                                           <option value="2">Not Mandatory</option>

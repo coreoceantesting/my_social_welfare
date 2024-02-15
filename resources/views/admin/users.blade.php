@@ -350,6 +350,24 @@
             }
         });
 
+        function resetErrors() {
+            var form = document.getElementById('addForm');
+            var data = new FormData(form);
+            for (var [key, value] of data) {
+                $('.' + key + '_err').text('');
+                $('#' + key).removeClass('is-invalid');
+                $('#' + key).addClass('is-valid');
+            }
+        }
+
+        function printErrMsg(msg) {
+            $.each(msg, function(key, value) {
+                $('.' + key + '_err').text(value);
+                $('#' + key).addClass('is-invalid');
+                $('#' + key).removeClass('is-valid');
+            });
+        }
+
     });
 </script>
 
@@ -504,6 +522,24 @@
                     }
                 }
             });
+
+            function resetErrors() {
+                var form = document.getElementById('addForm');
+                var data = new FormData(form);
+                for (var [key, value] of data) {
+                    $('.' + key + '_err').text('');
+                    $('#' + key).removeClass('is-invalid');
+                    $('#' + key).addClass('is-valid');
+                }
+            }
+
+            function printErrMsg(msg) {
+                $.each(msg, function(key, value) {
+                    $('.' + key + '_err').text(value);
+                    $('#' + key).addClass('is-invalid');
+                    $('#' + key).removeClass('is-valid');
+                });
+            }
 
         });
     });
