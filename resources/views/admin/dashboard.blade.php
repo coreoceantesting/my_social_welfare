@@ -25,6 +25,11 @@
         margin-top:10px;
     }
 
+    .card-title {
+    font-size: 15px !important;
+    margin: 0 0 7px 0;
+}
+
 
     .card-body table tr,td{
         text-align: center;
@@ -50,19 +55,17 @@
                                                     <div class="card-widgets"></div>
                                                     <h5 class="card-title mb-0 text-white" style="text-align:center;"> {{ strtoupper($schemes->scheme_name) }}</h5>
                                                 </div>
-                                                <div id="cardCollpase5" class="collapse show">
-                                                    <div class="card-body h-50">
-                                                        <h5 style="text-align:center;">
-                                                            {{ $schemes->scheme_marathi_name }}
-                                                        </h5>
-                                                    </div>
-                                                    <div class="card-footer border-0 mt-auto">
-                                                        <div class="save-btn text-center">
-                                                            <a href="{{ route('terms_conditions', $schemes->id) }}">
-                                                                <button type="button" class="btn btn-blue btn-rounded width-md waves-effect waves-light" style="background-color:#8c68cd; color:#000000;">Apply &nbsp;<i class="fas fa-check"></i>
-                                                                </button>
-                                                            </a>
-                                                        </div>
+                                                <div class="card-body h-50">
+                                                    <h5 style="text-align:center;">
+                                                        {{ $schemes->scheme_marathi_name }}
+                                                    </h5>
+                                                </div>
+                                                <div class="card-footer border-0">
+                                                    <div class="save-btn text-center">
+                                                        <a href="{{ route('terms_conditions', $schemes->id) }}">
+                                                            <button type="button" class="btn btn-blue btn-rounded width-md waves-effect waves-light" style="background-color:#8c68cd; color:#000000;">Apply &nbsp;<i class="fas fa-check"></i>
+                                                            </button>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
