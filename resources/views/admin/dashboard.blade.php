@@ -17,11 +17,17 @@
             padding-right: 0;
             padding-left: 0;
         }
-        .card-body h4{
+        /* .card-body h4{
             height:50px;
-        }
+        } */
+        
     .card-body .save-btn{
         margin-top:10px;
+    }
+
+
+    .card-body table tr,td{
+        text-align: center;
     }
 </style>
 
@@ -73,7 +79,7 @@
     <div class="col-xxl-12">
         <div class="card" style="border:solid 1px;">
             <form class="needs-validation" novalidate id="invoice_form">
-                <div class="card-body border-bottom border-bottom-dashed">
+                <div class="card-body border-bottom border-bottom-dashed p-2">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="" style="text-align: center !important;">
@@ -90,22 +96,21 @@
                     <!--end row-->
                 </div>
 
-                <div class="card-body p-4">
+                <div class="card-body p-3" style="margin-bottom: -25px;">
                     <!--end row-->
                     <div class="row">
                     <div class="col-lg-3 mb-3">
                         <!-- Portlet card -->
-                        <div class="card h-100" style="border:solid 1px;">
+                        <div class="card h-auto" style="border:solid 1px;">
                           <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
                             <div class="card-widgets">
                             </div>
-                            <h5 class="card-title mb-0 text-dark" style="text-align:center; text-transform: capitalize;"> Bus Concession Scheme</h5>
+                            <h5 class="card-title mb-0 text-white" style="text-align:center; text-transform: capitalize;"> Bus Concession Scheme</h5>
                           </div>
                           <div id="cardCollpase5" class="collapse show">
-                            <div class="card-body">
-                              <br>
+                            <div class="card-body pb-0">
+                              <h4 style="text-align:center;">Total Count</h4>
                               <h4 style="text-align:center;">{{ $bus_concession_scheme_count }}</h4>
-                             <h4 style="text-align:center;">Count</h4>
                              <table class="table table-bordered nowrap align-middle">
                                 <thead>
                                 <tr>
@@ -116,9 +121,9 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                <td>{{$bus_concession_scheme_pending}}</td>
-                                <td>{{$bus_concession_scheme_approve}}</td>
-                                <td>{{$bus_concession_scheme_reject}}</td>
+                                <td><a href="{{ url('bus_concession_application_list', 0) }}">{{$bus_concession_scheme_pending}}</a></td>
+                                <td><a href="{{ url('bus_concession_application_list', 1) }}">{{$bus_concession_scheme_approve}}</a></td>
+                                <td><a href="{{ url('bus_concession_application_list', 2) }}">{{$bus_concession_scheme_reject}}</a></td>
                                 </tr>
                                 </tbody>
                                 </table>
@@ -130,17 +135,16 @@
 
                       <div class="col-lg-3 mb-3">
                         <!-- Portlet card -->
-                        <div class="card h-100" style="border:solid 1px;">
+                        <div class="card h-auto" style="border:solid 1px;">
                           <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
                             <div class="card-widgets">
                             </div>
-                            <h5 class="card-title mb-0 text-dark" style="text-align:center;"> Divyang Nondani Application</h5>
+                            <h5 class="card-title mb-0 text-white" style="text-align:center;"> Divyang Nondani Application</h5>
                           </div>
                           <div id="cardCollpase5" class="collapse show">
-                            <div class="card-body">
-                              <br>
-                              <h4 style="text-align:center;">{{ $disability_scheme_total_count }}</h4>
-                                <h4 style="text-align:center;">Count</h4>
+                            <div class="card-body pb-0">
+                                <h4 style="text-align:center;">Total Count</h4>
+                                <h4 style="text-align:center;">{{ $disability_scheme_total_count }}</h4>
                                 <table class="table table-bordered nowrap align-middle">
                                     <thead>
                                     <tr>
@@ -151,9 +155,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>{{$disability_scheme_pending}}</td>
-                                            <td>{{$disability_scheme_approve}}</td>
-                                            <td>{{$disability_scheme_reject}}</td>
+                                            <td><a href="{{ url('divyang_registration_list', 0) }}">{{$disability_scheme_pending}}</a></td>
+                                            <td><a href="{{ url('divyang_registration_list', 1) }}">{{$disability_scheme_approve}}</a></td>
+                                            <td><a href="{{ url('divyang_registration_list', 2) }}">{{$disability_scheme_reject}}</a></td>
                                         </tr>
                                     </tbody>
                                     </table>
@@ -164,17 +168,16 @@
 
                       <div class="col-lg-3 mb-3">
                         <!-- Portlet card -->
-                        <div class="card h-100" style="border:solid 1px;">
+                        <div class="card h-auto" style="border:solid 1px;">
                           <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
                             <div class="card-widgets">
                             </div>
-                            <h5 class="card-title mb-0 text-dark" style="text-align:center;"> Education Scheme</h5>
+                            <h5 class="card-title mb-0 text-white" style="text-align:center;"> Education Scheme</h5>
                           </div>
                           <div id="cardCollpase5" class="collapse show">
-                            <div class="card-body">
-                              <br>
-                              <h4 style="text-align:center;">{{ $education_scheme_total_count }}</h4>
-                                <h4 style="text-align:center;">Count</h4>
+                            <div class="card-body pb-0">
+                                <h4 style="text-align:center;">Total Count</h4>
+                                <h4 style="text-align:center;">{{ $education_scheme_total_count }}</h4>
 
                                 <table class="table table-bordered nowrap align-middle">
                                     <thead>
@@ -186,9 +189,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>{{$education_scheme_pending}}</td>
-                                            <td>{{$education_scheme_approve}}</td>
-                                            <td>{{$education_scheme_reject}}</td>
+                                            <td><a href="{{ url('education_scheme_application_list', 0) }}">{{$education_scheme_pending}}</a></td>
+                                            <td><a href="{{ url('education_scheme_application_list', 1) }}">{{$education_scheme_approve}}</a></td>
+                                            <td><a href="{{ url('education_scheme_application_list', 2) }}">{{$education_scheme_reject}}</a></td>
                                         </tr>
                                     </tbody>
                                     </table>
@@ -200,17 +203,16 @@
 
                       <div class="col-lg-3 mb-3">
                         <!-- Portlet card -->
-                        <div class="card h-100" style="border:solid 1px;">
+                        <div class="card h-auto" style="border:solid 1px;">
                           <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
                             <div class="card-widgets">
                             </div>
-                            <h5 class="card-title mb-0 text-dark" style="text-align:center;"> Marriage Scheme</h5>
+                            <h5 class="card-title mb-0 text-white" style="text-align:center;"> Marriage Scheme</h5>
                           </div>
                           <div id="cardCollpase5" class="collapse show">
-                            <div class="card-body">
-                              <br>
+                            <div class="card-body pb-0">
+                              <h4 style="text-align:center;">Total Count</h4>
                               <h4 style="text-align:center;">{{ $marriage_scheme_total_count }}</h4>
-                                <h4 style="text-align:center;">Count</h4>
 
                                 <table class="table table-bordered nowrap align-middle">
                                     <thead>
@@ -222,9 +224,9 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                    <td>{{$marriage_scheme_pending}}</td>
-                                    <td>{{$marriage_scheme_approve}}</td>
-                                    <td>{{$marriage_scheme_reject}}</td>
+                                    <td><a href="{{ url('marriage_scheme_application_list', 0) }}">{{$marriage_scheme_pending}}</a></td>
+                                    <td><a href="{{ url('marriage_scheme_application_list', 1) }}">{{$marriage_scheme_approve}}</a></td>
+                                    <td><a href="{{ url('marriage_scheme_application_list', 2) }}">{{$marriage_scheme_reject}}</a></td>
                                     </tr>
                                     </tbody>
                                     </table>
@@ -249,7 +251,7 @@
     <div class="col-xxl-12">
         <div class="card" style="border:solid 1px;">
             <form class="needs-validation" novalidate id="invoice_form">
-                <div class="card-body border-bottom border-bottom-dashed">
+                <div class="card-body border-bottom border-bottom-dashed  p-2">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="" style="text-align: center !important;">
@@ -266,23 +268,21 @@
                     <!--end row-->
                 </div>
 
-                <div class="card-body p-4">
+                <div class="card-body p-3" style="margin-bottom: -25px;">
                     <!--end row-->
                     <div class="row">
                     <div class="col-lg-3 mb-3">
                         <!-- Portlet card -->
-                        <div class="card h-100" style="border:solid 1px;">
+                        <div class="card h-auto" style="border:solid 1px;">
                           <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
                             <div class="card-widgets">
                             </div>
-                            <h5 class="card-title mb-0 text-dark" style="text-align:center;"> Bus Concession Scheme</h5>
+                            <h5 class="card-title mb-0 text-white" style="text-align:center;"> Bus Concession Scheme</h5>
                           </div>
                           <div id="cardCollpase5" class="collapse show">
-                            <div class="card-body">
-                              <br>
-
+                            <div class="card-body pb-0">
+                              <h4 style="text-align:center;">Total Count</h4>
                               <h4 style="text-align:center;">{{ $women_bus_concession_scheme_count }}</h4>
-                                <h4 style="text-align:center;">Count</h4>
                                 <table class="table table-bordered nowrap align-middle">
                                     <thead>
                                     <tr>
@@ -293,9 +293,9 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                    <td>{{$women_bus_concession_scheme_pending}}</td>
-                                    <td>{{$women_bus_concession_scheme_approve}}</td>
-                                    <td>{{$women_bus_concession_scheme_reject}}</td>
+                                    <td><a href="#">{{$women_bus_concession_scheme_pending}}</a></td>
+                                    <td><a href="#">{{$women_bus_concession_scheme_approve}}</a></td>
+                                    <td><a href="#">{{$women_bus_concession_scheme_reject}}</a></td>
                                     </tr>
                                     </tbody>
                                     </table>
@@ -307,17 +307,16 @@
 
                       <div class="col-lg-3 mb-3">
                         <!-- Portlet card -->
-                        <div class="card h-100" style="border:solid 1px;">
+                        <div class="card h-auto" style="border:solid 1px;">
                           <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
                             <div class="card-widgets">
                             </div>
-                            <h5 class="card-title mb-0 text-dark" style="text-align:center;"> Education Scheme</h5>
+                            <h5 class="card-title mb-0 text-white" style="text-align:center;"> Education Scheme</h5>
                           </div>
                           <div id="cardCollpase5" class="collapse show">
-                            <div class="card-body">
-                              <br>
-                              <h4 style="text-align:center;">{{ $women_education_scheme_total_count }}</h4>
-                                <h4 style="text-align:center;">Count</h4>
+                            <div class="card-body pb-0">
+                                <h4 style="text-align:center;">Total Count</h4>
+                                <h4 style="text-align:center;">{{ $women_education_scheme_total_count }}</h4>
 
                                 <table class="table table-bordered nowrap align-middle">
                                     <thead>
@@ -329,9 +328,9 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                    <td>{{$women_education_scheme_pending}}</td>
-                                    <td>{{$women_education_scheme_approve}}</td>
-                                    <td>{{$women_education_scheme_reject}}</td>
+                                    <td><a href="#">{{$women_education_scheme_pending}}</a></td>
+                                    <td><a href="#">{{$women_education_scheme_approve}}</a></td>
+                                    <td><a href="#">{{$women_education_scheme_reject}}</a></td>
                                     </tr>
                                     </tbody>
                                     </table>
@@ -342,20 +341,16 @@
 
                       <div class="col-lg-3 mb-3">
                         <!-- Portlet card -->
-                        <div class="card h-100" style="border:solid 1px;">
+                        <div class="card h-auto" style="border:solid 1px;">
                           <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
                             <div class="card-widgets">
                             </div>
-                            <h5 class="card-title mb-0 text-dark" style="text-align:center;"> Cancer Scheme</h5>
+                            <h5 class="card-title mb-0 text-white" style="text-align:center;"> Cancer Scheme</h5>
                           </div>
                           <div id="cardCollpase5" class="collapse show">
-                            <div class="card-body">
-                              <br>
-
-                              <h4 style="text-align:center;">{{ $cancer_scheme_total_count }}</h4>
-
-                                <h4 style="text-align:center;">Count</h4>
-
+                            <div class="card-body pb-0">
+                                <h4 style="text-align:center;">Total Count</h4>
+                                <h4 style="text-align:center;">{{ $cancer_scheme_total_count }}</h4>
                                 <table class="table table-bordered nowrap align-middle">
                                     <thead>
                                     <tr>
@@ -366,9 +361,9 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                    <td>{{$cancer_scheme_pending}}</td>
-                                    <td>{{$cancer_scheme_approve}}</td>
-                                    <td>{{$cancer_scheme_reject}}</td>
+                                    <td><a href="#">{{$cancer_scheme_pending}}</a></td>
+                                    <td><a href="#">{{$cancer_scheme_approve}}</a></td>
+                                    <td><a href="#">{{$cancer_scheme_reject}}</a></td>
                                     </tr>
                                     </tbody>
                                     </table>
@@ -381,17 +376,16 @@
 
                       <div class="col-lg-3 mb-3">
                         <!-- Portlet card -->
-                        <div class="card h-100" style="border:solid 1px;">
+                        <div class="card h-auto" style="border:solid 1px;">
                           <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
                             <div class="card-widgets">
                             </div>
-                            <h5 class="card-title mb-0 text-dark" style="text-align:center;"> Sports Scheme</h5>
+                            <h5 class="card-title mb-0 text-white" style="text-align:center;"> Sports Scheme</h5>
                           </div>
                           <div id="cardCollpase5" class="collapse show">
-                            <div class="card-body">
-                              <br>
-                              <h4 style="text-align:center;">{{ $sports_scheme_total_count  }}</h4>
-                                <h4 style="text-align:center;">Count</h4>
+                            <div class="card-body pb-0">
+                                <h4 style="text-align:center;">Total Count</h4>
+                                <h4 style="text-align:center;">{{ $sports_scheme_total_count  }}</h4>
                              <table class="table table-bordered nowrap align-middle">
                                     <thead>
                                     <tr>
@@ -402,9 +396,9 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                    <td>{{$sports_scheme_pending}}</td>
-                                    <td>{{$sports_scheme_approve}}</td>
-                                    <td>{{$sports_scheme_reject}}</td>
+                                    <td><a href="#">{{$sports_scheme_pending}}</a></td>
+                                    <td><a href="#">{{$sports_scheme_approve}}</a></td>
+                                    <td><a href="#">{{$sports_scheme_reject}}</a></td>
                                     </tr>
                                     </tbody>
                                     </table>
@@ -415,17 +409,16 @@
 
                       <div class="col-lg-3 mb-3">
                         <!-- Portlet card -->
-                        <div class="card h-100" style="border:solid 1px;">
+                        <div class="card h-auto" style="border:solid 1px;">
                           <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
                             <div class="card-widgets">
                             </div>
-                            <h5 class="card-title mb-0 text-dark" style="text-align:center;"> Vehicle Scheme</h5>
+                            <h5 class="card-title mb-0 text-white" style="text-align:center;"> Vehicle Scheme</h5>
                           </div>
                           <div id="cardCollpase5" class="collapse show">
-                            <div class="card-body">
-                              <br>
-                              <h4 style="text-align:center;">{{  $vehicle_scheme_total_count }}</h4>
-                                <h4 style="text-align:center;">Count</h4>
+                            <div class="card-body pb-0">
+                                <h4 style="text-align:center;">Total Count</h4>
+                               <h4 style="text-align:center;">{{  $vehicle_scheme_total_count }}</h4>
 
                                 <table class="table table-bordered nowrap align-middle">
                                     <thead>
@@ -437,9 +430,9 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                    <td>{{$vehicle_scheme_pending}}</td>
-                                    <td>{{$vehicle_scheme_approve}}</td>
-                                    <td>{{$vehicle_scheme_reject}}</td>
+                                    <td><a href="#">{{$vehicle_scheme_pending}}</a></td>
+                                    <td><a href="#">{{$vehicle_scheme_approve}}</a></td>
+                                    <td><a href="#">{{$vehicle_scheme_reject}}</a></td>
                                     </tr>
                                     </tbody>
                                     </table>
@@ -450,17 +443,16 @@
 
                       <div class="col-lg-3 mb-3">
                         <!-- Portlet card -->
-                        <div class="card h-100" style="border:solid 1px;">
+                        <div class="card h-auto" style="border:solid 1px;">
                           <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
                             <div class="card-widgets">
                             </div>
-                            <h5 class="card-title mb-0 text-dark" style="text-align:center;"> Women Sewing Scheme</h5>
+                            <h5 class="card-title mb-0 text-white" style="text-align:center;"> Women Sewing Scheme</h5>
                           </div>
                           <div id="cardCollpase5" class="collapse show">
-                            <div class="card-body">
-                              <br>
-                              <h4 style="text-align:center;">{{ $women_scheme_total_count }}</h4>
-                                <h4 style="text-align:center;">Count</h4>
+                            <div class="card-body pb-0">
+                                <h4 style="text-align:center;">Total Count</h4>
+                                <h4 style="text-align:center;">{{ $women_scheme_total_count }}</h4>
 
                                 <table class="table table-bordered nowrap align-middle">
                                     <thead>
@@ -472,9 +464,9 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                    <td>{{$women_scheme_pending}}</td>
-                                    <td>{{$women_scheme_approve}}</td>
-                                    <td>{{$women_scheme_reject}}</td>
+                                    <td><a href="#">{{$women_scheme_pending}}</a></td>
+                                    <td><a href="#">{{$women_scheme_approve}}</a></td>
+                                    <td><a href="#">{{$women_scheme_reject}}</a></td>
                                     </tr>
                                     </tbody>
                                     </table>
@@ -498,7 +490,7 @@
     <div class="col-xxl-12">
         <div class="card" style="border:solid 1px;">
             <form class="needs-validation" novalidate id="invoice_form">
-                <div class="card-body border-bottom border-bottom-dashed">
+                <div class="card-body border-bottom border-bottom-dashed p-2">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="" style="text-align: center !important;">
@@ -515,23 +507,21 @@
                     <!--end row-->
                 </div>
 
-                <div class="card-body p-4">
+                <div class="card-body p-3" style="margin-bottom: -25px;">
                     <!--end row-->
                     <div class="row">
                     <div class="col-lg-3 mb-3">
                         <!-- Portlet card -->
-                        <div class="card h-100" style="border:solid 1px;">
+                        <div class="card h-auto" style="border:solid 1px;">
                           <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
                             <div class="card-widgets">
                             </div>
-                            <h5 class="card-title mb-0 text-dark" style="text-align:center;"> Bus Concession Scheme</h5>
+                            <h5 class="card-title mb-0 text-white" style="text-align:center;"> Bus Concession Scheme</h5>
                           </div>
                           <div id="cardCollpase5" class="collapse show">
-                            <div class="card-body">
-<br>
+                            <div class="card-body pb-0">
+                                <h4 style="text-align:center;">Total Count</h4>
                                 <h4 style="text-align:center;"> {{ $senior_bus_concession_scheme_count }}</h4>
-
-                                <h4 style="text-align:center;">Count</h4>
                                 <table class="table table-bordered nowrap align-middle">
                                     <thead>
                                     <tr>
@@ -542,9 +532,9 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                    <td>{{$senior_bus_concession_scheme_pending}}</td>
-                                    <td>{{$senior_bus_concession_scheme_approve}}</td>
-                                    <td>{{$senior_bus_concession_scheme_reject}}</td>
+                                    <td><a href="#">{{$senior_bus_concession_scheme_pending}}</a></td>
+                                    <td><a href="#">{{$senior_bus_concession_scheme_approve}}</a></td>
+                                    <td><a href="#">{{$senior_bus_concession_scheme_reject}}</a></td>
                                     </tr>
                                     </tbody>
                                     </table>
