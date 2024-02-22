@@ -1,7 +1,11 @@
 <x-admin.layout>
     <x-slot name="title">Divyang Scheme Application</x-slot>
     <x-slot name="heading">Divyang Scheme Application</x-slot>
-
+    <style>
+        .error {
+          color: red;
+        }
+      </style>
         <div class="row" >
             <div class="col-sm-12">
                 <div class="card">
@@ -255,7 +259,7 @@
                         <h4 class="title text-danger" id="largeModalLabel">Reject By DMC</h4>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="{{ url('divyang_application_reject_by_dmc', $data->id ) }}" enctype="multipart/form-data">
+                        <form id="rejectForm" method="POST" action="{{ url('divyang_application_reject_by_dmc', $data->id ) }}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" class="form-control " id="application_no" name="application_no" value="{{ $data->application_no }}" >
                               <input type="hidden" class="form-control " id="contact" name="contact" value="{{ $data->contact }}" >
@@ -279,15 +283,28 @@
             </div>
         </div>
 
-
-
-
-
-
 </x-admin.layout>
 
 
+<script>
+    function validateForm() {
+        var reason = document.getElementById("dmc_reject_reason").value;
+        var errorMessage = document.getElementById("reason-error");
 
+        if (reason.trim() === "") {
+            errorMessage.textContent = "Please provide a rejection reason.";
+            return false;
+        }
+        errorMessage.textContent = "";
+        return true;
+    }
+
+    document.getElementById("rejectForm").addEventListener("submit", function(event) {
+        if (!validateForm()) {
+            event.preventDefault();
+        }
+    });
+</script>
 
 
 
