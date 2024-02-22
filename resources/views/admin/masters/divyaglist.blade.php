@@ -281,7 +281,7 @@
                                     <span class="text-danger is-invalid signature_err"></span>
                                 </div>
 
-                                
+
 
                                 <div class="col-md-4 mb-3">
                                     <label class="col-form-label" for="govt_benefit">I write on the affidavit that I am/are not getting two government benefits. Adding their details. (मी प्रतिज्ञेवर लिहुन देतो/देते की, मला दोन शासकीय लाभ मिळत नाही/मिळत आहेत. त्यांचा तपशिल जोडत आहे.) <span class="text-danger">*</span></label>
@@ -320,7 +320,8 @@
 
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary" id="editSubmit">Submit</button>
+                            <button class="btn btn-primary" id="editSubmit">Submit & Download</button>
+
                             <button type="reset" class="btn btn-warning">Reset</button>
                         </div>
                     </div>
@@ -345,16 +346,11 @@
 
                             <div class="mb-3 row">
 
-                                {{-- <div class="col-md-4 mt-3">
-                                    <label for="formFile" lass="col-form-label"> upload Downloaded PDF <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="file" name="download_pdf" id="download_pdf" required>
-                                <span class="text-danger is-invalid download_pdf_err"></span>
-                            </div> --}}
 
 
                                 <div class="col-md-4 mt-3">
                                     <label for="formFile" lass="col-form-label"> कृपया हस्ताक्षर केलेली हयातीचा दाखल अपलोड करा / Upload Signatured of live Certificate  <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="file" name="sign_uploaded_live_certificate" id="sign_uploaded_live_certificate" required>
+                                    <input class="form-control" type="file" name="sign_uploaded_live_certificate" id="sign_uploaded_live_certificate" >
                                 <span class="text-danger is-invalid sign_uploaded_live_certificate_err"></span>
                             </div>
 
@@ -395,7 +391,6 @@
                                         <th>Sr.No</th>
                                         <th>Name</th>
                                         <th>Contact</th>
-                                        {{-- <th>Category</th> --}}
                                         <th>Age</th>
                                         <th>Bank Name</th>
                                         <th>Action</th>
@@ -407,11 +402,9 @@
                                     @foreach ($hayat as $key=> $data)
 
                                         <tr>
-                                                <td>{{ $serialNumber++ }}</td>
-                                            {{-- @foreach ($users as $key=> $data1) --}}
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{$users->f_name}} {{$users->m_name}} {{$users->l_name}}</td>
                                                 <td>{{$users->contact}}</td>
-                                                {{-- <td>{{$users->category}}</td> --}}
                                                 <td>{{$users->Age}}</td>
                                                 <td>{{ $data->bank_name }}</td>
 
@@ -600,13 +593,29 @@
                 success: function(data)
                 {
                     $("#editSubmit").prop('disabled', false);
-                    if (!data.error2)
-                        swal("Successful!", data.success, "success")
-                            .then((action) => {
-                                window.location.href = '{{ route('hayatichaDakhlaform.index') }}';
-                            });
-                    else
-                        swal("Error!", data.error2, "error");
+                //     if (!data.error2)
+                //         swal("Successful!", data.success, "success")
+                //             .then((action) => {
+                //                 window.location.href = '{{ route('hayatichaDakhlaform.index') }}';
+                //             });
+                //     else
+                //         swal("Error!", data.error2, "error");
+                // },
+
+                if (!data.error2) {
+
+                swal("Successful!", data.success, "success");
+                setTimeout(function () {
+                    var iframe = document.createElement('iframe');
+                    iframe.style.display = 'none';
+                    iframe.src = data.file_path;
+                    document.body.appendChild(iframe);
+                    window.open(data.file_path, '_blank');
+                    window.location.reload();
+                }, 1000);
+                } else {
+                swal("Error!", data.error2, "error");
+                }
                 },
                 statusCode: {
                     422: function(responseObject, textStatus, jqXHR) {
