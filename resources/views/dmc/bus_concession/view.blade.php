@@ -2,6 +2,11 @@
     <x-slot name="title">Bus Concession Scheme Application</x-slot>
     <x-slot name="heading">Bus Concession Scheme Application</x-slot>
 
+    <style>
+        .error {
+          color: red;
+        }
+      </style>
         <div class="row" >
             <div class="col-sm-12">
                 <div class="card">
@@ -157,7 +162,7 @@
                         <h4 class="title text-danger" id="largeModalLabel">Reject By DMC</h4>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="{{ url('bus_concession_application_reject_by_dmc', $data->id ) }}" enctype="multipart/form-data">
+                        <form id="rejectForm" method="POST" action="{{ url('bus_concession_application_reject_by_dmc', $data->id ) }}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" class="form-control " id="application_no" name="application_no" value="{{ $data->application_no }}" >
                               <input type="hidden" class="form-control " id="contact" name="contact" value="{{ $data->contact }}" >
@@ -165,6 +170,7 @@
                                 <label class="col-sm-4"><strong>नकाराचे कारण / <br>  Reason for Rejection  :  <span style="color:red;">*</span></strong></label>
                                 <div class="col-sm-8 col-md-8 p-2">
                                     <textarea  class="form-control" name ="dmc_reject_reason" id="dmc_reject_reason" value="" style="height:120px;"></textarea>
+                                    <span id="reason-error" class="error"></span>
                                 </div>
                             </div>
 
@@ -185,7 +191,28 @@
 
 </x-admin.layout>
 
+<script>
+    function validateForm() {
+        var reason = document.getElementById("dmc_reject_reason").value;
+        var errorMessage = document.getElementById("reason-error");
 
+        if (reason.trim() === "") {
+            errorMessage.textContent = "Please provide a rejection reason.";
+            return false; // Prevent form submission
+        }
+
+        // Clear any previous error message
+        errorMessage.textContent = "";
+        return true; // Allow form submission
+    }
+
+    // Attach validation function to form submission
+    document.getElementById("rejectForm").addEventListener("submit", function(event) {
+        if (!validateForm()) {
+            event.preventDefault(); // Prevent form submission if validation fails
+        }
+    });
+</script>
 
 
 

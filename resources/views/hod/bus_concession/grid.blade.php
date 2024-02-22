@@ -49,9 +49,9 @@
                                             @if($value->hod_status == '2')
                                             <td>{{ $value->hod_reject_reason }}</td>
                                             @endif
-                                            <td>  <a href='{{ url("bus_concession_application_view/{$value->id}/{$value->hod_status}") }}' class="btn btn-primary shadow btn-xs sharp me-1"> <i class="fas fa-eye"></i></a></td>
+                                            <td><a href='{{ url("bus_concession_application_view/{$value->id}/{$value->hod_status}") }}' class="btn btn-primary shadow btn-xs sharp me-1"> <i class="fas fa-eye"></i></a></td>
                                         </tr>
-                                        @endforeach
+                                    @endforeach
                              </tbody>
                             </table>
                         </div>

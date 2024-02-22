@@ -20,7 +20,7 @@
         /* .card-body h4{
             height:50px;
         } */
-        
+
     .card-body .save-btn{
         margin-top:10px;
     }
@@ -45,7 +45,7 @@
             <div class="d-flex flex-column h-100">
 
                                 <div class="row">
-                                     
+
                                     @foreach ($scheme as $schemes)
 
                                         <div class="col-lg-3 mb-3">
@@ -69,14 +69,14 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
 
                                         </div>
                                     @endforeach
                                 </div>
 
-                                    
-                                    
+
+
 @canany(['hod.application'])
 <div class="row justify-content-center">
     <div class="col-xxl-12">
@@ -124,9 +124,9 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                <td><a href="{{ url('bus_concession_application_list', 0) }}">{{$bus_concession_scheme_pending}}</a></td>
-                                <td><a href="{{ url('bus_concession_application_list', 1) }}">{{$bus_concession_scheme_approve}}</a></td>
-                                <td><a href="{{ url('bus_concession_application_list', 2) }}">{{$bus_concession_scheme_reject}}</a></td>
+                                <td><a href="{{ url('bus_concession_application_list?category=1', 0) }}">{{$bus_concession_scheme_pending}}</a></td>
+                                <td><a href="{{ url('bus_concession_application_list?category=1', 1) }}">{{$bus_concession_scheme_approve}}</a></td>
+                                <td><a href="{{ url('bus_concession_application_list?category=1', 2) }}">{{$bus_concession_scheme_reject}}</a></td>
                                 </tr>
                                 </tbody>
                                 </table>
@@ -192,9 +192,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><a href="{{ url('education_scheme_application_list', 0) }}">{{$education_scheme_pending}}</a></td>
-                                            <td><a href="{{ url('education_scheme_application_list', 1) }}">{{$education_scheme_approve}}</a></td>
-                                            <td><a href="{{ url('education_scheme_application_list', 2) }}">{{$education_scheme_reject}}</a></td>
+                                            <td><a href="{{ url('education_scheme_application_list?category=1', 0) }}">{{$education_scheme_pending}}</a></td>
+                                            <td><a href="{{ url('education_scheme_application_list?category=1', 1) }}">{{$education_scheme_approve}}</a></td>
+                                            <td><a href="{{ url('education_scheme_application_list?category=1', 2) }}">{{$education_scheme_reject}}</a></td>
                                         </tr>
                                     </tbody>
                                     </table>
@@ -296,9 +296,9 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                    <td><a href="#">{{$women_bus_concession_scheme_pending}}</a></td>
-                                    <td><a href="#">{{$women_bus_concession_scheme_approve}}</a></td>
-                                    <td><a href="#">{{$women_bus_concession_scheme_reject}}</a></td>
+                                    <td><a href="{{ url('bus_concession_application_list?category=women', 0) }}">{{$women_bus_concession_scheme_pending}}</a></td>
+                                    <td><a href="{{ url('bus_concession_application_list?category=women', 1) }}">{{$women_bus_concession_scheme_approve}}</a></td>
+                                    <td><a href="{{ url('bus_concession_application_list?category=women', 2) }}">{{$women_bus_concession_scheme_reject}}</a></td>
                                     </tr>
                                     </tbody>
                                     </table>
@@ -331,9 +331,9 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                    <td><a href="#">{{$women_education_scheme_pending}}</a></td>
-                                    <td><a href="#">{{$women_education_scheme_approve}}</a></td>
-                                    <td><a href="#">{{$women_education_scheme_reject}}</a></td>
+                                    <td><a href="{{ url('education_scheme_application_list?category=women', 0) }}">{{$women_education_scheme_pending}}</a></td>
+                                    <td><a href="{{ url('education_scheme_application_list?category=women', 1) }}">{{$women_education_scheme_approve}}</a></td>
+                                    <td><a href="{{ url('education_scheme_application_list?category=women', 2) }}">{{$women_education_scheme_reject}}</a></td>
                                     </tr>
                                     </tbody>
                                     </table>
@@ -364,9 +364,9 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                    <td><a href="#">{{$cancer_scheme_pending}}</a></td>
-                                    <td><a href="#">{{$cancer_scheme_approve}}</a></td>
-                                    <td><a href="#">{{$cancer_scheme_reject}}</a></td>
+                                    <td><a href="{{ url('cancer_scheme_application_list', 0) }}">{{$cancer_scheme_pending}}</a></td>
+                                    <td><a href="{{ url('cancer_scheme_application_list', 1) }}">{{$cancer_scheme_approve}}</a></td>
+                                    <td><a href="{{ url('cancer_scheme_application_list', 2) }}">{{$cancer_scheme_reject}}</a></td>
                                     </tr>
                                     </tbody>
                                     </table>
@@ -399,9 +399,9 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                    <td><a href="#">{{$sports_scheme_pending}}</a></td>
-                                    <td><a href="#">{{$sports_scheme_approve}}</a></td>
-                                    <td><a href="#">{{$sports_scheme_reject}}</a></td>
+                                    <td><a href="{{ url('sports_scheme_application_list', 0) }}">{{$sports_scheme_pending}}</a></td>
+                                    <td><a href="{{ url('sports_scheme_application_list', 1) }}">{{$sports_scheme_approve}}</a></td>
+                                    <td><a href="{{ url('sports_scheme_application_list', 2) }}">{{$sports_scheme_reject}}</a></td>
                                     </tr>
                                     </tbody>
                                     </table>
@@ -433,9 +433,9 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                    <td><a href="#">{{$vehicle_scheme_pending}}</a></td>
-                                    <td><a href="#">{{$vehicle_scheme_approve}}</a></td>
-                                    <td><a href="#">{{$vehicle_scheme_reject}}</a></td>
+                                    <td><a href="{{ url('vehicle_scheme_application_list', 0) }}">{{$vehicle_scheme_pending}}</a></td>
+                                    <td><a href="{{ url('vehicle_scheme_application_list', 1) }}">{{$vehicle_scheme_approve}}</a></td>
+                                    <td><a href="{{ url('vehicle_scheme_application_list', 2) }}">{{$vehicle_scheme_reject}}</a></td>
                                     </tr>
                                     </tbody>
                                     </table>
@@ -467,9 +467,9 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                    <td><a href="#">{{$women_scheme_pending}}</a></td>
-                                    <td><a href="#">{{$women_scheme_approve}}</a></td>
-                                    <td><a href="#">{{$women_scheme_reject}}</a></td>
+                                    <td><a href="{{ url('women_scheme_application_list', 0) }}">{{$women_scheme_pending}}</a></td>
+                                    <td><a href="{{ url('women_scheme_application_list', 1) }}">{{$women_scheme_approve}}</a></td>
+                                    <td><a href="{{ url('women_scheme_application_list', 2) }}">{{$women_scheme_reject}}</a></td>
                                     </tr>
                                     </tbody>
                                     </table>
@@ -535,9 +535,9 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                    <td><a href="#">{{$senior_bus_concession_scheme_pending}}</a></td>
-                                    <td><a href="#">{{$senior_bus_concession_scheme_approve}}</a></td>
-                                    <td><a href="#">{{$senior_bus_concession_scheme_reject}}</a></td>
+                                    <td><a href="{{ url('bus_concession_application_list?category=seniorCitizen', 0) }}">{{$senior_bus_concession_scheme_pending}}</a></td>
+                                    <td><a href="{{ url('bus_concession_application_list?category=seniorCitizen', 1) }}">{{$senior_bus_concession_scheme_approve}}</a></td>
+                                    <td><a href="{{ url('bus_concession_application_list?category=seniorCitizen', 2) }}">{{$senior_bus_concession_scheme_reject}}</a></td>
                                     </tr>
                                     </tbody>
                                     </table>
@@ -560,10 +560,10 @@
 <!--end row-->
 
 @endcan
-                                  
-                                     
+
+
                                       {{-- AC Panel --}}
-                                     
+
                                     @canany(['ac.application'])
                                     <div class="row justify-content-center">
                                         <div class="col-xxl-12">
@@ -611,9 +611,9 @@
                                                                     </thead>
                                                                     <tbody>
                                                                     <tr>
-                                                                    <td><a href="#">{{$ac_bus_concession_scheme_pending}}</a></td>
-                                                                    <td><a href="#">{{$ac_bus_concession_scheme_approve}}</a></td>
-                                                                    <td><a href="#">{{$ac_bus_concession_scheme_reject}}</a></td>
+                                                                    <td><a href="{{ url('ac_bus_concession_application_list?category=1', 0) }}">{{$ac_bus_concession_scheme_pending}}</a></td>
+                                                                    <td><a href="{{ url('ac_bus_concession_application_list?category=1', 1) }}">{{$ac_bus_concession_scheme_approve}}</a></td>
+                                                                    <td><a href="{{ url('ac_bus_concession_application_list?category=1', 2) }}">{{$ac_bus_concession_scheme_reject}}</a></td>
                                                                     </tr>
                                                                     </tbody>
                                                                     </table>
@@ -645,9 +645,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                             <tr>
-                                                                                <td><a href="#">{{$ac_disability_scheme_pending}}</a></td>
-                                                                                <td><a href="#">{{$ac_disability_scheme_approve}}</a></td>
-                                                                                <td><a href="#">{{$ac_disability_scheme_reject}}</a></td>
+                                                                                <td><a href="{{ url('ac_divyang_registration_list', 0) }}">{{$ac_disability_scheme_pending}}</a></td>
+                                                                                <td><a href="{{ url('ac_divyang_registration_list', 1) }}">{{$ac_disability_scheme_approve}}</a></td>
+                                                                                <td><a href="{{ url('ac_divyang_registration_list', 2) }}">{{$ac_disability_scheme_reject}}</a></td>
                                                                             </tr>
                                                                         </tbody>
                                                                         </table>
@@ -679,9 +679,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                             <tr>
-                                                                                <td><a href="#">{{$ac_education_scheme_pending}}</a></td>
-                                                                                <td><a href="#">{{$ac_education_scheme_approve}}</a></td>
-                                                                                <td><a href="#">{{$ac_education_scheme_reject}}</a></td>
+                                                                                <td><a href="{{ url('ac_education_scheme_application_list?category=1', 0) }}">{{$ac_education_scheme_pending}}</a></td>
+                                                                                <td><a href="{{ url('ac_education_scheme_application_list?category=1', 1) }}">{{$ac_education_scheme_approve}}</a></td>
+                                                                                <td><a href="{{ url('ac_education_scheme_application_list?category=1', 2) }}">{{$ac_education_scheme_reject}}</a></td>
                                                                             </tr>
                                                                         </tbody>
                                                                         </table>
@@ -714,9 +714,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$ac_marriage_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$ac_marriage_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$ac_marriage_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('ac_marriage_scheme_application_list', 0) }}">{{$ac_marriage_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('ac_marriage_scheme_application_list', 1) }}">{{$ac_marriage_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('ac_marriage_scheme_application_list', 2) }}">{{$ac_marriage_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -783,9 +783,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$ac_women_bus_concession_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$ac_women_bus_concession_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$ac_women_bus_concession_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('ac_bus_concession_application_list?category=women', 0) }}">{{$ac_women_bus_concession_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('ac_bus_concession_application_list?category=women', 1) }}">{{$ac_women_bus_concession_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('ac_bus_concession_application_list?category=women', 2) }}">{{$ac_women_bus_concession_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -818,9 +818,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$ac_women_education_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$ac_women_education_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$ac_women_education_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('ac_education_scheme_application_list?category=women', 0) }}">{{$ac_women_education_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('ac_education_scheme_application_list?category=women', 1) }}">{{$ac_women_education_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('ac_education_scheme_application_list?category=women', 2) }}">{{$ac_women_education_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -853,9 +853,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$ac_cancer_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$ac_cancer_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$ac_cancer_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('ac_cancer_scheme_application_list', 0) }}">{{$ac_cancer_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('ac_cancer_scheme_application_list', 1) }}">{{$ac_cancer_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('ac_cancer_scheme_application_list', 2) }}">{{$ac_cancer_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -888,9 +888,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$ac_sports_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$ac_sports_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$ac_sports_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('ac_sports_scheme_application_list', 0) }}">{{$ac_sports_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('ac_sports_scheme_application_list', 1) }}">{{$ac_sports_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('ac_sports_scheme_application_list', 2) }}">{{$ac_sports_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -922,9 +922,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$ac_vehicle_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$ac_vehicle_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$ac_vehicle_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('ac_vehicle_scheme_application_list', 0) }}">{{$ac_vehicle_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('ac_vehicle_scheme_application_list', 1) }}">{{$ac_vehicle_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('ac_vehicle_scheme_application_list', 2) }}">{{$ac_vehicle_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -956,9 +956,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$ac_women_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$ac_women_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$ac_women_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('ac_women_scheme_application_list', 0) }}">{{$ac_women_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('ac_women_scheme_application_list', 1) }}">{{$ac_women_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('ac_women_scheme_application_list', 2) }}">{{$ac_women_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1025,9 +1025,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$ac_senior_bus_concession_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$ac_senior_bus_concession_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$ac_senior_bus_concession_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('ac_bus_concession_application_list?category=seniorCitizen', 0) }}">{{$ac_senior_bus_concession_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('ac_bus_concession_application_list?category=seniorCitizen', 1) }}">{{$ac_senior_bus_concession_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('ac_bus_concession_application_list?category=seniorCitizen', 2) }}">{{$ac_senior_bus_concession_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1054,7 +1054,7 @@
 
                                       {{-- AMC Panel --}}
                                       @canany(['amc.application'])
-                                     
+
                                         <div class="row justify-content-center">
                                         <div class="col-xxl-12">
                                             <div class="card" style="border:solid 1px;">
@@ -1101,9 +1101,9 @@
                                                                     </thead>
                                                                     <tbody>
                                                                     <tr>
-                                                                    <td><a href="#">{{$amc_bus_concession_scheme_pending}}</a></td>
-                                                                    <td><a href="#">{{$amc_bus_concession_scheme_approve}}</a></td>
-                                                                    <td><a href="#">{{$amc_bus_concession_scheme_reject}}</a></td>
+                                                                    <td><a href="{{ url('amc_bus_concession_application_list?category=1', 0) }}">{{$amc_bus_concession_scheme_pending}}</a></td>
+                                                                    <td><a href="{{ url('amc_bus_concession_application_list?category=1', 1) }}">{{$amc_bus_concession_scheme_approve}}</a></td>
+                                                                    <td><a href="{{ url('amc_bus_concession_application_list?category=1', 2) }}">{{$amc_bus_concession_scheme_reject}}</a></td>
                                                                     </tr>
                                                                     </tbody>
                                                                     </table>
@@ -1135,9 +1135,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                             <tr>
-                                                                                <td><a href="#">{{$amc_disability_scheme_pending}}</a></td>
-                                                                                <td><a href="#">{{$amc_disability_scheme_approve}}</a></td>
-                                                                                <td><a href="#">{{$amc_disability_scheme_reject}}</a></td>
+                                                                                <td><a href="{{ url('amc_divyang_registration_list', 0) }}">{{$amc_disability_scheme_pending}}</a></td>
+                                                                                <td><a href="{{ url('amc_divyang_registration_list', 1) }}">{{$amc_disability_scheme_approve}}</a></td>
+                                                                                <td><a href="{{ url('amc_divyang_registration_list', 2) }}">{{$amc_disability_scheme_reject}}</a></td>
                                                                             </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1169,9 +1169,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                             <tr>
-                                                                                <td><a href="#">{{$amc_education_scheme_pending}}</a></td>
-                                                                                <td><a href="#">{{$amc_education_scheme_approve}}</a></td>
-                                                                                <td><a href="#">{{$amc_education_scheme_reject}}</a></td>
+                                                                                <td><a href="{{ url('amc_education_scheme_application_list?category=1', 0) }}">{{$amc_education_scheme_pending}}</a></td>
+                                                                                <td><a href="{{ url('amc_education_scheme_application_list?category=1', 1) }}">{{$amc_education_scheme_approve}}</a></td>
+                                                                                <td><a href="{{ url('amc_education_scheme_application_list?category=1', 2) }}">{{$amc_education_scheme_reject}}</a></td>
                                                                             </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1204,9 +1204,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$amc_marriage_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$amc_marriage_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$amc_marriage_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('amc_marriage_scheme_application_list', 0) }}">{{$amc_marriage_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('amc_marriage_scheme_application_list', 1) }}">{{$amc_marriage_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('amc_marriage_scheme_application_list', 2) }}">{{$amc_marriage_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1273,9 +1273,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$amc_women_bus_concession_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$amc_women_bus_concession_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$amc_women_bus_concession_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('amc_bus_concession_application_list?category=women', 0) }}">{{$amc_women_bus_concession_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('amc_bus_concession_application_list?category=women', 1) }}">{{$amc_women_bus_concession_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('amc_bus_concession_application_list?category=women', 2) }}">{{$amc_women_bus_concession_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1295,7 +1295,7 @@
                                                             </div>
                                                             <div id="cardCollpase5" class="collapse show">
                                                                 <div class="card-body pb-0">
-                                                                
+
                                                                     <h4 style="text-align:center;">Total Count</h4>
                                                                     <h4 style="text-align:center;">{{ $amc_women_education_scheme_total_count }}</h4>
 
@@ -1309,9 +1309,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$amc_women_education_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$amc_women_education_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$amc_women_education_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('amc_education_scheme_application_list?category=women', 0) }}">{{$amc_women_education_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('amc_education_scheme_application_list?category=women', 0) }}">{{$amc_women_education_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('amc_education_scheme_application_list?category=women', 0) }}">{{$amc_women_education_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1343,9 +1343,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$amc_cancer_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$amc_cancer_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$amc_cancer_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('amc_cancer_scheme_application_list', 0) }}">{{$amc_cancer_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('amc_cancer_scheme_application_list', 1) }}">{{$amc_cancer_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('amc_cancer_scheme_application_list', 2) }}">{{$amc_cancer_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1378,9 +1378,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$amc_sports_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$amc_sports_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$amc_sports_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('amc_sports_scheme_application_list', 0) }}">{{$amc_sports_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('amc_sports_scheme_application_list', 1) }}">{{$amc_sports_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('amc_sports_scheme_application_list', 2) }}">{{$amc_sports_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1412,9 +1412,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$amc_vehicle_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$amc_vehicle_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$amc_vehicle_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('amc_vehicle_scheme_application_list', 0) }}">{{$amc_vehicle_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('amc_vehicle_scheme_application_list', 1) }}">{{$amc_vehicle_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('amc_vehicle_scheme_application_list', 2) }}">{{$amc_vehicle_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1446,9 +1446,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$amc_women_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$amc_women_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$amc_women_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('amc_women_scheme_application_list', 0) }}">{{$amc_women_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('amc_women_scheme_application_list', 1) }}">{{$amc_women_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('amc_women_scheme_application_list', 2) }}">{{$amc_women_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1514,9 +1514,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$amc_senior_bus_concession_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$amc_senior_bus_concession_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$amc_senior_bus_concession_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('amc_bus_concession_application_list?category=seniorCitizen', 0) }}">{{$amc_senior_bus_concession_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('amc_bus_concession_application_list?category=seniorCitizen', 1) }}">{{$amc_senior_bus_concession_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('amc_bus_concession_application_list?category=seniorCitizen', 2) }}">{{$amc_senior_bus_concession_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1538,12 +1538,12 @@
                                     </div>
                                     <!--end row-->
 
-                                      @endcan 
+                                      @endcan
 
-                                {{-- DMC Panel --}}  
+                                {{-- DMC Panel --}}
 
                                 @canany(['dmc.application'])
-                                                                         <div class="row justify-content-center">
+                                        <div class="row justify-content-center">
                                         <div class="col-xxl-12">
                                             <div class="card" style="border:solid 1px;">
                                                 <form class="needs-validation" novalidate id="invoice_form">
@@ -1589,9 +1589,9 @@
                                                                     </thead>
                                                                     <tbody>
                                                                     <tr>
-                                                                    <td><a href="#">{{$dmc_bus_concession_scheme_pending}}</a></td>
-                                                                    <td><a href="#">{{$dmc_bus_concession_scheme_approve}}</a></td>
-                                                                    <td><a href="#">{{$dmc_bus_concession_scheme_reject}}</a></td>
+                                                                    <td><a href="{{ url('dmc_bus_concession_application_list?category=1', 0) }}">{{$dmc_bus_concession_scheme_pending}}</a></td>
+                                                                    <td><a href="{{ url('dmc_bus_concession_application_list?category=1', 1) }}">{{$dmc_bus_concession_scheme_approve}}</a></td>
+                                                                    <td><a href="{{ url('dmc_bus_concession_application_list?category=1', 2) }}">{{$dmc_bus_concession_scheme_reject}}</a></td>
                                                                     </tr>
                                                                     </tbody>
                                                                     </table>
@@ -1623,9 +1623,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                             <tr>
-                                                                                <td><a href="#">{{$dmc_disability_scheme_pending}}</a></td>
-                                                                                <td><a href="#">{{$dmc_disability_scheme_approve}}</a></td>
-                                                                                <td><a href="#">{{$dmc_disability_scheme_reject}}</a></td>
+                                                                                <td><a href="{{ url('dmc_divyang_registration_list', 0) }}">{{$dmc_disability_scheme_pending}}</a></td>
+                                                                                <td><a href="{{ url('dmc_divyang_registration_list', 1) }}">{{$dmc_disability_scheme_approve}}</a></td>
+                                                                                <td><a href="{{ url('dmc_divyang_registration_list', 2) }}">{{$dmc_disability_scheme_reject}}</a></td>
                                                                             </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1657,9 +1657,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                             <tr>
-                                                                                <td><a href="#">{{$dmc_education_scheme_pending}}</a></td>
-                                                                                <td><a href="#">{{$dmc_education_scheme_approve}}</a></td>
-                                                                                <td><a href="#">{{$dmc_education_scheme_reject}}</a></td>
+                                                                                <td><a href="{{ url('dmc_education_scheme_application_list?category=1', 0) }}">{{$dmc_education_scheme_pending}}</a></td>
+                                                                                <td><a href="{{ url('dmc_education_scheme_application_list?category=1', 1) }}">{{$dmc_education_scheme_approve}}</a></td>
+                                                                                <td><a href="{{ url('dmc_education_scheme_application_list?category=1', 2) }}">{{$dmc_education_scheme_reject}}</a></td>
                                                                             </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1692,9 +1692,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$dmc_marriage_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$dmc_marriage_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$dmc_marriage_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('dmc_marriage_scheme_application_list', 0) }}">{{$dmc_marriage_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('dmc_marriage_scheme_application_list', 0) }}">{{$dmc_marriage_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('dmc_marriage_scheme_application_list', 0) }}">{{$dmc_marriage_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1762,9 +1762,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$dmc_women_bus_concession_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$dmc_women_bus_concession_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$dmc_women_bus_concession_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('dmc_bus_concession_application_list?category=women', 0) }}">{{$dmc_women_bus_concession_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('dmc_bus_concession_application_list?category=women', 1) }}">{{$dmc_women_bus_concession_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('dmc_bus_concession_application_list?category=women', 2) }}">{{$dmc_women_bus_concession_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1797,9 +1797,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$dmc_women_education_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$dmc_women_education_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$dmc_women_education_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('dmc_education_scheme_application_list?category=women', 0) }}">{{$dmc_women_education_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('dmc_education_scheme_application_list?category=women', 1) }}">{{$dmc_women_education_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('dmc_education_scheme_application_list?category=women', 2) }}">{{$dmc_women_education_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1830,9 +1830,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$dmc_cancer_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$dmc_cancer_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$dmc_cancer_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('dmc_cancer_scheme_application_list', 0) }}">{{$dmc_cancer_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('dmc_cancer_scheme_application_list', 1) }}">{{$dmc_cancer_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('dmc_cancer_scheme_application_list', 2) }}">{{$dmc_cancer_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1865,9 +1865,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$dmc_sports_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$dmc_sports_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$dmc_sports_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('dmc_sports_scheme_application_list', 0) }}">{{$dmc_sports_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('dmc_sports_scheme_application_list', 1) }}">{{$dmc_sports_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('dmc_sports_scheme_application_list', 2) }}">{{$dmc_sports_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1899,9 +1899,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$dmc_vehicle_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$dmc_vehicle_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$dmc_vehicle_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('dmc_vehicle_scheme_application_list', 0) }}">{{$dmc_vehicle_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('dmc_vehicle_scheme_application_list', 1) }}">{{$dmc_vehicle_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('dmc_vehicle_scheme_application_list', 2) }}">{{$dmc_vehicle_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1933,9 +1933,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$dmc_women_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$dmc_women_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$dmc_women_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('dmc_women_scheme_application_list', 0) }}">{{$dmc_women_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('dmc_women_scheme_application_list', 1) }}">{{$dmc_women_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('dmc_women_scheme_application_list', 2) }}">{{$dmc_women_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -2001,9 +2001,9 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr>
-                                                                        <td><a href="#">{{$dmc_senior_bus_concession_scheme_pending}}</a></td>
-                                                                        <td><a href="#">{{$dmc_senior_bus_concession_scheme_approve}}</a></td>
-                                                                        <td><a href="#">{{$dmc_senior_bus_concession_scheme_reject}}</a></td>
+                                                                        <td><a href="{{ url('dmc_bus_concession_application_list?category=seniorCitizen', 0) }}">{{$dmc_senior_bus_concession_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('dmc_bus_concession_application_list?category=seniorCitizen', 1) }}">{{$dmc_senior_bus_concession_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('dmc_bus_concession_application_list?category=seniorCitizen', 2) }}">{{$dmc_senior_bus_concession_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -2025,7 +2025,7 @@
                                     </div>
                                     <!--end row-->
                                       @endcan
-                                      
+
                                 </div> <!-- end row-->
 
             </div>

@@ -129,7 +129,7 @@
                     </a>
                 </li>
                 @endif
-                
+
                   @canany(['users.applicationList'])
                   <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
@@ -145,20 +145,20 @@
                             <li class="nav-item">
                                 <a href="{{ url('divyang_application') }}" class="nav-link" data-key="t-horizontal">Divyang Scheme Application List (दिव्यांग योजना)</a>
                             </li>
-                            
-                             
+
+
                                <li class="nav-item">
                                 <a href="{{ url('education_scheme_application') }}" class="nav-link" data-key="t-horizontal">Education Scheme Application List (शिक्षण योजना)</a>
                             </li>
-                            
+
                              <li class="nav-item">
                                 <a href="{{ url('marriage_scheme_application') }}" class="nav-link" data-key="t-horizontal">Marriage Scheme Application List (विवाह योजना)</a>
                             </li>
-                            
+
                              @endif
-                             
+
                               @if(Auth::user()->category == 4 )
-                              
+
                                 <li class="nav-item">
                                 <a href="{{ url('education_scheme_application') }}" class="nav-link" data-key="t-horizontal">Education Scheme Application List</a>
                             </li>
@@ -178,460 +178,929 @@
                              <li class="nav-item">
                                 <a href="{{ url('women_scheme_application') }}" class="nav-link" data-key="t-horizontal">Women Sewing/Beautisians Scheme Application List</a>
                             </li>
-                            
+
                               @endif
 
                         </ul>
                     </div>
                 </li>
-                
+
           @endcan
-                
+
+          @php
+            $categories = DB::table('category_mst')->where('deleted_at', null)->get();
+            $schemes = DB::table('scheme_mst')->where('deleted_at', null)->get();
+           @endphp
 
                   {{-- HOD Panel --}}
                 @canany(['hod.application'])
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                        <i class="ri-layout-3-line"></i>
-                        <span data-key="t-layouts">Pending Scheme Application</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarLayouts">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{{ url('divyang_registration_list', 0) }}" class="nav-link" data-key="t-horizontal"> Divyang Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('bus_concession_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Bus Concession Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('education_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Education Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('marriage_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Marriage Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('cancer_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Cancer Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Sports Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Vehicle Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('women_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Women Sewing/Beautisians Scheme Application</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
 
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                        <i class="ri-layout-3-line"></i>
-                        <span data-key="t-layouts">Approved Scheme Application</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarLayouts">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{{ url('divyang_registration_list', 1) }}" class="nav-link" data-key="t-horizontal">Approved Divyang Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('bus_concession_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Bus Concession Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('education_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Education Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('marriage_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Marriage Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('cancer_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Cancer Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Sports Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Vehicle Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('women_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Women Sewing/Beautisians Scheme Application</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                    <i class="ri-apps-2-line"></i> <span data-key="t-apps">Pending Scheme Application</span>
+                </a>
+                <div class="collapse menu-dropdown" id="sidebarApps">
+                    <ul class="nav nav-sm flex-column">
+                        @foreach ($categories as $category)
+                        <li class="nav-item">
+                            <a href="#sidebarCalendar" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCalendar" data-key="t-calender">
+                                {{ $category->category_name }}
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarCalendar">
+                                <ul class="nav nav-sm flex-column">
+                                    @foreach ($schemes as $scheme)
+                                        @if (in_array($category->id, explode(',', $scheme->category_id)))
+
+                                        @if(isset($scheme->id))
+                                        @if($scheme->id == 1)
+                                        <li class="nav-item">
+                                            <a href="{{ url('divyang_registration_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                        </li>
+                                        @elseif($scheme->id == 2)
+                                        <li class="nav-item">
+                                        @if ($category->id == 1 || $category->id == 2)
+                                         <a href="{{ url('bus_concession_application_list?category='.$category->id, 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                         @elseif ($category->id == 3)
+                                         <a href="{{ url('bus_concession_application_list?category=seniorCitizen', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                         @elseif ($category->id == 4)
+                                            <a href="{{ url('bus_concession_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+
+                                         @endif
+                                        </li>
+                                        @elseif($scheme->id == 3)
+                                        <li class="nav-item">
+                                        @if ($category->id == 1 || $category->id == 2)
+                                        <a href="{{ url('education_scheme_application_list?category='.$category->id, 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                        @elseif ($category->id == 4)
+                                        <a href="{{ url('education_scheme_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                        @endif
+                                      </li>
+
+                                        @elseif($scheme->id == 4)
+                                        <li class="nav-item">
+                                        <a href="{{ url('marriage_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                    </li>
+                                        @elseif($scheme->id == 5)
+                                        <li class="nav-item">
+                                        <a href="{{ url('sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                    </li>
+                                        @elseif($scheme->id == 6)
+                                        <li class="nav-item">
+                                        <a href="{{ url('women_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                    </li>
+                                        @elseif($scheme->id == 7)
+                                        <li class="nav-item">
+                                        <a href="{{ url('cancer_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                    </li>
+                                        @elseif($scheme->id == 8)
+                                        <li class="nav-item">
+                                        <a href="{{ url('vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                    </li>
+                                        @endif
+                                        @endif
+
+                                    @endif
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </li>
 
 
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                        <i class="ri-layout-3-line"></i>
-                        <span data-key="t-layouts">Rejected Scheme Application</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarLayouts">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{{ url('divyang_registration_list', 2) }}" class="nav-link" data-key="t-horizontal">Rejected Divyang Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('bus_concession_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Bus Concession Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('education_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Education Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('marriage_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Marriage Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('cancer_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Cancer Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Vehicle Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('women_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Women Sewing/Beautisians Scheme Application</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                    <i class="ri-apps-2-line"></i> <span data-key="t-apps">Approved Scheme Application</span>
+                </a>
+                <div class="collapse menu-dropdown" id="sidebarApps">
+                    <ul class="nav nav-sm flex-column">
+                        @foreach ($categories as $category)
+                        <li class="nav-item">
+                            <a href="#sidebarCalendar" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCalendar" data-key="t-calender">
+                                {{ $category->category_name }}
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarCalendar">
+                                <ul class="nav nav-sm flex-column">
+                                    @foreach ($schemes as $scheme)
+                                        @if (in_array($category->id, explode(',', $scheme->category_id)))
+
+                                        @if(isset($scheme->id))
+                                        @if($scheme->id == 1)
+                                        <li class="nav-item">
+                                            <a href="{{ url('divyang_registration_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                        </li>
+                                        @elseif($scheme->id == 2)
+
+                                        @if ($category->id == 1 || $category->id == 2)
+                                        <a href="{{ url('bus_concession_application_list?category='.$category->id, 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                        @elseif ($category->id == 3)
+                                        <a href="{{ url('bus_concession_application_list?category=seniorCitizen', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                        @elseif ($category->id == 4)
+                                           <a href="{{ url('bus_concession_application_list?category=women', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+
+                                        @endif
+
+                                        @elseif($scheme->id == 3)
+                                        <li class="nav-item">
+                                            @if ($category->id == 1 || $category->id == 2)
+                                            <a href="{{ url('education_scheme_application_list?category='.$category->id, 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @elseif ($category->id == 4)
+                                            <a href="{{ url('education_scheme_application_list?category=women', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @endif
+                                          </li>
+                                        @elseif($scheme->id == 4)
+                                        <li class="nav-item">
+                                        <a href="{{ url('marriage_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                    </li>
+                                        @elseif($scheme->id == 5)
+                                        <li class="nav-item">
+                                        <a href="{{ url('sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                    </li>
+                                        @elseif($scheme->id == 6)
+                                        <li class="nav-item">
+                                        <a href="{{ url('women_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                    </li>
+                                        @elseif($scheme->id == 7)
+                                        <li class="nav-item">
+                                        <a href="{{ url('cancer_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                    </li>
+                                        @elseif($scheme->id == 8)
+                                        <li class="nav-item">
+                                        <a href="{{ url('vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                    </li>
+                                        @endif
+                                        @endif
+
+                                    @endif
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                    <i class="ri-apps-2-line"></i> <span data-key="t-apps">Rejected Scheme Application</span>
+                </a>
+                <div class="collapse menu-dropdown" id="sidebarApps">
+                    <ul class="nav nav-sm flex-column">
+                        @foreach ($categories as $category)
+                        <li class="nav-item">
+                            <a href="#sidebarCalendar" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCalendar" data-key="t-calender">
+                                {{ $category->category_name }}
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarCalendar">
+                                <ul class="nav nav-sm flex-column">
+                                    @foreach ($schemes as $scheme)
+                                        @if (in_array($category->id, explode(',', $scheme->category_id)))
+
+                                        @if(isset($scheme->id))
+                                        @if($scheme->id == 1)
+                                        <li class="nav-item">
+                                            <a href="{{ url('divyang_registration_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                        </li>
+                                        @elseif($scheme->id == 2)
+                                        @if ($category->id == 1 || $category->id == 2)
+                                         <a href="{{ url('bus_concession_application_list?category='.$category->id, 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                         @elseif ($category->id == 3)
+                                         <a href="{{ url('bus_concession_application_list?category=seniorCitizen', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                         @elseif ($category->id == 4)
+                                         <a href="{{ url('bus_concession_application_list?category=women', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+
+                                         @endif
+
+                                        @elseif($scheme->id == 3)
+                                        <li class="nav-item">
+                                            @if ($category->id == 1 || $category->id == 2)
+                                            <a href="{{ url('education_scheme_application_list?category='.$category->id, 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @elseif ($category->id == 4)
+                                            <a href="{{ url('education_scheme_application_list?category=women', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @endif
+                                          </li>
+                                        @elseif($scheme->id == 4)
+                                        <li class="nav-item">
+                                        <a href="{{ url('marriage_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                      </li>
+                                        @elseif($scheme->id == 5)
+                                        <li class="nav-item">
+                                        <a href="{{ url('sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                      </li>
+                                        @elseif($scheme->id == 6)
+                                        <li class="nav-item">
+                                        <a href="{{ url('women_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                      </li>
+                                        @elseif($scheme->id == 7)
+                                        <li class="nav-item">
+                                        <a href="{{ url('cancer_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                      </li>
+                                        @elseif($scheme->id == 8)
+                                        <li class="nav-item">
+                                        <a href="{{ url('vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                      </li>
+                                        @endif
+                                        @endif
+
+                                    @endif
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </li>
+
                 @endcan
 
               {{-- AC Panel --}}
                 @canany(['ac.application'])
+
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                        <i class="ri-layout-3-line"></i>
-                        <span data-key="t-layouts">Pending Scheme Application</span>
+                    <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                        <i class="ri-apps-2-line"></i> <span data-key="t-apps">Pending Scheme Application</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarLayouts">
+                    <div class="collapse menu-dropdown" id="sidebarApps">
                         <ul class="nav nav-sm flex-column">
+                            @foreach ($categories as $category)
                             <li class="nav-item">
-                                <a href="{{ url('ac_divyang_registration_list', 0) }}" class="nav-link" data-key="t-horizontal">Divyang Scheme Application</a>
+                                <a href="#sidebarCalendar" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCalendar" data-key="t-calender">
+                                    {{ $category->category_name }}
+                                </a>
+                                <div class="collapse menu-dropdown" id="sidebarCalendar">
+                                    <ul class="nav nav-sm flex-column">
+                                        @foreach ($schemes as $scheme)
+                                            @if (in_array($category->id, explode(',', $scheme->category_id)))
+
+                                            @if(isset($scheme->id))
+                                            @if($scheme->id == 1)
+                                            <li class="nav-item">
+                                                <a href="{{ url('ac_divyang_registration_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            </li>
+                                            @elseif($scheme->id == 2)
+                                            <li class="nav-item">
+                                            @if ($category->id == 1 || $category->id == 2)
+                                            <a href="{{ url('ac_bus_concession_application_list?category='.$category->id, 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @elseif ($category->id == 3)
+                                            <a href="{{ url('ac_bus_concession_application_list?category=seniorCitizen', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @elseif ($category->id == 4)
+                                            <a href="{{ url('ac_bus_concession_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @endif
+                                          </li>
+                                            @elseif($scheme->id == 3)
+                                            <li class="nav-item">
+                                                @if ($category->id == 1 || $category->id == 2)
+                                            <a href="{{ url('ac_education_scheme_application_list?category='.$category->id, 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @elseif ($category->id == 4)
+                                            <a href="{{ url('ac_education_scheme_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @endif
+                                        </li>
+                                            @elseif($scheme->id == 4)
+                                            <li class="nav-item">
+                                            <a href="{{ url('ac_marriage_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                          </li>
+                                            @elseif($scheme->id == 5)
+                                            <li class="nav-item">
+                                            <a href="{{ url('ac_sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 6)
+                                            <li class="nav-item">
+                                            <a href="{{ url('ac_women_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 7)
+                                            <li class="nav-item">
+                                            <a href="{{ url('ac_cancer_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 8)
+                                            <li class="nav-item">
+                                            <a href="{{ url('ac_vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @endif
+                                            @endif
+
+                                        @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </li>
-                             <li class="nav-item">
-                                <a href="{{ url('ac_bus_concession_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Bus Concession Scheme Application</a>
-                            </li>
-                           <li class="nav-item">
-                                <a href="{{ url('ac_education_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Education Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('ac_marriage_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Marriage Scheme Application</a>
-                            </li>
-                           <li class="nav-item">
-                                <a href="{{ url('ac_cancer_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Cancer Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('ac_sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('ac_vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Vehicle Scheme Application</a>
-                            </li>
-                             <li class="nav-item">
-                                <a href="{{ url('ac_women_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Women Sewing/Beautisians Scheme Application</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </li>
 
+
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                        <i class="ri-layout-3-line"></i>
-                        <span data-key="t-layouts">Approved Scheme Application</span>
+                    <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                        <i class="ri-apps-2-line"></i> <span data-key="t-apps">Approved Scheme Application</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarLayouts">
+                    <div class="collapse menu-dropdown" id="sidebarApps">
                         <ul class="nav nav-sm flex-column">
+                            @foreach ($categories as $category)
                             <li class="nav-item">
-                                <a href="{{ url('ac_divyang_registration_list', 1) }}" class="nav-link" data-key="t-horizontal"> Divyang Scheme Application</a>
+                                <a href="#sidebarCalendar" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCalendar" data-key="t-calender">
+                                    {{ $category->category_name }}
+                                </a>
+                                <div class="collapse menu-dropdown" id="sidebarCalendar">
+                                    <ul class="nav nav-sm flex-column">
+                                        @foreach ($schemes as $scheme)
+                                            @if (in_array($category->id, explode(',', $scheme->category_id)))
+
+                                            @if(isset($scheme->id))
+                                            @if($scheme->id == 1)
+                                            <li class="nav-item">
+                                                <a href="{{ url('ac_divyang_registration_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            </li>
+                                            @elseif($scheme->id == 2)
+                                            <li class="nav-item">
+                                                @if ($category->id == 1 || $category->id == 2)
+                                                <a href="{{ url('ac_bus_concession_application_list?category='.$category->id, 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @elseif ($category->id == 3)
+                                                <a href="{{ url('ac_bus_concession_application_list?category=seniorCitizen', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @elseif ($category->id == 4)
+                                                <a href="{{ url('ac_bus_concession_application_list?category=women', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @endif
+                                              </li>
+                                            @elseif($scheme->id == 3)
+                                            <li class="nav-item">
+                                                @if ($category->id == 1 || $category->id == 2)
+                                            <a href="{{ url('ac_education_scheme_application_list?category='.$category->id, 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @elseif ($category->id == 4)
+                                            <a href="{{ url('ac_education_scheme_application_list?category=women', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @endif
+                                        </li>
+                                            @elseif($scheme->id == 4)
+                                            <li class="nav-item">
+                                            <a href="{{ url('ac_marriage_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                          </li>
+                                            @elseif($scheme->id == 5)
+                                            <li class="nav-item">
+                                            <a href="{{ url('ac_sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 6)
+                                            <li class="nav-item">
+                                            <a href="{{ url('ac_women_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 7)
+                                            <li class="nav-item">
+                                            <a href="{{ url('ac_cancer_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 8)
+                                            <li class="nav-item">
+                                            <a href="{{ url('ac_vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @endif
+                                            @endif
+
+                                        @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </li>
-                            <li class="nav-item">
-                                <a href="{{ url('ac_bus_concession_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Bus Concession Scheme Application</a>
-                            </li>
-                             <li class="nav-item">
-                                <a href="{{ url('ac_education_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Education Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('ac_marriage_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Marriage Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('ac_cancer_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal">Cancer Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('ac_sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('ac_vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Vehicle Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('ac_women_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Women Sewing/Beautisians Scheme Application</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </li>
 
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                        <i class="ri-layout-3-line"></i>
-                        <span data-key="t-layouts">Rejected Scheme Application</span>
+                    <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                        <i class="ri-apps-2-line"></i> <span data-key="t-apps">Rejected Scheme Application</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarLayouts">
+                    <div class="collapse menu-dropdown" id="sidebarApps">
                         <ul class="nav nav-sm flex-column">
+                            @foreach ($categories as $category)
                             <li class="nav-item">
-                                <a href="{{ url('ac_divyang_registration_list', 2) }}" class="nav-link" data-key="t-horizontal"> Divyang Scheme Application</a>
+                                <a href="#sidebarCalendar" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCalendar" data-key="t-calender">
+                                    {{ $category->category_name }}
+                                </a>
+                                <div class="collapse menu-dropdown" id="sidebarCalendar">
+                                    <ul class="nav nav-sm flex-column">
+                                        @foreach ($schemes as $scheme)
+                                            @if (in_array($category->id, explode(',', $scheme->category_id)))
+
+                                            @if(isset($scheme->id))
+                                            @if($scheme->id == 1)
+                                            <li class="nav-item">
+                                                <a href="{{ url('ac_divyang_registration_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            </li>
+                                            @elseif($scheme->id == 2)
+                                            <li class="nav-item">
+                                                @if ($category->id == 1 || $category->id == 2)
+                                                <a href="{{ url('ac_bus_concession_application_list?category='.$category->id, 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @elseif ($category->id == 3)
+                                                <a href="{{ url('ac_bus_concession_application_list?category=seniorCitizen', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @elseif ($category->id == 4)
+                                                <a href="{{ url('ac_bus_concession_application_list?category=women', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @endif
+                                              </li>
+                                            @elseif($scheme->id == 3)
+                                            <li class="nav-item">
+                                                @if ($category->id == 1 || $category->id == 2)
+                                            <a href="{{ url('ac_education_scheme_application_list?category='.$category->id, 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @elseif ($category->id == 4)
+                                            <a href="{{ url('ac_education_scheme_application_list?category=women', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @endif
+                                        </li>
+                                            @elseif($scheme->id == 4)
+                                            <li class="nav-item">
+                                            <a href="{{ url('ac_marriage_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                          </li>
+                                            @elseif($scheme->id == 5)
+                                            <li class="nav-item">
+                                            <a href="{{ url('ac_sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 6)
+                                            <li class="nav-item">
+                                            <a href="{{ url('ac_women_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 7)
+                                            <li class="nav-item">
+                                            <a href="{{ url('ac_cancer_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 8)
+                                            <li class="nav-item">
+                                            <a href="{{ url('ac_vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @endif
+                                            @endif
+
+                                        @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </li>
-                             <li class="nav-item">
-                                <a href="{{ url('ac_bus_concession_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Bus Concession Scheme Application</a>
-                            </li>
-                           <li class="nav-item">
-                                <a href="{{ url('ac_education_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Education Scheme Application</a>
-                            </li>
-                           <li class="nav-item">
-                                <a href="{{ url('ac_marriage_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Marriage Scheme Application</a>
-                            </li>
-                             <li class="nav-item">
-                                <a href="{{ url('ac_cancer_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Cancer Scheme Application</a>
-                            </li>
-                           <li class="nav-item">
-                                <a href="{{ url('ac_sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
-                            </li>
-                              <li class="nav-item">
-                                <a href="{{ url('ac_vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Vehicle Scheme Application</a>
-                            </li>
-                           <li class="nav-item">
-                                <a href="{{ url('ac_women_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Women Sewing/Beautisians Scheme Application</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </li>
+
+
                 @endcan
 
                 {{-- AMC Panel --}}
 
                 @canany(['amc.application'])
+
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                        <i class="ri-layout-3-line"></i>
-                        <span data-key="t-layouts">Pending Scheme Application</span>
+                    <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                        <i class="ri-apps-2-line"></i> <span data-key="t-apps">Pending Scheme Application</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarLayouts">
+                    <div class="collapse menu-dropdown" id="sidebarApps">
                         <ul class="nav nav-sm flex-column">
+                            @foreach ($categories as $category)
                             <li class="nav-item">
-                                <a href="{{ url('amc_divyang_registration_list', 0) }}" class="nav-link" data-key="t-horizontal"> Divyang Scheme Application</a>
+                                <a href="#sidebarCalendar" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCalendar" data-key="t-calender">
+                                    {{ $category->category_name }}
+                                </a>
+                                <div class="collapse menu-dropdown" id="sidebarCalendar">
+                                    <ul class="nav nav-sm flex-column">
+                                        @foreach ($schemes as $scheme)
+                                            @if (in_array($category->id, explode(',', $scheme->category_id)))
+
+                                            @if(isset($scheme->id))
+                                            @if($scheme->id == 1)
+                                            <li class="nav-item">
+                                                <a href="{{ url('amc_divyang_registration_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            </li>
+                                            @elseif($scheme->id == 2)
+                                            <li class="nav-item">
+                                                @if ($category->id == 1 || $category->id == 2)
+                                            <a href="{{ url('amc_bus_concession_application_list?category='.$category->id, 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @elseif ($category->id == 3)
+                                            <a href="{{ url('amc_bus_concession_application_list?category=seniorCitizen', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @elseif ($category->id == 4)
+                                            <a href="{{ url('amc_bus_concession_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @endif
+                                        </li>
+                                            @elseif($scheme->id == 3)
+                                            <li class="nav-item">
+                                                @if ($category->id == 1 || $category->id == 2)
+                                            <a href="{{ url('amc_education_scheme_application_list?category='.$category->id, 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @elseif ($category->id == 4)
+                                            <a href="{{ url('amc_education_scheme_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @endif
+                                        </li>
+                                            @elseif($scheme->id == 4)
+                                            <li class="nav-item">
+                                            <a href="{{ url('amc_marriage_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                          </li>
+                                            @elseif($scheme->id == 5)
+                                            <li class="nav-item">
+                                            <a href="{{ url('amc_sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 6)
+                                            <li class="nav-item">
+                                            <a href="{{ url('amc_women_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 7)
+                                            <li class="nav-item">
+                                            <a href="{{ url('amc_cancer_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 8)
+                                            <li class="nav-item">
+                                            <a href="{{ url('amc_vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @endif
+                                            @endif
+
+                                        @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </li>
-                             <li class="nav-item">
-                                <a href="{{ url('amc_bus_concession_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Bus Concession Scheme Application</a>
-                            </li>
-                           <li class="nav-item">
-                                <a href="{{ url('amc_education_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">  Education Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('amc_marriage_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">  Marriage Scheme Application</a>
-                            </li>
-                           <li class="nav-item">
-                                <a href="{{ url('amc_cancer_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">  Cancer Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('amc_sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('amc_vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Vehicle Scheme Application</a>
-                            </li>
-                             <li class="nav-item">
-                                <a href="{{ url('amc_women_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">Women Sewing/Beautisians Scheme Application</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                        <i class="ri-layout-3-line"></i>
-                        <span data-key="t-layouts">Approved Scheme Application</span>
+                    <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                        <i class="ri-apps-2-line"></i> <span data-key="t-apps">Approved Scheme Application</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarLayouts">
+                    <div class="collapse menu-dropdown" id="sidebarApps">
                         <ul class="nav nav-sm flex-column">
+                            @foreach ($categories as $category)
                             <li class="nav-item">
-                                <a href="{{ url('amc_divyang_registration_list', 1) }}" class="nav-link" data-key="t-horizontal"> Divyang Scheme Application</a>
+                                <a href="#sidebarCalendar" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCalendar" data-key="t-calender">
+                                    {{ $category->category_name }}
+                                </a>
+                                <div class="collapse menu-dropdown" id="sidebarCalendar">
+                                    <ul class="nav nav-sm flex-column">
+                                        @foreach ($schemes as $scheme)
+                                            @if (in_array($category->id, explode(',', $scheme->category_id)))
+
+                                            @if(isset($scheme->id))
+                                            @if($scheme->id == 1)
+                                            <li class="nav-item">
+                                                <a href="{{ url('amc_divyang_registration_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            </li>
+                                            @elseif($scheme->id == 2)
+                                            <li class="nav-item">
+                                                @if ($category->id == 1 || $category->id == 2)
+                                                <a href="{{ url('amc_bus_concession_application_list?category='.$category->id, 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @elseif ($category->id == 3)
+                                                <a href="{{ url('amc_bus_concession_application_list?category=seniorCitizen', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @elseif ($category->id == 4)
+                                                <a href="{{ url('amc_bus_concession_application_list?category=women', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                    @endif
+                                          </li>
+                                            @elseif($scheme->id == 3)
+                                            <li class="nav-item">
+                                                @if ($category->id == 1 || $category->id == 2)
+                                                <a href="{{ url('amc_education_scheme_application_list?category='.$category->id, 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @elseif ($category->id == 4)
+                                                <a href="{{ url('amc_education_scheme_application_list?category=women', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @endif
+                                          </li>
+                                            @elseif($scheme->id == 4)
+                                            <li class="nav-item">
+                                            <a href="{{ url('amc_marriage_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                          </li>
+                                            @elseif($scheme->id == 5)
+                                            <li class="nav-item">
+                                            <a href="{{ url('amc_sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 6)
+                                            <li class="nav-item">
+                                            <a href="{{ url('amc_women_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 7)
+                                            <li class="nav-item">
+                                            <a href="{{ url('amc_cancer_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 8)
+                                            <li class="nav-item">
+                                            <a href="{{ url('amc_vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @endif
+                                            @endif
+
+                                        @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </li>
-                            <li class="nav-item">
-                                <a href="{{ url('amc_bus_concession_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Bus Concession Scheme Application</a>
-                            </li>
-                             <li class="nav-item">
-                                <a href="{{ url('amc_education_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Education Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('amc_marriage_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Marriage Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('amc_cancer_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Cancer Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('amc_sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('amc_vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Vehicle Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('amc_women_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Women Sewing/Beautisians Scheme Application</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </li>
-
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                        <i class="ri-layout-3-line"></i>
-                        <span data-key="t-layouts">Rejected Scheme Application</span>
+                    <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                        <i class="ri-apps-2-line"></i> <span data-key="t-apps">Rejected Scheme Application</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarLayouts">
+                    <div class="collapse menu-dropdown" id="sidebarApps">
                         <ul class="nav nav-sm flex-column">
+                            @foreach ($categories as $category)
                             <li class="nav-item">
-                                <a href="{{ url('amc_divyang_registration_list', 2) }}" class="nav-link" data-key="t-horizontal"> Divyang Scheme Application</a>
+                                <a href="#sidebarCalendar" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCalendar" data-key="t-calender">
+                                    {{ $category->category_name }}
+                                </a>
+                                <div class="collapse menu-dropdown" id="sidebarCalendar">
+                                    <ul class="nav nav-sm flex-column">
+                                        @foreach ($schemes as $scheme)
+                                            @if (in_array($category->id, explode(',', $scheme->category_id)))
+
+                                            @if(isset($scheme->id))
+                                            @if($scheme->id == 1)
+                                            <li class="nav-item">
+                                                <a href="{{ url('amc_divyang_registration_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            </li>
+                                            @elseif($scheme->id == 2)
+                                            <li class="nav-item">
+                                                @if ($category->id == 1 || $category->id == 2)
+                                                <a href="{{ url('amc_bus_concession_application_list?category='.$category->id, 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @elseif ($category->id == 3)
+                                                <a href="{{ url('amc_bus_concession_application_list?category=seniorCitizen', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @elseif ($category->id == 4)
+                                                <a href="{{ url('amc_bus_concession_application_list?category=women', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                    @endif
+                                          </li>
+                                            @elseif($scheme->id == 3)
+                                            <li class="nav-item">
+                                                @if ($category->id == 1 || $category->id == 2)
+                                                <a href="{{ url('amc_education_scheme_application_list?category='.$category->id, 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @elseif ($category->id == 4)
+                                                <a href="{{ url('amc_education_scheme_application_list?category=women', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @endif
+                                          </li>
+                                            @elseif($scheme->id == 4)
+                                            <li class="nav-item">
+                                            <a href="{{ url('amc_marriage_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                          </li>
+                                            @elseif($scheme->id == 5)
+                                            <li class="nav-item">
+                                            <a href="{{ url('amc_sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 6)
+                                            <li class="nav-item">
+                                            <a href="{{ url('amc_women_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 7)
+                                            <li class="nav-item">
+                                            <a href="{{ url('amc_cancer_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 8)
+                                            <li class="nav-item">
+                                            <a href="{{ url('amc_vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @endif
+                                            @endif
+
+                                        @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </li>
-                             <li class="nav-item">
-                                <a href="{{ url('amc_bus_concession_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Bus Concession Scheme Application</a>
-                            </li>
-                           <li class="nav-item">
-                                <a href="{{ url('amc_education_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Education Scheme Application</a>
-                            </li>
-                           <li class="nav-item">
-                                <a href="{{ url('amc_marriage_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Marriage Scheme Application</a>
-                            </li>
-                             <li class="nav-item">
-                                <a href="{{ url('amc_cancer_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Cancer Scheme Application</a>
-                            </li>
-                           <li class="nav-item">
-                                <a href="{{ url('amc_sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
-                            </li>
-                              <li class="nav-item">
-                                <a href="{{ url('amc_vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal">Vehicle Scheme Application</a>
-                            </li>
-                           <li class="nav-item">
-                                <a href="{{ url('amc_women_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Women Sewing/Beautisians Scheme Application</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </li>
+
+
+
+
                 @endcan
 
                   {{-- DMC Panel --}}
 
                 @canany(['dmc.application'])
+
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                        <i class="ri-layout-3-line"></i>
-                        <span data-key="t-layouts">Pending Scheme Application</span>
+                    <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                        <i class="ri-apps-2-line"></i> <span data-key="t-apps">Pending Scheme Application</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarLayouts">
+                    <div class="collapse menu-dropdown" id="sidebarApps">
                         <ul class="nav nav-sm flex-column">
+                            @foreach ($categories as $category)
                             <li class="nav-item">
-                                <a href="{{ url('dmc_divyang_registration_list', 0) }}" class="nav-link" data-key="t-horizontal"> Divyang Scheme Application</a>
+                                <a href="#sidebarCalendar" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCalendar" data-key="t-calender">
+                                    {{ $category->category_name }}
+                                </a>
+                                <div class="collapse menu-dropdown" id="sidebarCalendar">
+                                    <ul class="nav nav-sm flex-column">
+                                        @foreach ($schemes as $scheme)
+                                            @if (in_array($category->id, explode(',', $scheme->category_id)))
+
+                                            @if(isset($scheme->id))
+                                            @if($scheme->id == 1)
+                                            <li class="nav-item">
+                                                <a href="{{ url('dmc_divyang_registration_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            </li>
+                                            @elseif($scheme->id == 2)
+                                            <li class="nav-item">
+                                                @if ($category->id == 1 || $category->id == 2)
+                                            <a href="{{ url('dmc_bus_concession_application_list?category='.$category->id, 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @elseif ($category->id == 3)
+                                            <a href="{{ url('dmc_bus_concession_application_list?category=seniorCitizen', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @elseif ($category->id == 4)
+                                            <a href="{{ url('dmc_bus_concession_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @endif
+                                        </li>
+                                            @elseif($scheme->id == 3)
+                                            <li class="nav-item">
+                                                @if ($category->id == 1 || $category->id == 2)
+                                            <a href="{{ url('dmc_education_scheme_application_list?category='.$category->id, 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @elseif ($category->id == 4)
+                                            <a href="{{ url('dmc_education_scheme_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @endif
+                                        </li>
+                                            @elseif($scheme->id == 4)
+                                            <li class="nav-item">
+                                            <a href="{{ url('dmc_marriage_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                          </li>
+                                            @elseif($scheme->id == 5)
+                                            <li class="nav-item">
+                                            <a href="{{ url('dmc_sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 6)
+                                            <li class="nav-item">
+                                            <a href="{{ url('dmc_women_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 7)
+                                            <li class="nav-item">
+                                            <a href="{{ url('dmc_cancer_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 8)
+                                            <li class="nav-item">
+                                            <a href="{{ url('dmc_vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @endif
+                                            @endif
+
+                                        @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </li>
-                             <li class="nav-item">
-                                <a href="{{ url('dmc_bus_concession_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Bus Concession Scheme Application</a>
-                            </li>
-                           <li class="nav-item">
-                                <a href="{{ url('dmc_education_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">  Education Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('dmc_marriage_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">  Marriage Scheme Application</a>
-                            </li>
-                           <li class="nav-item">
-                                <a href="{{ url('dmc_cancer_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal">  Cancer Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('dmc_sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('dmc_vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Vehicle Scheme Application</a>
-                            </li>
-                             <li class="nav-item">
-                                <a href="{{ url('dmc_women_scheme_application_list', 0) }}" class="nav-link" data-key="t-horizontal"> Women Sewing/Beautisians Scheme Application</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                        <i class="ri-layout-3-line"></i>
-                        <span data-key="t-layouts">Approved Scheme Application</span>
+                    <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                        <i class="ri-apps-2-line"></i> <span data-key="t-apps">Approved Scheme Application</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarLayouts">
+                    <div class="collapse menu-dropdown" id="sidebarApps">
                         <ul class="nav nav-sm flex-column">
+                            @foreach ($categories as $category)
                             <li class="nav-item">
-                                <a href="{{ url('dmc_divyang_registration_list', 1) }}" class="nav-link" data-key="t-horizontal"> Divyang Scheme Application</a>
+                                <a href="#sidebarCalendar" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCalendar" data-key="t-calender">
+                                    {{ $category->category_name }}
+                                </a>
+                                <div class="collapse menu-dropdown" id="sidebarCalendar">
+                                    <ul class="nav nav-sm flex-column">
+                                        @foreach ($schemes as $scheme)
+                                            @if (in_array($category->id, explode(',', $scheme->category_id)))
+
+                                            @if(isset($scheme->id))
+                                            @if($scheme->id == 1)
+                                            <li class="nav-item">
+                                                <a href="{{ url('dmc_divyang_registration_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            </li>
+                                            @elseif($scheme->id == 2)
+                                            <li class="nav-item">
+                                                @if ($category->id == 1 || $category->id == 2)
+                                                <a href="{{ url('dmc_bus_concession_application_list?category='.$category->id, 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @elseif ($category->id == 3)
+                                                <a href="{{ url('dmc_bus_concession_application_list?category=seniorCitizen', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @elseif ($category->id == 4)
+                                                <a href="{{ url('dmc_bus_concession_application_list?category=women', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @endif
+                                          </li>
+                                            @elseif($scheme->id == 3)
+                                            <li class="nav-item">
+                                                @if ($category->id == 1 || $category->id == 2)
+                                            <a href="{{ url('dmc_education_scheme_application_list?category='.$category->id, 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @elseif ($category->id == 4)
+                                            <a href="{{ url('dmc_education_scheme_application_list?category=women', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @endif
+                                        </li>
+                                            @elseif($scheme->id == 4)
+                                            <li class="nav-item">
+                                            <a href="{{ url('dmc_marriage_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                          </li>
+                                            @elseif($scheme->id == 5)
+                                            <li class="nav-item">
+                                            <a href="{{ url('dmc_sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 6)
+                                            <li class="nav-item">
+                                            <a href="{{ url('dmc_women_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 7)
+                                            <li class="nav-item">
+                                            <a href="{{ url('dmc_cancer_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 8)
+                                            <li class="nav-item">
+                                            <a href="{{ url('dmc_vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @endif
+                                            @endif
+
+                                        @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </li>
-                            <li class="nav-item">
-                                <a href="{{ url('dmc_bus_concession_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Bus Concession Scheme Application</a>
-                            </li>
-                             <li class="nav-item">
-                                <a href="{{ url('dmc_education_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Education Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('dmc_marriage_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Marriage Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('dmc_cancer_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Cancer Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('dmc_sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('dmc_vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Vehicle Scheme Application</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('dmc_women_scheme_application_list', 1) }}" class="nav-link" data-key="t-horizontal"> Women Sewing/Beautisians Scheme Application</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </li>
 
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                        <i class="ri-layout-3-line"></i>
-                        <span data-key="t-layouts">Rejected Scheme Application</span>
+                    <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                        <i class="ri-apps-2-line"></i> <span data-key="t-apps">Rejected Scheme Application</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarLayouts">
+                    <div class="collapse menu-dropdown" id="sidebarApps">
                         <ul class="nav nav-sm flex-column">
+                            @foreach ($categories as $category)
                             <li class="nav-item">
-                                <a href="{{ url('dmc_divyang_registration_list', 2) }}" class="nav-link" data-key="t-horizontal"> Divyang Scheme Application</a>
+                                <a href="#sidebarCalendar" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCalendar" data-key="t-calender">
+                                    {{ $category->category_name }}
+                                </a>
+                                <div class="collapse menu-dropdown" id="sidebarCalendar">
+                                    <ul class="nav nav-sm flex-column">
+                                        @foreach ($schemes as $scheme)
+                                            @if (in_array($category->id, explode(',', $scheme->category_id)))
+
+                                            @if(isset($scheme->id))
+                                            @if($scheme->id == 1)
+                                            <li class="nav-item">
+                                                <a href="{{ url('dmc_divyang_registration_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            </li>
+                                            @elseif($scheme->id == 2)
+                                            <li class="nav-item">
+                                                @if ($category->id == 1 || $category->id == 2)
+                                                <a href="{{ url('dmc_bus_concession_application_list?category='.$category->id, 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @elseif ($category->id == 3)
+                                                <a href="{{ url('dmc_bus_concession_application_list?category=seniorCitizen', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @elseif ($category->id == 4)
+                                                <a href="{{ url('dmc_bus_concession_application_list?category=women', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @endif
+                                          </li>
+                                            @elseif($scheme->id == 3)
+                                            <li class="nav-item">
+                                             @if ($category->id == 1 || $category->id == 2)
+                                            <a href="{{ url('dmc_education_scheme_application_list?category='.$category->id, 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @elseif ($category->id == 4)
+                                            <a href="{{ url('dmc_education_scheme_application_list?category=women', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @endif
+                                        </li>
+                                            @elseif($scheme->id == 4)
+                                            <li class="nav-item">
+                                            <a href="{{ url('dmc_marriage_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                          </li>
+                                            @elseif($scheme->id == 5)
+                                            <li class="nav-item">
+                                            <a href="{{ url('dmc_sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 6)
+                                            <li class="nav-item">
+                                            <a href="{{ url('dmc_women_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 7)
+                                            <li class="nav-item">
+                                            <a href="{{ url('dmc_cancer_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @elseif($scheme->id == 8)
+                                            <li class="nav-item">
+                                            <a href="{{ url('dmc_vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                           </li>
+                                            @endif
+                                            @endif
+
+                                        @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </li>
-                             <li class="nav-item">
-                                <a href="{{ url('dmc_bus_concession_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Bus Concession Scheme Application</a>
-                            </li>
-                           <li class="nav-item">
-                                <a href="{{ url('dmc_education_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Education Scheme Application</a>
-                            </li>
-                           <li class="nav-item">
-                                <a href="{{ url('dmc_marriage_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Marriage Scheme Application</a>
-                            </li>
-                             <li class="nav-item">
-                                <a href="{{ url('dmc_cancer_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Cancer Scheme Application</a>
-                            </li>
-                           <li class="nav-item">
-                                <a href="{{ url('dmc_sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Sports Scheme Application</a>
-                            </li>
-                              <li class="nav-item">
-                                <a href="{{ url('dmc_vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Vehicle Scheme Application</a>
-                            </li>
-                           <li class="nav-item">
-                                <a href="{{ url('dmc_women_scheme_application_list', 2) }}" class="nav-link" data-key="t-horizontal"> Women Sewing/Beautisians Scheme Application</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </li>
+
+
+
                 @endcan
 
             </ul>
         </div>
     </div>
 
+
+
     <div class="sidebar-background"></div>
 </div>
 
 
 <div class="vertical-overlay"></div>
+

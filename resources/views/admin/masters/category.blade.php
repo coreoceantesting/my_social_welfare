@@ -110,7 +110,7 @@
                                             <td>{{$categories->initial}}</td>
                                             <td>
                                                 <button class="edit-element btn btn-primary text-white px-2 py-1" title="Edit category" data-id="{{ $categories->id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn btn-danger text-white rem-element px-2 py-1" title="Delete category" data-id="{{ $categories->id }}"><i data-feather="trash-2"></i> </button>
+                                                {{-- <button class="btn btn-danger text-white rem-element px-2 py-1" title="Delete category" data-id="{{ $categories->id }}"><i data-feather="trash-2"></i> </button> --}}
                                             </td>
                                         </tr>
                                     @endforeach

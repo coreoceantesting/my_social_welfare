@@ -24,42 +24,39 @@ Route::get('/', function () {
 
 
 // Guest Users
-Route::middleware(['guest','PreventBackHistory'])->group(function()
-{
-    Route::get('login', [App\Http\Controllers\Admin\AuthController::class, 'showLogin'] )->name('login');
+Route::middleware(['guest', 'PreventBackHistory'])->group(function () {
+    Route::get('login', [App\Http\Controllers\Admin\AuthController::class, 'showLogin'])->name('login');
     Route::post('login', [App\Http\Controllers\Admin\AuthController::class, 'login'])->name('signin');
-    Route::get('register', [App\Http\Controllers\Admin\AuthController::class, 'showRegister'] )->name('register');
+    Route::get('register', [App\Http\Controllers\Admin\AuthController::class, 'showRegister'])->name('register');
     Route::post('registers', [App\Http\Controllers\Admin\AuthController::class, 'register'])->name('signup');
-
 });
 
 
 // Authenticated users
-Route::middleware(['auth','PreventBackHistory'])->group(function()
-{
+Route::middleware(['auth', 'PreventBackHistory'])->group(function () {
 
     // Auth Routes
     Route::get('home', fn () => redirect()->route('dashboard'))->name('home');
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
     Route::post('logout', [App\Http\Controllers\Admin\AuthController::class, 'Logout'])->name('logout');
     Route::get('change-theme-mode', [App\Http\Controllers\Admin\DashboardController::class, 'changeThemeMode'])->name('change-theme-mode');
-    Route::get('show-change-password', [App\Http\Controllers\Admin\AuthController::class, 'showChangePassword'] )->name('show-change-password');
-    Route::post('change-password', [App\Http\Controllers\Admin\AuthController::class, 'changePassword'] )->name('change-password');
+    Route::get('show-change-password', [App\Http\Controllers\Admin\AuthController::class, 'showChangePassword'])->name('show-change-password');
+    Route::post('change-password', [App\Http\Controllers\Admin\AuthController::class, 'changePassword'])->name('change-password');
 
     // Masters
-    Route::resource('wards', App\Http\Controllers\Admin\Masters\WardController::class );
-    Route::resource('category', App\Http\Controllers\Admin\Masters\CategoryController::class );
-    Route::resource('scheme', App\Http\Controllers\Admin\Masters\SchemeController::class );
-    Route::resource('document', App\Http\Controllers\Admin\Masters\DocumentController::class );
-    Route::resource('financial', App\Http\Controllers\Admin\Masters\FinancialController::class );
-    Route::resource('terms-conditions', App\Http\Controllers\Admin\Masters\TermsAndConditionsController::class );
+    Route::resource('wards', App\Http\Controllers\Admin\Masters\WardController::class);
+    Route::resource('category', App\Http\Controllers\Admin\Masters\CategoryController::class);
+    Route::resource('scheme', App\Http\Controllers\Admin\Masters\SchemeController::class);
+    Route::resource('document', App\Http\Controllers\Admin\Masters\DocumentController::class);
+    Route::resource('financial', App\Http\Controllers\Admin\Masters\FinancialController::class);
+    Route::resource('terms-conditions', App\Http\Controllers\Admin\Masters\TermsAndConditionsController::class);
 
     // User Panel
     Route::get('pdf_design', [App\Http\Controllers\Admin\Masters\DivyangController::class, 'pdf']);
 
     Route::get('terms_conditions/{id}', [App\Http\Controllers\Admin\DashboardController::class, 'terms_conditions'])->name('terms_conditions');
     Route::resource('hayatichaDakhlaform', App\Http\Controllers\Admin\Masters\DivyangController::class);
-    Route::put('hayatichaDakhlaform/{id}/upload', [App\Http\Controllers\Admin\Masters\DivyangController::class, 'hayatuploadfile' ])->name('hayatichaDakhlaform.upload');
+    Route::put('hayatichaDakhlaform/{id}/upload', [App\Http\Controllers\Admin\Masters\DivyangController::class, 'hayatuploadfile'])->name('hayatichaDakhlaform.upload');
 
     Route::get('uploaded-document', [App\Http\Controllers\User\DivyangSchemeController::class, 'uploaded_doc']);
     // Divyang Scheme Application
@@ -67,8 +64,8 @@ Route::middleware(['auth','PreventBackHistory'])->group(function()
     Route::get('divyang_certificate/{id}', [App\Http\Controllers\User\DivyangSchemeController::class, 'generateCertificate']);
     Route::get('divyang_view/{id}', [App\Http\Controllers\User\DivyangSchemeController::class, 'divyangRegistrationView']);
     Route::get('divyang_certificate_view/{id}', [App\Http\Controllers\User\DivyangSchemeController::class, 'divyangCertificate']);
-     Route::get('divyang_application', [App\Http\Controllers\User\DivyangSchemeController::class, 'list'])->name('divyang.application');
-     
+    Route::get('divyang_application', [App\Http\Controllers\User\DivyangSchemeController::class, 'list'])->name('divyang.application');
+
     // Bus Concession Scheme Application
     Route::resource('bus_concession', App\Http\Controllers\User\BusConcessionSchemeController::class);
     Route::get('bus_concession_certificate/{id}', [App\Http\Controllers\User\BusConcessionSchemeController::class, 'generateCertificate']);
@@ -105,7 +102,7 @@ Route::middleware(['auth','PreventBackHistory'])->group(function()
     Route::get('vehicle_view/{id}', [App\Http\Controllers\User\VehicleSchemeController::class, 'vehicleSchemeApplicationView']);
     Route::get('vehicle_scheme_certificate_view', [App\Http\Controllers\User\VehicleSchemeController::class, 'vehicleSchemeCertificate']);
     Route::get('vehicle_scheme_application', [App\Http\Controllers\User\VehicleSchemeController::class, 'list'])->name('vehicle_scheme.application');
-    
+
     // Women Sewing/Beautisians Scheme Application
     Route::resource('women_scheme', App\Http\Controllers\User\WomenSewingSchemeController::class);
     Route::get('women_certificate/{id}', [App\Http\Controllers\User\WomenSewingSchemeController::class, 'generateCertificate']);
@@ -171,7 +168,7 @@ Route::middleware(['auth','PreventBackHistory'])->group(function()
     Route::get('ac_education_scheme_application_view/{id}/{status}', [App\Http\Controllers\Ac\AcEducationSchemeController::class, 'eductationSchemeApplicationView']);
     Route::post('education_scheme_application_reject_by_ac/{id}', [App\Http\Controllers\Ac\AcEducationSchemeController::class, 'rejectEductationSchemeApplication']);
     Route::get('education_scheme_application_approve_by_ac/{id}', [App\Http\Controllers\Ac\AcEducationSchemeController::class, 'approveEducationSchemeApplication']);
-      // Marriage Scheme Application
+    // Marriage Scheme Application
     Route::get('ac_marriage_scheme_application_list/{status}', [App\Http\Controllers\Ac\AcMarriageSchemeController::class, 'marriageSchemeApplicationList']);
     Route::get('ac_marriage_scheme_application_view/{id}/{status}', [App\Http\Controllers\Ac\AcMarriageSchemeController::class, 'marriageSchemeApplicationView']);
     Route::post('marriage_scheme_application_reject_by_ac/{id}', [App\Http\Controllers\Ac\AcMarriageSchemeController::class, 'rejectMarriageSchemeApplication']);
@@ -191,7 +188,7 @@ Route::middleware(['auth','PreventBackHistory'])->group(function()
     Route::get('ac_vehicle_scheme_application_view/{id}/{status}', [App\Http\Controllers\Ac\AcVehicleSchemeController::class, 'vehicleSchemeApplicationView']);
     Route::post('vehicle_scheme_application_reject_by_ac/{id}', [App\Http\Controllers\Ac\AcVehicleSchemeController::class, 'rejectVehicleSchemeApplication']);
     Route::get('vehicle_scheme_application_approve_by_ac/{id}', [App\Http\Controllers\Ac\AcVehicleSchemeController::class, 'approveVehicleSchemeApplication']);
-      // Women Sewing/Beautisians Scheme Application
+    // Women Sewing/Beautisians Scheme Application
     Route::get('ac_women_scheme_application_list/{status}', [App\Http\Controllers\Ac\AcWomenSchemeController::class, 'womenSchemeApplicationList']);
     Route::get('ac_women_scheme_application_view/{id}/{status}', [App\Http\Controllers\Ac\AcWomenSchemeController::class, 'womenSchemeApplicationView']);
     Route::post('women_scheme_application_reject_by_ac/{id}', [App\Http\Controllers\Ac\AcWomenSchemeController::class, 'rejectWomenSchemeApplication']);
@@ -292,22 +289,19 @@ Route::middleware(['auth','PreventBackHistory'])->group(function()
 
 
     // Users Roles n Permissions
-    Route::resource('users', App\Http\Controllers\Admin\UserController::class );
-    Route::get('users/{user}/toggle', [App\Http\Controllers\Admin\UserController::class, 'toggle' ])->name('users.toggle');
-    Route::get('users/{user}/retire', [App\Http\Controllers\Admin\UserController::class, 'retire' ])->name('users.retire');
-    Route::put('users/{user}/change-password', [App\Http\Controllers\Admin\UserController::class, 'changePassword' ])->name('users.change-password');
-    Route::get('users/{user}/get-role', [App\Http\Controllers\Admin\UserController::class, 'getRole' ])->name('users.get-role');
-    Route::put('users/{user}/assign-role', [App\Http\Controllers\Admin\UserController::class, 'assignRole' ])->name('users.assign-role');
+    Route::resource('users', App\Http\Controllers\Admin\UserController::class);
+    Route::get('users/{user}/toggle', [App\Http\Controllers\Admin\UserController::class, 'toggle'])->name('users.toggle');
+    Route::get('users/{user}/retire', [App\Http\Controllers\Admin\UserController::class, 'retire'])->name('users.retire');
+    Route::put('users/{user}/change-password', [App\Http\Controllers\Admin\UserController::class, 'changePassword'])->name('users.change-password');
+    Route::get('users/{user}/get-role', [App\Http\Controllers\Admin\UserController::class, 'getRole'])->name('users.get-role');
+    Route::put('users/{user}/assign-role', [App\Http\Controllers\Admin\UserController::class, 'assignRole'])->name('users.assign-role');
 
     //Route::get('users/terms_conditions', [App\Http\Controllers\Admin\UserController::class, 'terms_conditions' ])->name('users.terms_conditions');
-    Route::resource('roles', App\Http\Controllers\Admin\RoleController::class );
-
-
-
+    Route::resource('roles', App\Http\Controllers\Admin\RoleController::class);
 });
 
-Route::get('/php', function(Request $request){
-    if( !auth()->check() )
+Route::get('/php', function (Request $request) {
+    if (!auth()->check())
         return 'Unauthorized request';
 
     Artisan::call($request->artisan);
