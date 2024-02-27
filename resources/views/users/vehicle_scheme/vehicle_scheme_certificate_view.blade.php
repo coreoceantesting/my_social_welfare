@@ -64,7 +64,7 @@
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="icon-box">
-                                    <img class="img-fluid " src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="Awesome Image" style="height:100px; width:150px;">
+                                    <img class="img-fluid " src="{{ asset('storage/' . $data->passport_size_photo) }}" alt="Awesome Image" style="height:100px; width:150px;">
                                 </div>
                             </div>
                         </div>

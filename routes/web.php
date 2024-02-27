@@ -108,7 +108,7 @@ Route::middleware(['auth', 'PreventBackHistory'])->group(function () {
     Route::resource('women_scheme', App\Http\Controllers\User\WomenSewingSchemeController::class);
     Route::get('women_certificate/{id}', [App\Http\Controllers\User\WomenSewingSchemeController::class, 'generateCertificate']);
     Route::get('women_view/{id}', [App\Http\Controllers\User\WomenSewingSchemeController::class, 'womenSchemeApplicationView']);
-    Route::get('women_scheme_certificate_view', [App\Http\Controllers\User\WomenSewingSchemeController::class, 'womenSchemeCertificate']);
+    Route::get('women_scheme_certificate_view/{id}', [App\Http\Controllers\User\WomenSewingSchemeController::class, 'womenSchemeCertificate']);
     Route::get('women_scheme_application', [App\Http\Controllers\User\WomenSewingSchemeController::class, 'list'])->name('women_scheme.application');
 
     // Hod Panel

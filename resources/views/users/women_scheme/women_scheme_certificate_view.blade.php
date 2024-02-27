@@ -60,7 +60,7 @@
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="icon-box">
-                                    <img class="img-fluid " src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="Awesome Image" style="height:100px; width:150px;">
+                                    <img class="img-fluid " src="{{ asset('storage/' . $data->passport_size_photo) }}" alt="Awesome Image" style="height:100px; width:150px;">
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;मी अर्जदार श्रीमती / कु ----------------- महिला बाल कल्याण विभागा अंतर्गत प्रशिक्षण घेवू इच्छित आहे व माझी माहिती खालीलप्रमाणे आहे.
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;मी अर्जदार श्रीमती / कु <strong>{{ $data->full_name }}</strong> महिला बाल कल्याण विभागा अंतर्गत प्रशिक्षण घेवू इच्छित आहे व माझी माहिती खालीलप्रमाणे आहे.
                                 </p>
                             </div>
                         </div>
@@ -84,7 +84,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>१) संपूर्ण नाव : </strong>
+                                    <strong>१) संपूर्ण नाव : </strong>{{ $data->full_name }}
                                 </p>
                             </div>
                         </div>
@@ -93,7 +93,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>२) संपूर्ण पत्ता: </strong>
+                                    <strong>२) संपूर्ण पत्ता: </strong>{{ $data->full_address }}
                                 </p>
                             </div>
                         </div>
@@ -101,28 +101,33 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>३) प्रभागाचे नाव (अ, ब, क, ड) :- </strong>
+                                    <strong>३) प्रभागाचे नाव (अ, ब, क, ड) :- </strong>{{ $data->name }}
                                 </p>
                             </div>
                         </div>
-
+                        <?php $dob = $data->dob;
+                        $dob = new DateTime($dob);
+                        $currentDate = new DateTime();
+                        $age = $currentDate->diff($dob)->y; ?>
                         <div class="row pt-3">
-                            <div class="col-md-4 col-sm-4">
-                                <p class="mb-0">
-                                    <strong>४) वय :- </strong>
-                                </p>
-                            </div>
 
-                            <div class="col-md-4 col-sm-4">
-                                <p class="mb-0">
-                                    <strong>जन्म तारीख : </strong>
-
-                                </p>
-                            </div>
 
                             <div class="col-md-4 col-sm-4">
                                 <p class="mb-0">
-                                    <strong>मोबाईल क्र.: </strong>
+                                    <strong>जन्म तारीख : </strong>{{ date('d-m-Y', strtotime($data->dob)) }}
+
+                                </p>
+                            </div>
+
+                            <div class="col-md-4 col-sm-4">
+                                <p class="mb-0">
+                                    <strong>४) वय :- </strong>{{ $age }}
+                                </p>
+                            </div>
+
+                            <div class="col-md-4 col-sm-4">
+                                <p class="mb-0">
+                                    <strong>मोबाईल क्र.: </strong>{{ $data->contact }}
                                 </p>
                             </div>
 
@@ -132,7 +137,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>५)  महानगरपालिका क्षेत्रातील वास्तव्याचा कालावधी :- </strong>
+                                    <strong>५)  महानगरपालिका क्षेत्रातील वास्तव्याचा कालावधी :- </strong>{{ $data->duration_of_residence }}
                                 </p>
                             </div>
                         </div>
@@ -140,7 +145,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>६) आधारकार्ड क्रमांक:-  </strong>
+                                    <strong>६) आधारकार्ड क्रमांक:-  </strong>{{ $data->adhaar_no }}
                                 </p>
                             </div>
                         </div>
@@ -148,7 +153,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>७) यापुर्वी सदर योजने अंतर्गत प्रशिक्षण घेतले असल्यास त्याचा तपशील:-  </strong>
+                                    <strong>७) यापुर्वी सदर योजने अंतर्गत प्रशिक्षण घेतले असल्यास त्याचा तपशील:-  </strong>{{ $data->details }}
                                 </p>
                             </div>
                         </div>
@@ -161,12 +166,15 @@
                             </div>
 
                             <div class="col-md-4 col-sm-4">
+                                <div class="icon-box">
+                                    <img class="img-fluid " src="{{ asset('storage/' . $data->candidate_signature) }}" alt="Awesome Image" style="height:100px; width:150px;">
+                                </div>
                                 <p class="mb-0">
                                     <strong>  अर्जदाराची सही</strong>
                                 </p>
-                                <p class="mb-0">
+                                {{-- <p class="mb-0">
                                     <strong>(नावः- ---------------) </strong>
-                                </p>
+                                </p> --}}
                             </div>
                         </div>
                         <br>
