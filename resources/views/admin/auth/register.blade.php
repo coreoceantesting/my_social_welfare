@@ -1,61 +1,21 @@
 <!doctype html>
-<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-bs-theme="dark" data-body-image="img-1" data-preloader="disable">
-
+    <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-bs-theme="white" data-body-image="img-1" data-preloader="disable">
 <head>
 
     <meta charset="utf-8" />
     <title>{{ config('app.name') }} | Sign Up</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!--<link rel="shortcut icon" href="{{ asset('admin/images/favicon.ico') }}">-->
-    <link rel="shortcut icon" href="{{ asset('admin/images/users/PMC-logo.png') }}">
+       <link rel="shortcut icon" href="{{ asset('admin/images/users/PMC-logo.png') }}">
     <script src="{{ asset('admin/js/layout.js') }}"></script>
     <link href="{{ asset('admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
-<style>
-    /* .card-title {
-    font-size: 23px;
-    color: #8c68cd;
-    font-weight: bold;
-    margin: 0 0 7px 0;
-} */
 
-.form-select option {
-    color: #000;  /* Set the text color for default options to black */
-}
-
-/* Style for selected option */
-.form-select:focus option:checked {
-    background-color: #fff;  /* Set the background color for selected option to white */
-    color: #000;  /* Set the text color for selected option to black */
-}
-
-.form-check-input[type="radio"] {
-    border: 2px solid #ccc;  /* Set the initial border color */
-    border-radius: 50%;  /* Make it circular */
-}
-
-.form-control {
-    color: #fff;
-}
-
-.card-bg-fill{
-    background-color: #fff;
-}
-
-label {
-    color: #fff;
-}
-.form-control:focus {
-    color: #fff;
-}
-
-
-
-</style>
 </head>
 
 <body>
@@ -76,7 +36,7 @@ label {
 
                             <div class="row" id="addContainer" >
                                 <div class="col-sm-12">
-                                    <div class="card mb-0 bg-dark text-white">
+                                    <div class="card mb-0">
                                         <form class="theme-form" name="addRegiForm" id="addRegiForm" enctype="multipart/form-data">
                                             @csrf
 
@@ -133,7 +93,7 @@ label {
                                                 <div class="mb-3 row">
                                                     <div class="col-md-4">
                                                         <label class="col-form-label" for="mobile">Contact Number(संपर्क क्रमांक) <span class="text-danger">*</span></label>
-                                                        <input class="form-control" id="mobile" name="mobile" type="text" placeholder="Enter Contact Number">
+                                                        <input class="form-control" id="mobile" name="mobile" type="text" placeholder="Enter Contact Number" maxlength="12">
                                                         <span class="text-danger is-invalid mobile_err"></span>
                                                     </div>
                                                     <div class="col-md-4">
@@ -279,10 +239,17 @@ label {
                 data: formdata,
                 contentType: false,
                 processData: false,
-                success: function(data) {
-                if (!data.error && !data.error2) {
-                        window.location.href = '{{ route('dashboard') }}';
-                } else {
+
+
+        success: function(data)
+            {
+                $("#RegisterForm_submit").prop('disabled', false);
+                if (!data.error && !data.error2)
+                    swal("Successful!", data.success, "success")
+                        .then((action) => {
+                            window.location.href = '{{ route('dashboard') }}';
+                        });
+                        else {
                     if (data.error2) {
                         swal("Error!", data.error2, "error");
                         $("#RegisterForm_submit").prop('disabled', false);
@@ -293,10 +260,17 @@ label {
                     }
                 }
             },
-            error: function(error) {
-                $("#RegisterForm_submit").prop('disabled', false);
-                swal("Error occured!", "Something went wrong please try again", "error");
-            },
+            statusCode: {
+                422: function(responseObject, textStatus, jqXHR) {
+                    $("#RegisterForm_submit").prop('disabled', false);
+                    resetErrors();
+                    printErrMsg(responseObject.responseJSON.errors);
+                },
+                500: function(responseObject, textStatus, errorThrown) {
+                    $("#RegisterForm_submit").prop('disabled', false);
+                    swal("Error occured!", "Something went wrong please try again", "error");
+                }
+            }
         });
 
         function resetErrors() {
@@ -351,7 +325,4 @@ label {
 
 
 </body>
-
-
-<!-- Mirrored from themesbrand.com/velzon/html/galaxy/auth-signup-cover.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Jan 2024 09:25:39 GMT -->
 </html>

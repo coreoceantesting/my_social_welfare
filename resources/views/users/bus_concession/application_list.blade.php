@@ -34,7 +34,7 @@
 
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="Age"> Age (वय) <span class="text-danger">*</span></label>
+                            <label class="col-form-label" for="Age"> Age (वय) </label>
                             <input class="form-control" id="age" name="age" type="text"  placeholder="Enter Age">
                             <span class="text-danger is-invalid age_err"></span>
                         </div>
@@ -80,14 +80,14 @@
 
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="candidate_signature">Upload Signature (अर्जदाराची सही) / thumb (अगंठा) <span class="text-danger">*</span></label>
-                            <input class="form-control" id="candidate_signature" name="candidate_signature" type="file" accept=".png, .jpg, .jpeg">
+                            <input class="form-control" id="candidate_signature" name="candidate_signature" type="file" accept=".png, .jpg, .jpeg"><br>
                             <a class="btn btn-sm btn-primary" id="candidate_signature" target="_blank" href="" >View Document</a>
                             <span class="text-danger is-invalid candidate_signature_err"></span>
                         </div>
 
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="passport_size_photo">Passport Size Photo (अर्जदाराची फोटो) <span class="text-danger">*</span></label>
-                            <input class="form-control" id="passport_size_photo" name="passport_size_photo" type="file" accept=".png, .jpg, .jpeg">
+                            <input class="form-control" id="passport_size_photo" name="passport_size_photo" type="file" accept=".png, .jpg, .jpeg"><br>
                             <a class="btn btn-sm btn-primary" id="passport_size_photo" target="_blank" href="" >View Document</a>
                             <span class="text-danger is-invalid passport_size_photo_err"></span>
                         </div>
@@ -129,6 +129,18 @@
                                         <th>Full Address</th>
                                         <th>Contact</th>
                                         <th>Application Status</th>
+                                        @if (!empty($bus_concession) && count($bus_concession) > 0)
+                                            @if($bus_concession[0]->hod_status == 2)
+                                                <th>Reasons for Rejection</th>
+                                            @elseif($bus_concession[0]->ac_status == 2)
+                                                <th>Reasons for Rejection</th>
+                                            @elseif($bus_concession[0]->amc_status == 2)
+                                                <th>Reasons for Rejection</th>
+                                            @elseif($bus_concession[0]->dmc_status == 2)
+                                                <th>Reasons for Rejection</th>
+                                            @endif
+                                        @endif
+
                                         <th>Action</th>
                                         @if (!empty($bus_concession) && count($bus_concession) > 0)
         								@if($bus_concession[0]->dmc_status == 1)
@@ -163,6 +175,15 @@
                                               </td>
 
 
+                                              @if($value->hod_status == 2)
+        								      <td>{{ $value->hod_reject_reason }}</td>
+        								    @elseif($value->ac_status == 2)
+        								      <td>{{ $value->ac_reject_reason }}</td>
+        								    @elseif($value->amc_status == 2)
+        								      <td>{{ $value->amc_reject_reason }}</td>
+                                            @elseif($value->dmc_status == 2)
+        								      <td>{{ $value->dmc_reject_reason }}</td>
+        								    @endif
                                             <td>
                                                 @if($value->hod_status == 0 && $value->ac_status == 0 && $value->amc_status == 0 && $value->dmc_status == 0)
                                                 <button class="edit-element btn btn-primary text-white px-2 py-1" title="Edit category" data-id="{{ $value->id }}"><i data-feather="edit"></i></button>
@@ -171,7 +192,6 @@
                                                 <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $value->id }}"><i data-feather="edit"></i></button>
                                                 <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $value->id }}"><i data-feather="trash-2"></i> </button>
                                                 @endif
-
                                                 <a href="{{ url('bus_concession_certificate_view/'.$value->id) }}" class="btn btn-info shadow btn-xs sharp me-1 px-2 py-1"> <i class="fas fa-eye"></i></a>
                                             </td>
 
@@ -245,7 +265,7 @@
                         }
                         documentsHtml += '</label>';
                         // documentsHtml += '<input type="hidden" name="document_id[]" class="form-control" value="' + document.id + '">';
-                        documentsHtml += '<input type="file" name="document_file[]" class="form-control" multiple>';
+                        documentsHtml += '<input type="file" name="document_file[]" class="form-control" multiple><br>';
                         documentsHtml += '<a href="' + documentUrl + '" class="btn btn-sm btn-primary" target="_blank"> View Document</a>';
                         documentsHtml += '<span class="text-danger is-invalid document_file_err"></span>';
                         documentsHtml += '</div>';

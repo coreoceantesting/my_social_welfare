@@ -52,7 +52,7 @@
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="adhaar_no">6.Aadhaar Card Number / आधारकार्ड नंबर : <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="adhaar_no">Aadhaar Card Number / आधारकार्ड नंबर : <span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text" name="adhaar_no" value="{{ $data->adhaar_no }}" readonly>
                                 </div>
 
@@ -70,7 +70,16 @@
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="total_family">Total Number of Family / कुटुंबातील एकूण संख्या ::</label>
                                     <input class="form-control"  name="total_family"  type="text" value="{{ $data->total_family }}" readonly >
+                                </div>
 
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="candidate_signature">Upload Signature (अर्जदाराची सही) / thumb (अगंठा) <span class="text-danger">*</span></label>
+                                    <br><a class="btn btn-sm btn-primary" id="candidate_signature" target="_blank" href="{{ asset('storage/'.$data->candidate_signature) }}" >View Document</a>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="passport_size_photo">Passport Size Photo (अर्जदाराची फोटो) <span class="text-danger">*</span></label>
+                                    <br><a class="btn btn-sm btn-primary" id="passport_size_photo" target="_blank" href="{{ asset('storage/'.$data->passport_size_photo) }}" >View Document</a>
                                 </div>
 
                                 @foreach ($document as $doc)
@@ -165,15 +174,15 @@
 
         if (reason.trim() === "") {
             errorMessage.textContent = "Please provide a rejection reason.";
-            return false; 
+            return false;
         }
         errorMessage.textContent = "";
-        return true; 
+        return true;
     }
 
     document.getElementById("rejectForm").addEventListener("submit", function(event) {
         if (!validateForm()) {
-            event.preventDefault(); 
+            event.preventDefault();
         }
     });
 </script>

@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('financial_help')->nullable();
             $table->string('email')->nullable();
             $table->string('school_name')->nullable();
+            $table->string('candidate_signature')->nullable();
+            $table->string('passport_size_photo')->nullable();
             $table->integer('status')->comment('0 => pending, 1 => approve, 2 => reject')->default(0);
             $table->integer('hod_status')->comment('0 => pending, 1 => approve, 2 => reject')->default(0);
             $table->integer('ac_status')->comment('0 => pending, 1 => approve, 2 => reject')->default(0);
@@ -53,7 +55,6 @@ return new class extends Migration
             $table->unsignedBigInteger('deleted_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
-
         });
     }
 

@@ -83,9 +83,17 @@
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="hospital_name">Medical Officer's Certificate Name of the hospital where treatment was received / उपचार घेत असलेल्या रूग्णालयाचे नाव वैद्यकिय अधिका-याचे प्रमाणपत्र <span class="text-danger">*</span></label>
                                     <input class="form-control"  name="hospital_name" type="text" value="{{ $data->hospital_name }}" readonly>
-
                                 </div>
 
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="candidate_signature">Upload Signature (अर्जदाराची सही) / thumb (अगंठा) <span class="text-danger">*</span></label>
+                                    <br><a class="btn btn-sm btn-primary" id="candidate_signature" target="_blank" href="{{ asset('storage/'.$data->candidate_signature) }}" >View Document</a>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="passport_size_photo">Passport Size Photo (अर्जदाराची फोटो) <span class="text-danger">*</span></label>
+                                    <br><a class="btn btn-sm btn-primary" id="passport_size_photo" target="_blank" href="{{ asset('storage/'.$data->passport_size_photo) }}" >View Document</a>
+                                </div>
 
                                 @foreach ($document as $doc)
                                 <div class="col-md-4 mt-3">
@@ -151,7 +159,7 @@
                                 <div class="col-sm-8 col-md-8 p-2">
                                     <textarea  class="form-control" name ="ac_reject_reason" id="ac_reject_reason" value="" style="height:120px;"></textarea>
                                     <span id="reason-error" class="error"></span>
-                                
+
                                 </div>
                             </div>
 
@@ -179,15 +187,15 @@
 
         if (reason.trim() === "") {
             errorMessage.textContent = "Please provide a rejection reason.";
-            return false; 
+            return false;
         }
         errorMessage.textContent = "";
-        return true; 
+        return true;
     }
 
     document.getElementById("rejectForm").addEventListener("submit", function(event) {
         if (!validateForm()) {
-            event.preventDefault(); 
+            event.preventDefault();
         }
     });
 </script>

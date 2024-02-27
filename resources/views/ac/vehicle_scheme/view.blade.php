@@ -25,7 +25,7 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="dob">Date Of Birth/ वय  </label>
+                                    <label class="col-form-label" for="dob">Date Of Birth/जन्म तारीख  </label>
                                     <input class="form-control"  type="text"  name="dob" value="{{ $data->dob }}" readonly>
                                 </div>
 
@@ -42,7 +42,7 @@
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="adhaar_no">6.Aadhaar Card Number / आधारकार्ड नंबर : <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="adhaar_no">Aadhaar Card Number / आधारकार्ड नंबर : <span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text" name="adhaar_no" value="{{ $data->adhaar_no }}" readonly>
                                 </div>
 
@@ -66,7 +66,15 @@
                                     <label class="col-form-label" for="receipt_no">Receipt No. of payment of 10% of training amount. /प्रशिक्षणाची १० टक्के रक्कम भरल्याची पावती क्रमांक.</label>
                                     <input class="form-control"  name="receipt_no"  type="text" value="{{ $data->receipt_no }}" readonly >
                                 </div>
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="candidate_signature">Upload Signature (अर्जदाराची सही) / thumb (अगंठा) <span class="text-danger">*</span></label>
+                                    <br><a class="btn btn-sm btn-primary" id="candidate_signature" target="_blank" href="{{ asset('storage/'.$data->candidate_signature) }}" >View Document</a>
+                                </div>
 
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="passport_size_photo">Passport Size Photo (अर्जदाराची फोटो) <span class="text-danger">*</span></label>
+                                    <br><a class="btn btn-sm btn-primary" id="passport_size_photo" target="_blank" href="{{ asset('storage/'.$data->passport_size_photo) }}" >View Document</a>
+                                </div>
 
                                 @foreach ($document as $doc)
                                 <div class="col-md-4 mt-3">

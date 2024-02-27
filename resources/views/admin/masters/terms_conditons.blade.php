@@ -80,10 +80,8 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="name">Select Scheme (योजना निवडा) : </label>
                                         <select class="js-example-basic-single" id="scheme_id" name="scheme_id">
-                                            <option value="">--Select Scheme--</option>
-                                            @foreach($scheme as $schemes)
-                                            <option value="{{ $schemes->id }}">{{ $schemes->scheme_name }}</option>
-                                            @endforeach
+
+
                                         </select>
                                         <span class="text-danger is-invalid  scheme_id_err"></span>
                                 </div>
@@ -171,7 +169,7 @@
 <script>
     //  CKEDITOR.replace('rules_regulations');
     //  CKEDITOR.replace('long_desc2');
-     
+
      CKEDITOR.replace('rules_regulations', {
     inline: false  // Disable automatic inline editing
 });
@@ -183,11 +181,11 @@
 
     $("#addForm").submit(function(e) {
         e.preventDefault();
-        
+
          if (CKEDITOR.instances['rules_regulations']) {
-        CKEDITOR.instances['rules_regulations'].updateElement(); 
+        CKEDITOR.instances['rules_regulations'].updateElement();
     }
-    
+
         $("#addSubmit").prop('disabled', true);
 
         var formdata = new FormData(this);
@@ -287,9 +285,9 @@
     $(document).ready(function() {
         $("#editForm").submit(function(e) {
             e.preventDefault();
-            
+
             CKEDITOR.instances['long_desc2'].updateElement();
-    
+
             $("#editSubmit").prop('disabled', true);
             var formdata = new FormData(this);
             formdata.append('_method', 'PUT');

@@ -18,18 +18,6 @@
                             <div class="mb-3 row">
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="cat_id">Select Category Type (श्रेणी प्रकार निवडा) <span class="text-danger">*</span></label>
-                                    <select class="js-example-basic-multiple" data-placeholder="--Select Category--" name="category_id[]" multiple>
-                                        {{-- <option value="">--Select Category--</option> --}}
-                                        @foreach($category as $row)
-                                            <option value="{{ $row->id }}">{{ $row->category_name ?? ''}}</option>
-                                            @endforeach
-                                    </select>
-                                    <span class="text-danger is-invalid category_id_err"></span>
-                                </div>
-
-
-                                <div class="col-md-4">
                                     <label class="col-form-label" for="scheme_name">Scheme Name In English (योजनेचे नाव इंग्रजीत) <span class="text-danger">*</span></label>
                                     <input class="form-control" id="scheme_name" name="scheme_name" type="text" placeholder="Enter Scheme Name">
                                     <span class="text-danger is-invalid scheme_name_err"></span>
@@ -70,16 +58,6 @@
                             <div class="mb-3 row">
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="name">Select Category Type (श्रेणी प्रकार निवडा) : </label>
-                                        <select class="js-example-basic-multiple" id="cat_id" data-placeholder="--Select Category--" name="category_id[]" multiple>
-
-                                            <option value=""></option>
-
-                                        </select>
-                                        <span class="text-danger is-invalid category_id_err"></span>
-                                </div>
-
-                                <div class="col-md-4">
                                     <label class="col-form-label" for="scheme_name">Scheme Name In English (योजनेचे नाव इंग्रजीत)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="scheme_name" name="scheme_name" type="text" placeholder="Scheme Name">
                                     <span class="text-danger is-invalid scheme_name_err"></span>
@@ -117,36 +95,27 @@
                             </div>
                         </div>
                     </div>
-                    @php
-                        $num = 1;
-                    @endphp
+
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Sr.No</th>
-                                        <th>Category Name</th>
                                         <th>Scheme Name</th>
+                                        <th>Scheme Marathi Name</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($scheme as $schemes)
+                                    @foreach ($schemes as $scheme)
                                         <tr>
-                                            <td>{{ $num++ }}</td>
-                                            <td>
-                                                @if ($schemes->categories->count() > 0)
-                                                    {{ implode(', ', $schemes->categories->pluck('category_name')->toArray()) }}
-                                                @else
-                                                    No Categories
-                                                @endif
-                                            </td>
-
-                                            <td>{{$schemes->scheme_name}}</td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{$scheme->scheme_name}}</td>
+                                            <td>{{$scheme->scheme_marathi_name}}</td>
 
                                             <td>
-                                                <button class="edit-element btn btn-primary text-white px-2 py-1" title="Edit category" data-id="{{ $schemes->id }}"><i data-feather="edit"></i></button>
+                                                <button class="edit-element btn btn-primary text-white px-2 py-1" title="Edit category" data-id="{{ $scheme->id }}"><i data-feather="edit"></i></button>
                                                 {{-- <button class="btn btn-danger text-white rem-element px-2 py-1" title="Delete category" data-id="{{ $schemes->id }}"><i data-feather="trash-2"></i> </button> --}}
                                             </td>
                                         </tr>
@@ -241,12 +210,9 @@
 
                 if (!data.error)
                 {
-
-                    $("#editForm input[name='edit_model_id']").val(data.scheme.id);
-                    $("#editForm input[name='scheme_name']").val(data.scheme.scheme_name);
-                    $("#editForm input[name='scheme_marathi_name']").val(data.scheme.scheme_marathi_name);
-
-                    $("#editForm select[name='category_id[]']").html(data.categoryHtml);
+                    $("#editForm input[name='edit_model_id']").val(data.schemes.id);
+                    $("#editForm input[name='scheme_name']").val(data.schemes.scheme_name);
+                    $("#editForm input[name='scheme_marathi_name']").val(data.schemes.scheme_marathi_name);
 
                 }
                 else

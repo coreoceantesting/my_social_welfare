@@ -15,23 +15,26 @@ class DashboardController extends Controller
     public function index()
     {
 
-        $scheme = DB::table('scheme_mst as t1')
+        $scheme = DB::table('mst_scheme as t1')
             ->select('t1.*')
+            ->leftJoin('category_wise_scheme as t3', 't3.scheme_id', '=', 't1.id')
             ->leftJoin('category_mst as t2', function ($join) {
-                $join->on(DB::raw('FIND_IN_SET(t2.id, t1.category_id)'), '>', DB::raw('0'));
+                $join->on(DB::raw('FIND_IN_SET(t2.id, t3.category_id)'), '>', DB::raw('0'));
             })
             ->where('t2.id', Auth::user()->category)
             ->whereNull('t1.deleted_at')
             ->whereNull('t2.deleted_at')
+            ->whereNull('t3.deleted_at')
             ->orderBy('t1.scheme_name', 'ASC')
             ->get();
 
+        // dd($scheme);
 
-        $scheme_name = DB::table('scheme_mst as t1')
-            ->select('t1.*')
-            ->whereNull('t1.deleted_at')
-            ->orderBy('t1.scheme_name', 'ASC')
-            ->get();
+        // $scheme_name = DB::table('mst_scheme as t1')
+        //     ->select('t1.*')
+        //     ->whereNull('t1.deleted_at')
+        //     ->orderBy('t1.scheme_name', 'ASC')
+        //     ->get();
 
         // Hod Panel Scheme Count
         // divyang counting
@@ -1614,7 +1617,6 @@ class DashboardController extends Controller
 
         return view('admin.dashboard', compact(
             'scheme',
-            'scheme_name',
             'bus_concession_scheme_count',
             'disability_scheme_total_count',
 
@@ -1817,7 +1819,7 @@ class DashboardController extends Controller
         // print_r('hii');exit;
         $terms = DB::table('terms_conditions as t1')
             ->select('t1.rules_regulations', 't2.id')
-            ->leftjoin('scheme_mst as t2', 't2.id', '=', 't1.scheme_id')
+            ->leftjoin('mst_scheme as t2', 't2.id', '=', 't1.scheme_id')
             ->where('t1.scheme_id', $id)
             ->whereNull('t1.deleted_at')
             ->orderBy('t1.created_at', 'DESC')

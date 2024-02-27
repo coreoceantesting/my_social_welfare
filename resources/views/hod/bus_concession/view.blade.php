@@ -21,17 +21,17 @@
                             <div class="mb-3 row">
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">Full Name/संपूर्ण नाव</label>
+                                    <label class="col-form-label" for="name">Full Name/संपूर्ण नाव<span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text"  name="full_name"  value="{{ $data->full_name }}" readonly>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="full_address">Full Address / संपूर्ण पत्ता</label>
+                                    <label class="col-form-label" for="full_address">Full Address / संपूर्ण पत्ता<span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text"  name="full_address" value="{{ $data->full_address }}" readonly>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="dob">Date Of Birth/ वय  </label>
+                                    <label class="col-form-label" for="dob">Date Of Birth/ जन्म तारीख  <span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text"  name="dob" value="{{ $data->dob }}" readonly>
                                 </div>
 
@@ -42,12 +42,12 @@
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="contact">Mobile No/ मोबाईल नं.:</label>
+                                    <label class="col-form-label" for="contact">Mobile No/ मोबाईल नं.:<span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text" name="contact"  value="{{ $data->contact }}" readonly>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="class_name">Class (Name of current class)/इयत्ता (सद्या शिकत असलेला वर्ग व शाळा कॉलेजचे नाव ):</label>
+                                    <label class="col-form-label" for="class_name">Class (Name of current class)/इयत्ता (सद्या शिकत असलेला वर्ग व शाळा कॉलेजचे नाव ):<span class="text-danger">*</span></label>
                                     <input class="form-control"  name="class_name"  type="text" value="{{ $data->class_name }}" readonly>
                                 </div>
 
@@ -68,9 +68,19 @@
                                     <input class="form-control"  name="type_of_discount" type="text" value="{{ $data->type_of_discount }}" readonly>
                                 </div>
 
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="candidate_signature">Upload Signature (अर्जदाराची सही) / thumb (अगंठा) <span class="text-danger">*</span></label>
+                                    <br><a class="btn btn-sm btn-primary" id="candidate_signature" target="_blank" href="{{ asset('storage/'.$data->candidate_signature) }}" >View Document</a>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="passport_size_photo">Passport Size Photo (अर्जदाराची फोटो) <span class="text-danger">*</span></label>
+                                    <br><a class="btn btn-sm btn-primary" id="passport_size_photo" target="_blank" href="{{ asset('storage/'.$data->passport_size_photo) }}" >View Document</a>
+                                </div>
+
                                 @foreach ($document as $doc)
                                 <div class="col-md-4 mt-3">
-                                        <label class="col-form-label" for="document_name">{{$doc->document_name}}</label><br>
+                                        <label class="col-form-label" for="document_name">{{$doc->document_name}}<span class="text-danger">*</span></label><br>
                                         <a href="{{ asset('bus_concession_file/'.$doc->document_file) }}" class="btn btn-sm btn-primary"  target="_blank" >View Document</a>
                                 </div>
                             @endforeach

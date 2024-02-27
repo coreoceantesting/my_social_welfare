@@ -1,7 +1,7 @@
 <x-admin.layout>
     <x-slot name="title">Women Sewing/Beautisians Scheme Application</x-slot>
     <x-slot name="heading">Women Sewing/Beautisians Scheme Application</x-slot>
-    
+
      <style>
   .error {
     color: red;
@@ -68,7 +68,15 @@
                                     <input class="form-control"  name="ward_name"  type="text" value="{{ $data->name }}" readonly >
                                 </div>
 
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="candidate_signature">Upload Signature (अर्जदाराची सही) / thumb (अगंठा) <span class="text-danger">*</span></label>
+                                    <br><a class="btn btn-sm btn-primary" id="candidate_signature" target="_blank" href="{{ asset('storage/'.$data->candidate_signature) }}" >View Document</a>
+                                </div>
 
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="passport_size_photo">Passport Size Photo (अर्जदाराची फोटो) <span class="text-danger">*</span></label>
+                                    <br><a class="btn btn-sm btn-primary" id="passport_size_photo" target="_blank" href="{{ asset('storage/'.$data->passport_size_photo) }}" >View Document</a>
+                                </div>
 
                                 @foreach ($document as $doc)
                                 <div class="col-md-4 mt-3">
@@ -140,7 +148,7 @@
                                 {{-- <small class="text-secondary text-justify "> Note : The file should be less than 2MB .</small> --}}
                                 {{-- <br> --}}
                                 <small class="text-secondary text-justify "> Note : Only files in .jpg, .jpeg, .png format can be uploaded .</small>
-                               
+
                                 <br>
                             </div>
                         </div>
@@ -203,15 +211,15 @@
 
         if (reason.trim() === "") {
             errorMessage.textContent = "Please provide a rejection reason.";
-            return false; 
+            return false;
         }
         errorMessage.textContent = "";
-        return true; 
+        return true;
     }
 
     document.getElementById("rejectForm").addEventListener("submit", function(event) {
         if (!validateForm()) {
-            event.preventDefault(); 
+            event.preventDefault();
         }
     });
 </script>

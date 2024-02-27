@@ -15,18 +15,18 @@
                     <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
                     <div class="mb-3 row">
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="name">Full Name (संपूर्ण नाव) </label>
+                            <label class="col-form-label" for="name">Full Name (संपूर्ण नाव) <span class="text-danger">*</span></label>
                             <input class="form-control"  type="text"  name="full_name"  value="" placeholder="Enter Full Name ">
                             <span class="text-danger is-invalid full_name_err"></span>
                         </div>
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="full_address">Full Address (संपूर्ण पत्ता)</label>
+                            <label class="col-form-label" for="full_address">Full Address (संपूर्ण पत्ता) <span class="text-danger">*</span></label>
                             <input class="form-control"   type="text" name="full_address" value=""  placeholder="Enter Full Address">
                             <span class="text-danger is-invalid full_address_err"></span>
                         </div>
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="dob">Date Of Birth (जन्म तारीख)</label>
+                            <label class="col-form-label" for="dob">Date Of Birth (जन्म तारीख) <span class="text-danger">*</span></label>
                             <input class="form-control" id="dob" name="dob" type="date"  onchange="calculateAge()" placeholder="Enter Date Of Birth">
                             <span class="text-danger is-invalid age_err"></span>
                         </div>
@@ -38,31 +38,31 @@
                         </div>
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="contact"> Mobile No (मोबाईल क्र.):</label>
+                            <label class="col-form-label" for="contact"> Mobile No (मोबाईल क्र.): <span class="text-danger">*</span></label>
                             <input class="form-control" id="contact" name="contact"  type="number"  placeholder="Enter Mobile No" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
                             <span class="text-danger is-invalid contact_err"></span>
                         </div>
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="email"> Email (ई-मेल आयडी):</label>
+                            <label class="col-form-label" for="email"> Email (ई-मेल आयडी): <span class="text-danger">*</span></label>
                             <input class="form-control" id="email" name="email"  type="text"  placeholder="Enter Email" >
                             <span class="text-danger is-invalid email_err"></span>
                         </div>
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="beneficiary_relationship"> Beneficiary relationship (लाभार्थ्याचे नाते) :</label>
+                            <label class="col-form-label" for="beneficiary_relationship"> Beneficiary relationship (लाभार्थ्याचे नाते):<span class="text-danger">*</span></label>
                             <input class="form-control" id="beneficiary_relationship" name="beneficiary_relationship"  type="text"  placeholder="Enter Beneficiary relationship" >
                             <span class="text-danger is-invalid beneficiary_relationship_err"></span>
                         </div>
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="family_name">Name of Head of Family (कूटुंब प्रमुखाचे नाव) :</label>
+                            <label class="col-form-label" for="family_name">Name of Head of Family (कूटुंब प्रमुखाचे नाव):<span class="text-danger">*</span></label>
                             <input class="form-control" id="family_name" name="family_name"  type="text"  placeholder="Enter family name" >
                             <span class="text-danger is-invalid family_name_err"></span>
                         </div>
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="total_family">Total Number of Family (कुटुंबातील एकूण संख्या) :</label>
+                            <label class="col-form-label" for="total_family">Total Number of Family (कुटुंबातील एकूण संख्या):<span class="text-danger">*</span></label>
                             <input class="form-control" id="total_family" name="total_family"  type="text"  placeholder="Enter total family" >
                             <span class="text-danger is-invalid total_family_err"></span>
                         </div>
@@ -76,15 +76,15 @@
 
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="candidate_signature">Upload Signature / thumb (अर्जदाराची सही / अगंठा)</label>
-                            <input class="form-control" id="candidate_signature" name="candidate_signature" type="file" accept=".png, .jpg, .jpeg">
+                            <label class="col-form-label" for="candidate_signature">Upload Signature / thumb (अर्जदाराची सही / अगंठा)<span class="text-danger">*</span></label>
+                            <input class="form-control" id="candidate_signature" name="candidate_signature" type="file" accept=".png, .jpg, .jpeg"><br>
                             <a class="btn btn-sm btn-primary" id="candidate_signature" target="_blank" href="" >View Document</a>
                             <span class="text-danger is-invalid candidate_signature_err"></span>
                         </div>
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="passport_size_photo">Passport Size Photo (अर्जदाराची फोटो)</label>
-                            <input class="form-control" id="passport_size_photo" name="passport_size_photo" type="file" accept=".png, .jpg, .jpeg">
+                            <label class="col-form-label" for="passport_size_photo">Passport Size Photo (अर्जदाराची फोटो)<span class="text-danger">*</span></label>
+                            <input class="form-control" id="passport_size_photo" name="passport_size_photo" type="file" accept=".png, .jpg, .jpeg"><br>
                             <a class="btn btn-sm btn-primary" id="passport_size_photo" target="_blank" href="" >View Document</a>
                             <span class="text-danger is-invalid passport_size_photo_err"></span>
                         </div>
@@ -243,7 +243,7 @@
                         }
                         documentsHtml += '</label>';
                         // documentsHtml += '<input type="hidden" name="document_id[]" class="form-control" value="' + document.id + '">';
-                        documentsHtml += '<input type="file" name="document_file[]" class="form-control" multiple>';
+                        documentsHtml += '<input type="file" name="document_file[]" class="form-control" multiple><br>';
                         documentsHtml += '<a href="' + documentUrl + '" class="btn btn-sm btn-primary" target="_blank"> View Document</a>';
                         documentsHtml += '<span class="text-danger is-invalid document_file_err"></span>';
                         documentsHtml += '</div>';

@@ -20,17 +20,17 @@
                             <div class="mb-3 row">
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">Full Name/संपूर्ण नाव</label>
+                                    <label class="col-form-label" for="name">Full Name/संपूर्ण नाव<span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text"  name="full_name"  value="{{ $data->full_name }}" readonly>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="full_address">Full Address / संपूर्ण पत्ता</label>
+                                    <label class="col-form-label" for="full_address">Full Address / संपूर्ण पत्ता<span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text"  name="full_address" value="{{ $data->full_address }}" readonly>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="dob">Date Of Birth/ जन्म तारीख  </label>
+                                    <label class="col-form-label" for="dob">Date Of Birth/ जन्म तारीख <span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text"  name="dob" value="{{ $data->dob }}" readonly>
                                 </div>
 
@@ -41,18 +41,18 @@
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="contact">Mobile No/ मोबाईल नं.:</label>
+                                    <label class="col-form-label" for="contact">Mobile No/ मोबाईल नं.:<span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text" name="contact"  value="{{ $data->contact }}" readonly>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="email">Email/ ई मेल:</label>
+                                    <label class="col-form-label" for="email">Email/ ई मेल:<span class="text-danger">*</span></label>
                                     <input class="form-control"  name="email"  type="text" value="{{ $data->email }}" readonly>
                                 </div>
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="school_name">Name of School / College in Pampa Area/पमपा क्षेत्रातील शाळेचे / कॉलेजचे नांव : <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="school_name">Name of School / College in Pampa Area/पमपा क्षेत्रातील शाळेचे / कॉलेजचे नांव :<span class="text-danger">*</span> <span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text" name="school_name" value="{{ $data->school_name }}" readonly>
                                 </div>
 
@@ -62,7 +62,15 @@
                                     <input class="form-control"  name="financial_help" type="text" value="{{ $data->financial_help }}" readonly>
                                 </div>
 
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="candidate_signature">Upload Signature (अर्जदाराची सही) / thumb (अगंठा) <span class="text-danger">*</span></label>
+                                    <br><a class="btn btn-sm btn-primary" id="candidate_signature" target="_blank" href="{{ asset('storage/'.$data->candidate_signature) }}" >View Document</a>
+                                </div>
 
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="passport_size_photo">Passport Size Photo (अर्जदाराची फोटो) <span class="text-danger">*</span></label>
+                                    <br><a class="btn btn-sm btn-primary" id="passport_size_photo" target="_blank" href="{{ asset('storage/'.$data->passport_size_photo) }}" >View Document</a>
+                                </div>
 
                                 @foreach ($document as $doc)
                                 <div class="col-md-4 mt-3">
@@ -155,15 +163,15 @@
 
         if (reason.trim() === "") {
             errorMessage.textContent = "Please provide a rejection reason.";
-            return false; 
+            return false;
         }
         errorMessage.textContent = "";
-        return true; 
+        return true;
     }
 
     document.getElementById("rejectForm").addEventListener("submit", function(event) {
         if (!validateForm()) {
-            event.preventDefault(); 
+            event.preventDefault();
         }
     });
 </script>

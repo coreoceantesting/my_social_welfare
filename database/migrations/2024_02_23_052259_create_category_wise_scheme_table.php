@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('terms_conditions', function (Blueprint $table) {
+        Schema::create('category_wise_scheme', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('scheme_id')->constrained('scheme_mst');
-            $table->text('rules_regulations')->nullable();
+            $table->string('category_id');
+            $table->integer('scheme_id')->unsigned();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('terms_conditions');
+        Schema::dropIfExists('category_wise_scheme');
     }
 };

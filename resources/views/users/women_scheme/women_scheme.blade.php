@@ -19,19 +19,19 @@
                                 {{-- <input type="hidden" id="h_id" name="h_id" value=""> --}}
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">1. संपूर्ण नाव</label>
+                                    <label class="col-form-label" for="name">Full Name/संपूर्ण नाव<span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text"  name="full_name"  value="" placeholder="Enter Full Name ">
                                     <span class="text-danger is-invalid full_name_err"></span>
                                 </div>
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="full_address">2. Full Address / संपूर्ण पत्ता</label>
+                                    <label class="col-form-label" for="full_address">Full Address / संपूर्ण पत्ता<span class="text-danger">*</span></label>
                                     <input class="form-control"   type="text" name="full_address" value=""  placeholder="Enter Full Address">
                                     <span class="text-danger is-invalid full_address_err"></span>
                                 </div>
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="ward_id">Ward Name:</label>
+                                    <label class="col-form-label" for="ward_id">Ward Name/प्रभाग नाव<span class="text-danger">*</span></label>
                                         <select class="js-example-basic-single" name="ward_id" >
                                             <option value="">--Select--</option>
                                             @foreach ($wards as $ward)
@@ -43,7 +43,7 @@
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="dob">4.  Date Of Birth/ वय </label>
+                                    <label class="col-form-label" for="dob">Date Of Birth/ जन्म तारीख <span class="text-danger">*</span></label>
                                     <input class="form-control" id="dob" name="dob" type="date"  placeholder="Enter Date Of Birth">
                                     <span class="text-danger is-invalid age_err"></span>
                                 </div>
@@ -55,45 +55,45 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="contact"> Mobile No/ मोबाईल नं.:</label>
+                                    <label class="col-form-label" for="contact"> Mobile No/ मोबाईल नं.:<span class="text-danger">*</span></label>
                                     <input class="form-control" id="contact" name="contact"  type="number"  placeholder="Enter Mobile No" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
                                     <span class="text-danger is-invalid contact_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="duration_of_residence">5.Duration of residence in Panvel Municipal Corporation area/ पनवेल महानगरपालिका क्षेत्रातील वास्तव्याचा कालावधी  <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="duration_of_residence">Duration of residence in Panvel Municipal Corporation area/ पनवेल महानगरपालिका क्षेत्रातील वास्तव्याचा कालावधी  <span class="text-danger">*</span></label>
                                     <input class="form-control" id="duration_of_residence" name="duration_of_residence" type="text" placeholder="Enter Duration of residence">
                                     <span class="text-danger is-invalid duration_of_residence_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="adhaar_no">6. Aadhar Card Number  / आधारकार्ड क्रमांक <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="adhaar_no">Aadhar Card Number  / आधारकार्ड क्रमांक <span class="text-danger">*</span></label>
                                     <input class="form-control" id="adhaar_no" name="adhaar_no" type="text" placeholder="Enter Adhaar Number">
                                     <span class="text-danger is-invalid adhaar_no_err"></span>
                                 </div>
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="details">7.Details if received training under the said scheme earlier / यापुर्वी सदर योजने अंतर्गत प्रशिक्षण घेतले असल्यास त्याचा तपशिल<span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="details">Details if received training under the said scheme earlier / यापुर्वी सदर योजने अंतर्गत प्रशिक्षण घेतले असल्यास त्याचा तपशिल<span class="text-danger">*</span></label>
                                     <input class="form-control" id="details" name="details" type="text" placeholder="Enter Details if received training under the said scheme earlier">
                                     <span class="text-danger is-invalid details_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="candidate_signature">Upload Signature / thumb /अर्जदाराची सही / अगंठा</label>
+                                    <label class="col-form-label" for="candidate_signature">Upload Signature / thumb /अर्जदाराची सही / अगंठा<span class="text-danger">*</span></label>
                                     <input class="form-control" id="candidate_signature" name="candidate_signature" type="file" accept=".png, .jpg, .jpeg">
                                     <span class="text-danger is-invalid candidate_signature_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="passport_size_photo">Passport Size Photo/अर्जदाराची फोटो</label>
+                                    <label class="col-form-label" for="passport_size_photo">Passport Size Photo/अर्जदाराची फोटो<span class="text-danger">*</span></label>
                                     <input class="form-control" id="passport_size_photo" name="passport_size_photo" type="file" accept=".png, .jpg, .jpeg">
                                     <span class="text-danger is-invalid passport_size_photo_err"></span>
                                 </div>
 
                                 @foreach ($document as $doc)
                                 <div class="col-md-4 mt-3">
-                                        <label class="col-form-label" for="document_name">{{$doc->document_name}} @if($doc->is_required==1) <span class="required">*</span> @endif</label>
+                                        <label class="col-form-label" for="document_name">{{$doc->document_name}} @if($doc->is_required==1) <span class="text-danger">*</span> @endif</label>
                                         <input type="hidden" name="document_id[]" class="form-control" value="{{$doc->id}}">
                                         <input type="file" name="document_file[]" class="form-control" multiple>
                                         <span class="text-danger is-invalid document_file_err"></span>

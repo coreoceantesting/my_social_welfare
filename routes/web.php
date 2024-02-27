@@ -47,6 +47,7 @@ Route::middleware(['auth', 'PreventBackHistory'])->group(function () {
     Route::resource('wards', App\Http\Controllers\Admin\Masters\WardController::class);
     Route::resource('category', App\Http\Controllers\Admin\Masters\CategoryController::class);
     Route::resource('scheme', App\Http\Controllers\Admin\Masters\SchemeController::class);
+    Route::resource('category_wise_scheme', App\Http\Controllers\Admin\Masters\CategoryWiseSchemeController::class);
     Route::resource('document', App\Http\Controllers\Admin\Masters\DocumentController::class);
     Route::resource('financial', App\Http\Controllers\Admin\Masters\FinancialController::class);
     Route::resource('terms-conditions', App\Http\Controllers\Admin\Masters\TermsAndConditionsController::class);
@@ -76,7 +77,7 @@ Route::middleware(['auth', 'PreventBackHistory'])->group(function () {
     Route::resource('cancer_scheme', App\Http\Controllers\User\CancerSchemeController::class);
     Route::get('cancer_certificate/{id}', [App\Http\Controllers\User\CancerSchemeController::class, 'generateCertificate']);
     Route::get('cancer_view/{id}', [App\Http\Controllers\User\CancerSchemeController::class, 'cancerSchemeApplicationView']);
-    Route::get('cancer_scheme_certificate_view', [App\Http\Controllers\User\CancerSchemeController::class, 'cancerSchemeCertificate']);
+    Route::get('cancer_scheme_certificate_view/{id}', [App\Http\Controllers\User\CancerSchemeController::class, 'cancerSchemeCertificate']);
     Route::get('cancer_scheme_application', [App\Http\Controllers\User\CancerSchemeController::class, 'list'])->name('cancer_scheme.application');
     // Education Scheme Application
     Route::resource('education_scheme', App\Http\Controllers\User\EducationSchemeController::class);
@@ -94,13 +95,13 @@ Route::middleware(['auth', 'PreventBackHistory'])->group(function () {
     Route::resource('sports_scheme', App\Http\Controllers\User\SportsSchemeController::class);
     Route::get('sports_certificate/{id}', [App\Http\Controllers\User\SportsSchemeController::class, 'generateCertificate']);
     Route::get('sports_view/{id}', [App\Http\Controllers\User\SportsSchemeController::class, 'sportsSchemeApplicationView']);
-    Route::get('sports_scheme_certificate_view', [App\Http\Controllers\User\SportsSchemeController::class, 'sportsSchemeCertificate']);
+    Route::get('sports_scheme_certificate_view/{id}', [App\Http\Controllers\User\SportsSchemeController::class, 'sportsSchemeCertificate']);
     Route::get('sports_scheme_application', [App\Http\Controllers\User\SportsSchemeController::class, 'list'])->name('sports_scheme.application');
     // Vehicle Scheme Application
     Route::resource('vehicle_scheme', App\Http\Controllers\User\VehicleSchemeController::class);
     Route::get('vehicle_certificate/{id}', [App\Http\Controllers\User\VehicleSchemeController::class, 'generateCertificate']);
     Route::get('vehicle_view/{id}', [App\Http\Controllers\User\VehicleSchemeController::class, 'vehicleSchemeApplicationView']);
-    Route::get('vehicle_scheme_certificate_view', [App\Http\Controllers\User\VehicleSchemeController::class, 'vehicleSchemeCertificate']);
+    Route::get('vehicle_scheme_certificate_view/{id}', [App\Http\Controllers\User\VehicleSchemeController::class, 'vehicleSchemeCertificate']);
     Route::get('vehicle_scheme_application', [App\Http\Controllers\User\VehicleSchemeController::class, 'list'])->name('vehicle_scheme.application');
 
     // Women Sewing/Beautisians Scheme Application

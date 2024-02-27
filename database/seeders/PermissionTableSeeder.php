@@ -124,6 +124,7 @@ class PermissionTableSeeder extends Seeder
                 'name' => 'scheme.view',
                 'group' => 'scheme',
             ],
+
             [
                 'id' => 22,
                 'name' => 'scheme.create',
@@ -144,98 +145,122 @@ class PermissionTableSeeder extends Seeder
 
             [
                 'id' => 25,
+                'name' => 'category-wise-scheme.view',
+                'group' => 'category-wise-scheme',
+            ],
+
+            [
+                'id' => 26,
+                'name' => 'category-wise-scheme.create',
+                'group' => 'category-wise-scheme',
+            ],
+
+            [
+                'id' => 27,
+                'name' => 'category-wise-scheme.edit',
+                'group' => 'category-wise-scheme',
+            ],
+            [
+                'id' => 28,
+                'name' => 'category-wise-scheme.delete',
+                'group' => 'category-wise-scheme',
+            ],
+
+
+            [
+                'id' => 29,
                 'name' => 'document-type.view',
                 'group' => 'document-type',
             ],
             [
-                'id' => 26,
+                'id' => 30,
                 'name' => 'document-type.create',
                 'group' => 'document-type',
             ],
 
             [
-                'id' => 27,
+                'id' => 31,
                 'name' => 'document-type.edit',
                 'group' => 'document-type',
             ],
 
             [
-                'id' => 28,
+                'id' => 32,
                 'name' => 'document-type.delete',
                 'group' => 'document-type',
             ],
 
             [
-                'id' => 29,
+                'id' => 33,
                 'name' => 'financial-year.view',
                 'group' => 'financial-year',
             ],
             [
-                'id' => 30,
+                'id' => 34,
                 'name' => 'financial-year.create',
                 'group' => 'financial-year',
             ],
 
             [
-                'id' => 31,
+                'id' => 35,
                 'name' => 'financial-year.edit',
                 'group' => 'financial-year',
             ],
 
             [
-                'id' => 32,
+                'id' => 36,
                 'name' => 'financial-year.delete',
                 'group' => 'financial-year',
             ],
             [
-                'id' => 33,
+                'id' => 37,
                 'name' => 'terms-conditions.view',
                 'group' => 'terms-conditions',
             ],
             [
-                'id' => 34,
+                'id' => 38,
                 'name' => 'terms-conditions.create',
                 'group' => 'terms-conditions',
             ],
 
             [
-                'id' => 35,
+                'id' => 39,
                 'name' => 'terms-conditions.edit',
                 'group' => 'terms-conditions',
             ],
 
             [
-                'id' => 36,
+                'id' => 40,
                 'name' => 'terms-conditions.delete',
                 'group' => 'terms-conditions',
             ],
 
             [
-                'id' => 37,
+                'id' => 41,
                 'name' => 'hod.application',
                 'group' => 'hod',
             ],
 
             [
-                'id' => 38,
+                'id' => 42,
                 'name' => 'ac.application',
                 'group' => 'ac',
             ],
 
             [
-                'id' => 39,
+                'id' => 43,
                 'name' => 'amc.application',
                 'group' => 'amc',
             ],
 
             [
-                'id' => 40,
+                'id' => 44,
                 'name' => 'dmc.application',
                 'group' => 'amc',
             ],
-            
-             [
-                'id' => 41,
+
+            [
+                'id' => 45,
                 'name' => 'users.applicationList',
                 'group' => 'users',
             ],
@@ -243,8 +268,7 @@ class PermissionTableSeeder extends Seeder
 
         ];
 
-        foreach ($permissions as $permission)
-        {
+        foreach ($permissions as $permission) {
             Permission::updateOrCreate([
                 'id' => $permission['id']
             ], [

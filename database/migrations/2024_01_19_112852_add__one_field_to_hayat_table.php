@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('hayticha_form', function (Blueprint $table) {
-            $table->string('sign_uploaded_live_certificate')->after('status');
+            $table->string('sign_uploaded_live_certificate')->nullable()->after('status');
         });
     }
 

@@ -63,7 +63,7 @@
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="icon-box">
-                                    <img class="img-fluid " src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="Awesome Image" style="height:100px; width:150px;">
+                                    <img class="img-fluid " src="{{ asset('storage/' . $data->passport_size_photo) }}" alt="Awesome Image" style="height:100px; width:150px;">
                                 </div>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;मी अर्जदार श्रीमती/ कु.--------------------------महिला व बालकल्याण विभागातर्फे कॅन्सर या दुर्धर आजाराने ग्रस्त असलेल्या महिलांना व मुलांना /मुलींना अर्थसहाय्य मिळणेबाबत व माझी माहिती खालीलप्रमाणे आहे.
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;मी अर्जदार श्रीमती/ कु. {{ $data->full_name }} महिला व बालकल्याण विभागातर्फे कॅन्सर या दुर्धर आजाराने ग्रस्त असलेल्या महिलांना व मुलांना /मुलींना अर्थसहाय्य मिळणेबाबत व माझी माहिती खालीलप्रमाणे आहे.
                                 </p>
                             </div>
                         </div>
@@ -101,24 +101,28 @@
                                 <tr>
                                     <td><strong>२</strong></td>
                                     <td><strong>लाभार्थ्याचे संपूर्ण नाव व पत्ता<br>मोबाईल क्र.</strong></td>
-                                    <td><strong></strong></td>
+                                    <td>{{ $data->full_name }}, {{ $data->full_address }} <br>{{ $data->contact }}</td>
                                 </tr>
                                 <tr>
+                                    <?php $dob = $data->dob;
+                                    $dob = new DateTime($dob);
+                                    $currentDate = new DateTime();
+                                    $age = $currentDate->diff($dob)->y; ?>
                                     <td><strong>३</strong></td>
                                     <td><strong>लाभार्थ्याचे वय</strong></td>
-                                    <td><strong>पुरूष / स्त्री वय<br>
+                                    <td><strong>पुरूष / स्त्री&nbsp;&nbsp;&nbsp;वय: {{ $age }}<br>
 
-                                        जन्म दिनांक</strong></td>
+                                        जन्म दिनांक</strong> {{ date('d-m-Y', strtotime($data->dob)) }}</td>
                                 </tr>
                                 <tr>
                                     <td><strong>४</strong></td>
                                     <td><strong>लाभार्थ्याचे महानगरपालिका क्षेत्रातील <br>वास्तव्याचा कालावधी :- </strong></td>
-                                    <td><strong></strong></td>
+                                    <td>{{ $data->duration_of_residence }}</td>
                                 </tr>
                                 <tr>
                                     <td><strong>५</strong></td>
                                     <td><strong>लाभार्थ्यांचा आधार कार्ड नंबर : </strong></td>
-                                    <td></td>
+                                    <td>{{ $data->adhaar_no }}</td>
                                 </tr>
 
                                 <tr>
@@ -132,13 +136,13 @@
                                     <td><strong>आजाराचा तपशिल /प्रकार<br>
 
                                         कॅन्सर निदान झालेचा दिनांक<br>उपचार घेत असलेल्या रूग्णालयाचे नाव <br> वैद्यकिय अधिका-याचे प्रमाणपत्र</strong></td>
-                                    <td><strong>दिनांक:</strong></td>
+                                    <td> {{ $data->type_of_disease }} <br>{{ $data->diagnosis_date }} <br>{{ $data->hospital_name }}</td>
                                 </tr>
 
                                 <tr>
                                     <td><strong>८</strong></td>
                                     <td><strong>RTGS साठी बँकेचे पासबूकची अथवा रद्द <br>धनादेशाची (Cancelled Cheque)<br> छायांकित प्रत/ बँक खाते नंबर</strong></td>
-                                    <td></td>
+                                    <td>{{ $data->account_no }}</td>
                                 </tr>
 
 
@@ -152,12 +156,15 @@
                         </div>
 
                         <div class="col-md-4 col-sm-4">
+                            <div class="icon-box">
+                                <img class="img-fluid " src="{{ asset('storage/' . $data->candidate_signature) }}" alt="Awesome Image" style="height:100px; width:150px;">
+                            </div>
                             <p class="mb-0">
                                 <strong>  अर्जदाराची सही /- </strong>
                             </p>
-                            <p class="mb-0">
+                            {{-- <p class="mb-0">
                                 <strong>(नावः- ---------------) </strong>
-                            </p>
+                            </p> --}}
                         </div>
                     </div>
                     <br>
@@ -168,7 +175,7 @@
                     <div class="row pt-3">
                         <div class="col-md-12 col-sm-12">
                             <p class="mb-0">
-                                मी -------------------------- राहणार --------------- <strong>महिला व बालकल्याण विभागातर्फे कॅन्सर या दुर्धर आजाराने ग्रस्त असलेल्या महिलांना व मुलांना /मुलींना अर्थसहाय्य</strong> मिळणेकामी अर्ज सादर करत आहे. सदर अर्जासमवेत सदर केलेली सर्व छायांकित कागदपत्रे मी स्वसाक्षांकित केलेली आहेत. अर्जासोबत जोडलेली सर्व कागदपत्रे व सादर केलेली माहिती ही खरी आहे. सदर अर्जावरील माहिती खोटी निघाल्यास भारतीय दंड संहितेच्या कलम १९९ व कलम २०० नुसार होणा-या शिक्षेस मी पात्र राहील. तसेच मला मिळालेले सर्व अर्थसहाय्य महानगरपालिकेत जमा करण्याची हमी याव्दारे देत आहे. तरी ------------------------ या योजने अंतर्गत मला महानगरपालिकेमार्फत अर्थसहाय्य देण्यात यावे ही नम्र विनंती.
+                                मी <strong>{{ $data->full_name }}</strong> राहणार <strong>{{ $data->full_address }}</strong> <strong>महिला व बालकल्याण विभागातर्फे कॅन्सर या दुर्धर आजाराने ग्रस्त असलेल्या महिलांना व मुलांना /मुलींना अर्थसहाय्य</strong> मिळणेकामी अर्ज सादर करत आहे. सदर अर्जासमवेत सदर केलेली सर्व छायांकित कागदपत्रे मी स्वसाक्षांकित केलेली आहेत. अर्जासोबत जोडलेली सर्व कागदपत्रे व सादर केलेली माहिती ही खरी आहे. सदर अर्जावरील माहिती खोटी निघाल्यास भारतीय दंड संहितेच्या कलम १९९ व कलम २०० नुसार होणा-या शिक्षेस मी पात्र राहील. तसेच मला मिळालेले सर्व अर्थसहाय्य महानगरपालिकेत जमा करण्याची हमी याव्दारे देत आहे. तरी <strong>{{ $scheme->scheme_marathi_name }}</strong> या योजने अंतर्गत मला महानगरपालिकेमार्फत अर्थसहाय्य देण्यात यावे ही नम्र विनंती.
                             </p>
                         </div>
                     </div>
@@ -183,12 +190,15 @@
                         </div>
 
                         <div class="col-md-4 col-sm-4">
+                            <div class="icon-box">
+                                <img class="img-fluid " src="{{ asset('storage/' . $data->candidate_signature) }}" alt="Awesome Image" style="height:100px; width:150px;">
+                            </div>
                             <p class="mb-0">
                                 <strong>  अर्जदाराची सही</strong>
                             </p>
-                            <p class="mb-0">
+                            {{-- <p class="mb-0">
                                 <strong>(नावः) </strong>
-                            </p>
+                            </p> --}}
                         </div>
                     </div>
 

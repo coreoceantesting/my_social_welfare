@@ -17,7 +17,7 @@
                         <div class="card-body">
                             <div class="mb-3 row">
                                 <input class="form-control" id="user_id" name="user_id" value="{{ $users->id }}" type="hidden" >
-
+                                <input type="hidden" id="fy_id" name="fy_id" value="{{ $fy->id }}" >
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="name">First Name (पहिले नाव) <span class="text-danger">*</span></label>
                                     <input class="form-control" id="name" name="fname" type="text" value="{{ $users->f_name }}"  placeholder="Enter User Name">
@@ -187,6 +187,8 @@
 
                             <div class="mb-3 row">
                                 {{-- <input class="form-control" id="user_id" name="user_id" value="{{ $users->id }}" type="hidden" placeholder="Enter User Name"> --}}
+
+
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="name">First Name (पहिले नाव) <span class="text-danger">*</span></label>

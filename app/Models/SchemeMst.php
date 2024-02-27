@@ -10,47 +10,41 @@ class SchemeMst extends BaseModel
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'scheme_mst';
+    protected $table = 'mst_scheme';
 
-    protected $fillable = ['scheme_name', 'scheme_marathi_name', 'category_id'];
+    protected $fillable = ['scheme_name', 'scheme_marathi_name'];
 
     public static function booted()
     {
-        static::created(function (self $user)
-        {
-            if(Auth::check())
-            {
+        static::created(function (self $user) {
+            if (Auth::check()) {
                 self::where('id', $user->id)->update([
-                    'created_by'=> Auth::user()->id,
+                    'created_by' => Auth::user()->id,
                 ]);
             }
         });
-        static::updated(function (self $user)
-        {
-            if(Auth::check())
-            {
+        static::updated(function (self $user) {
+            if (Auth::check()) {
                 self::where('id', $user->id)->update([
-                    'updated_by'=> Auth::user()->id,
+                    'updated_by' => Auth::user()->id,
                 ]);
             }
         });
-        static::deleting(function (self $user)
-        {
-            if(Auth::check())
-            {
+        static::deleting(function (self $user) {
+            if (Auth::check()) {
                 self::where('id', $user->id)->update([
-                    'deleted_by'=> Auth::user()->id,
+                    'deleted_by' => Auth::user()->id,
                 ]);
             }
         });
     }
 
 
-   public function getCategoriesAttribute()
-   {
-       $categoryIds = explode(',', $this->attributes['category_id']);
-       return CategoryMst::whereIn('id', $categoryIds)->get();
-   }
+    //    public function getCategoriesAttribute()
+    //    {
+    //        $categoryIds = explode(',', $this->attributes['category_id']);
+    //        return CategoryMst::whereIn('id', $categoryIds)->get();
+    //    }
 
 
 

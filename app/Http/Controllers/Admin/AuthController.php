@@ -22,8 +22,7 @@ class AuthController extends Controller
     public function showLogin()
     {
         $quotes = [];
-        for($i=1; $i<=3; $i++)
-        {
+        for ($i = 1; $i <= 3; $i++) {
             array_push($quotes, Inspiring::quote());
         }
 
@@ -32,54 +31,49 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'username' => 'required',
-            'password' => 'required',
-        ],
-        [
-            'username.required' => 'Please enter username',
-            'password.required' => 'Please enter password',
-        ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'username' => 'required',
+                'password' => 'required',
+            ],
+            [
+                'username.required' => 'Please enter username',
+                'password.required' => 'Please enter password',
+            ]
+        );
 
-        if ($validator->passes())
-        {
+        if ($validator->passes()) {
             $username = $request->username;
             $password = $request->password;
             $remember_me = $request->has('remember_me') ? true : false;
 
-            try
-            {
+            try {
                 $user = User::where('email', $username)->orWhere('name', $username)->first();
 
-                if(!$user)
-                    return response()->json(['error2'=> 'No user found with this username']);
+                if (!$user)
+                    return response()->json(['error2' => 'No user found with this username']);
 
-                if($user->active_status == '0' && !$user->roles)
-                    return response()->json(['error2'=> 'You are not authorized to login, contact HOD']);
+                if ($user->active_status == '0' && !$user->roles)
+                    return response()->json(['error2' => 'You are not authorized to login, contact HOD']);
 
                 $userType = '';
-                if( $user->hasRole(['User']) )
-                {
+                if ($user->hasRole(['User'])) {
                     $userType = 'user';
-                    if(!auth()->attempt(['name' => $username, 'password' => $password], $remember_me))
-                        return response()->json(['error2'=> 'Your entered credentials are invalid']);
-                }
-                else if(!auth()->attempt(['email' => $username, 'password' => $password], $remember_me))
-                    return response()->json(['error2'=> 'Your entered credentials are invalid']);
+                    if (!auth()->attempt(['name' => $username, 'password' => $password], $remember_me))
+                        return response()->json(['error2' => 'Your entered credentials are invalid']);
+                } else if (!auth()->attempt(['email' => $username, 'password' => $password], $remember_me))
+                    return response()->json(['error2' => 'Your entered credentials are invalid']);
 
 
-                return response()->json(['success'=> 'login successful', 'user_type'=> $userType ]);
-            }
-            catch(\Exception $e)
-            {
+                return response()->json(['success' => 'login successful', 'user_type' => $userType]);
+            } catch (\Exception $e) {
                 DB::rollBack();
-                Log::info("login error:". $e);
-                return response()->json(['error2'=> 'Something went wrong while validating your credentials!']);
+                Log::info("login error:" . $e);
+                return response()->json(['error2' => 'Something went wrong while validating your credentials!']);
             }
-        }
-        else
-        {
-            return response()->json(['error'=>$validator->errors()]);
+        } else {
+            return response()->json(['error' => $validator->errors()]);
         }
     }
 
@@ -105,84 +99,77 @@ class AuthController extends Controller
             'confirm_password' => 'required|same:password',
         ]);
 
-        if ($validator->passes())
-        {
+        if ($validator->passes()) {
             $old_password = $request->old_password;
             $password = $request->password;
 
-            try
-            {
+            try {
                 $user = DB::table('users')->where('id', $request->user()->id)->first();
 
-                if( Hash::check($old_password, $user->password) )
-                {
-                    DB::table('users')->where('id', $request->user()->id)->update(['password'=> Hash::make($password)]);
+                if (Hash::check($old_password, $user->password)) {
+                    DB::table('users')->where('id', $request->user()->id)->update(['password' => Hash::make($password)]);
 
-                    return response()->json(['success'=> 'Password changed successfully!']);
+                    return response()->json(['success' => 'Password changed successfully!']);
+                } else {
+                    return response()->json(['error2' => 'Old password does not match']);
                 }
-                else
-                {
-                    return response()->json(['error2'=> 'Old password does not match']);
-                }
-            }
-            catch(\Exception $e)
-            {
+            } catch (\Exception $e) {
                 DB::rollBack();
-                Log::info("password change error:". $e);
-                return response()->json(['error2'=> 'Something went wrong while changing your password!']);
+                Log::info("password change error:" . $e);
+                return response()->json(['error2' => 'Something went wrong while changing your password!']);
             }
-        }
-        else
-        {
-            return response()->json(['error'=>$validator->errors()]);
+        } else {
+            return response()->json(['error' => $validator->errors()]);
         }
     }
 
     public function showRegister()
     {
         $category = CategoryMst::latest()->get();
-        return view('admin.auth.register')->with(['category'=> $category]);
+        return view('admin.auth.register')->with(['category' => $category]);
     }
 
     public function register(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'f_name' => 'required',
-            'm_name' => 'required',
-            'l_name' => 'required',
-            'gender' => 'required',
-            'dob' => 'required',
-            'Age' => 'required',
-            'father_fname' => 'required',
-            'father_mname' => 'required',
-            'father_lname' => 'required',
-            'mother_name' => 'required',
-            'category' => 'required',
-            'mobile' => 'required',
-            'name' =>'required',
-            'password' => 'required',
-            'confirm_password' => 'required|same:password',
-        ],
-        [
-            'f_name.required' => 'Please enter first Name',
-            'm_name.required' => 'Please enter Middle Name',
-            'l_name.required' => 'Please enter Last Name',
-            'gender.required' => 'Please Select Gender',
-            'dob.required' => 'Please enter Date of Birth',
-            'Age.required' => 'Please enter Age',
-            'father_fname.required' => 'Please enter Father First Name',
-            'father_mname.required' => 'Please enter Father Middle Name',
-            'father_lname.required' => 'Please enter Father Last Name',
-            'mother_name.required' => 'Please enter Mother Name',
-            'category.required' => 'Please Select Category',
-            'mobile.required' => 'Please enter Contact Number',
-            'name.required' => 'Please enter Username',
-            'password.required' => 'Please enter Password',
-            'confirm_password' => 'Please enter Confirm Password',
-        ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'f_name' => 'required',
+                'm_name' => 'required',
+                'l_name' => 'required',
+                'gender' => 'required',
+                'dob' => 'required',
+                'Age' => 'required',
+                'father_fname' => 'required',
+                'father_mname' => 'required',
+                'father_lname' => 'required',
+                'mother_name' => 'required',
+                'category' => 'required',
+                'mobile' => 'required|unique:users,mobile|digits:10',
+                'name' => 'required',
+                'password' => 'required',
+                'confirm_password' => 'required|same:password',
+            ],
+            [
+                'f_name.required' => 'Please enter first Name',
+                'm_name.required' => 'Please enter Middle Name',
+                'l_name.required' => 'Please enter Last Name',
+                'gender.required' => 'Please Select Gender',
+                'dob.required' => 'Please enter Date of Birth',
+                'Age.required' => 'Please enter Age',
+                'father_fname.required' => 'Please enter Father First Name',
+                'father_mname.required' => 'Please enter Father Middle Name',
+                'father_lname.required' => 'Please enter Father Last Name',
+                'mother_name.required' => 'Please enter Mother Name',
+                'category.required' => 'Please Select Category',
+                'mobile.required' => 'Please enter Contact Number',
+                'name.required' => 'Please enter Username',
+                'password.required' => 'Please enter Password',
+                'confirm_password' => 'Please enter Confirm Password',
+            ]
+        );
 
-        if ($validator->passes())
-        {
+        if ($validator->passes()) {
             $f_name = $request->f_name;
             $m_name = $request->m_name;
             $l_name = $request->l_name;
@@ -198,8 +185,7 @@ class AuthController extends Controller
             $name = $request->name;
             $password =  Hash::make($request->password);
 
-            try
-            {
+            try {
 
                 $User = new User();
                 $User->f_name = $request->f_name;
@@ -214,7 +200,7 @@ class AuthController extends Controller
                 $User->mother_name = $request->mother_name;
                 $User->category = $request->category;
                 $User->mobile = $request->mobile;
-                $User->contact = $request->mobile;
+                // $User->contact = $request->mobile;
                 $User->name = $request->name;
                 $User->password =  Hash::make($request->password);
 
@@ -226,24 +212,16 @@ class AuthController extends Controller
                 $role = Role::where('name', 'User')->first();
                 $id = $role->id;
 
-                DB::table('model_has_roles')->insert(['role_id'=> $id, 'model_type'=> 'App\Models\User', 'model_id'=> $newRecordId]);
+                DB::table('model_has_roles')->insert(['role_id' => $id, 'model_type' => 'App\Models\User', 'model_id' => $newRecordId]);
                 DB::commit();
-                    return response()->json(['success'=> 'Register Data Added successfully!']);
-
-            }
-            catch(\Exception $e)
-            {
+                return response()->json(['success' => 'Register Data Added successfully!']);
+            } catch (\Exception $e) {
                 DB::rollBack();
-                Log::info("Register error:". $e);
-                return response()->json(['error2'=> 'Something went wrong while validating your credentials!']);
+                Log::info("Register error:" . $e);
+                return response()->json(['error2' => 'Something went wrong while validating your credentials!']);
             }
+        } else {
+            return response()->json(['error' => $validator->errors()]);
         }
-        else
-        {
-            return response()->json(['error'=>$validator->errors()]);
-        }
-
     }
-
-
 }

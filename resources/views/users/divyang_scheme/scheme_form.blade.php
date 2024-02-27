@@ -212,7 +212,7 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="ward_id">Ward Name (प्रभाग नाव)</label>
+                                    <label class="col-form-label" for="ward_id">Ward Name (प्रभाग नाव)<span class="text-danger">*</span></label>
                                         <select class="js-example-basic-single" name="ward_id" >
                                             <option value="">--Select--</option>
                                             @foreach ($wards as $ward)
@@ -229,7 +229,7 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="passport_size_photo">Passport Size Photo (अर्जदाराची फोटो)</label>
+                                    <label class="col-form-label" for="passport_size_photo">Passport Size Photo (अर्जदाराची फोटो)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="passport_size_photo" name="passport_size_photo" type="file" accept=".png, .jpg, .jpeg">
                                     <span class="text-danger is-invalid passport_size_photo_err"></span>
                                 </div>
@@ -237,7 +237,7 @@
 
                                 @foreach ($document as $doc)
                                 <div class="col-md-4 mt-3">
-                                        <label class="col-form-label" for="document_name">{{$doc->document_name}} @if($doc->is_required==1) <span class="required">*</span> @endif</label>
+                                        <label class="col-form-label" for="document_name">{{$doc->document_name}} @if($doc->is_required==1) <span class="text-danger">*</span> @endif</label>
                                         <input type="hidden" name="document_id[]" class="form-control" value="{{$doc->id}}">
                                         <input type="file" name="document_file[]" class="form-control" multiple>
                                         <span class="text-danger is-invalid document_file_err"></span>

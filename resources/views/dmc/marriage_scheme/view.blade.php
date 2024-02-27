@@ -20,7 +20,7 @@
                             <div class="mb-3 row">
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">संपूर्ण नाव</label>
+                                    <label class="col-form-label" for="name">Full Name/संपूर्ण नाव</label>
                                     <input class="form-control"  type="text"  name="full_name"  value="{{ $data->full_name }}" readonly>
                                 </div>
 
@@ -62,7 +62,7 @@
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">9. Bank Name / बँकेचे नाव <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="name">Bank Name / बँकेचे नाव <span class="text-danger">*</span></label>
                                     <input class="form-control" id="bank_name" name="bank_name" type="text"  value="{{ $data->bank_name }}" readonly>
                                 </div>
 
@@ -107,6 +107,16 @@
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="ward_id">Ward Name/प्रभाग नाव:</label>
                                     <input class="form-control" id="ward_id" name="ward_id" type="text" value="{{ $data->name }}" readonly>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="candidate_signature">Upload Signature (अर्जदाराची सही) / thumb (अगंठा) <span class="text-danger">*</span></label>
+                                    <br><a class="btn btn-sm btn-primary" id="candidate_signature" target="_blank" href="{{ asset('storage/'.$data->candidate_signature) }}" >View Document</a>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="passport_size_photo">Passport Size Photo (अर्जदाराची फोटो) <span class="text-danger">*</span></label>
+                                    <br><a class="btn btn-sm btn-primary" id="passport_size_photo" target="_blank" href="{{ asset('storage/'.$data->passport_size_photo) }}" >View Document</a>
                                 </div>
 
                                 @foreach ($document as $doc)
@@ -245,15 +255,15 @@
 
         if (reason.trim() === "") {
             errorMessage.textContent = "Please provide a rejection reason.";
-            return false; 
+            return false;
         }
         errorMessage.textContent = "";
-        return true; 
+        return true;
     }
 
     document.getElementById("rejectForm").addEventListener("submit", function(event) {
         if (!validateForm()) {
-            event.preventDefault(); 
+            event.preventDefault();
         }
     });
 </script>

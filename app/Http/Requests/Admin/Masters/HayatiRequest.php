@@ -22,6 +22,7 @@ class HayatiRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'fy_id' => 'nullable',
             'user_id' => 'required',
             'house_no' => 'required',
             'area' => 'required',
@@ -32,17 +33,17 @@ class HayatiRequest extends FormRequest
             'contact' => 'required',
             'alternate_contact_no' => 'required',
             'bank_name' => 'required',
-            'branch_name'=> 'required',
+            'branch_name' => 'required',
             'account_no' => 'required',
             'ifsc_code' => 'required',
-            'medical_benefit'=>'required',
-            'govt_benefit'=>'required',
-            'disability_benefit'=>'required',
+            'medical_benefit' => 'required',
+            'govt_benefit' => 'required',
+            'disability_benefit' => 'required',
             'signature' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
             'status' => 'nullable',
             'sign_uploaded_live_certificate' => 'nullable',
-            'download_pdf'=>'nullable',
-            'pdfPath'=> 'nullable'
+            'download_pdf' => 'nullable',
+            'pdfPath' => 'nullable'
 
 
 

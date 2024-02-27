@@ -16,26 +16,20 @@ class SchemeController extends Controller
 
     public function index()
     {
-        $scheme = SchemeMst::latest()->get();
-        $category = CategoryMst::latest()->get();
-        return view('admin.masters.scheme')->with(['scheme'=> $scheme, 'category'=>$category]);
+        $schemes = SchemeMst::latest()->get();
+        return view('admin.masters.scheme')->with(['schemes' => $schemes]);
     }
 
 
     public function store(StoreSchemeRequest $request)
     {
-        try
-        {
+        try {
             DB::beginTransaction();
             $input = $request->validated();
-            $input['category_id']=implode(',', $input['category_id']);
             SchemeMst::create(Arr::only($input, SchemeMst::getFillables()));
-
             DB::commit();
-            return response()->json(['success'=> 'Scheme created successfully!']);
-        }
-        catch(\Exception $e)
-        {
+            return response()->json(['success' => 'Scheme created successfully!']);
+        } catch (\Exception $e) {
             return $this->respondWithAjax($e, 'creating', 'Scheme');
         }
     }
@@ -43,25 +37,14 @@ class SchemeController extends Controller
 
     public function edit(SchemeMst $scheme)
     {
-        $category = CategoryMst::latest()->get();
-
-        // Use the accessor directly to get categories
-        $schemeCategories = $scheme->categories;
-
-        $categoryHtml = '<span>';
-        foreach ($category as $cat) {
-            $is_select = $schemeCategories->contains('id', $cat->id) ? "selected" : "";
-            $categoryHtml .= '<option value="'.$cat->id.'" '.$is_select.'>'.$cat->category_name.'</option>';
+        if ($scheme) {
+            $response = [
+                'result' => 1,
+                'schemes' => $scheme,
+            ];
+        } else {
+            $response = ['result' => 0];
         }
-        $categoryHtml .= '</span>';
-
-        $response = [
-            'result' => 1,
-            'scheme' => $scheme,
-            'categoryHtml' => $categoryHtml,
-        ];
-
-
         return $response;
     }
 
@@ -69,17 +52,13 @@ class SchemeController extends Controller
 
     public function update(UpdateSchemeRequest $request, SchemeMst $scheme)
     {
-        try
-        {
+        try {
             DB::beginTransaction();
             $input = $request->validated();
-            $input['category_id']=implode(',', $input['category_id']);
-            $scheme->update( Arr::only( $input, SchemeMst::getFillables() ) );
+            $scheme->update(Arr::only($input, SchemeMst::getFillables()));
             DB::commit();
-            return response()->json(['success'=> 'Scheme updated successfully!']);
-        }
-        catch(\Exception $e)
-        {
+            return response()->json(['success' => 'Scheme updated successfully!']);
+        } catch (\Exception $e) {
             return $this->respondWithAjax($e, 'updating', 'Scheme');
         }
     }
@@ -87,17 +66,13 @@ class SchemeController extends Controller
 
     public function destroy(SchemeMst $scheme)
     {
-        try
-        {
+        try {
             DB::beginTransaction();
             $scheme->delete();
             DB::commit();
-            return response()->json(['success'=> 'Scheme deleted successfully!']);
-        }
-        catch(\Exception $e)
-        {
+            return response()->json(['success' => 'Scheme deleted successfully!']);
+        } catch (\Exception $e) {
             return $this->respondWithAjax($e, 'deleting', 'Scheme');
         }
     }
-
 }

@@ -67,6 +67,12 @@
                             </li>
                             @endcan
 
+                            @can('category-wise-scheme.view')
+                            <li class="nav-item">
+                                <a href="{{ route('category_wise_scheme.index') }}" class="nav-link" data-key="t-horizontal">Category Wise Schemes</a>
+                            </li>
+                            @endcan
+
                             @can('document-type.view')
                             <li class="nav-item">
                                 <a href="{{ route('document.index') }}" class="nav-link" data-key="t-horizontal">Document Type</a>
@@ -131,6 +137,8 @@
                 @endif
 
                   @canany(['users.applicationList'])
+
+
                   <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
                         <i class="ri-layout-3-line"></i>
@@ -139,20 +147,20 @@
                     <div class="collapse menu-dropdown" id="sidebarLayouts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('bus_concession_application') }}" class="nav-link" data-key="t-horizontal">Bus Concession Scheme Application List (बस सवलत योजना)</a>
+                                <a href="{{ url('bus_concession_application') }}" class="nav-link" data-key="t-horizontal">Bus Concession Scheme Application List (बस सवलत योजना अर्जांची यादी)</a>
                             </li>
                                @if(Auth::user()->category == 1 || Auth::user()->category == 2)
                             <li class="nav-item">
-                                <a href="{{ url('divyang_application') }}" class="nav-link" data-key="t-horizontal">Divyang Scheme Application List (दिव्यांग योजना)</a>
+                                <a href="{{ url('divyang_application') }}" class="nav-link" data-key="t-horizontal">Divyang Scheme Application List (दिव्यांग योजना अर्जांची यादी)</a>
                             </li>
 
 
                                <li class="nav-item">
-                                <a href="{{ url('education_scheme_application') }}" class="nav-link" data-key="t-horizontal">Education Scheme Application List (शिक्षण योजना)</a>
+                                <a href="{{ url('education_scheme_application') }}" class="nav-link" data-key="t-horizontal">Education Scheme Application List (शिक्षण योजना अर्ज यादी)</a>
                             </li>
 
                              <li class="nav-item">
-                                <a href="{{ url('marriage_scheme_application') }}" class="nav-link" data-key="t-horizontal">Marriage Scheme Application List (विवाह योजना)</a>
+                                <a href="{{ url('marriage_scheme_application') }}" class="nav-link" data-key="t-horizontal">Marriage Scheme Application List (विवाह योजना अर्जांची यादी)</a>
                             </li>
 
                              @endif
@@ -160,23 +168,23 @@
                               @if(Auth::user()->category == 4 )
 
                                 <li class="nav-item">
-                                <a href="{{ url('education_scheme_application') }}" class="nav-link" data-key="t-horizontal">Education Scheme Application List</a>
+                                <a href="{{ url('education_scheme_application') }}" class="nav-link" data-key="t-horizontal">Education Scheme Application List (शिक्षण योजना अर्ज यादी)</a>
                             </li>
 
                               <li class="nav-item">
-                                <a href="{{ url('cancer_scheme_application') }}" class="nav-link" data-key="t-horizontal">Cancer Scheme Application List</a>
+                                <a href="{{ url('cancer_scheme_application') }}" class="nav-link" data-key="t-horizontal">Cancer Scheme Application List(कर्करोग योजना अर्जांची यादी)</a>
                             </li>
 
                              <li class="nav-item">
-                                <a href="{{ url('sports_scheme_application') }}" class="nav-link" data-key="t-horizontal">Sports Scheme Application List</a>
+                                <a href="{{ url('sports_scheme_application') }}" class="nav-link" data-key="t-horizontal">Sports Scheme Application List(क्रीडा योजना अर्जांची यादी)</a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ url('vehicle_scheme_application') }}" class="nav-link" data-key="t-horizontal">Vehicle Scheme Application List</a>
+                                <a href="{{ url('vehicle_scheme_application') }}" class="nav-link" data-key="t-horizontal">Vehicle Scheme Application List(वाहन योजना अर्ज यादी)</a>
                             </li>
 
                              <li class="nav-item">
-                                <a href="{{ url('women_scheme_application') }}" class="nav-link" data-key="t-horizontal">Women Sewing/Beautisians Scheme Application List</a>
+                                <a href="{{ url('women_scheme_application') }}" class="nav-link" data-key="t-horizontal">Women Sewing/Beautisians Scheme Application List(महिला शिवणकाम/ब्युटिशियन योजना अर्ज यादी)</a>
                             </li>
 
                               @endif
@@ -187,13 +195,24 @@
 
           @endcan
 
-          @php
-            $categories = DB::table('category_mst')->where('deleted_at', null)->get();
-            $schemes = DB::table('scheme_mst')->where('deleted_at', null)->get();
-           @endphp
+            @php
+                $categories = DB::table('category_mst')->where('deleted_at', null)->get();
+                $category_wise_scheme = DB::table('category_wise_scheme AS t')
+                                            ->select('t.id', DB::raw('GROUP_CONCAT(c.category_name SEPARATOR ",") as category_names'), 'm.scheme_name',  't.scheme_id','t.category_id')
+                                            ->join('mst_scheme as m', 'm.id', '=', 't.scheme_id')
+                                            ->leftJoin('category_mst as c', function ($join) {
+                                                $join->on(DB::raw('FIND_IN_SET(c.id, t.category_id)'), '>', DB::raw('0'));
+                                            })
+                                            ->groupBy('t.id', 'm.scheme_name')
+                                            ->get();
+
+
+                @endphp
 
                   {{-- HOD Panel --}}
                 @canany(['hod.application'])
+
+
 
             <li class="nav-item">
                 <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
@@ -208,8 +227,11 @@
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarCalendar">
                                 <ul class="nav nav-sm flex-column">
-                                    @foreach ($schemes as $scheme)
+                                    @foreach ($category_wise_scheme as $scheme)
+
                                         @if (in_array($category->id, explode(',', $scheme->category_id)))
+
+
 
                                         @if(isset($scheme->id))
                                         @if($scheme->id == 1)
@@ -283,7 +305,7 @@
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarCalendar">
                                 <ul class="nav nav-sm flex-column">
-                                    @foreach ($schemes as $scheme)
+                                    @foreach ($category_wise_scheme as $scheme)
                                         @if (in_array($category->id, explode(',', $scheme->category_id)))
 
                                         @if(isset($scheme->id))
@@ -357,7 +379,7 @@
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarCalendar">
                                 <ul class="nav nav-sm flex-column">
-                                    @foreach ($schemes as $scheme)
+                                    @foreach ($category_wise_scheme as $scheme)
                                         @if (in_array($category->id, explode(',', $scheme->category_id)))
 
                                         @if(isset($scheme->id))
@@ -434,7 +456,7 @@
                                 </a>
                                 <div class="collapse menu-dropdown" id="sidebarCalendar">
                                     <ul class="nav nav-sm flex-column">
-                                        @foreach ($schemes as $scheme)
+                                        @foreach ($category_wise_scheme as $scheme)
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
                                             @if(isset($scheme->id))
@@ -507,7 +529,7 @@
                                 </a>
                                 <div class="collapse menu-dropdown" id="sidebarCalendar">
                                     <ul class="nav nav-sm flex-column">
-                                        @foreach ($schemes as $scheme)
+                                        @foreach ($category_wise_scheme as $scheme)
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
                                             @if(isset($scheme->id))
@@ -580,7 +602,7 @@
                                 </a>
                                 <div class="collapse menu-dropdown" id="sidebarCalendar">
                                     <ul class="nav nav-sm flex-column">
-                                        @foreach ($schemes as $scheme)
+                                        @foreach ($category_wise_scheme as $scheme)
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
                                             @if(isset($scheme->id))
@@ -659,7 +681,7 @@
                                 </a>
                                 <div class="collapse menu-dropdown" id="sidebarCalendar">
                                     <ul class="nav nav-sm flex-column">
-                                        @foreach ($schemes as $scheme)
+                                        @foreach ($category_wise_scheme as $scheme)
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
                                             @if(isset($scheme->id))
@@ -731,7 +753,7 @@
                                 </a>
                                 <div class="collapse menu-dropdown" id="sidebarCalendar">
                                     <ul class="nav nav-sm flex-column">
-                                        @foreach ($schemes as $scheme)
+                                        @foreach ($category_wise_scheme as $scheme)
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
                                             @if(isset($scheme->id))
@@ -803,7 +825,7 @@
                                 </a>
                                 <div class="collapse menu-dropdown" id="sidebarCalendar">
                                     <ul class="nav nav-sm flex-column">
-                                        @foreach ($schemes as $scheme)
+                                        @foreach ($category_wise_scheme as $scheme)
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
                                             @if(isset($scheme->id))
@@ -884,7 +906,7 @@
                                 </a>
                                 <div class="collapse menu-dropdown" id="sidebarCalendar">
                                     <ul class="nav nav-sm flex-column">
-                                        @foreach ($schemes as $scheme)
+                                        @foreach ($category_wise_scheme as $scheme)
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
                                             @if(isset($scheme->id))
@@ -956,7 +978,7 @@
                                 </a>
                                 <div class="collapse menu-dropdown" id="sidebarCalendar">
                                     <ul class="nav nav-sm flex-column">
-                                        @foreach ($schemes as $scheme)
+                                        @foreach ($category_wise_scheme as $scheme)
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
                                             @if(isset($scheme->id))
@@ -1029,7 +1051,7 @@
                                 </a>
                                 <div class="collapse menu-dropdown" id="sidebarCalendar">
                                     <ul class="nav nav-sm flex-column">
-                                        @foreach ($schemes as $scheme)
+                                        @foreach ($category_wise_scheme as $scheme)
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
                                             @if(isset($scheme->id))

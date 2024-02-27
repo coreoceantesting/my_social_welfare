@@ -35,12 +35,10 @@
                             <hr class="mb-1">
 
 
-
                             <div class="row pt-0">
                                 <div class="col-md-10 col-sm-10">
 
                                 </div>
-
                                     <div class="col-md-2 col-sm-2">
                                        Date :
                                        {{ \Carbon\Carbon::now()->format('d/m/Y') }}
@@ -66,7 +64,7 @@
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="icon-box">
-                                    <img class="img-fluid " src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="Awesome Image" style="height:100px; width:150px;">
+                                    <img class="img-fluid " src="{{ asset('storage/' . $data->passport_size_photo) }}" alt="Awesome Image" style="height:100px; width:150px;">
                                 </div>
                             </div>
                         </div>
@@ -74,7 +72,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;मी अर्जदार श्रीमती / कु ----------------- महिला बाल कल्याण विभागा अंतर्गत वैद्यकिय शिक्षण महिला व बाल कल्याण विभागा अंतर्गत राज्य व राष्ट्रीय क्रिडा क्षेत्रात विशेष प्राविण्य मिळवणा-या खेळासाठी.
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;मी अर्जदार श्रीमती / कु <strong>{{ $data->full_name }}</strong> महिला बाल कल्याण विभागा अंतर्गत वैद्यकिय शिक्षण महिला व बाल कल्याण विभागा अंतर्गत राज्य व राष्ट्रीय क्रिडा क्षेत्रात विशेष प्राविण्य मिळवणा-या खेळासाठी.
                                 </p>
                             </div>
                         </div>
@@ -82,7 +80,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>१) संपूर्ण नाव : </strong>
+                                    <strong>१) संपूर्ण नाव : </strong>{{ $data->full_name }}
                                 </p>
                             </div>
                         </div>
@@ -90,34 +88,40 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>२) संपूर्ण पत्ता : </strong>
+                                    <strong>२) संपूर्ण पत्ता : </strong>{{ $data->full_address }}
                                 </p>
                             </div>
                         </div>
 
-                        <div class="row pt-3">
+                        <?php $dob = $data->dob;
+                        $dob = new DateTime($dob);
+                        $currentDate = new DateTime();
+                        $age = $currentDate->diff($dob)->y; ?>
+
+                          <div class="row pt-3">
                             <div class="col-md-3 col-sm-3">
                                 <p class="mb-0">
-                                    <strong>३) वय </strong>
+                                    <strong>३)जन्म तारीख : </strong>{{ date('d-m-Y', strtotime($data->dob)) }}
+
+                                </p>
+                            </div>
+
+                                <div class="col-md-3 col-sm-3">
+                                    <p class="mb-0">
+                                        <strong> वय : </strong>{{ $age }}
+                                    </p>
+                                </div>
+
+
+                            <div class="col-md-3 col-sm-3">
+                                <p class="mb-0">
+                                    <strong>मोबाईल क्र.: </strong>{{ $data->contact }}
                                 </p>
                             </div>
 
                             <div class="col-md-3 col-sm-3">
                                 <p class="mb-0">
-                                    <strong>जन्म तारीख : </strong>
-
-                                </p>
-                            </div>
-
-                            <div class="col-md-3 col-sm-3">
-                                <p class="mb-0">
-                                    <strong>मोबाईल क्र.: </strong>
-                                </p>
-                            </div>
-
-                            <div class="col-md-3 col-sm-3">
-                                <p class="mb-0">
-                                    <strong>ई मेल आयडी</strong>
+                                    <strong>ई मेल आयडी: </strong>{{ $data->email }}
                                 </p>
                             </div>
                         </div>
@@ -125,7 +129,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>४) पमपा क्षेत्रातील शाळेचे / कॉलेजचे नांव : </strong>
+                                    <strong>४) पमपा क्षेत्रातील शाळेचे / कॉलेजचे नांव : </strong>{{ $data->school_name }}
                                 </p>
                             </div>
                         </div>
@@ -171,9 +175,19 @@
                         </div>
 
                         <div class="row pt-3">
+                           <?php
+                                $financial_help = '';
+
+                                if($data->financial_help == 'personal'){
+                                    $financial_help ='वैयक्तिक';
+                                }else{
+                                    $financial_help ='सांघिक';
+                                }
+
+                            ?>
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>१०) आर्थिक मदत : वैयक्तिक / सांधिक : </strong>
+                                    <strong>१०) आर्थिक मदत : वैयक्तिक / सांधिक : </strong>{{ $financial_help }}
                                 </p>
                             </div>
                         </div>
@@ -192,12 +206,15 @@
                             </div>
 
                             <div class="col-md-4 col-sm-4">
+                                <div class="icon-box">
+                                    <img class="img-fluid " src="{{ asset('storage/' . $data->candidate_signature) }}" alt="Awesome Image" style="height:100px; width:150px;">
+                                </div>
                                 <p class="mb-0">
                                     <strong>  अर्जदाराची /संघ प्रमुखाची सही</strong>
                                 </p>
-                                <p class="mb-0">
+                                {{-- <p class="mb-0">
                                     <strong>(नावः- ---------------) </strong>
-                                </p>
+                                </p> --}}
                             </div>
                         </div>
                         <br>

@@ -15,17 +15,17 @@
                             <div class="mb-3 row">
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">Full Name/संपूर्ण नाव</label>
+                                    <label class="col-form-label" for="name">Full Name/संपूर्ण नाव<span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text"  name="full_name"  value="{{ $data->full_name }}" readonly>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="full_address">Full Address / संपूर्ण पत्ता</label>
+                                    <label class="col-form-label" for="full_address">Full Address / संपूर्ण पत्ता<span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text"  name="full_address" value="{{ $data->full_address }}" readonly>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="dob">Date Of Birth/ जन्म तारीख  </label>
+                                    <label class="col-form-label" for="dob">Date Of Birth/ जन्म तारीख<span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text"  name="dob" value="{{ $data->dob }}" readonly>
                                 </div>
 
@@ -36,7 +36,7 @@
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="contact">Mobile No/ मोबाईल नं.:</label>
+                                    <label class="col-form-label" for="contact">Mobile No/ मोबाईल नं.:<span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text" name="contact"  value="{{ $data->contact }}" readonly>
                                 </div>
 
@@ -58,11 +58,19 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="ward_name">Ward Name:</label>
+                                    <label class="col-form-label" for="ward_name">Ward Name/प्रभाग नाव<span class="text-danger">*</span></label>
                                     <input class="form-control"  name="ward_name"  type="text" value="{{ $data->name }}" readonly >
                                 </div>
 
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="candidate_signature">Upload Signature (अर्जदाराची सही) / thumb (अगंठा) <span class="text-danger">*</span></label>
+                                    <br><a class="btn btn-sm btn-primary" id="candidate_signature" target="_blank" href="{{ asset('storage/'.$data->candidate_signature) }}" >View Document</a>
+                                </div>
 
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="passport_size_photo">Passport Size Photo (अर्जदाराची फोटो) <span class="text-danger">*</span></label>
+                                    <br><a class="btn btn-sm btn-primary" id="passport_size_photo" target="_blank" href="{{ asset('storage/'.$data->passport_size_photo) }}" >View Document</a>
+                                </div>
 
                                 @foreach ($document as $doc)
                                 <div class="col-md-4 mt-3">
@@ -128,7 +136,7 @@
                                 <div class="col-sm-8 col-md-8 p-2">
                                     <textarea  class="form-control" name ="hod_reject_reason" id="hod_reject_reason" value="" style="height:120px;"></textarea>
                                     <span id="reason-error" class="error"></span>
-                               
+
                                 </div>
                             </div>
 
@@ -156,15 +164,15 @@
 
         if (reason.trim() === "") {
             errorMessage.textContent = "Please provide a rejection reason.";
-            return false; 
+            return false;
         }
         errorMessage.textContent = "";
-        return true; 
+        return true;
     }
 
     document.getElementById("rejectForm").addEventListener("submit", function(event) {
         if (!validateForm()) {
-            event.preventDefault(); 
+            event.preventDefault();
         }
     });
 </script>

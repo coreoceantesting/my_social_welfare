@@ -20,21 +20,27 @@
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">संपूर्ण नाव</label>
+                                    <label class="col-form-label" for="name">Full Name/संपूर्ण नाव<span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text"  name="full_name"  value="" placeholder="Enter Full Name ">
                                     <span class="text-danger is-invalid full_name_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="full_address">Full Address / संपूर्ण पत्ता</label>
+                                    <label class="col-form-label" for="full_address">Full Address / संपूर्ण पत्ता<span class="text-danger">*</span></label>
                                     <input class="form-control"   type="text" name="full_address" value=""  placeholder="Enter Full Address">
                                     <span class="text-danger is-invalid full_address_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="contact"> Mobile No/ मोबाईल नं.:</label>
+                                    <label class="col-form-label" for="contact"> Mobile No/ मोबाईल नं.:<span class="text-danger">*</span></label>
                                     <input class="form-control" id="contact" name="contact"  type="number"  placeholder="Enter Mobile No" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
                                     <span class="text-danger is-invalid contact_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="dob"> Date Of Birth/ जन्म दिनांक <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="dob" name="dob" type="date"  onchange="calculateAge()" placeholder="Enter Date Of Birth">
+                                    <span class="text-danger is-invalid dob_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
@@ -43,14 +49,9 @@
                                     <span class="text-danger is-invalid age_err"></span>
                                 </div>
 
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="dob"> Date Of Birth/ जन्म दिनांक </label>
-                                    <input class="form-control" id="dob" name="dob" type="date"  placeholder="Enter Date Of Birth">
-                                    <span class="text-danger is-invalid dob_err"></span>
-                                </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="adhaar_no">Aadhar Card Number  / आधारकार्ड क्रमांक <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="adhaar_no">Aadhar Card Number  / आधारकार्ड क्रमांक <span class="text-danger">*</span><span class="text-danger">*</span></label>
                                     <input class="form-control" id="adhaar_no" name="adhaar_no" type="text" placeholder="Enter Adhaar Number">
                                     <span class="text-danger is-invalid adhaar_no_err"></span>
                                 </div>
@@ -76,13 +77,13 @@
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="type_of_disease">Details / type of disease / आजाराचा तपशिल /प्रकार <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="type_of_disease">Details / type of disease / आजाराचा तपशिल /प्रकार<span class="text-danger">*</span> <span class="text-danger">*</span></label>
                                     <input class="form-control" id="type_of_disease" name="type_of_disease" type="text" placeholder="Enter Details / type of disease">
                                     <span class="text-danger is-invalid type_of_disease_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="diagnosis_date">Date of cancer diagnosis / कॅन्सर निदान झालेचा दिनांक <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="diagnosis_date">Date of cancer diagnosis / कॅन्सर निदान झालेचा दिनांक<span class="text-danger">*</span> <span class="text-danger">*</span></label>
                                     <input class="form-control" id="diagnosis_date" name="diagnosis_date" type="date" placeholder="Enter Date of cancer diagnosis">
                                     <span class="text-danger is-invalid diagnosis_date_err"></span>
                                 </div>
@@ -102,7 +103,7 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="financial_help">Applicant's relationship with the beneficiary/ अर्जदाराचे लाभार्थ्याशी असलेले नाते</label>
+                                    <label class="col-form-label" for="financial_help">Applicant's relationship with the beneficiary/ अर्जदाराचे लाभार्थ्याशी असलेले नाते<span class="text-danger">*</span></label>
                                         <select class="js-example-basic-single" name="financial_help" >
                                             <option value="">--Select--</option>
                                             <option value="self">Self/स्वतः </option>
@@ -111,29 +112,30 @@
                                         <span class="text-danger is-invalid  financial_help_err"></span>
                                 </div>
 
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="account_no">Account No/बँक खाते नंबर<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="account_no" name="account_no" type="text" placeholder="Enter Account Number">
+                                    <span class="text-danger is-invalid account_no_err"></span>
+                                </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="candidate_signature">Upload Signature / thumb /अर्जदाराची सही / अगंठा</label>
+                                    <label class="col-form-label" for="candidate_signature">Upload Signature / thumb /अर्जदाराची सही / अगंठा<span class="text-danger">*</span></label>
                                     <input class="form-control" id="candidate_signature" name="candidate_signature" type="file" accept=".png, .jpg, .jpeg">
                                     <span class="text-danger is-invalid candidate_signature_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="passport_size_photo">Passport Size Photo/अर्जदाराची फोटो</label>
+                                    <label class="col-form-label" for="passport_size_photo">Passport Size Photo/अर्जदाराची फोटो<span class="text-danger">*</span></label>
                                     <input class="form-control" id="passport_size_photo" name="passport_size_photo" type="file" accept=".png, .jpg, .jpeg">
                                     <span class="text-danger is-invalid passport_size_photo_err"></span>
                                 </div>
 
 
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="account_no">बँक खाते नंबर</label>
-                                    <input class="form-control" id="account_no" name="account_no" type="text" placeholder="Enter Account Number">
-                                    <span class="text-danger is-invalid account_no_err"></span>
-                                </div>
+
 
                                 @foreach ($document as $doc)
                                 <div class="col-md-4 mt-3">
-                                        <label class="col-form-label" for="document_name">{{$doc->document_name}} @if($doc->is_required==1) <span class="required">*</span> @endif</label>
+                                        <label class="col-form-label" for="document_name">{{$doc->document_name}} @if($doc->is_required==1) <span class="text-danger">*</span> @endif</label>
                                         <input type="hidden" name="document_id[]" class="form-control" value="{{$doc->id}}">
                                         <input type="file" name="document_file[]" class="form-control" multiple>
                                         <span class="text-danger is-invalid document_file_err"></span>
@@ -156,6 +158,15 @@
 
 </x-admin.layout>
 
+
+<script>
+    function calculateAge() {
+        var dob = new Date(document.getElementById('dob').value);
+        var today = new Date();
+        var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
+        document.getElementById('age').value = age;
+    }
+</script>
 
 {{-- Add --}}
 <script>

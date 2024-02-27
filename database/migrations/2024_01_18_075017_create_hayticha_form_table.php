@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('medical_benefit')->nullable();
             $table->string('govt_benefit')->nullable();
             $table->string('disability_benefit')->nullable();
+            $table->string('download_pdf')->nullable();
             $table->integer('status')->comment('0 => pending, 1 => approve, 2 => reject')->nullable();
             $table->softDeletes();
             $table->unsignedBigInteger('created_by')->nullable();
