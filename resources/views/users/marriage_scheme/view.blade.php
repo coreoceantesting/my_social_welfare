@@ -132,7 +132,7 @@
                                 <div class="form-group row mt-4">
                                     <label class="col-md-3"></label>
                                     <div class="col-md-9" style="display: flex; justify-content: flex-end;">
-                                        <a href="{{ route('marriage_scheme.index') }}"><button type="button"  class="btn btn-danger">Cancel</button></a>
+                                        <a href="{{ route('marriage_scheme.application') }}"><button type="button"  class="btn btn-danger">Cancel</button></a>
                                     </div>
                                 </div>
 

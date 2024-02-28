@@ -234,7 +234,7 @@
                         </div>
                     </div>
                     <div class="submit-section text-right pt-5" style="float:right;margin-bottom:50px;">
-					    <a href="{{ route('education_scheme.index') }}" class="btn btn-danger btn-lg text-light" >Cancel</a>
+					    <a href="{{ route('education_scheme.application') }}" class="btn btn-danger btn-lg text-light" >Cancel</a>
                         <button  class="btn btn-success btn-lg" type="button" onClick="printDiv('divToPrint')" ><i class="fa fa-print fa-lg text-light"></i> &nbsp;&nbsp;Print</button>
 
 					</div>

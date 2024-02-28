@@ -230,7 +230,7 @@
                         </div>
                     </div>
                     <div class="submit-section text-right pt-5" style="float:right;margin-bottom:50px;">
-					    <a href="" class="btn btn-danger btn-lg text-light" >Cancel</a>
+					    <a href="{{ route('sports_scheme.application') }}" class="btn btn-danger btn-lg text-light" >Cancel</a>
 
 					</div>
                 </div>
