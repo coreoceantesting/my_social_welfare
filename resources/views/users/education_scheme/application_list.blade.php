@@ -127,6 +127,17 @@
                                         <th>Full Address</th>
                                         <th>Contact</th>
                                         <th>Application Status</th>
+                                        @if (!empty($education_scheme) && count($education_scheme) > 0)
+                                        @if($education_scheme[0]->hod_status == 2)
+                                            <th>Reasons for Rejection</th>
+                                        @elseif($education_scheme[0]->ac_status == 2)
+                                            <th>Reasons for Rejection</th>
+                                        @elseif($education_scheme[0]->amc_status == 2)
+                                            <th>Reasons for Rejection</th>
+                                        @elseif($education_scheme[0]->dmc_status == 2)
+                                            <th>Reasons for Rejection</th>
+                                        @endif
+                                    @endif
                                         <th>Action</th>
                                         @if (!empty($education_scheme) && count($education_scheme) > 0)
         								@if($education_scheme[0]->dmc_status == 1)
@@ -162,6 +173,16 @@
                                                 <button type="button" class="btn btn-danger waves-effect m-r-20">Rejected</button>
                                                 @endif
                                               </td>
+
+                                              @if($value->hod_status == 2)
+        								      <td>{{ $value->hod_reject_reason }}</td>
+        								    @elseif($value->ac_status == 2)
+        								      <td>{{ $value->ac_reject_reason }}</td>
+        								    @elseif($value->amc_status == 2)
+        								      <td>{{ $value->amc_reject_reason }}</td>
+                                            @elseif($value->dmc_status == 2)
+        								      <td>{{ $value->dmc_reject_reason }}</td>
+        								    @endif
 
                                             <td>
                                                 @if($value->hod_status == '0' && $value->ac_status == '0' && $value->amc_status == '0' && $value->dmc_status == '0')

@@ -109,6 +109,17 @@
                                         <th>Full Address</th>
                                         <th>Contact</th>
                                         <th>Application Status</th>
+                                        @if (!empty($sports) && count($sports) > 0)
+                                        @if($sports[0]->hod_status == 2)
+                                            <th>Reasons for Rejection</th>
+                                        @elseif($sports[0]->ac_status == 2)
+                                            <th>Reasons for Rejection</th>
+                                        @elseif($sports[0]->amc_status == 2)
+                                            <th>Reasons for Rejection</th>
+                                        @elseif($sports[0]->dmc_status == 2)
+                                            <th>Reasons for Rejection</th>
+                                        @endif
+                                    @endif
                                         <th>Action</th>
                                         @if (!empty($sports) && count($sports) > 0)
         								@if($sports[0]->dmc_status == 1)
@@ -144,6 +155,15 @@
                                                 @endif
                                               </td>
 
+                                              @if($row->hod_status == 2)
+        								      <td>{{ $row->hod_reject_reason }}</td>
+        								    @elseif($row->ac_status == 2)
+        								      <td>{{ $row->ac_reject_reason }}</td>
+        								    @elseif($row->amc_status == 2)
+        								      <td>{{ $row->amc_reject_reason }}</td>
+                                            @elseif($row->dmc_status == 2)
+        								      <td>{{ $row->dmc_reject_reason }}</td>
+        								    @endif
 
                                             <td>
                                                 @if($row->hod_status == 0 && $row->ac_status == 0 && $row->amc_status == 0 && $row->dmc_status == 0)
