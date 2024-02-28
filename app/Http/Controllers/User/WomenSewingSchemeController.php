@@ -113,6 +113,24 @@ class WomenSewingSchemeController extends Controller
         try {
             DB::beginTransaction();
             $input = $request->validated();
+
+            if (
+                $women_scheme['hod_status'] == 1 && $women_scheme['ac_status'] == 1 && $women_scheme['amc_status'] == 1 && $women_scheme['dmc_status'] == 2
+                || $women_scheme['hod_status'] == 1 && $women_scheme['ac_status'] == 1 && $women_scheme['amc_status'] == 2 && $women_scheme['dmc_status'] == 1
+                || $women_scheme['hod_status'] == 1 && $women_scheme['ac_status'] == 2 && $women_scheme['amc_status'] == 1 && $women_scheme['dmc_status'] == 1
+                || $women_scheme['hod_status'] == 2 && $women_scheme['ac_status'] == 1 && $women_scheme['amc_status'] == 1 && $women_scheme['dmc_status'] == 1
+                || $women_scheme['hod_status'] == 2 && $women_scheme['ac_status'] == 2 && $women_scheme['amc_status'] == 2 && $women_scheme['dmc_status'] == 2
+                || $women_scheme['hod_status'] == 1 && $women_scheme['ac_status'] == 1 && $women_scheme['amc_status'] == 1 && $women_scheme['dmc_status'] == 2
+                || $women_scheme['hod_status'] == 1 && $women_scheme['ac_status'] == 2 && $women_scheme['amc_status'] == 0 && $women_scheme['dmc_status'] == 0
+                || $women_scheme['hod_status'] == 2 && $women_scheme['ac_status'] == 0 && $women_scheme['amc_status'] == 0 && $women_scheme['dmc_status'] == 0
+                || $women_scheme['hod_status'] == 1 && $women_scheme['ac_status'] == 1 && $women_scheme['amc_status'] == 2 && $women_scheme['dmc_status'] == 0
+            ) {
+                $women_scheme['hod_status'] = 0;
+                $women_scheme['ac_status']  = 0;
+                $women_scheme['amc_status'] = 0;
+                $women_scheme['dmc_status'] = 0;
+            }
+
             $women_scheme->update(Arr::only($input, WomenScheme::getFillables()));
             DB::commit();
             return response()->json(['success' => 'Women Scheme updated successfully!']);

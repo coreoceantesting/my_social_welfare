@@ -101,6 +101,23 @@ class VehicleSchemeController extends Controller
         try {
             DB::beginTransaction();
             $input = $request->validated();
+
+            if (
+                $vehicle_scheme['hod_status'] == 1 && $vehicle_scheme['ac_status'] == 1 && $vehicle_scheme['amc_status'] == 1 && $vehicle_scheme['dmc_status'] == 2
+                || $vehicle_scheme['hod_status'] == 1 && $vehicle_scheme['ac_status'] == 1 && $vehicle_scheme['amc_status'] == 2 && $vehicle_scheme['dmc_status'] == 1
+                || $vehicle_scheme['hod_status'] == 1 && $vehicle_scheme['ac_status'] == 2 && $vehicle_scheme['amc_status'] == 1 && $vehicle_scheme['dmc_status'] == 1
+                || $vehicle_scheme['hod_status'] == 2 && $vehicle_scheme['ac_status'] == 1 && $vehicle_scheme['amc_status'] == 1 && $vehicle_scheme['dmc_status'] == 1
+                || $vehicle_scheme['hod_status'] == 2 && $vehicle_scheme['ac_status'] == 2 && $vehicle_scheme['amc_status'] == 2 && $vehicle_scheme['dmc_status'] == 2
+                || $vehicle_scheme['hod_status'] == 1 && $vehicle_scheme['ac_status'] == 1 && $vehicle_scheme['amc_status'] == 1 && $vehicle_scheme['dmc_status'] == 2
+                || $vehicle_scheme['hod_status'] == 1 && $vehicle_scheme['ac_status'] == 2 && $vehicle_scheme['amc_status'] == 0 && $vehicle_scheme['dmc_status'] == 0
+                || $vehicle_scheme['hod_status'] == 2 && $vehicle_scheme['ac_status'] == 0 && $vehicle_scheme['amc_status'] == 0 && $vehicle_scheme['dmc_status'] == 0
+                || $vehicle_scheme['hod_status'] == 1 && $vehicle_scheme['ac_status'] == 1 && $vehicle_scheme['amc_status'] == 2 && $vehicle_scheme['dmc_status'] == 0
+            ) {
+                $vehicle_scheme['hod_status'] = 0;
+                $vehicle_scheme['ac_status']  = 0;
+                $vehicle_scheme['amc_status'] = 0;
+                $vehicle_scheme['dmc_status'] = 0;
+            }
             $vehicle_scheme->update(Arr::only($input, VehicleScheme::getFillables()));
             DB::commit();
             return response()->json(['success' => 'Vehicle Scheme updated successfully!']);

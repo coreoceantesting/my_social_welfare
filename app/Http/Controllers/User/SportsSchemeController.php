@@ -96,6 +96,24 @@ class SportsSchemeController extends Controller
         try {
             DB::beginTransaction();
             $input = $request->validated();
+
+            if (
+                $sports_scheme['hod_status'] == 1 && $sports_scheme['ac_status'] == 1 && $sports_scheme['amc_status'] == 1 && $sports_scheme['dmc_status'] == 2
+                || $sports_scheme['hod_status'] == 1 && $sports_scheme['ac_status'] == 1 && $sports_scheme['amc_status'] == 2 && $sports_scheme['dmc_status'] == 1
+                || $sports_scheme['hod_status'] == 1 && $sports_scheme['ac_status'] == 2 && $sports_scheme['amc_status'] == 1 && $sports_scheme['dmc_status'] == 1
+                || $sports_scheme['hod_status'] == 2 && $sports_scheme['ac_status'] == 1 && $sports_scheme['amc_status'] == 1 && $sports_scheme['dmc_status'] == 1
+                || $sports_scheme['hod_status'] == 2 && $sports_scheme['ac_status'] == 2 && $sports_scheme['amc_status'] == 2 && $sports_scheme['dmc_status'] == 2
+                || $sports_scheme['hod_status'] == 1 && $sports_scheme['ac_status'] == 1 && $sports_scheme['amc_status'] == 1 && $sports_scheme['dmc_status'] == 2
+                || $sports_scheme['hod_status'] == 1 && $sports_scheme['ac_status'] == 2 && $sports_scheme['amc_status'] == 0 && $sports_scheme['dmc_status'] == 0
+                || $sports_scheme['hod_status'] == 2 && $sports_scheme['ac_status'] == 0 && $sports_scheme['amc_status'] == 0 && $sports_scheme['dmc_status'] == 0
+                || $sports_scheme['hod_status'] == 1 && $sports_scheme['ac_status'] == 1 && $sports_scheme['amc_status'] == 2 && $sports_scheme['dmc_status'] == 0
+            ) {
+                $sports_scheme['hod_status'] = 0;
+                $sports_scheme['ac_status']  = 0;
+                $sports_scheme['amc_status'] = 0;
+                $sports_scheme['dmc_status'] = 0;
+            }
+
             $sports_scheme->update(Arr::only($input, SportsScheme::getFillables()));
             DB::commit();
             return response()->json(['success' => 'Sports Scheme updated successfully!']);

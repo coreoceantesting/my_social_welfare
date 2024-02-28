@@ -99,6 +99,24 @@ class CancerSchemeController extends Controller
         try {
             DB::beginTransaction();
             $input = $request->validated();
+
+            if (
+                $cancer_scheme['hod_status'] == 1 && $cancer_scheme['ac_status'] == 1 && $cancer_scheme['amc_status'] == 1 && $cancer_scheme['dmc_status'] == 2
+                || $cancer_scheme['hod_status'] == 1 && $cancer_scheme['ac_status'] == 1 && $cancer_scheme['amc_status'] == 2 && $cancer_scheme['dmc_status'] == 1
+                || $cancer_scheme['hod_status'] == 1 && $cancer_scheme['ac_status'] == 2 && $cancer_scheme['amc_status'] == 1 && $cancer_scheme['dmc_status'] == 1
+                || $cancer_scheme['hod_status'] == 2 && $cancer_scheme['ac_status'] == 1 && $cancer_scheme['amc_status'] == 1 && $cancer_scheme['dmc_status'] == 1
+                || $cancer_scheme['hod_status'] == 2 && $cancer_scheme['ac_status'] == 2 && $cancer_scheme['amc_status'] == 2 && $cancer_scheme['dmc_status'] == 2
+                || $cancer_scheme['hod_status'] == 1 && $cancer_scheme['ac_status'] == 1 && $cancer_scheme['amc_status'] == 1 && $cancer_scheme['dmc_status'] == 2
+                || $cancer_scheme['hod_status'] == 1 && $cancer_scheme['ac_status'] == 2 && $cancer_scheme['amc_status'] == 0 && $cancer_scheme['dmc_status'] == 0
+                || $cancer_scheme['hod_status'] == 2 && $cancer_scheme['ac_status'] == 0 && $cancer_scheme['amc_status'] == 0 && $cancer_scheme['dmc_status'] == 0
+                || $cancer_scheme['hod_status'] == 1 && $cancer_scheme['ac_status'] == 1 && $cancer_scheme['amc_status'] == 2 && $cancer_scheme['dmc_status'] == 0
+            ) {
+                $cancer_scheme['hod_status'] = 0;
+                $cancer_scheme['ac_status']  = 0;
+                $cancer_scheme['amc_status'] = 0;
+                $cancer_scheme['dmc_status'] = 0;
+            }
+
             $cancer_scheme->update(Arr::only($input, CancerScheme::getFillables()));
             DB::commit();
             return response()->json(['success' => 'Cancer Scheme updated successfully!']);

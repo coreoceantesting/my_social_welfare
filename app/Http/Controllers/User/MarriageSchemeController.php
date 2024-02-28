@@ -137,6 +137,24 @@ class MarriageSchemeController extends Controller
         try {
             DB::beginTransaction();
             $input = $request->validated();
+
+            if (
+                $marriage_scheme['hod_status'] == 1 && $marriage_scheme['ac_status'] == 1 && $marriage_scheme['amc_status'] == 1 && $marriage_scheme['dmc_status'] == 2
+                || $marriage_scheme['hod_status'] == 1 && $marriage_scheme['ac_status'] == 1 && $marriage_scheme['amc_status'] == 2 && $marriage_scheme['dmc_status'] == 1
+                || $marriage_scheme['hod_status'] == 1 && $marriage_scheme['ac_status'] == 2 && $marriage_scheme['amc_status'] == 1 && $marriage_scheme['dmc_status'] == 1
+                || $marriage_scheme['hod_status'] == 2 && $marriage_scheme['ac_status'] == 1 && $marriage_scheme['amc_status'] == 1 && $marriage_scheme['dmc_status'] == 1
+                || $marriage_scheme['hod_status'] == 2 && $marriage_scheme['ac_status'] == 2 && $marriage_scheme['amc_status'] == 2 && $marriage_scheme['dmc_status'] == 2
+                || $marriage_scheme['hod_status'] == 1 && $marriage_scheme['ac_status'] == 1 && $marriage_scheme['amc_status'] == 1 && $marriage_scheme['dmc_status'] == 2
+                || $marriage_scheme['hod_status'] == 1 && $marriage_scheme['ac_status'] == 2 && $marriage_scheme['amc_status'] == 0 && $marriage_scheme['dmc_status'] == 0
+                || $marriage_scheme['hod_status'] == 2 && $marriage_scheme['ac_status'] == 0 && $marriage_scheme['amc_status'] == 0 && $marriage_scheme['dmc_status'] == 0
+                || $marriage_scheme['hod_status'] == 1 && $marriage_scheme['ac_status'] == 1 && $marriage_scheme['amc_status'] == 2 && $marriage_scheme['dmc_status'] == 0
+            ) {
+                $marriage_scheme['hod_status'] = 0;
+                $marriage_scheme['ac_status']  = 0;
+                $marriage_scheme['amc_status'] = 0;
+                $marriage_scheme['dmc_status'] = 0;
+            }
+
             $marriage_scheme->update(Arr::only($input, MarriageScheme::getFillables()));
             DB::commit();
             return response()->json(['success' => 'Marriage Scheme updated successfully!']);
