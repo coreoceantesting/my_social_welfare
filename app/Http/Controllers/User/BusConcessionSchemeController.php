@@ -31,7 +31,7 @@ class BusConcessionSchemeController extends Controller
                 ->first();
 
             if (empty($data)) {
-                return redirect()->route('hayatichaDakhlaform.index')->with('warning', 'Fill the first form before proceeding.');
+                return redirect()->route('hayatichaDakhlaform.index')->with('warning', 'Fill the Hayatika form before proceeding.');
             } elseif ($data->sign_uploaded_live_certificate == "") {
                 return redirect()->route('hayatichaDakhlaform.index')->with('warning', 'Your Application status is still Pending');
             } else {
