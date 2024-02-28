@@ -90,7 +90,7 @@ Route::middleware(['auth', 'PreventBackHistory'])->group(function () {
     Route::get('marriage_certificate/{id}', [App\Http\Controllers\User\MarriageSchemeController::class, 'generateCertificate']);
     Route::get('marriage_view/{id}', [App\Http\Controllers\User\MarriageSchemeController::class, 'marriageSchemeApplicationView']);
     Route::get('marriage_scheme_application', [App\Http\Controllers\User\MarriageSchemeController::class, 'list'])->name('marriage_scheme.application');
-    Route::get('marriage_scheme_application', [App\Http\Controllers\User\MarriageSchemeController::class, 'list'])->name('marriage_scheme.application');
+
     // Sports Scheme Application
     Route::resource('sports_scheme', App\Http\Controllers\User\SportsSchemeController::class);
     Route::get('sports_certificate/{id}', [App\Http\Controllers\User\SportsSchemeController::class, 'generateCertificate']);

@@ -154,7 +154,7 @@
                 if (!data.error2)
                     swal("Successful!", data.success, "success")
                         .then((action) => {
-                            window.location.href = '{{ route('bus_concession.index') }}';
+                            window.location.href = '{{ route('bus.concession.application') }}';
                         });
                 else
                     swal("Error!", data.error2, "error");

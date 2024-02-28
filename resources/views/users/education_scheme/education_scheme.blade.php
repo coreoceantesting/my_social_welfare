@@ -143,7 +143,7 @@
                 if (!data.error2)
                     swal("Successful!", data.success, "success")
                         .then((action) => {
-                            window.location.href = '{{ route('education_scheme.index') }}';
+                            window.location.href = '{{ route('education_scheme.application') }}';
                         });
                 else
                     swal("Error!", data.error2, "error");

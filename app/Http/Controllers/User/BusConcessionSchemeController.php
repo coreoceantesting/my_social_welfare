@@ -47,7 +47,7 @@ class BusConcessionSchemeController extends Controller
                     ->orderBy('created_at', 'DESC')
                     ->get();
 
-                return view('users.bus_concession.bus_concession')->with(['bus_concession' => $bus_concession, 'document' => $document]);
+                return view('users.bus_concession.bus_concession')->with(['document' => $document]);
             }
         } else {
             $bus_concession = BusConcession::where('created_by', Auth::user()->id)->latest()->first();
@@ -61,7 +61,7 @@ class BusConcessionSchemeController extends Controller
                 ->orderBy('created_at', 'DESC')
                 ->get();
 
-            return view('users.bus_concession.bus_concession')->with(['bus_concession' => $bus_concession, 'document' => $document]);
+            return view('users.bus_concession.bus_concession')->with(['document' => $document]);
         }
     }
 

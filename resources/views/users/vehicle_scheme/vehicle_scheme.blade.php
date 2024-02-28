@@ -145,7 +145,7 @@
                 if (!data.error2)
                     swal("Successful!", data.success, "success")
                         .then((action) => {
-                            window.location.href = '{{ route('vehicle_scheme.index') }}';
+                            window.location.href = '{{ route('vehicle_scheme.application') }}';
                         });
                 else
                     swal("Error!", data.error2, "error");
