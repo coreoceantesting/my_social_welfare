@@ -127,6 +127,7 @@ class SportsSchemeController extends Controller
     {
         try {
             DB::beginTransaction();
+            $sports_scheme->sportsSchemeDocuments()->delete();
             $sports_scheme->delete();
             DB::commit();
             return response()->json(['success' => 'Sports Scheme deleted successfully!']);

@@ -143,6 +143,7 @@ class WomenSewingSchemeController extends Controller
     {
         try {
             DB::beginTransaction();
+            $women_scheme->womenSchemeDocuments()->delete();
             $women_scheme->delete();
             DB::commit();
             return response()->json(['success' => 'Women Scheme deleted successfully!']);

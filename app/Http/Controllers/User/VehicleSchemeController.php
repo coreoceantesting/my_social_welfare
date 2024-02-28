@@ -131,6 +131,7 @@ class VehicleSchemeController extends Controller
     {
         try {
             DB::beginTransaction();
+            $vehicle_scheme->vehicleSchemeDocuments()->delete();
             $vehicle_scheme->delete();
             DB::commit();
             return response()->json(['success' => 'Vehicle Scheme deleted successfully!']);

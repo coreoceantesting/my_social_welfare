@@ -130,6 +130,7 @@ class CancerSchemeController extends Controller
     {
         try {
             DB::beginTransaction();
+            $cancer_scheme->cancerSchemeDocuments()->delete();
             $cancer_scheme->delete();
             DB::commit();
             return response()->json(['success' => 'Cancer Scheme deleted successfully!']);

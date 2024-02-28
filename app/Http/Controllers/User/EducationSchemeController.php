@@ -169,6 +169,7 @@ class EducationSchemeController extends Controller
     {
         try {
             DB::beginTransaction();
+            $education_scheme->educationSchemeDocuments()->delete();
             $education_scheme->delete();
             DB::commit();
             return response()->json(['success' => 'Education Scheme deleted successfully!']);

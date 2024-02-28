@@ -170,6 +170,7 @@ class BusConcessionSchemeController extends Controller
     {
         try {
             DB::beginTransaction();
+            $bus_concession->busConcessionSchemeDocuments()->delete();
             $bus_concession->delete();
             DB::commit();
             return response()->json(['success' => 'Bus Concession deleted successfully!']);
