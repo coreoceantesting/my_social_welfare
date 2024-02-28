@@ -118,14 +118,14 @@
                                         <th>Full Address</th>
                                         <th>Contact</th>
                                         <th>Application Status</th>
-                                        @if (!empty($vehicles) && count($vehicles) > 0)
-                                        @if($vehicles[0]->hod_status == 2)
+                                        @if (!empty($women) && count($women) > 0)
+                                        @if($women[0]->hod_status == 2)
                                             <th>Reasons for Rejection</th>
-                                        @elseif($vehicles[0]->ac_status == 2)
+                                        @elseif($women[0]->ac_status == 2)
                                             <th>Reasons for Rejection</th>
-                                        @elseif($vehicles[0]->amc_status == 2)
+                                        @elseif($women[0]->amc_status == 2)
                                             <th>Reasons for Rejection</th>
-                                        @elseif($vehicles[0]->dmc_status == 2)
+                                        @elseif($women[0]->dmc_status == 2)
                                             <th>Reasons for Rejection</th>
                                         @endif
                                     @endif
