@@ -225,75 +225,67 @@
  <!-- validation init -->
 
 
-    <script>
-        $("#addRegiForm").submit(function(e) {
-           // alert('hii');
-            e.preventDefault();
-            $("#RegisterForm_submit").prop('disabled', true);
+ <script>
+    $("#addRegiForm").submit(function(e) {
+       // alert('hii');
+        e.preventDefault();
+        $("#RegisterForm_submit").prop('disabled', true);
 
-            var formdata = new FormData(this);
+        var formdata = new FormData(this);
 
-            $.ajax({
-                url: '{{ route('signup') }}',
-                type: 'POST',
-                data: formdata,
-                contentType: false,
-                processData: false,
-
-
-        success: function(data)
-            {
-                $("#RegisterForm_submit").prop('disabled', false);
-                if (!data.error && !data.error2)
-                    swal("Successful!", data.success, "success")
+        $.ajax({
+            url: '{{ route('signup') }}',
+            type: 'POST',
+            data: formdata,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+            if (!data.error && !data.error2) {
+                swal("Successful!", data.success, "success")
                         .then((action) => {
                             window.location.href = '{{ route('dashboard') }}';
                         });
-                        else {
-                    if (data.error2) {
-                        swal("Error!", data.error2, "error");
-                        $("#RegisterForm_submit").prop('disabled', false);
-                    } else {
-                        $("#RegisterForm_submit").prop('disabled', false);
-                        resetErrors();
-                        printErrMsg(data.error);
-                    }
-                }
-            },
-            statusCode: {
-                422: function(responseObject, textStatus, jqXHR) {
+            } else {
+                if (data.error2) {
+                    swal("Error!", data.error2, "error");
+                    $("#RegisterForm_submit").prop('disabled', false);
+                } else {
                     $("#RegisterForm_submit").prop('disabled', false);
                     resetErrors();
-                    printErrMsg(responseObject.responseJSON.errors);
-                },
-                500: function(responseObject, textStatus, errorThrown) {
-                    $("#RegisterForm_submit").prop('disabled', false);
-                    swal("Error occured!", "Something went wrong please try again", "error");
+                    printErrMsg(data.error);
                 }
             }
-        });
-
-        function resetErrors() {
-            var form = document.getElementById('addRegiForm');
-            var data = new FormData(form);
-            for (var [key, value] of data) {
-                console.log(key, value)
-                $('.' + key + '_err').text('');
-                $('#' + key).removeClass('is-invalid');
-                $('#' + key).addClass('is-valid');
-            }
-        }
-
-        function printErrMsg(msg) {
-            $.each(msg, function(key, value) {
-                console.log(key);
-                $('.' + key + '_err').text(value);
-                $('#' + key).addClass('is-invalid');
-            });
-        }
-
+        },
+        error: function(error) {
+            $("#RegisterForm_submit").prop('disabled', false);
+            swal("Error occured!", "Something went wrong please try again", "error");
+        },
     });
-    </script>
+
+    function resetErrors() {
+        var form = document.getElementById('addRegiForm');
+        var data = new FormData(form);
+        for (var [key, value] of data) {
+            console.log(key, value)
+            $('.' + key + '_err').text('');
+            $('#' + key).removeClass('is-invalid');
+            $('#' + key).addClass('is-valid');
+        }
+    }
+
+    function printErrMsg(msg) {
+        $.each(msg, function(key, value) {
+            console.log(key);
+            $('.' + key + '_err').text(value);
+            $('#' + key).addClass('is-invalid');
+        });
+    }
+
+});
+</script>
+
+
+
 
 <script>
     $(document).ready(function () {
