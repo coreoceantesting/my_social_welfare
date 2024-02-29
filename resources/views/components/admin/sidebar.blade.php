@@ -198,13 +198,13 @@
             @php
                 $categories = DB::table('category_mst')->where('deleted_at', null)->get();
                 $category_wise_scheme = DB::table('category_wise_scheme AS t')
-                ->select('t.id', DB::raw('GROUP_CONCAT(c.category_name SEPARATOR ",") as category_names'), 'm.scheme_name', 't.scheme_id', 't.category_id')
-                ->join('mst_scheme as m', 'm.id', '=', 't.scheme_id')
-                ->leftJoin('category_mst as c', function ($join) {
-                    $join->on(DB::raw('FIND_IN_SET(c.id, t.category_id)'), '>', DB::raw('0'));
-                })
-                ->groupBy('t.id', 'm.scheme_name', 't.scheme_id', 't.category_id') // Include t.scheme_id in GROUP BY
-                ->get();
+                                            ->select('t.id', DB::raw('GROUP_CONCAT(c.category_name SEPARATOR ",") as category_names'), 'm.scheme_name',  't.scheme_id','t.category_id')
+                                            ->join('mst_scheme as m', 'm.id', '=', 't.scheme_id')
+                                            ->leftJoin('category_mst as c', function ($join) {
+                                                $join->on(DB::raw('FIND_IN_SET(c.id, t.category_id)'), '>', DB::raw('0'));
+                                            })
+                                            ->groupBy('t.id', 'm.scheme_name')
+                                            ->get();
 
 
                 @endphp
