@@ -32,7 +32,7 @@
                                         <select class="js-example-basic-single"  name="scheme_id">
                                             <option value="">--Select Scheme--</option>
                                             @foreach($scheme as $schemes)
-                                            <option value="{{ $schemes->id }}">{{ $schemes->scheme_name ?? ''}}</option>
+                                            <option value="{{ $schemes->id }}">{{ $schemes->scheme_name ?? ''}} ({{ $schemes->scheme_marathi_name}})</option>
                                             @endforeach
                                         </select>
                                         <span class="text-danger is-invalid  scheme_id_err"></span>
@@ -142,7 +142,7 @@
                                     @foreach ($terms as $row)
                                         <tr>
                                             <td>{{ $num++ }}</td>
-                                            <td>{{ $row->scheme->scheme_name ?? '' }}</td>
+                                            <td>{{ $row->scheme->scheme_name ?? '' }} ({{$row->scheme->scheme_marathi_name}})</td>
                                             <td>{!! substr($row->rules_regulations, 0, 100) !!} </td>
 
                                             <td>
