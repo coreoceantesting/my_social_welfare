@@ -1818,7 +1818,7 @@ class DashboardController extends Controller
 
         // print_r('hii');exit;
         $terms = DB::table('terms_conditions as t1')
-            ->select('t1.rules_regulations', 't2.id')
+            ->select('t1.rules_regulations', 't2.id', 't2.scheme_name')
             ->leftjoin('mst_scheme as t2', 't2.id', '=', 't1.scheme_id')
             ->where('t1.scheme_id', $id)
             ->whereNull('t1.deleted_at')

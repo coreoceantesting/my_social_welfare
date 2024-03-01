@@ -33,21 +33,21 @@
                                         <div class="hstack gap-2 justify-content-end d-print-none mt-4">
                                             @if(isset($terms->id))
 
-                                            @if($terms->id == 1)
+                                            @if($terms->scheme_name == 'Divyang Nondani Application')
                                             <a href="{{ route('scheme_form.index') }}" class="btn btn-primary"> Continue</a>
-                                            @elseif($terms->id == 2)
+                                            @elseif($terms->scheme_name == 'Bus Concession Scheme')
                                             <a href="{{ route('bus_concession.index') }}" class="btn btn-primary"> Continue</a>
-                                            @elseif($terms->id == 3)
+                                            @elseif($terms->scheme_name == 'Education Scheme')
                                             <a href="{{ route('education_scheme.index') }}" class="btn btn-primary"> Continue</a>
-                                            @elseif($terms->id == 4)
+                                            @elseif($terms->scheme_name == 'Marriage Scheme')
                                             <a href="{{ route('marriage_scheme.index') }}" class="btn btn-primary"> Continue</a>
-                                            @elseif($terms->id == 5)
+                                            @elseif($terms->scheme_name == 'Sports Scheme')
                                             <a href="{{ route('sports_scheme.index') }}" class="btn btn-primary"> Continue</a>
-                                            @elseif($terms->id == 6)
+                                            @elseif($terms->scheme_name == 'Women Sewing Scheme')
                                             <a href="{{ route('women_scheme.index') }}" class="btn btn-primary"> Continue</a>
-                                            @elseif($terms->id == 7)
+                                            @elseif($terms->scheme_name == 'Cancer Scheme')
                                             <a href="{{ route('cancer_scheme.index') }}" class="btn btn-primary"> Continue</a>
-                                            @elseif($terms->id == 8)
+                                            @elseif($terms->scheme_name == 'Vehicle Scheme')
                                             <a href="{{ route('vehicle_scheme.index') }}" class="btn btn-primary"> Continue</a>
 
                                             @endif
