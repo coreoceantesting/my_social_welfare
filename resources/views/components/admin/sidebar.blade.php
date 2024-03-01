@@ -138,7 +138,16 @@
 
                   @canany(['users.applicationList'])
 
+                    @php
+                        $categoryId = Auth::user()->category;
 
+                        $schemes_list = DB::table('category_wise_scheme AS t')
+                            ->select('t.id', 'm.scheme_name', 'm.scheme_marathi_name', 't.scheme_id', 't.category_id')
+                            ->join('mst_scheme as m', 'm.id', '=', 't.scheme_id')
+                            ->whereRaw('FIND_IN_SET(?, t.category_id)', [$categoryId])
+                            ->get();
+                                // dd($schemes_list);
+                    @endphp
                   <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
                         <i class="ri-layout-3-line"></i>
@@ -146,7 +155,27 @@
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarLayouts">
                         <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
+
+                            @foreach($schemes_list as $list)
+                                @php 
+                                    $string = $list->scheme_name;
+                                    $words = explode(' ', $string);
+                                    $words[0] = strtolower($words[0]);
+                                    if($words[0] == 'divyang')
+                                    {
+                                            $url = url($words[0].'_application');
+                                    }elseif($words[0] == 'bus'){
+                                        $url = url($words[0].'_concession_application');
+                                    }else{
+                                        $url = url($words[0].'_scheme_application');
+                                    }
+                                @endphp
+                                <li class="nav-item">
+                                    <a href="{{ $url }}" class="nav-link" data-key="t-horizontal">{{$list->scheme_name}} List ({{$list->scheme_marathi_name}})</a>
+                                </li>
+                            @endforeach
+
+                            {{-- <li class="nav-item">
                                 <a href="{{ url('bus_concession_application') }}" class="nav-link" data-key="t-horizontal">Bus Concession Scheme Application List (बस सवलत योजना अर्जांची यादी)</a>
                             </li>
                                @if(Auth::user()->category == 1 || Auth::user()->category == 2)
@@ -187,7 +216,7 @@
                                 <a href="{{ url('women_scheme_application') }}" class="nav-link" data-key="t-horizontal">Women Sewing/Beautisians Scheme Application List(महिला शिवणकाम/ब्युटिशियन योजना अर्ज यादी)</a>
                             </li>
 
-                              @endif
+                              @endif --}}
 
                         </ul>
                     </div>
