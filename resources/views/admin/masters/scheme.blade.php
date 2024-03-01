@@ -19,7 +19,18 @@
 
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="scheme_name">Scheme Name In English (योजनेचे नाव इंग्रजीत) <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="scheme_name" name="scheme_name" type="text" placeholder="Enter Scheme Name">
+                                    {{-- <input class="form-control" id="scheme_name" name="scheme_name" type="text" placeholder="Enter Scheme Name"> --}}
+                                    <select class="form-control" name="scheme_name" id="scheme_name">
+                                        <option value="">Select Scheme</option>
+                                        <option value="Divyang Nondani Application">Divyang Nondani Application</option>
+                                        <option value="Bus Concession Scheme">Bus Concession Scheme</option>
+                                        <option value="Education Scheme">Education Scheme</option>
+                                        <option value="Marriage Scheme">Marriage Scheme</option>
+                                        <option value="Sports Scheme">Sports Scheme</option>
+                                        <option value="Women Sewing Scheme">Women Sewing Scheme</option>
+                                        <option value="Cancer Scheme">Cancer Scheme</option>
+                                        <option value="Vehicle Scheme">Vehicle Scheme</option>
+                                    </select>
                                     <span class="text-danger is-invalid scheme_name_err"></span>
                                 </div>
 
@@ -59,7 +70,18 @@
 
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="scheme_name">Scheme Name In English (योजनेचे नाव इंग्रजीत)<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="scheme_name" name="scheme_name" type="text" placeholder="Scheme Name">
+                                    {{-- <input class="form-control" id="scheme_name" name="scheme_name" type="text" placeholder="Scheme Name"> --}}
+                                    <select class="form-control" name="scheme_name" id="scheme_name">
+                                        <option value="">Select Scheme</option>
+                                        <option value="Divyang Nondani Application">Divyang Nondani Application</option>
+                                        <option value="Bus Concession Scheme">Bus Concession Scheme</option>
+                                        <option value="Education Scheme">Education Scheme</option>
+                                        <option value="Marriage Scheme">Marriage Scheme</option>
+                                        <option value="Sports Scheme">Sports Scheme</option>
+                                        <option value="Women Sewing Scheme">Women Sewing Scheme</option>
+                                        <option value="Cancer Scheme">Cancer Scheme</option>
+                                        <option value="Vehicle Scheme">Vehicle Scheme</option>
+                                    </select>
                                     <span class="text-danger is-invalid scheme_name_err"></span>
                                 </div>
 
@@ -211,7 +233,7 @@
                 if (!data.error)
                 {
                     $("#editForm input[name='edit_model_id']").val(data.schemes.id);
-                    $("#editForm input[name='scheme_name']").val(data.schemes.scheme_name);
+                    $("#editForm select[name='scheme_name']").val(data.schemes.scheme_name);
                     $("#editForm input[name='scheme_marathi_name']").val(data.schemes.scheme_marathi_name);
 
                 }

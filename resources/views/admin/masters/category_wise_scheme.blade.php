@@ -34,7 +34,7 @@
                                         <select class="js-example-basic-single"  name="scheme_id">
                                             <option value="">--Select Scheme Name--</option>
                                             @foreach($data as $value)
-                                            <option value="{{ $value->id }}">{{ $value->scheme_name ?? ''}}</option>
+                                            <option value="{{ $value->id }}">{{ $value->scheme_name ?? ''}} ({{$value->scheme_marathi_name}})</option>
                                             @endforeach
                                         </select>
                                         <span class="text-danger is-invalid  scheme_id_err"></span>
