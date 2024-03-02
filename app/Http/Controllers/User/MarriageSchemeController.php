@@ -183,8 +183,8 @@ class MarriageSchemeController extends Controller
                         "document_file" => $imageName,
                         'document_id' => $documentTypeId,
                         "marriage_id" => $marriage_scheme['id'],
-                        "created_by" => Auth::user()->id,
-                        "created_at" => date('Y-m-d H:i:s'),
+                        "updated_by" => Auth::user()->id,
+                        "updated_at" => date('Y-m-d H:i:s'),
                     ]);
                 }
             }

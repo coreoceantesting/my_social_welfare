@@ -130,8 +130,28 @@ class VehicleSchemeController extends Controller
                 $imagePath1 = $request->file('passport_size_photo')->store('vehicle_scheme_file/passport_size_photo', 'public');
                 $input['passport_size_photo'] = $imagePath1;
             }
-            
+
             $vehicle_scheme->update(Arr::only($input, VehicleScheme::getFillables()));
+
+            // update dynamic document
+            $documentTypeIds = $request->input('document_id');
+            if ($request->hasFile("document_file")) {
+                DB::table('trans_vehicle_scheme_documents')->where('vehicle_id',$vehicle_scheme['id'])->delete();
+                $files = $request->file("document_file");
+                foreach ($files as $key => $file) {
+                    $documentTypeId = $documentTypeIds[$key];
+                    $imageName = time() . '_' . $file->getClientOriginalName();
+                    $file->move('vehicle_scheme_file/', $imageName);
+                    DB::table('trans_vehicle_scheme_documents')->insert([
+                        "document_file" => $imageName,
+                        'document_id' => $documentTypeId,
+                        "vehicle_id" => $vehicle_scheme['id'],
+                        "updated_by" => Auth::user()->id,
+                        "updated_at" => date('Y-m-d H:i:s'),
+                    ]);
+                }
+            }
+
             DB::commit();
             return response()->json(['success' => 'Vehicle Scheme updated successfully!']);
         } catch (\Exception $e) {

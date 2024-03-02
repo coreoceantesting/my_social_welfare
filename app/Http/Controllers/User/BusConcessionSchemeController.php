@@ -159,6 +159,26 @@ class BusConcessionSchemeController extends Controller
             }
 
             $bus_concession->update(Arr::only($input, BusConcession::getFillables()));
+
+            // update dynamic document
+            $documentTypeIds = $request->input('document_id');
+            if ($request->hasFile("document_file")) {
+                DB::table('trans_bus_concession_scheme_documents')->where('bus_concession_id',$bus_concession['id'])->delete();
+                $files = $request->file("document_file");
+                foreach ($files as $key => $file) {
+                    $documentTypeId = $documentTypeIds[$key];
+                    $imageName = time() . '_' . $file->getClientOriginalName();
+                    $file->move('bus_concession_file/', $imageName);
+                    DB::table('trans_bus_concession_scheme_documents')->insert([
+                        "document_file" => $imageName,
+                        'document_id' => $documentTypeId,
+                        "bus_concession_id" => $bus_concession['id'],
+                        "updated_by" => Auth::user()->id,
+                        "updated_at" => date('Y-m-d H:i:s'),
+                    ]);
+                }
+            }
+
             DB::commit();
             return response()->json(['success' => 'Bus Concession updated successfully!']);
         } catch (\Exception $e) {

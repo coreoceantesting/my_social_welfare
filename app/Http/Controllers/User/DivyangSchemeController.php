@@ -178,6 +178,25 @@ class DivyangSchemeController extends Controller
 
             $scheme_form->update(Arr::only($input, DisabilityApplication::getFillables()));
 
+            // update dynamic documents
+            $documentTypeIds = $request->input('document_id');
+            if ($request->hasFile("document_file")) {
+                DB::table('trans_divyang_scheme_documents')->where('divyang_id',$scheme_form['id'])->delete();
+                $files = $request->file("document_file");
+                foreach ($files as $key => $file) {
+                    $documentTypeId = $documentTypeIds[$key];
+                    $imageName = time() . '_' . $file->getClientOriginalName();
+                    $file->move('divyang_nodani_file/', $imageName);
+                    DB::table('trans_divyang_scheme_documents')->insert([
+                        "document_file" => $imageName,
+                        'document_id' => $documentTypeId,
+                        "divyang_id" => $scheme_form['id'],
+                        "updated_by" => Auth::user()->id,
+                        "updated_at" => date('Y-m-d H:i:s'),
+                    ]);
+                }
+            }
+
             DB::commit();
             return response()->json(['success' => 'Disability Application updated successfully!']);
         } catch (\Exception $e) {

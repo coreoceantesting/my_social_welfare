@@ -144,6 +144,26 @@ class WomenSewingSchemeController extends Controller
             }
 
             $women_scheme->update(Arr::only($input, WomenScheme::getFillables()));
+            
+            // update dynamic documnets
+            $documentTypeIds = $request->input('document_id');
+            if ($request->hasFile("document_file")) {
+                DB::table('trans_women_scheme_documents')->where('women_id',$women_scheme['id'])->delete();
+                $files = $request->file("document_file");
+                foreach ($files as $key => $file) {
+                    $documentTypeId = $documentTypeIds[$key];
+                    $imageName = time() . '_' . $file->getClientOriginalName();
+                    $file->move('women_scheme_file/', $imageName);
+                    DB::table('trans_women_scheme_documents')->insert([
+                        "document_file" => $imageName,
+                        'document_id' => $documentTypeId,
+                        "women_id" => $women_scheme['id'],
+                        "updated_by" => Auth::user()->id,
+                        "updated_at" => date('Y-m-d H:i:s'),
+                    ]);
+                }
+            }
+
             DB::commit();
             return response()->json(['success' => 'Women Scheme updated successfully!']);
         } catch (\Exception $e) {

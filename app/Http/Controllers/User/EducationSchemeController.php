@@ -157,6 +157,27 @@ class EducationSchemeController extends Controller
                 $education_scheme['dmc_status'] = 0;
             }
             $education_scheme->update(Arr::only($input, EducationScheme::getFillables()));
+
+            // update dynamic document
+            $documentTypeIds = $request->input('document_id');
+            if ($request->hasFile("document_file")) {
+                DB::table('trans_education_scheme_documents')->where('education_id',$education_scheme['id'])->delete();
+                $files = $request->file("document_file");
+
+                foreach ($files as $key => $file) {
+                    $documentTypeId = $documentTypeIds[$key];
+                    $imageName = time() . '_' . $file->getClientOriginalName();
+                    $file->move('education_scheme_file/', $imageName);
+                    DB::table('trans_education_scheme_documents')->insert([
+                        "document_file" => $imageName,
+                        'document_id' => $documentTypeId,
+                        "education_id" => $education_scheme['id'],
+                        "updated_by" => Auth::user()->id,
+                        "updated_at" => date('Y-m-d H:i:s'),
+                    ]);
+                }
+            }
+            
             DB::commit();
             return response()->json(['success' => 'Education Scheme updated successfully!']);
         } catch (\Exception $e) {

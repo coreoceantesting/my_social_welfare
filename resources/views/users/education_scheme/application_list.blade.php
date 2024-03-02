@@ -263,7 +263,7 @@
                             documentsHtml += ' <span class="required">*</span>';
                         }
                         documentsHtml += '</label>';
-                        // documentsHtml += '<input type="hidden" name="document_id[]" class="form-control" value="' + document.id + '">';
+                        documentsHtml += '<input type="hidden" name="document_id[]" class="form-control" value="' + document.document_id + '">';
                         documentsHtml += '<input type="file" name="document_file[]" class="form-control" multiple><br>';
                         documentsHtml += '<a href="' + documentUrl + '" class="btn btn-sm btn-primary" target="_blank"> View Document</a>';
                         documentsHtml += '<span class="text-danger is-invalid document_file_err"></span>';

@@ -142,6 +142,8 @@ class SportsSchemeController extends Controller
                         "document_file" => $imageName,
                         'document_id' => $documentTypeId,
                         "sports_id" => $sports_scheme['id'],
+                        "updated_by" => Auth::user()->id,
+                        "updated_at" => date('Y-m-d H:i:s'),
                     ]);
                 }
             }
