@@ -135,6 +135,7 @@ class MarriageSchemeController extends Controller
 
     public function update(UpdateMarriageRequest $request, MarriageScheme $marriage_scheme)
     {
+
         try {
             DB::beginTransaction();
             $input = $request->validated();
@@ -168,6 +169,25 @@ class MarriageSchemeController extends Controller
             }
 
             $marriage_scheme->update(Arr::only($input, MarriageScheme::getFillables()));
+
+            // update dynamic uploaded document
+            $documentTypeIds = $request->input('document_id');
+            if ($request->hasFile("document_file")) {
+                DB::table('trans_marriage_scheme_documents')->where('marriage_id',$marriage_scheme['id'])->delete();
+                $files = $request->file("document_file");
+                foreach ($files as $key => $file) {
+                    $documentTypeId = $documentTypeIds[$key];
+                    $imageName = time() . '_' . $file->getClientOriginalName();
+                    $file->move('marriage_scheme_file/', $imageName);
+                    DB::table('trans_marriage_scheme_documents')->insert([
+                        "document_file" => $imageName,
+                        'document_id' => $documentTypeId,
+                        "marriage_id" => $marriage_scheme['id'],
+                        "created_by" => Auth::user()->id,
+                        "created_at" => date('Y-m-d H:i:s'),
+                    ]);
+                }
+            }
             
             DB::commit();
             return response()->json(['success' => 'Marriage Scheme updated successfully!']);

@@ -128,6 +128,24 @@ class SportsSchemeController extends Controller
             }
 
             $sports_scheme->update(Arr::only($input, SportsScheme::getFillables()));
+            
+            // update uploaded dynamic document
+            $documentTypeIds = $request->input('document_id');
+            if ($request->hasFile("document_file")) {
+                DB::table('trans_sports_scheme_documents')->where('sports_id',$sports_scheme['id'])->delete();
+                $files = $request->file("document_file");
+                foreach ($files as $key => $file) {
+                    $documentTypeId = $documentTypeIds[$key];
+                    $imageName = time() . '_' . $file->getClientOriginalName();
+                    $file->move('sports_scheme_file/', $imageName);
+                    DB::table('trans_sports_scheme_documents')->insert([
+                        "document_file" => $imageName,
+                        'document_id' => $documentTypeId,
+                        "sports_id" => $sports_scheme['id'],
+                    ]);
+                }
+            }
+
             DB::commit();
             return response()->json(['success' => 'Sports Scheme updated successfully!']);
         } catch (\Exception $e) {
