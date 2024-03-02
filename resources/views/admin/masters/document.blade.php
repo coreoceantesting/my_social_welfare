@@ -22,7 +22,7 @@
                                         <select class="js-example-basic-single"  name="scheme_id">
                                             <option value="">--Select Scheme--</option>
                                             @foreach($scheme as $schemes)
-                                            <option value="{{ $schemes->id }}">{{ $schemes->scheme_name ?? ''}}</option>
+                                            <option value="{{ $schemes->id }}">{{ $schemes->scheme_name ?? ''}} ({{$schemes->scheme_marathi_name}})</option>
                                             @endforeach
                                         </select>
                                         <span class="text-danger is-invalid  scheme_id_err"></span>
@@ -81,7 +81,7 @@
                                         <select class="js-example-basic-single" id="scheme_id" name="scheme_id">
                                             <option value="">--Select Scheme--</option>
                                             @foreach($scheme as $schemes)
-                                            <option value="{{ $schemes->id }}">{{ $schemes->scheme_name }}</option>
+                                            <option value="{{ $schemes->id }}">{{ $schemes->scheme_name }} ({{$schemes->scheme_marathi_name}})</option>
                                             @endforeach
                                         </select>
                                         <span class="text-danger is-invalid  scheme_id_err"></span>

@@ -52,7 +52,7 @@ class DocumentController extends Controller
             <option value="">--Select Scheme--</option>';
             foreach($scheme as $schemes):
                 $is_select = $schemes->id == $document->scheme_id ? "selected" : "";
-                $schemeHtml .= '<option value="'.$schemes->id.'" '.$is_select.'>'.$schemes->scheme_name.'</option>';
+                $schemeHtml .= '<option value="'.$schemes->id.'" '.$is_select.'>'.$schemes->scheme_name. '('. $schemes->scheme_marathi_name . ')' . '</option>';
             endforeach;
             $schemeHtml .= '</span>';
 
