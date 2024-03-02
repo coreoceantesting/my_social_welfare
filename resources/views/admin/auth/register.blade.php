@@ -43,7 +43,7 @@
                                             <div class="card-header bg-dark text-center" style="height: 70px">
                                                 <h1 class="text-white">Register Account (खाते नोंदणी करा)</h1>
                                             </div>
-                                            <div class="card-body">
+                                            <div class="card-body bg-dark text-white">
                                                 <div class="mb-3 row">
                                                     <div class="col-md-4">
                                                         <label class="col-form-label" for="name">First Name (प्रथम नाव)<span class="text-danger">*</span></label>
@@ -169,7 +169,7 @@
                                                 </div>
 
                                             </div>
-                                            <div class="card-footer border-0" style="text-align: center;">
+                                            <div class="card-footer bg-dark text-white border-0" style="text-align: center;">
 
                                               <button class="btn btn-primary" style="width: 20%" type="submit" id="RegisterForm_submit">Sign Up</button>
                                               <div class="mt-3 text-center">
