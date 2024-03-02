@@ -118,6 +118,18 @@ class CancerSchemeController extends Controller
                 $cancer_scheme['dmc_status'] = 0;
             }
 
+            // document updated upload 
+            if ($request->hasFile('candidate_signature')) {
+                $imagePath = $request->file('candidate_signature')->store('cancer_scheme_file/candidate_signature', 'public');
+                $input['candidate_signature'] = $imagePath;
+            }
+
+            if ($request->hasFile('passport_size_photo')) {
+                $imagePath1 = $request->file('passport_size_photo')->store('cancer_scheme_file/passport_size_photo', 'public');
+                $input['passport_size_photo'] = $imagePath1;
+            }
+
+
             $cancer_scheme->update(Arr::only($input, CancerScheme::getFillables()));
             DB::commit();
             return response()->json(['success' => 'Cancer Scheme updated successfully!']);

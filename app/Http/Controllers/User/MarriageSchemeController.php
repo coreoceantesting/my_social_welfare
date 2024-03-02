@@ -156,7 +156,19 @@ class MarriageSchemeController extends Controller
                 $marriage_scheme['dmc_status'] = 0;
             }
 
+            // Handle file updates
+            if ($request->hasFile('candidate_signature')) {
+                $imagePath = $request->file('candidate_signature')->store('marriage_scheme_file/candidate_signature', 'public');
+                $input['candidate_signature'] = $imagePath;
+            }
+
+            if ($request->hasFile('passport_size_photo')) {
+                $imagePath1 = $request->file('passport_size_photo')->store('marriage_scheme_file/passport_size_photo', 'public');
+                $input['passport_size_photo'] = $imagePath1;
+            }
+
             $marriage_scheme->update(Arr::only($input, MarriageScheme::getFillables()));
+            
             DB::commit();
             return response()->json(['success' => 'Marriage Scheme updated successfully!']);
         } catch (\Exception $e) {

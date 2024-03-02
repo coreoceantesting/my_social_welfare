@@ -119,6 +119,18 @@ class VehicleSchemeController extends Controller
                 $vehicle_scheme['amc_status'] = 0;
                 $vehicle_scheme['dmc_status'] = 0;
             }
+
+            // update uploaded document
+            if ($request->hasFile('candidate_signature')) {
+                $imagePath = $request->file('candidate_signature')->store('vehicle_scheme_file/candidate_signature', 'public');
+                $input['candidate_signature'] = $imagePath;
+            }
+
+            if ($request->hasFile('passport_size_photo')) {
+                $imagePath1 = $request->file('passport_size_photo')->store('vehicle_scheme_file/passport_size_photo', 'public');
+                $input['passport_size_photo'] = $imagePath1;
+            }
+            
             $vehicle_scheme->update(Arr::only($input, VehicleScheme::getFillables()));
             DB::commit();
             return response()->json(['success' => 'Vehicle Scheme updated successfully!']);

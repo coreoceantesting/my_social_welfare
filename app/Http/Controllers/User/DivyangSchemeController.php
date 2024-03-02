@@ -164,6 +164,17 @@ class DivyangSchemeController extends Controller
                 $scheme_form['amc_status'] = 0;
                 $scheme_form['dmc_status'] = 0;
             }
+            
+            // update uploaded file
+            if ($request->hasFile('candidate_signature')) {
+                $imagePath = $request->file('candidate_signature')->store('divyang_nodani_file/candidate_signature', 'public');
+                $input['candidate_signature'] = $imagePath;
+            }
+
+            if ($request->hasFile('passport_size_photo')) {
+                $imagePath1 = $request->file('passport_size_photo')->store('divyang_nodani_file/passport_size_photo', 'public');
+                $input['passport_size_photo'] = $imagePath1;
+            }
 
             $scheme_form->update(Arr::only($input, DisabilityApplication::getFillables()));
 

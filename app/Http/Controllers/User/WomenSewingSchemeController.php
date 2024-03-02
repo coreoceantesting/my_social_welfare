@@ -132,6 +132,17 @@ class WomenSewingSchemeController extends Controller
                 $women_scheme['dmc_status'] = 0;
             }
 
+            // update uploaded file
+            if ($request->hasFile('candidate_signature')) {
+                $imagePath = $request->file('candidate_signature')->store('women_scheme_file/candidate_signature', 'public');
+                $input['candidate_signature'] = $imagePath;
+            }
+
+            if ($request->hasFile('passport_size_photo')) {
+                $imagePath1 = $request->file('passport_size_photo')->store('women_scheme_file/passport_size_photo', 'public');
+                $input['passport_size_photo'] = $imagePath1;
+            }
+
             $women_scheme->update(Arr::only($input, WomenScheme::getFillables()));
             DB::commit();
             return response()->json(['success' => 'Women Scheme updated successfully!']);
