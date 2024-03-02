@@ -29,7 +29,12 @@
 
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="name">Gender (लिंग) <span class="text-danger">*</span></label>
-                            <div class="form-check mb-2">
+                            <select class="form-control" name="gender" id="gender">
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                            {{-- <div class="form-check mb-2">
                                 <input class="form-check-input" type="radio" name="gender" id="genderMale" value="male">
                                 <label class="form-check-label" for="genderMale">
                                     Male
@@ -41,7 +46,7 @@
                                 <label class="form-check-label" for="genderFemale">
                                     Female
                                 </label>
-                            </div>
+                            </div> --}}
                             <span class="text-danger is-invalid gender_err"></span>
                         </div>
 
@@ -379,12 +384,12 @@
                     $("#editForm input[name='edit_model_id']").val(data.scheme_form.id);
                     $("#editForm input[name='full_name']").val(data.scheme_form.full_name);
                     $("#editForm input[name='full_address']").val(data.scheme_form.full_address);
-                    $("#editForm input[name='gender']").val(data.scheme_form.gender);
-                    if (data.scheme_form.gender === 'male') {
-                        $("#genderMale").prop('checked', true);
-                    } else if (data.scheme_form.gender === 'female') {
-                        $("#genderFemale").prop('checked', true);
-                    }
+                    $("#editForm select[name='gender']").val(data.scheme_form.gender);
+                    // if (data.scheme_form.gender === 'male') {
+                    //     $("#genderMale").prop('checked', true);
+                    // } else if (data.scheme_form.gender === 'female') {
+                    //     $("#genderFemale").prop('checked', true);
+                    // }
 
                     $("#editForm input[name='age']").val(data.scheme_form.age);
                     $("#editForm input[name='father_name']").val(data.scheme_form.father_name);
