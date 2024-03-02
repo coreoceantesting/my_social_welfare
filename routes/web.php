@@ -55,7 +55,7 @@ Route::middleware(['auth', 'PreventBackHistory'])->group(function () {
     // User Panel
     Route::get('pdf_design', [App\Http\Controllers\Admin\Masters\DivyangController::class, 'pdf']);
 
-    Route::get('terms_conditions/{id}', [App\Http\Controllers\Admin\DashboardController::class, 'terms_conditions'])->name('terms_conditions');
+    Route::get('terms_conditions/{id}/{scheme_name}', [App\Http\Controllers\Admin\DashboardController::class, 'terms_conditions'])->name('terms_conditions');
     Route::resource('hayatichaDakhlaform', App\Http\Controllers\Admin\Masters\DivyangController::class);
     Route::put('hayatichaDakhlaform/{id}/upload', [App\Http\Controllers\Admin\Masters\DivyangController::class, 'hayatuploadfile'])->name('hayatichaDakhlaform.upload');
 

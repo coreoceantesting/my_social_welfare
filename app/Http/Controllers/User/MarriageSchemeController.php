@@ -25,6 +25,7 @@ class MarriageSchemeController extends Controller
 
     public function index()
     {
+        $scheme_id = session('scheme_id');
         $userCategory = Auth::user()->category;
         if ($userCategory == 1 || $userCategory == 2) {
             $data = HayatFormModel::where('user_id', Auth::user()->id)
@@ -42,7 +43,7 @@ class MarriageSchemeController extends Controller
                 }
                 $wards = Ward::latest()->get();
                 $document = DB::table('document_type_msts')
-                    ->where('scheme_id', 4)
+                    ->where('scheme_id', $scheme_id)
                     ->whereNull('deleted_at')
                     ->orderBy('created_at', 'DESC')
                     ->get();

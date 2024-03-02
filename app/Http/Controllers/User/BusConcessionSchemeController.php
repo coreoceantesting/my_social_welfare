@@ -25,6 +25,7 @@ class BusConcessionSchemeController extends Controller
     public function index()
     {
         $userCategory = Auth::user()->category;
+        $scheme_id = session('scheme_id');
         if ($userCategory == 1 || $userCategory == 2) {
             $data = HayatFormModel::where('user_id', Auth::user()->id)
                 ->latest()
@@ -42,7 +43,7 @@ class BusConcessionSchemeController extends Controller
                 }
 
                 $document = DB::table('document_type_msts')
-                    ->where('scheme_id', 2)
+                    ->where('scheme_id', $scheme_id)
                     ->whereNull('deleted_at')
                     ->orderBy('created_at', 'DESC')
                     ->get();

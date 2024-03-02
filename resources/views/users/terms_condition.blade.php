@@ -32,7 +32,6 @@
                                         </div>
                                         <div class="hstack gap-2 justify-content-end d-print-none mt-4">
                                             @if(isset($terms->id))
-
                                             @if($terms->scheme_name == 'Divyang Nondani Application')
                                             <a href="{{ route('scheme_form.index') }}" class="btn btn-primary"> Continue</a>
                                             @elseif($terms->scheme_name == 'Bus Concession Scheme')

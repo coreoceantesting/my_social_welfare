@@ -39,6 +39,7 @@ class DivyangSchemeController extends Controller
 
     public function index()
     {
+        $scheme_id = session('scheme_id');
         $data = HayatFormModel::where('user_id', Auth::user()->id)->latest()->first();
 
         if (empty($data)) {
@@ -58,7 +59,7 @@ class DivyangSchemeController extends Controller
                 $wards = Ward::latest()->get();
 
                 $document = DB::table('document_type_msts')
-                    ->where('scheme_id', 1)
+                    ->where('scheme_id', $scheme_id)
                     ->whereNull('deleted_at')
                     ->orderBy('created_at', 'DESC')
                     ->get();

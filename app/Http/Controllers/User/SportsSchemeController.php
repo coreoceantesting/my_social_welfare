@@ -10,6 +10,7 @@ use App\Models\SportsSchemeDocuments_model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class SportsSchemeController extends Controller
 {
@@ -19,15 +20,16 @@ class SportsSchemeController extends Controller
         return view('users.sports_scheme.application_list')->with(['sports' => $sports]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-
+        $scheme_id = session('scheme_id');
+        // dd($scheme_id);
         $sports = SportsScheme::where('created_by', Auth::user()->id)->latest()->first();
         if (!empty($sports)) {
             return redirect('sports_scheme_application')->with('warning', 'You Have already apply for this form');
         }
         $document = DB::table('document_type_msts')
-            ->where('scheme_id', 5)
+            ->where('scheme_id', $scheme_id)
             ->whereNull('deleted_at')
             ->orderBy('created_at', 'DESC')
             ->get();

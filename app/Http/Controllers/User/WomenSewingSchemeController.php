@@ -24,6 +24,7 @@ class WomenSewingSchemeController extends Controller
 
     public function index()
     {
+        $scheme_id = session('scheme_id');
         $women = WomenScheme::where('created_by', Auth::user()->id)->latest()->first();
         if (!empty($women)) {
             return redirect('women_scheme_application')->with('warning', 'You Have already apply for this form');
@@ -31,7 +32,7 @@ class WomenSewingSchemeController extends Controller
         $wards = Ward::latest()->get();
 
         $document = DB::table('document_type_msts')
-            ->where('scheme_id', 6)
+            ->where('scheme_id', $scheme_id)
             ->whereNull('deleted_at')
             ->orderBy('created_at', 'DESC')
             ->get();

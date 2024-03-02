@@ -62,7 +62,7 @@
                                                 </div>
                                                 <div class="card-footer border-0">
                                                     <div class="save-btn text-center">
-                                                        <a href="{{ route('terms_conditions', $schemes->id) }}">
+                                                        <a href="{{ route('terms_conditions', ['id' => $schemes->id, 'scheme_name' => $schemes->scheme_name]) }}">
                                                             <button type="button" class="btn btn-blue btn-rounded width-md waves-effect waves-light text-white" style="background-color:#8c68cd; color:#000000;">Apply &nbsp;<i class="fas fa-check"></i>
                                                             </button>
                                                         </a>

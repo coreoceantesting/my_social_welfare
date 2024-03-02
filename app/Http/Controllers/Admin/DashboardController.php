@@ -1813,7 +1813,7 @@ class DashboardController extends Controller
         return true;
     }
 
-    public function terms_conditions($id)
+    public function terms_conditions($id,$scheme_name)
     {
 
         // print_r('hii');exit;
@@ -1824,6 +1824,9 @@ class DashboardController extends Controller
             ->whereNull('t1.deleted_at')
             ->orderBy('t1.created_at', 'DESC')
             ->first();
+            if (isset($terms->id)) {
+                session(['scheme_id' => $terms->id]);
+            }
 
         return view('users.terms_condition', compact('terms'));
     }
