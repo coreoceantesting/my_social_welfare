@@ -34,7 +34,7 @@ class StoreSportsRequest extends FormRequest
             'passport_size_photo'=> 'required',
             'sports_id'=>'nullable',
             'document_id'=>'nullable',
-            'document_file'=>'required',
+            'document_file'=>'nullable',
         ];
     }
 }

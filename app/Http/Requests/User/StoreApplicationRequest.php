@@ -53,7 +53,7 @@ class StoreApplicationRequest extends FormRequest
             'passport_size_photo'=> 'required',
             'divyang_id'=>'nullable',
             'document_id'=>'nullable',
-            'document_file'=>'required',
+            'document_file'=>'nullable',
         ];
     }
 }

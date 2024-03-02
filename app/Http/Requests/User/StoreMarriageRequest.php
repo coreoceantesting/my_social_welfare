@@ -43,7 +43,7 @@ class StoreMarriageRequest extends FormRequest
             'passport_size_photo'=> 'required',
             'marriage_id'=>'nullable',
             'document_id'=>'nullable',
-            'document_file'=>'required',
+            'document_file'=>'nullable',
         ];
     }
 }

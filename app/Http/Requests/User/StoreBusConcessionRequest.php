@@ -35,7 +35,7 @@ class StoreBusConcessionRequest extends FormRequest
             'passport_size_photo'=> 'required',
             'bus_concession_id'=>'nullable',
             'document_id'=>'nullable',
-            'document_file'=>'required',
+            'document_file'=>'nullable',
         ];
     }
 }
