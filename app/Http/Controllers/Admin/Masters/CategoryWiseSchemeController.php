@@ -54,7 +54,7 @@ class CategoryWiseSchemeController extends Controller
             <option value="">--Select Scheme Name--</option>';
             foreach ($data as $value) :
                 $is_select = $value->id == $category_wise_scheme->scheme_id ? "selected" : "";
-                $schemeHtml .= '<option value="' . $value->id . '" ' . $is_select . '>' . $value->scheme_name . '</option>';
+                $schemeHtml .= '<option value="' . $value->id . '" ' . $is_select . '>' . $value->scheme_name . '('. $value->scheme_marathi_name .')' . '</option>';
             endforeach;
             $schemeHtml .= '</span>';
 

@@ -64,7 +64,12 @@
                                                 <div class="mb-3 row">
                                                     <div class="col-md-4">
                                                         <label class="col-form-label" for="name">Gender(लिंग) <span class="text-danger">*</span></label>
-                                                        <div class="form-check mb-2">
+                                                        <select class="form-control" name="gender" id="gender">
+                                                            <option value="">Select Gender</option>
+                                                            <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
+                                                            <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
+                                                        </select>
+                                                        {{-- <div class="form-check mb-2">
                                                             <input class="form-check-input" type="radio" name="gender" id="gender" value="male" {{ old('gender') == 'male' ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="flexRadioDefault1">
                                                                 Male
@@ -76,7 +81,7 @@
                                                             <label class="form-check-label" for="flexRadioDefault2">
                                                                 Female
                                                             </label>
-                                                        </div>
+                                                        </div> --}}
                                                         <span class="text-danger is-invalid gender_err"></span>
                                                     </div>
                                                     <div class="col-md-4">
