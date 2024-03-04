@@ -57,7 +57,12 @@
 
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="name">Gender/ लिंग <span class="text-danger">*</span></label>
-                            <div class="form-check mb-2">
+                            <select class="form-control" name="gender" id="gender">
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                            {{-- <div class="form-check mb-2">
                                 <input class="form-check-input" type="radio" name="gender" id="genderMale" value="male">
                                 <label class="form-check-label" for="genderMale">
                                     Male
@@ -69,7 +74,7 @@
                                 <label class="form-check-label" for="genderFemale">
                                     Female
                                 </label>
-                            </div>
+                            </div> --}}
                             <span class="text-danger is-invalid gender_err"></span>
                         </div>
 
@@ -128,6 +133,27 @@
                             <label class="col-form-label" for="account_no">बँक खाते नंबर<span class="text-danger">*</span></label>
                             <input class="form-control" id="account_no" name="account_no" type="text" placeholder="Enter Account Number">
                             <span class="text-danger is-invalid account_no_err"></span>
+                        </div>
+
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="is_income_doc">Do you have income tax return? (तुमच्याकडे उत्पन्नाचा दाखल आहे ?) <span class="text-danger">*</span></label>
+                                <select class="js-example-basic-single" name="is_income_doc" >
+                                    <option value="">--Select--</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            <span class="text-danger is-invalid  is_income_doc_err"></span>
+                        </div>
+
+
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="is_medical_doc">Do you have a medical officer's certificate? (तुमच्याकडे वैद्यकीय अधिकाऱ्याचे प्रमाणपत्र आहे ?) <span class="text-danger">*</span></label>
+                                <select class="js-example-basic-single" name="is_medical_doc" >
+                                    <option value="">--Select--</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            <span class="text-danger is-invalid  is_medical_doc_err"></span>
                         </div>
 
                     </div>
@@ -278,12 +304,14 @@
                     $("#editForm input[name='contact']").val(data.cancer_scheme.contact);
                     $("#editForm input[name='age']").val(data.cancer_scheme.age);
                     $("#editForm input[name='dob']").val(data.cancer_scheme.dob);
-                    $("#editForm input[name='gender']").val(data.cancer_scheme.gender);
-                    if (data.cancer_scheme.gender === 'male') {
-                        $("#genderMale").prop('checked', true);
-                    } else if (data.cancer_scheme.gender === 'female') {
-                        $("#genderFemale").prop('checked', true);
-                    }
+                    $("#editForm select[name='gender']").val(data.cancer_scheme.gender).trigger('change');
+                    $("#editForm select[name='is_income_doc']").val(data.cancer_scheme.is_income_doc).trigger('change');
+                    $("#editForm select[name='is_medical_doc']").val(data.cancer_scheme.is_medical_doc).trigger('change');
+                    // if (data.cancer_scheme.gender === 'male') {
+                    //     $("#genderMale").prop('checked', true);
+                    // } else if (data.cancer_scheme.gender === 'female') {
+                    //     $("#genderFemale").prop('checked', true);
+                    // }
 
                     $("#editForm input[name='duration_of_residence']").val(data.cancer_scheme.duration_of_residence);
                     $("#editForm input[name='adhaar_no']").val(data.cancer_scheme.adhaar_no);

@@ -30,6 +30,8 @@ class CancerScheme extends BaseModel
        'account_no',
        'candidate_signature',
        'passport_size_photo',
+       'is_income_doc',
+       'is_medical_doc'
     ];
 
 

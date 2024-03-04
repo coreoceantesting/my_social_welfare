@@ -37,6 +37,8 @@ class UpdateCancerRequest extends FormRequest
        'account_no'=>'required',
        'candidate_signature'=> 'nullable',
        'passport_size_photo'=> 'nullable',
+       'is_income_doc'=>'required',
+       'is_medical_doc'=>'required',
         ];
     }
 }

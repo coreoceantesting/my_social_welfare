@@ -40,6 +40,8 @@ class StoreCancerRequest extends FormRequest
        'cancer_id'=>'nullable',
        'document_id'=>'nullable',
        'document_file'=>'nullable',
+       'is_income_doc'=>'required',
+       'is_medical_doc'=>'required',
         ];
     }
 }
