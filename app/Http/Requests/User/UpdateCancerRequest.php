@@ -39,6 +39,10 @@ class UpdateCancerRequest extends FormRequest
        'passport_size_photo'=> 'nullable',
        'is_income_doc'=>'required',
        'is_medical_doc'=>'required',
+       'bank_name'=>'required',
+       'branch_name'=>'required',
+       'account_holder_name'=>'required',
+       'ifsc_code'=>'required',
         ];
     }
 }

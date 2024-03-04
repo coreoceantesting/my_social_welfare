@@ -118,9 +118,33 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="bank_name">Bank Name/बँकेचे नाव<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="bank_name" name="bank_name" type="text" placeholder="Enter Bank Name">
+                                    <span class="text-danger is-invalid bank_name_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="branch_name">Branch Name/शाखेचे नाव<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="branch_name" name="branch_name" type="text" placeholder="Enter Branch Name">
+                                    <span class="text-danger is-invalid branch_name_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="account_holder_name">Account Holder Name/खातेधारकाचे नाव<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="account_holder_name" name="account_holder_name" type="text" placeholder="Enter Account Holder Name">
+                                    <span class="text-danger is-invalid account_holder_name_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="account_no">Account No/बँक खाते नंबर<span class="text-danger">*</span></label>
                                     <input class="form-control" id="account_no" name="account_no" type="text" placeholder="Enter Account Number">
                                     <span class="text-danger is-invalid account_no_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="ifsc_code">IFSC Code/आयएफएससी कोड<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="ifsc_code" name="ifsc_code" type="text" placeholder="Enter IFSC Code">
+                                    <span class="text-danger is-invalid ifsc_code_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">

@@ -130,9 +130,33 @@
                         </div>
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="account_no">बँक खाते नंबर<span class="text-danger">*</span></label>
+                            <label class="col-form-label" for="bank_name">Bank Name/बँकेचे नाव<span class="text-danger">*</span></label>
+                            <input class="form-control" id="bank_name" name="bank_name" type="text" placeholder="Enter Bank Name">
+                            <span class="text-danger is-invalid bank_name_err"></span>
+                        </div>
+
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="branch_name">Branch Name/शाखेचे नाव<span class="text-danger">*</span></label>
+                            <input class="form-control" id="branch_name" name="branch_name" type="text" placeholder="Enter Branch Name">
+                            <span class="text-danger is-invalid branch_name_err"></span>
+                        </div>
+
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="account_holder_name">Account Holder Name/खातेधारकाचे नाव<span class="text-danger">*</span></label>
+                            <input class="form-control" id="account_holder_name" name="account_holder_name" type="text" placeholder="Enter Account Holder Name">
+                            <span class="text-danger is-invalid account_holder_name_err"></span>
+                        </div>
+
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="account_no">Account No/बँक खाते नंबर<span class="text-danger">*</span></label>
                             <input class="form-control" id="account_no" name="account_no" type="text" placeholder="Enter Account Number">
                             <span class="text-danger is-invalid account_no_err"></span>
+                        </div>
+
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="ifsc_code">IFSC Code/आयएफएससी कोड<span class="text-danger">*</span></label>
+                            <input class="form-control" id="ifsc_code" name="ifsc_code" type="text" placeholder="Enter IFSC Code">
+                            <span class="text-danger is-invalid ifsc_code_err"></span>
                         </div>
 
                         <div class="col-md-4 mt-3">
@@ -245,14 +269,14 @@
         								    @endif
                                             <td>
                                                 @if($row->hod_status == 0 && $row->ac_status == 0 && $row->amc_status == 0 && $row->dmc_status == 0)
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $row->id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $row->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn btn-sm btn-primary text-white px-2 py-1" title="Edit category" data-id="{{ $row->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn text-danger btn-sm btn-danger text-white rem-element px-2 py-1" title="Delete category" data-id="{{ $row->id }}"><i data-feather="trash-2"></i> </button>
                                                 @elseif($row->hod_status == 2 || $row->ac_status == 2|| $row->amc_status == 2 || $row->dmc_status == 2)
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $row->id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $row->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn btn-sm btn-primary text-white px-2 py-1" title="Edit category" data-id="{{ $row->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn text-danger btn-sm btn-danger text-white rem-element px-2 py-1" title="Delete category" data-id="{{ $row->id }}"><i data-feather="trash-2"></i> </button>
                                                 @endif
 
-                                                <a href="{{ url('cancer_scheme_certificate_view/'.$row->id) }}" class="btn btn-primary shadow btn-xs sharp me-1"> <i class="fas fa-eye"></i></a>
+                                                <a href="{{ url('cancer_scheme_certificate_view/'.$row->id) }}" class="btn btn-primary shadow btn-sm sharp me-1"> <i class="fas fa-eye"></i></a>
                                             </td>
 
                                             @if($row->dmc_status == 1)
@@ -319,6 +343,10 @@
                     $("#editForm input[name='diagnosis_date']").val(data.cancer_scheme.diagnosis_date);
                     $("#editForm input[name='hospital_name']").val(data.cancer_scheme.hospital_name);
                     $("#editForm input[name='account_no']").val(data.cancer_scheme.account_no);
+                    $("#editForm input[name='bank_name']").val(data.cancer_scheme.bank_name);
+                    $("#editForm input[name='branch_name']").val(data.cancer_scheme.branch_name);
+                    $("#editForm input[name='account_holder_name']").val(data.cancer_scheme.account_holder_name);
+                    $("#editForm input[name='ifsc_code']").val(data.cancer_scheme.ifsc_code);
                     $("#editForm a#candidate_signature").attr('href', "{{ asset('storage/') }}/" + data.cancer_scheme.candidate_signature);
                     $("#editForm a#passport_size_photo").attr('href', "{{ asset('storage/') }}/" + data.cancer_scheme.passport_size_photo);
 
