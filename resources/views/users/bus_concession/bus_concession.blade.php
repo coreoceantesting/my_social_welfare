@@ -115,6 +115,16 @@
                                     <span class="text-danger is-invalid  is_residental_doc_err"></span>
                                 </div>
 
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="is_divyang_doc">Do you have disability certificate? (तुमच्याकडे दिव्यांग प्रमाणपत्र आहे ?) <span class="text-danger">*</span></label>
+                                        <select class="js-example-basic-single" name="is_divyang_doc" >
+                                            <option value="">--Select--</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    <span class="text-danger is-invalid  is_divyang_doc_err"></span>
+                                </div>
+
                                 @foreach ($document as $doc)
                                 <div class="col-md-4 mt-3">
                                         <label class="col-form-label" for="document_name">{{$doc->document_name}} @if($doc->is_required==1) <span class="text-danger">*</span> @endif</label>

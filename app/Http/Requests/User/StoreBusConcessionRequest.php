@@ -38,6 +38,7 @@ class StoreBusConcessionRequest extends FormRequest
             'document_file'=>'nullable',
             'is_bonafied_doc'=>'required',
             'is_residental_doc'=>'required',
+            'is_divyang_doc'=>'required',
         ];
     }
 }

@@ -84,6 +84,9 @@ class BusConcessionSchemeController extends Controller
 
             $input['is_bonafied_doc'] = $request->input('is_bonafied_doc');
             $input['is_residental_doc'] = $request->input('is_residental_doc');
+            $input['is_divyang_doc'] = $request->input('is_divyang_doc');
+
+            
 
             $unique_id = "BUS-SCH" . rand(100000, 10000000);
             $input['application_no'] = $unique_id;
@@ -163,6 +166,7 @@ class BusConcessionSchemeController extends Controller
             
             $input['is_bonafied_doc'] = $request->input('is_bonafied_doc');
             $input['is_residental_doc'] = $request->input('is_residental_doc');
+            $input['is_divyang_doc'] = $request->input('is_divyang_doc');
 
             $bus_concession->update(Arr::only($input, BusConcession::getFillables()));
 

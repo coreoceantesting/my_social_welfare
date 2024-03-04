@@ -35,6 +35,9 @@ class UpdateBusConcessionRequest extends FormRequest
             'type_of_discount'=>'required',
             'candidate_signature'=> 'nullable',
             'passport_size_photo'=> 'nullable',
+            'is_bonafied_doc'=>'required',
+            'is_residental_doc'=>'required',
+            'is_divyang_doc'=>'required',
 
         ];
     }
