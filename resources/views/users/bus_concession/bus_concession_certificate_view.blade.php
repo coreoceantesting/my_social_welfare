@@ -11,7 +11,13 @@
 
                     <div class="card"  id="divToPrint">
                         <div class="body" style="padding:60px;">
-                            <div class="row">
+                            <table>
+                                <tr>
+                                    <th><img class="img-fluid " src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="Awesome Image" style="height:100px; width:150px;"></th>
+                                    <th><h1 style="padding-left: 50px;"><strong>पनवेल महानगरपालिका</strong></h1></th>
+                                  </tr>
+                            </table>
+                            <div class="row d-none">
                                 <div class="col-md-3" >
                                     <div class="icon-box">
                                         <img class="img-fluid " src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="Awesome Image" style="height:100px; width:150px;">
@@ -22,17 +28,27 @@
                                 </div>
                             </div>
                             <hr>
-                            <div class="row">
+                            <table style="width:100%">
+                                <tr>
+                                <th><p ><strong>Email : </strong> panvelcorporation@gmail.com</p></th>
+                                <th><p style="float: right"><strong>दूरध्वनी क्र. </strong>०२२२७४५८०४०/४१/४२ </p></th>
+                                </tr>
+                            </table>
+                            <div class="row d-none">
                                 <div class="col-md-8 col-sm-8">
                                     <p class="mb-1"><strong>Email : </strong> panvelcorporation@gmail.com</p>
                                 </div>
-                                <div class="col-md-4 col-sm-4 text-left" style="padding-left:60px;">
+                                <div class="col-md-4 col-sm-4 text-left">
                                     <p class="mb-1"><strong>दूरध्वनी क्र. </strong>०२२२७४५८०४०/४१/४२ </p>
                                 </div>
                             </div>
-                            <hr class="mb-1">
-
-                            <div class="row pt-0">
+                            <hr>
+                            <table style="width:100%">
+                                <tr>
+                                    <th><p style="float: right"><strong>दिनांक : </strong>{{ \Carbon\Carbon::now()->format('d/m/Y') }}</p></th>
+                                </tr>
+                            </table>
+                            <div class="row pt-0 d-none ">
                                 <div class="col-md-10 col-sm-10">
 
                                 </div>
@@ -41,7 +57,7 @@
                                        Date :
                                        {{ \Carbon\Carbon::now()->format('d/m/Y') }}
                                     </div>
-                                </div>
+                            </div>
 
 
 
@@ -167,9 +183,9 @@
                             <p class="mb-0">
                                 <strong>  अर्जदाराची सही / अगंठा </strong>
                             </p>
-                            {{-- <p class="mb-0">
-                                <strong>(नावः) </strong>
-                            </p> --}}
+                            <p class="mb-0">
+                                <strong>(नावः {{ $data->full_name }}s) </strong>
+                            </p>
                         </div>
                     </div>
                     <br>
@@ -201,9 +217,9 @@
                             <p class="mb-0">
                                 <strong>  अर्जदाराची सही / अगंठा </strong>
                             </p>
-                            {{-- <p class="mb-0">
-                                <strong>(नावः) </strong>
-                            </p> --}}
+                            <p class="mb-0">
+                                <strong>(नावः {{ $data->full_name }}) </strong>
+                            </p>
                         </div>
                     </div>
 
