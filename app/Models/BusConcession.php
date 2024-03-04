@@ -27,6 +27,8 @@ class BusConcession extends BaseModel
     'type_of_discount',
     'candidate_signature',
     'passport_size_photo',
+    'is_bonafied_doc',
+    'is_residental_doc'
     ];
 
     public static function booted()

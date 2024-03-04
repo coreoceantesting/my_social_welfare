@@ -82,6 +82,9 @@ class BusConcessionSchemeController extends Controller
                 $input['passport_size_photo'] = $imagePath1;
             }
 
+            $input['is_bonafied_doc'] = $request->input('is_bonafied_doc');
+            $input['is_residental_doc'] = $request->input('is_residental_doc');
+
             $unique_id = "BUS-SCH" . rand(100000, 10000000);
             $input['application_no'] = $unique_id;
             $bus_concession = BusConcession::create(Arr::only($input, BusConcession::getFillables()));
@@ -157,6 +160,9 @@ class BusConcessionSchemeController extends Controller
                 $bus_concession['amc_status'] = 0;
                 $bus_concession['dmc_status'] = 0;
             }
+            
+            $input['is_bonafied_doc'] = $request->input('is_bonafied_doc');
+            $input['is_residental_doc'] = $request->input('is_residental_doc');
 
             $bus_concession->update(Arr::only($input, BusConcession::getFillables()));
 

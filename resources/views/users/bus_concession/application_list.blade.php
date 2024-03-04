@@ -92,6 +92,27 @@
                             <span class="text-danger is-invalid passport_size_photo_err"></span>
                         </div>
 
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="is_bonafied_doc">Do You Have Bonafied Certificate? (तुमच्याकडे बोनाफाईड प्रमाणपत्र आहे का?) <span class="text-danger">*</span></label>
+                                <select class="js-example-basic-single" name="is_bonafied_doc" >
+                                    <option value="">--Select--</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            <span class="text-danger is-invalid  is_bonafied_doc_err"></span>
+                        </div>
+
+
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="is_residental_doc">Do you have proof of residence in municipal area? (तुमच्याकडे महानगरपालिका क्षेत्रातील वास्तव्याचा पुरावा आहे ?) <span class="text-danger">*</span></label>
+                                <select class="js-example-basic-single" name="is_residental_doc" >
+                                    <option value="">--Select--</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            <span class="text-danger is-invalid  is_residental_doc_err"></span>
+                        </div>
+
                     </div>
 
                     <div class="mb-3 row" id="yourDocumentsContainer">
@@ -246,6 +267,8 @@
                     $("#editForm input[name='adhaar_no']").val(data.bus_concession.adhaar_no);
                     $("#editForm input[name='class_name']").val(data.bus_concession.class_name);
                     $("#editForm input[name='school_name']").val(data.bus_concession.school_name);
+                    $("#editForm select[name='is_bonafied_doc']").val(data.bus_concession.is_bonafied_doc).trigger('change');
+                    $("#editForm select[name='is_residental_doc']").val(data.bus_concession.is_residental_doc).trigger('change');
                     $("#editForm select[name='type_of_discount']").val(data.bus_concession.type_of_discount).trigger('change');
                     $("#editForm select[name='type_of_discount']").val();
                     $("#editForm a#candidate_signature").attr('href', "{{ asset('storage/') }}/" + data.bus_concession.candidate_signature);

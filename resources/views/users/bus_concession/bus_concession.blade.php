@@ -94,7 +94,26 @@
                                     <span class="text-danger is-invalid passport_size_photo_err"></span>
                                 </div>
 
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="is_bonafied_doc">Do You Have Bonafied Certificate? (तुमच्याकडे बोनाफाईड प्रमाणपत्र आहे का?) <span class="text-danger">*</span></label>
+                                        <select class="js-example-basic-single" name="is_bonafied_doc" >
+                                            <option value="">--Select--</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    <span class="text-danger is-invalid  is_bonafied_doc_err"></span>
+                                </div>
 
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="is_residental_doc">Do you have proof of residence in municipal area? (तुमच्याकडे महानगरपालिका क्षेत्रातील वास्तव्याचा पुरावा आहे ?) <span class="text-danger">*</span></label>
+                                        <select class="js-example-basic-single" name="is_residental_doc" >
+                                            <option value="">--Select--</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    <span class="text-danger is-invalid  is_residental_doc_err"></span>
+                                </div>
 
                                 @foreach ($document as $doc)
                                 <div class="col-md-4 mt-3">

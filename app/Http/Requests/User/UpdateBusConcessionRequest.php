@@ -30,6 +30,8 @@ class UpdateBusConcessionRequest extends FormRequest
             'adhaar_no'=>'required',
             'class_name'=>'required',
             'school_name'=>'required',
+            'is_bonafied_doc'=>'required',
+            'is_residental_doc'=>'required',
             'type_of_discount'=>'required',
             'candidate_signature'=> 'nullable',
             'passport_size_photo'=> 'nullable',
