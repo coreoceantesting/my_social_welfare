@@ -4,138 +4,190 @@
     {{-- <x-slot name="subheading">Test</x-slot> --}}
     <style>
         .center-table {
-            border: 1px solid; /* Add your border style here */
+
+          border: 1px solid; /* Add your border style here */
         }
 
-        p {
-            white-space: nowrap;
-        }
-    </style>
+    p {
+        white-space: nowrap;
+    }
 
-    <!-- Add Form -->
-    <div class="row" id="addContainer" style="display:none;">
-        <div class="col-sm-12">
-            <div class="card">
-                <form class="theme-form" name="addForm" id="addForm" enctype="multipart/form-data">
-                    @csrf
-                    <div class="card-header">
-                        <h4 class="card-title">Add Terms And Conditions (अटी आणि नियम जोडा)</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="mb-3 row">
-                            <div class="col-md-4">
-                                <label class="col-form-label" for="name">Select Scheme (योजना निवडा) : </label>
-                                <select class="js-example-basic-single" name="scheme_id">
-                                    <option value="">--Select Scheme--</option>
-                                    @foreach($scheme as $schemes)
-                                    <option value="{{ $schemes->id }}">{{ $schemes->scheme_name ?? ''}} ({{ $schemes->scheme_marathi_name}})</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger is-invalid  scheme_id_err"></span>
-                            </div>
-                            <div class="col-md-8">
-                                <label class="col-form-label" for="rules_regulations">Terms And Conditions (नियम आणि अटी)<span class="text-danger">*</span></label>
-                                <textarea id="rules_regulations" name="rules_regulations"></textarea><br>
-                                <span class="text-danger is-invalid rules_regulations_err"></span>
+      </style>
+
+        <!-- Add Form -->
+        <div class="row" id="addContainer" style="display:none;">
+            <div class="col-sm-12">
+                <div class="card">
+                    <form class="theme-form" name="addForm" id="addForm" enctype="multipart/form-data">
+                        @csrf
+
+                        <div class="card-header">
+                            <h4 class="card-title">Add Terms And Conditions (अटी आणि नियम जोडा)</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3 row">
+
+                                <div class="col-md-4">
+                                    <label class="col-form-label" for="name">Select Scheme (योजना निवडा) : </label>
+                                        <select class="js-example-basic-single"  name="scheme_id">
+                                            <option value="">--Select Scheme--</option>
+                                            @foreach($scheme as $schemes)
+                                            <option value="{{ $schemes->id }}">{{ $schemes->scheme_name ?? ''}} ({{ $schemes->scheme_marathi_name}})</option>
+                                            @endforeach
+                                        </select>
+                                        <span class="text-danger is-invalid  scheme_id_err"></span>
+                                </div>
+
+                                {{-- <div class="col-md-4">
+                                    <label class="col-form-label" for="rules_regulations">Tearms And Conditions (नियम आणि अटी)<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="rules_regulations" name="rules_regulations" type="text" placeholder="Enter Document Name">
+                                    <span class="text-danger is-invalid rules_regulations_err"></span>
+                                </div> --}}
+
+                                <div class="col-md-8">
+                                    <label class="col-form-label" for="rules_regulations">Tearms And Conditions (नियम आणि अटी)<span class="text-danger">*</span></label>
+                                    <textarea  id="rules_regulations" name="rules_regulations"></textarea><br>
+                                    <span class="text-danger is-invalid rules_regulations_err"></span>
+                                </div>
+
+
                             </div>
                         </div>
-                    </div>
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary" id="addSubmit">Submit</button>
-                        <button type="reset" class="btn btn-warning">Reset</button>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary" id="addSubmit">Submit</button>
+                            <button type="reset" class="btn btn-warning">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+        {{-- Edit Form --}}
+        <div class="row" id="editContainer" style="display:none;">
+            <div class="col">
+                <form class="form-horizontal form-bordered" method="post" id="editForm">
+                    @csrf
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Edit Terms And Conditions (अटी आणि नियम संपादित करा)</h4>
+                        </div>
+                        <div class="card-body py-2">
+                            <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
+                            <div class="mb-3 row">
+
+                                <div class="col-md-4">
+                                    <label class="col-form-label" for="name">Select Scheme (योजना निवडा) : </label>
+                                        <select class="js-example-basic-single" id="scheme_id" name="scheme_id">
+
+
+                                        </select>
+                                        <span class="text-danger is-invalid  scheme_id_err"></span>
+                                </div>
+
+                                {{-- <div class="col-md-4">
+                                    <label class="col-form-label" for="rules_regulations">Tearms And Conditions <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="rules_regulations" name="rules_regulations" type="text" placeholder="Enter Document Name">
+                                    <span class="text-danger is-invalid rules_regulations_err"></span>
+                                </div> --}}
+
+                                <div class="col-md-8">
+                                    <label class="col-form-label" for="rules_regulations">Tearms And Conditions (नियम आणि अटी) <span class="text-danger">*</span></label>
+                                    <textarea id="long_desc2" name="rules_regulations"></textarea><br>
+                                    <span class="text-danger is-invalid rules_regulations_err"></span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary" id="editSubmit">Submit</button>
+                            <button type="reset" class="btn btn-warning">Reset</button>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
 
-    {{-- Edit Form --}}
-    <div class="row" id="editContainer" style="display:none;">
-        <div class="col">
-            <form class="form-horizontal form-bordered" method="post" id="editForm">
-                @csrf
+
+        <div class="row">
+            <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Edit Terms And Conditions (अटी आणि नियम संपादित करा)</h4>
-                    </div>
-                    <div class="card-body py-2">
-                        <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
-                        <div class="mb-3 row">
-                            <div class="col-md-4">
-                                <label class="col-form-label" for="name">Select Scheme (योजना निवडा) : </label>
-                                <select class="js-example-basic-single" id="scheme_id" name="scheme_id"></select>
-                                <span class="text-danger is-invalid  scheme_id_err"></span>
-                            </div>
-                            <div class="col-md-8">
-                                <label class="col-form-label" for="rules_regulations">Terms And Conditions (नियम आणि अटी) <span class="text-danger">*</span></label>
-                                <textarea id="long_desc2" name="rules_regulations"></textarea><br>
-                                <span class="text-danger is-invalid rules_regulations_err"></span>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="">
+                                    <button id="addToTable" class="btn btn-primary">Add <i class="fa fa-plus"></i></button>
+                                    <button id="btnCancel" class="btn btn-danger" style="display:none;">Cancel</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary" id="editSubmit">Submit</button>
-                        <button type="reset" class="btn btn-warning">Reset</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="">
-                                <button id="addToTable" class="btn btn-primary">Add <i class="fa fa-plus"></i></button>
-                                <button id="btnCancel" class="btn btn-danger" style="display:none;">Cancel</button>
-                            </div>
+                    @php
+                        $num = 1;
+                    @endphp
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Sr.No</th>
+                                        <th>Scheme</th>
+                                        <th>Tearms And Conditions</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($terms as $row)
+                                        <tr>
+                                            <td>{{ $num++ }}</td>
+                                            <td>{{ $row->scheme->scheme_name ?? '' }} ({{$row->scheme->scheme_marathi_name ?? 'No Scheme'}})</td>
+                                            <td>{!! substr($row->rules_regulations, 0, 100) !!} </td>
+                                            <td>
+                                                <button class="edit-element btn btn-primary text-white px-2 py-1" title="Edit terms" data-id="{{ $row->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn btn-danger text-white rem-element px-2 py-1" title="Delete terms" data-id="{{ $row->id }}"><i data-feather="trash-2"></i> </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
-                    </div>
-                </div>
-                @php
-                $num = 1;
-                @endphp
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>Sr.No</th>
-                                    <th>Scheme</th>
-                                    <th>Terms And Conditions</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($terms as $row)
-                                <tr>
-                                    <td>{{ $num++ }}</td>
-                                    <td>{{ $row->scheme->scheme_name ?? '' }} ({{$row->scheme->scheme_marathi_name ?? 'No Scheme'}})</td>
-                                    <td>{!! substr($row->rules_regulations, 0, 100) !!} </td>
-                                    <td>
-                                        <button class="edit-element btn btn-primary text-white px-2 py-1" title="Edit terms" data-id="{{ $row->id }}"><i data-feather="edit"></i></button>
-                                        <button class="btn btn-danger text-white rem-element px-2 py-1" title="Delete terms" data-id="{{ $row->id }}"><i data-feather="trash-2"></i> </button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+
+
 
 </x-admin.layout>
 
+
 {{-- Add --}}
+<script src="https://cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script>
 <script>
-    $("#addForm").submit(function (e) {
+    //  CKEDITOR.replace('rules_regulations');
+    //  CKEDITOR.replace('long_desc2');
+
+     CKEDITOR.replace('rules_regulations', {
+    inline: false  // Disable automatic inline editing
+});
+
+
+ CKEDITOR.replace('long_desc2', {
+    inline: false  // Disable automatic inline editing
+});
+
+    $("#addForm").submit(function(e) {
         e.preventDefault();
+
+         if (CKEDITOR.instances['rules_regulations']) {
+        CKEDITOR.instances['rules_regulations'].updateElement();
+    }
+
         $("#addSubmit").prop('disabled', true);
+
         var formdata = new FormData(this);
         $.ajax({
             url: '{{ route('terms-conditions.store') }}',
@@ -143,7 +195,8 @@
             data: formdata,
             contentType: false,
             processData: false,
-            success: function (data) {
+            success: function(data)
+            {
                 $("#addSubmit").prop('disabled', false);
                 if (!data.error2)
                     swal("Successful!", data.success, "success")
@@ -154,14 +207,14 @@
                     swal("Error!", data.error2, "error");
             },
             statusCode: {
-                422: function (responseObject, textStatus, jqXHR) {
+                422: function(responseObject, textStatus, jqXHR) {
                     $("#addSubmit").prop('disabled', false);
                     resetErrors();
                     printErrMsg(responseObject.responseJSON.errors);
                 },
-                500: function (responseObject, textStatus, errorThrown) {
+                500: function(responseObject, textStatus, errorThrown) {
                     $("#addSubmit").prop('disabled', false);
-                    swal("Error occurred!", "Something went wrong please try again", "error");
+                    swal("Error occured!", "Something went wrong please try again", "error");
                 }
             }
         });
@@ -177,7 +230,7 @@
         }
 
         function printErrMsg(msg) {
-            $.each(msg, function (key, value) {
+            $.each(msg, function(key, value) {
                 $('.' + key + '_err').text(value);
                 $('#' + key).addClass('is-invalid');
                 $('#' + key).removeClass('is-valid');
@@ -185,55 +238,70 @@
         }
 
     });
+
+
 </script>
+
 
 <!-- Edit -->
 <script>
-    $("#buttons-datatables").on("click", ".edit-element", function (e) {
+    $("#buttons-datatables").on("click", ".edit-element", function(e) {
         e.preventDefault();
         var model_id = $(this).attr("data-id");
+
         var url = "{{ route('terms-conditions.edit', ":model_id") }}";
+
         $.ajax({
             url: url.replace(':model_id', model_id),
             type: 'GET',
             data: {
                 '_token': "{{ csrf_token() }}"
             },
-            success: function (data, textStatus, jqXHR) {
+            success: function(data, textStatus, jqXHR) {
                 editFormBehaviour();
                 // console.log(data);
-                if (!data.error) {
+                if (!data.error)
+                {
                     $("#editForm input[name='edit_model_id']").val(data.terms.id);
+                    CKEDITOR.instances['long_desc2'].setData(data.terms.rules_regulations);
                     $("#scheme_id").html(data.schemeHtml);
-                    $("#long_desc2").val(data.terms.rules_regulations);
-                } else {
+
+                }
+                else
+                {
                     alert(data.error);
                 }
             },
-            error: function (error, jqXHR, textStatus, errorThrown) {
-                alert("Something went wrong");
+            error: function(error, jqXHR, textStatus, errorThrown) {
+                alert("Some thing went wrong");
             },
         });
     });
 </script>
 
+
 <!-- Update -->
 <script>
-    $(document).ready(function () {
-        $("#editForm").submit(function (e) {
+    $(document).ready(function() {
+        $("#editForm").submit(function(e) {
             e.preventDefault();
+
+            CKEDITOR.instances['long_desc2'].updateElement();
+
             $("#editSubmit").prop('disabled', true);
             var formdata = new FormData(this);
             formdata.append('_method', 'PUT');
             var model_id = $('#edit_model_id').val();
             var url = "{{ route('terms-conditions.update', ":model_id") }}";
+            //
             $.ajax({
                 url: url.replace(':model_id', model_id),
                 type: 'POST',
                 data: formdata,
                 contentType: false,
                 processData: false,
-                success: function (data) {
+                success: function(data)
+                {
                     $("#editSubmit").prop('disabled', false);
                     if (!data.error2)
                         swal("Successful!", data.success, "success")
@@ -244,32 +312,37 @@
                         swal("Error!", data.error2, "error");
                 },
                 statusCode: {
-                    422: function (responseObject, textStatus, jqXHR) {
+                    422: function(responseObject, textStatus, jqXHR) {
                         $("#editSubmit").prop('disabled', false);
                         resetErrors();
                         printErrMsg(responseObject.responseJSON.errors);
                     },
-                    500: function (responseObject, textStatus, errorThrown) {
+                    500: function(responseObject, textStatus, errorThrown) {
                         $("#editSubmit").prop('disabled', false);
-                        swal("Error occurred!", "Something went wrong please try again", "error");
+                        swal("Error occured!", "Something went wrong please try again", "error");
                     }
                 }
             });
+
         });
     });
 </script>
 
+
 <!-- Delete -->
 <script>
-    $("#buttons-datatables").on("click", ".rem-element", function (e) {
+    $("#buttons-datatables").on("click", ".rem-element", function(e) {
         e.preventDefault();
         swal({
             title: "Are you sure to delete this Terms And Conditions?",
+            // text: "Make sure if you have filled Vendor details before proceeding further",
             icon: "info",
             buttons: ["Cancel", "Confirm"]
         })
-        .then((justTransfer) => {
-            if (justTransfer) {
+        .then((justTransfer) =>
+        {
+            if (justTransfer)
+            {
                 var model_id = $(this).attr("data-id");
                 var url = "{{ route('terms-conditions.destroy', ":model_id") }}";
                 $.ajax({
@@ -279,7 +352,7 @@
                         '_method': "DELETE",
                         '_token': "{{ csrf_token() }}"
                     },
-                    success: function (data, textStatus, jqXHR) {
+                    success: function(data, textStatus, jqXHR) {
                         console.log(data)
                         if (!data.error && !data.error2) {
                             swal("Success!", data.success, "success")
@@ -294,7 +367,7 @@
                             }
                         }
                     },
-                    error: function (error, jqXHR, textStatus, errorThrown) {
+                    error: function(error, jqXHR, textStatus, errorThrown) {
                         swal("Error!", "Something went wrong", "error");
                     },
                 });
