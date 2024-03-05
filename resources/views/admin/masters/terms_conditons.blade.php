@@ -143,7 +143,7 @@
                                         <tr>
                                             <td>{{ $num++ }}</td>
                                             <td>{{ $row->scheme->scheme_name ?? '' }} ({{$row->scheme->scheme_marathi_name ?? 'No Scheme'}})</td>
-                                            <td>{!! substr($row->rules_regulations, 0, 100) !!} </td>
+                                            <td>{!! substr(strip_tags($row->rules_regulations), 0, 100) !!} </td>
                                             <td>
                                                 <button class="edit-element btn btn-primary text-white px-2 py-1" title="Edit terms" data-id="{{ $row->id }}"><i data-feather="edit"></i></button>
                                                 <button class="btn btn-danger text-white rem-element px-2 py-1" title="Delete terms" data-id="{{ $row->id }}"><i data-feather="trash-2"></i> </button>
