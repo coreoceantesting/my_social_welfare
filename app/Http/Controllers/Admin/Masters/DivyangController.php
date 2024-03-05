@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Models\FinancialMst;
 use PDF;
+use Mpdf\Mpdf;
 
 
 class DivyangController extends Controller
@@ -166,6 +167,23 @@ class DivyangController extends Controller
 
     public function pdf()
     {
-        return view('admin.masters.pdf');
+        
+        $mpdf = new Mpdf();
+        $pdfFileName = 'test.pdf';
+        
+        // Fetch data from the database
+        $hayat = HayatFormModel::join('users', 'hayticha_form.user_id', '=', 'users.id')
+        ->where('hayticha_form.h_id', '=' ,'1')
+        ->select('hayticha_form.*', 'users.*')
+        ->first();
+        
+        // Render the view to a variable
+        $pdfView = view('admin.masters.pdf', compact('hayat'))->render();
+        
+        // Write the HTML to PDF
+        $mpdf->WriteHTML($pdfView);
+        
+        // Output the PDF to the browser
+        $mpdf->Output($pdfFileName, 'I');        
     }
 }
