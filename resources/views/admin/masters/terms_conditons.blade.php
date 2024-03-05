@@ -165,7 +165,7 @@
 
 
 {{-- Add --}}
-{{-- <script src="https://cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script> --}}
+<script src="https://cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script>
 <script>
     //  CKEDITOR.replace('rules_regulations');
     //  CKEDITOR.replace('long_desc2');
