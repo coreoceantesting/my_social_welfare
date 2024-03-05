@@ -128,7 +128,7 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item d-none">
                     <a class="nav-link menu-link" href="{{ url('uploaded-document') }}">
                         <i class="ri-layout-3-line"></i>
                         <span data-key="t-layouts">Uploaded Live Certificate</span>
