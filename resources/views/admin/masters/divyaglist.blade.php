@@ -391,6 +391,7 @@
                                 <thead>
                                     <tr>
                                         <th>Sr.No</th>
+                                        <th>financial Year</th>
                                         <th>Name</th>
                                         <th>Contact</th>
                                         <th>Age</th>
@@ -407,6 +408,7 @@
 
                                         <tr>
                                                 <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $data->title }}</td>
                                                 <td>{{$data->f_name}} {{$data->m_name}} {{$data->l_name}}</td>
                                                 <td>{{$data->contact}}</td>
                                                 <td>{{$data->Age}}</td>
