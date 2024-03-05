@@ -167,6 +167,11 @@
 {{-- Add --}}
 <script src="https://cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script>
 <script>
+    $(document).ready(function() {
+        $('#buttons-datatables').DataTable();
+    });
+</script>
+<script>
     //  CKEDITOR.replace('rules_regulations');
     //  CKEDITOR.replace('long_desc2');
 
