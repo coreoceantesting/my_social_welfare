@@ -407,9 +407,9 @@
 
                                         <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{$users->f_name}} {{$users->m_name}} {{$users->l_name}}</td>
+                                                <td>{{$data->f_name}} {{$data->m_name}} {{$data->l_name}}</td>
                                                 <td>{{$data->contact}}</td>
-                                                <td>{{$users->Age}}</td>
+                                                <td>{{$data->Age}}</td>
                                                 <td>{{ $data->bank_name }}</td>
 
                                             <td>
