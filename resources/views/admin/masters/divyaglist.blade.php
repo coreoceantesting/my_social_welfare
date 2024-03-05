@@ -397,6 +397,8 @@
                                         <th>Bank Name</th>
                                         <th>Action</th>
                                         <th>Upload Signatured of live Certificate</th>
+                                        <th>Live Certificate</th>
+                                        <th>Uploaded Certificate</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -412,11 +414,11 @@
 
                                             <td>
                                                 <button class="edit-element btn btn-secondary px-2 py-1" title="Edit live certificate" data-id="{{ $data->h_id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn btn-danger rem-element px-2 py-1" title="Delete live certificate" data-id="{{ $data->h_id }}"><i data-feather="trash-2"></i> </button>
-                                                @if(isset($data->download_pdf))<a href="{{ asset('pdfs/'.$data->download_pdf) }}" class="btn btn-primary shadow btn-sm sharp me-1"  download><i class="fa fa-download" aria-hidden="true"></i></a>@endif
-                                                @if(isset($data->sign_uploaded_live_certificate))<a href="{{ asset('storage/' . $data->sign_uploaded_live_certificate) }}"  class="btn btn-primary shadow btn-sm sharp me-1" target="_blank"> <i class="fas fa-eye"></i></a>@endif
+                                                <button class="btn btn-danger rem-element px-2 py-1" title="Delete live certificate" data-id="{{ $data->h_id }}"><i data-feather="trash-2"></i> </button>  
                                             </td>
                                             <td> <button class="upload-element btn btn-primary  px-2 py-1" title="Upload live certificate" data-id="{{ $data->h_id }}">Upload </button></td>
+                                            <td>@if(isset($data->download_pdf))<a href="{{ asset('pdfs/'.$data->download_pdf) }}" class="btn btn-primary shadow btn-sm sharp me-1"  download><i class="fa fa-download" aria-hidden="true"></i></a>@endif</td>
+                                            <td>@if(isset($data->sign_uploaded_live_certificate))<a href="{{ asset('storage/' . $data->sign_uploaded_live_certificate) }}"  class="btn btn-primary shadow btn-sm sharp me-1" target="_blank"> <i class="fas fa-eye"></i></a>@endif</td>
                                         </tr>
                                     @endforeach
                                     @else
