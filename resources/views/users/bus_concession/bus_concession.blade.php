@@ -19,10 +19,23 @@
                                 {{-- <input type="hidden" id="h_id" name="h_id" value=""> --}}
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">Full Name (संपूर्ण नाव) <span class="text-danger">*</span></label>
-                                    <input class="form-control"  type="text"  name="full_name"  value="" placeholder="Enter Full Name ">
-                                    <span class="text-danger is-invalid full_name_err"></span>
+                                    <label class="col-form-label" for="f_name">First Name (पहिले नाव) <span class="text-danger">*</span></label>
+                                    <input class="form-control"  type="text"  name="f_name"  value="" placeholder="Enter First Name ">
+                                    <span class="text-danger is-invalid f_name_err"></span>
                                 </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="m_name">Middle Name (मधले नाव) <span class="text-danger">*</span></label>
+                                    <input class="form-control"  type="text"  name="m_name"  value="" placeholder="Enter Middle Name ">
+                                    <span class="text-danger is-invalid m_name_err"></span>
+                                </div>
+                                
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="l_name">Last Name (आडनाव) <span class="text-danger">*</span></label>
+                                    <input class="form-control"  type="text"  name="l_name"  value="" placeholder="Enter Last Name ">
+                                    <span class="text-danger is-invalid l_name_err"></span>
+                                </div>
+                                
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="full_address">Full Address (संपूर्ण पत्ता) <span class="text-danger">*</span></label>
                                     <input class="form-control"   type="text" name="full_address" value=""  placeholder="Enter Full Address">
@@ -58,13 +71,13 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="class_name">Name of current class (सध्या शिकत असलेल्या वर्गाचे नाव) <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="class_name">Name of current class (सध्या शिकत असलेल्या वर्गाचे नाव)(If Required)</label>
                                     <input class="form-control" id="class_name" name="class_name" type="text" placeholder="Enter Class Name">
                                     <span class="text-danger is-invalid class_name_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="school_name"> Name of school college (सध्या शिकत असलेल्या शाळा/कॉलेजचे नाव) <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="school_name"> Name of school college (सध्या शिकत असलेल्या शाळा/कॉलेजचे नाव)(If Required)</label>
                                     <input class="form-control" id="school_name" name="school_name" type="text" placeholder="Enter School/College name">
                                     <span class="text-danger is-invalid school_name_err"></span>
                                 </div>
@@ -73,8 +86,8 @@
                                     <label class="col-form-label" for="type_of_discount">Type of discount (सवलतीचा प्रकार) <span class="text-danger">*</span></label>
                                         <select class="js-example-basic-single" name="type_of_discount" >
                                             <option value="">--Select--</option>
-                                            <option value="daily_commute">daily commute</option>
-                                          <option value="mothly_pass">monthly pass</option>
+                                            <option value="daily_commute">daily commute/ दैनंदिन </option>
+                                          <option value="mothly_pass">monthly pass/मासिक पास</option>
                                         </select>
                                         <span class="text-danger is-invalid  type_of_discount_err"></span>
                                 </div>

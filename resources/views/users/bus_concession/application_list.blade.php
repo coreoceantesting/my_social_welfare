@@ -15,10 +15,23 @@
                     <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
                     <div class="mb-3 row">
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="name">Full Name (संपूर्ण नाव) <span class="text-danger">*</span></label>
-                            <input class="form-control"  type="text"  name="full_name"  value="" placeholder="Enter Full Name ">
-                            <span class="text-danger is-invalid full_name_err"></span>
+                            <label class="col-form-label" for="f_name">First Name (पहिले नाव) <span class="text-danger">*</span></label>
+                            <input class="form-control"  type="text"  name="f_name"  value="" placeholder="Enter First Name ">
+                            <span class="text-danger is-invalid f_name_err"></span>
                         </div>
+
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="m_name">Middle Name (मधले नाव) <span class="text-danger">*</span></label>
+                            <input class="form-control"  type="text"  name="m_name"  value="" placeholder="Enter Middle Name ">
+                            <span class="text-danger is-invalid m_name_err"></span>
+                        </div>
+                        
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="l_name">Last Name (आडनाव) <span class="text-danger">*</span></label>
+                            <input class="form-control"  type="text"  name="l_name"  value="" placeholder="Enter Last Name ">
+                            <span class="text-danger is-invalid l_name_err"></span>
+                        </div>
+
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="full_address">Full Address (संपूर्ण पत्ता) <span class="text-danger">*</span></label>
                             <input class="form-control"   type="text" name="full_address" value=""  placeholder="Enter Full Address">
@@ -57,13 +70,13 @@
 
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="class_name"> Name of current class(सध्या शिकत असलेल्या वर्गाचे नाव) <span class="text-danger">*</span></label>
+                            <label class="col-form-label" for="class_name"> Name of current class(सध्या शिकत असलेल्या वर्गाचे नाव) (If Required) </label>
                             <input class="form-control" id="class_name" name="class_name" type="text" placeholder="Enter Class Name">
                             <span class="text-danger is-invalid class_name_err"></span>
                         </div>
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="school_name"> Name of school college (सध्या शिकत असलेल्या शाळा/कॉलेजचे नाव)<span class="text-danger">*</span></label>
+                            <label class="col-form-label" for="school_name"> Name of school college (सध्या शिकत असलेल्या शाळा/कॉलेजचे नाव) (If Required) </label>
                             <input class="form-control" id="school_name" name="school_name" type="text" placeholder="Enter School/College name">
                             <span class="text-danger is-invalid school_name_err"></span>
                         </div>
@@ -185,7 +198,7 @@
                                      <tr>
                                             <td>{{ $serialNumber++ }}</td>
                                             <td>{{ $value->application_no }}</td>
-                                            <td>{{ $value->full_name }}</td>
+                                            <td>{{ $value->f_name }} {{ $value->m_name }} {{ $value->l_name }}</td>
                                             <td>{{ $value->full_address }}</td>
                                             <td>{{ $value->contact }}</td>
 
@@ -269,7 +282,9 @@
                 if (!data.error)
                 {
                     $("#editForm input[name='edit_model_id']").val(data.bus_concession.id);
-                    $("#editForm input[name='full_name']").val(data.bus_concession.full_name);
+                    $("#editForm input[name='f_name']").val(data.bus_concession.f_name);
+                    $("#editForm input[name='m_name']").val(data.bus_concession.m_name);
+                    $("#editForm input[name='l_name']").val(data.bus_concession.l_name);
                     $("#editForm input[name='full_address']").val(data.bus_concession.full_address);
                     $("#editForm input[name='dob']").val(data.bus_concession.dob);
                     $("#editForm input[name='age']").val(data.bus_concession.age);

@@ -16,7 +16,9 @@ class BusConcession extends BaseModel
     protected $fillable =
     [
     'application_no',
-    'full_name',
+    'f_name',
+    'm_name',
+    'l_name',
     'full_address',
     'dob',
     'age',

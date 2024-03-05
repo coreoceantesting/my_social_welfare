@@ -22,14 +22,17 @@ class StoreBusConcessionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'full_name'=>'required',
+            // 'full_name'=>'required',
+            'f_name'=>'required',
+            'm_name'=>'required',
+            'l_name'=>'required',
             'full_address'=>'required',
             'dob'=>'required',
             'age'=>'required',
-            'contact'=>'required',
-            'adhaar_no'=>'required',
-            'class_name'=>'required',
-            'school_name'=>'required',
+            'contact'=>'required|max:10',
+            'adhaar_no'=>'required|max:12',
+            'class_name'=>'nullable',
+            'school_name'=>'nullable',
             'type_of_discount'=>'required',
             'candidate_signature'=> 'required',
             'passport_size_photo'=> 'required',
