@@ -132,7 +132,13 @@
                                                 @endif
                                             </td>
 
-                                            <td>{{$scheme->schemes->scheme_marathi_name}}</td>
+                                            <td>
+                                                @if ($scheme->schemes) {{-- Check if schemes exists --}}
+                                                    {{ $scheme->schemes->scheme_marathi_name }}
+                                                @else
+                                                    No Scheme Available
+                                                @endif
+                                            </td>
 
                                             <td>
                                                 <button class="edit-element btn btn-primary text-white px-2 py-1" title="Edit category" data-id="{{ $scheme->id }}"><i data-feather="edit"></i></button>

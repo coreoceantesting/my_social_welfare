@@ -142,7 +142,7 @@
                                     @foreach ($terms as $row)
                                         <tr>
                                             <td>{{ $num++ }}</td>
-                                            <td>{{ $row->scheme->scheme_name ?? '' }} ({{$row->scheme->scheme_marathi_name}})</td>
+                                            <td>{{ $row->scheme->scheme_name ?? '' }} ({{$row->scheme->scheme_marathi_name ?? 'No Scheme'}})</td>
                                             <td>{!! substr($row->rules_regulations, 0, 100) !!} </td>
 
                                             <td>
