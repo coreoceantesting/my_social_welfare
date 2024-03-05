@@ -45,7 +45,7 @@
             <div class="d-flex flex-column h-100">
 
                                 <div class="row">
-
+                                    @if(auth()->user()->name != "Admin")
                                     @foreach ($scheme as $schemes)
 
                                         <div class="col-lg-3 mb-3">
@@ -73,6 +73,7 @@
 
                                         </div>
                                     @endforeach
+                                    @endif
                                 </div>
 
 
