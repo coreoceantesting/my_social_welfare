@@ -79,7 +79,7 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="mobile">Alternate Contact Number(पर्यायी संपर्क क्रमांक) <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="mobile">Alternate Contact Number(पर्यायी संपर्क क्रमांक)</label>
                                     <input class="form-control" id="alternate_contact_no" name="alternate_contact_no" type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
                                         placeholder="Enter User Mobile">
                                     <span class="text-danger is-invalid alternate_contact_no_err"></span>
@@ -251,7 +251,7 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="mobile">Alternate Contact Number (पर्यायी संपर्क क्रमांक) <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="mobile">Alternate Contact Number (पर्यायी संपर्क क्रमांक)</label>
                                     <input class="form-control" id="alternate_contact_no" name="alternate_contact_no" type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
                                         placeholder="Enter User Mobile">
                                     <span class="text-danger is-invalid alternate_contact_no_err"></span>
@@ -406,14 +406,15 @@
                                         <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{$users->f_name}} {{$users->m_name}} {{$users->l_name}}</td>
-                                                <td>{{$users->contact}}</td>
+                                                <td>{{$data->contact}}</td>
                                                 <td>{{$users->Age}}</td>
                                                 <td>{{ $data->bank_name }}</td>
 
                                             <td>
                                                 <button class="edit-element btn btn-secondary px-2 py-1" title="Edit live certificate" data-id="{{ $data->h_id }}"><i data-feather="edit"></i></button>
                                                 <button class="btn btn-danger rem-element px-2 py-1" title="Delete live certificate" data-id="{{ $data->h_id }}"><i data-feather="trash-2"></i> </button>
-
+                                                @if(isset($data->download_pdf))<a href="{{ asset('pdfs/'.$data->download_pdf) }}" class="btn btn-primary shadow btn-sm sharp me-1"  download><i class="fa fa-download" aria-hidden="true"></i></a>@endif
+                                                @if(isset($data->sign_uploaded_live_certificate))<a href="{{ asset('storage/' . $data->sign_uploaded_live_certificate) }}"  class="btn btn-primary shadow btn-sm sharp me-1" target="_blank"> <i class="fas fa-eye"></i></a>@endif
                                             </td>
                                             <td> <button class="upload-element btn btn-primary  px-2 py-1" title="Upload live certificate" data-id="{{ $data->h_id }}">Upload </button></td>
                                         </tr>
