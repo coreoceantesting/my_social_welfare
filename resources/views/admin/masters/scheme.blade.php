@@ -27,9 +27,10 @@
                                         <option value="Education Scheme">Education Scheme</option>
                                         <option value="Marriage Scheme">Marriage Scheme</option>
                                         <option value="Sports Scheme">Sports Scheme</option>
-                                        <option value="Women Sewing Scheme">Women Sewing Scheme</option>
+                                        <option value="Women Vocational training Scheme">Women Vocational training Scheme</option>
                                         <option value="Cancer Scheme">Cancer Scheme</option>
                                         <option value="Vehicle Scheme">Vehicle Scheme</option>
+                                        <option value="Women Medical Education Scheme">Women Medical Education Scheme</option>
                                     </select>
                                     <span class="text-danger is-invalid scheme_name_err"></span>
                                 </div>
@@ -78,9 +79,10 @@
                                         <option value="Education Scheme">Education Scheme</option>
                                         <option value="Marriage Scheme">Marriage Scheme</option>
                                         <option value="Sports Scheme">Sports Scheme</option>
-                                        <option value="Women Sewing Scheme">Women Sewing Scheme</option>
+                                        <option value="Women Vocational training Scheme">Women Vocational training Scheme</option>
                                         <option value="Cancer Scheme">Cancer Scheme</option>
                                         <option value="Vehicle Scheme">Vehicle Scheme</option>
+                                        <option value="Women Medical Education Scheme">Women Medical Education Scheme</option>
                                     </select>
                                     <span class="text-danger is-invalid scheme_name_err"></span>
                                 </div>

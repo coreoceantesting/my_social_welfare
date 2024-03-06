@@ -299,6 +299,9 @@ Route::middleware(['auth', 'PreventBackHistory'])->group(function () {
 
     //Route::get('users/terms_conditions', [App\Http\Controllers\Admin\UserController::class, 'terms_conditions' ])->name('users.terms_conditions');
     Route::resource('roles', App\Http\Controllers\Admin\RoleController::class);
+
+    // all Education Scheme
+    Route::resource('allEductionScheme', App\Http\Controllers\User\allEducationSchemeController::class);
 });
 
 Route::get('/php', function (Request $request) {
