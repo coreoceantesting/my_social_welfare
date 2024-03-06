@@ -74,6 +74,68 @@
                             <span class="text-danger is-invalid adhaar_no_err"></span>
                         </div>
 
+                        {{-- add yes no option --}}
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="is_residence_proof">Proof of residence for 3 years in municipal area? (महानगरपालिका क्षेत्रातील ३ वर्ष वास्तव्याचा पुरावा आहे?)<span class="text-danger">*</span></label>
+                            <select class="form-control" name="is_residence_proof" id="is_residence_proof">
+                                <option value="">Select Option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                            <span class="text-danger is-invalid is_residence_proof_err"></span>
+                        </div>
+
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="is_low_income_proof">Low income proof from Tehsildar? (तहसिलदाराकडील अल्प उत्पन्नाचा दाखला आहे?)<span class="text-danger">*</span></label>
+                            <select class="form-control" name="is_low_income_proof" id="is_low_income_proof">
+                                <option value="">Select Option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                            <span class="text-danger is-invalid is_low_income_proof_err"></span>
+                        </div>
+
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="is_medical_admission_proof">Have a medical college admission certificate? (वैद्यकिय महाविद्यालयात प्रवेश घेतल्याचे प्रमाणपत्र आहे ?)<span class="text-danger">*</span></label>
+                            <select class="form-control" name="is_medical_admission_proof" id="is_medical_admission_proof">
+                                <option value="">Select Option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                            <span class="text-danger is-invalid is_medical_admission_proof_err"></span>
+                        </div>
+
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="is_first_year_proof">Have a copy of first academic year result? (पहिल्या शैक्षणिक वर्षाच्या निकालाची प्रत आहे?)<span class="text-danger">*</span></label>
+                            <select class="form-control" name="is_first_year_proof" id="is_first_year_proof">
+                                <option value="">Select Option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                            <span class="text-danger is-invalid is_first_year_proof_err"></span>
+                        </div>
+
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="is_pass_book_doc">Have a photocopy of nationalized bank passbook? (राष्ट्रीयकृत बँकेच्या पासबुकची छायांकित प्रत आहे ?)<span class="text-danger">*</span></label>
+                            <select class="form-control" name="is_pass_book_doc" id="is_pass_book_doc">
+                                <option value="">Select Option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                            <span class="text-danger is-invalid is_pass_book_doc_err"></span>
+                        </div>
+
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="is_recommendation_doc">Hon. Is there a recommendation letter from the corporator?(मा.नगरसेवक / नगरसेविका यांचे शिफारस पत्र आहे ?)<span class="text-danger">*</span></label>
+                            <select class="form-control" name="is_recommendation_doc" id="is_recommendation_doc">
+                                <option value="">Select Option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                            <span class="text-danger is-invalid is_recommendation_doc_err"></span>
+                        </div>
+
+                        {{-- end yes no option section --}}
 
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="candidate_signature">Upload Signature / thumb (अर्जदाराची सही / अगंठा)<span class="text-danger">*</span></label>
@@ -186,14 +248,14 @@
 
                                             <td>
                                                 @if($value->hod_status == '0' && $value->ac_status == '0' && $value->amc_status == '0' && $value->dmc_status == '0')
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $value->id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $value->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn btn-sm btn-primary text-white px-2 py-1" title="Edit category" data-id="{{ $value->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn text-white btn-sm btn-primary rem-element px-2 py-1" title="Delete category" data-id="{{ $value->id }}"><i data-feather="trash-2"></i> </button>
                                                 @elseif($value->hod_status == '2' || $value->ac_status == '2'|| $value->amc_status == '2' || $value->dmc_status == '2')
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $value->id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $value->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn btn-sm btn-danger text-white px-2 py-1" title="Edit category" data-id="{{ $value->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn text-white btn-sm rem-element btn-primary px-2 py-1" title="Delete category" data-id="{{ $value->id }}"><i data-feather="trash-2"></i> </button>
                                                 @endif
 
-                                                <a href="{{ url('education_scheme_certificate_view/'.$value->id) }}" class="btn btn-primary shadow btn-xs sharp me-1"> <i class="fas fa-eye"></i></a>
+                                                <a href="{{ url('education_scheme_certificate_view/'.$value->id) }}" class="btn btn-primary shadow btn-sm sharp me-1"> <i class="fas fa-eye"></i></a>
                                             </td>
 
                                             @if($value->dmc_status == 1)
@@ -246,6 +308,14 @@
                     $("#editForm input[name='adhaar_no']").val(data.education_scheme.adhaar_no);
                     $("#editForm input[name='email']").val(data.education_scheme.email);
                     $("#editForm input[name='family_name']").val(data.education_scheme.family_name);
+                    // yes no option
+                    $("#editForm select[name='is_residence_proof']").val(data.education_scheme.is_residence_proof);
+                    $("#editForm select[name='is_low_income_proof']").val(data.education_scheme.is_low_income_proof);
+                    $("#editForm select[name='is_medical_admission_proof']").val(data.education_scheme.is_medical_admission_proof);
+                    $("#editForm select[name='is_first_year_proof']").val(data.education_scheme.is_first_year_proof);
+                    $("#editForm select[name='is_pass_book_doc']").val(data.education_scheme.is_pass_book_doc);
+                    $("#editForm select[name='is_recommendation_doc']").val(data.education_scheme.is_recommendation_doc);
+                    // end yes no option
                     $("#editForm input[name='beneficiary_relationship']").val(data.education_scheme.beneficiary_relationship);
                     $("#editForm input[name='total_family']").val(data.education_scheme.total_family);
                     $("#editForm a#candidate_signature").attr('href', "{{ asset('storage/') }}/" + data.education_scheme.candidate_signature);

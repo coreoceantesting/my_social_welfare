@@ -33,6 +33,12 @@ class UpdateEducationRequest extends FormRequest
             'total_family'=>'required',
             'candidate_signature'=> 'nullable',
             'passport_size_photo'=> 'nullable',
+            'is_residence_proof'=> 'required',
+            'is_low_income_proof'=> 'required',
+            'is_medical_admission_proof'=> 'required',
+            'is_recommendation_doc'=> 'required',
+            'is_first_year_proof'=> 'required',
+            'is_pass_book_doc'=> 'required',
         ];
     }
 }

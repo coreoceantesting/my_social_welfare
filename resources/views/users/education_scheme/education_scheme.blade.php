@@ -78,6 +78,68 @@
                                     <span class="text-danger is-invalid adhaar_no_err"></span>
                                 </div>
 
+                                {{-- add yes no option --}}
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="is_residence_proof">Proof of residence for 3 years in municipal area? (महानगरपालिका क्षेत्रातील ३ वर्ष वास्तव्याचा पुरावा आहे?)<span class="text-danger">*</span></label>
+                                    <select class="form-control" name="is_residence_proof" id="is_residence_proof">
+                                        <option value="">Select Option</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                    <span class="text-danger is-invalid is_residence_proof_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="is_low_income_proof">Low income proof from Tehsildar? (तहसिलदाराकडील अल्प उत्पन्नाचा दाखला आहे?)<span class="text-danger">*</span></label>
+                                    <select class="form-control" name="is_low_income_proof" id="is_low_income_proof">
+                                        <option value="">Select Option</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                    <span class="text-danger is-invalid is_low_income_proof_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="is_medical_admission_proof">Have a medical college admission certificate? (वैद्यकिय महाविद्यालयात प्रवेश घेतल्याचे प्रमाणपत्र आहे ?)<span class="text-danger">*</span></label>
+                                    <select class="form-control" name="is_medical_admission_proof" id="is_medical_admission_proof">
+                                        <option value="">Select Option</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                    <span class="text-danger is-invalid is_medical_admission_proof_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="is_first_year_proof">Have a copy of first academic year result? (पहिल्या शैक्षणिक वर्षाच्या निकालाची प्रत आहे?)<span class="text-danger">*</span></label>
+                                    <select class="form-control" name="is_first_year_proof" id="is_first_year_proof">
+                                        <option value="">Select Option</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                    <span class="text-danger is-invalid is_first_year_proof_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="is_pass_book_doc">Have a photocopy of nationalized bank passbook? (राष्ट्रीयकृत बँकेच्या पासबुकची छायांकित प्रत आहे ?)<span class="text-danger">*</span></label>
+                                    <select class="form-control" name="is_pass_book_doc" id="is_pass_book_doc">
+                                        <option value="">Select Option</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                    <span class="text-danger is-invalid is_pass_book_doc_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="is_recommendation_doc">Hon. Is there a recommendation letter from the corporator?(मा.नगरसेवक / नगरसेविका यांचे शिफारस पत्र आहे ?)<span class="text-danger">*</span></label>
+                                    <select class="form-control" name="is_recommendation_doc" id="is_recommendation_doc">
+                                        <option value="">Select Option</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                    <span class="text-danger is-invalid is_recommendation_doc_err"></span>
+                                </div>
+                                {{-- end yes no option section --}}
+
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="candidate_signature">Upload Signature / thumb (अर्जदाराची सही / अगंठा)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="candidate_signature" name="candidate_signature" type="file" accept=".png, .jpg, .jpeg">

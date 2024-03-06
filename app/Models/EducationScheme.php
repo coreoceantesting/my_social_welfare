@@ -27,6 +27,12 @@ class EducationScheme extends BaseModel
         'adhaar_no',
         'candidate_signature',
         'passport_size_photo',
+        'is_residence_proof',
+        'is_low_income_proof',
+        'is_medical_admission_proof',
+        'is_first_year_proof',
+        'is_pass_book_doc',
+        'is_recommendation_doc'
     ];
 
     public static function booted()
