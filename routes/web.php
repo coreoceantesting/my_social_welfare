@@ -302,6 +302,7 @@ Route::middleware(['auth', 'PreventBackHistory'])->group(function () {
 
     // all Education Scheme
     Route::resource('all_education_scheme', App\Http\Controllers\User\allEducationSchemeController::class);
+    Route::post('update-details', [App\Http\Controllers\User\allEducationSchemeController::class, 'update_details'])->name('update_details');
 });
 
 Route::get('/php', function (Request $request) {
