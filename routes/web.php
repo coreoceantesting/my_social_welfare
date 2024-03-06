@@ -301,7 +301,7 @@ Route::middleware(['auth', 'PreventBackHistory'])->group(function () {
     Route::resource('roles', App\Http\Controllers\Admin\RoleController::class);
 
     // all Education Scheme
-    Route::resource('allEductionScheme', App\Http\Controllers\User\allEducationSchemeController::class);
+    Route::resource('all_education_scheme', App\Http\Controllers\User\allEducationSchemeController::class);
 });
 
 Route::get('/php', function (Request $request) {
