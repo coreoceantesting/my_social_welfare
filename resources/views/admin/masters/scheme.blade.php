@@ -22,7 +22,7 @@
                                     {{-- <input class="form-control" id="scheme_name" name="scheme_name" type="text" placeholder="Enter Scheme Name"> --}}
                                     <select class="form-control" name="scheme_name" id="scheme_name">
                                         <option value="">Select Scheme</option>
-                                        <option value="Divyang Nondani Application">Divyang Nondani Application</option>
+                                        <option value="Nondani Application">Nondani Application</option>
                                         <option value="Bus Concession Scheme">Bus Concession Scheme</option>
                                         <option value="Education Scheme">Education Scheme</option>
                                         <option value="Marriage Scheme">Marriage Scheme</option>
@@ -73,7 +73,7 @@
                                     {{-- <input class="form-control" id="scheme_name" name="scheme_name" type="text" placeholder="Scheme Name"> --}}
                                     <select class="form-control" name="scheme_name" id="scheme_name">
                                         <option value="">Select Scheme</option>
-                                        <option value="Divyang Nondani Application">Divyang Nondani Application</option>
+                                        <option value="Nondani Application">Nondani Application</option>
                                         <option value="Bus Concession Scheme">Bus Concession Scheme</option>
                                         <option value="Education Scheme">Education Scheme</option>
                                         <option value="Marriage Scheme">Marriage Scheme</option>
