@@ -52,7 +52,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>दिव्यांग व्यक्तीचे नाव : </strong> {{ $data->full_name }}
+                                    <strong>व्यक्तीचे नाव : </strong> {{ $data->full_name }}
                                 </p>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                             <div class="row pt-3">
                                 <div class="col-md-6 col-sm-6">
                                     <p class="mb-0">
-                                        <strong>दिव्यांगत्वाचा प्रकार : </strong> {{ $data->type_of_disability }}
+                                        <strong>दिव्यांगत्वाचा प्रकार / कुष्ठरोगाचा प्रकार : </strong> {{ $data->type_of_disability }}
                                     </p>
                                 </div>
 
@@ -127,7 +127,7 @@
                             <div class="row pt-3">
                                 <div class="col-md-12 col-sm-12">
                                     <p class="mb-0">
-                                        <strong> दिव्यांग व्यक्तीचा आधारकार्ड नंबर : </strong> {{ $data->adhaar_no }}
+                                        <strong>व्यक्तीचा आधारकार्ड नंबर : </strong> {{ $data->adhaar_no }}
                                     </p>
                                 </div>
                             </div>
@@ -295,7 +295,7 @@
                             <div class="row pt-3">
                                 <div class="col-md-12 col-sm-12">
                                     <p class="mb-0">
-                                         १) अर्जदाराचे अपंगत्वाचे प्रमाणपत्र (४०% च्या वरील) फक्त online ग्राह्य धरली जातील
+                                         १) अर्जदाराचे अपंगत्वाचे प्रमाणपत्र / कुष्ठरोगाचे प्रमाणपत्र  (४०% च्या वरील) फक्त online ग्राह्य धरली जातील
                                     </p>
                                 </div>
                             </div>
@@ -311,7 +311,7 @@
                             <div class="row pt-3">
                                 <div class="col-md-12 col-sm-12">
                                     <p class="mb-0">
-                                         ३) तहसिलदार यांचे कडिल १ लाखाच्या आतील उत्पन्नाचा दाखला (दिव्यांग व्यक्तीचा)
+                                         ३) तहसिलदार यांचे कडिल १ लाखाच्या आतील उत्पन्नाचा दाखला (दिव्यांग व्यक्तीचा /कुष्ठरोगी व्यक्तीचा )
                                     </p>
                                 </div>
                             </div>
