@@ -166,6 +166,8 @@
                                             $url = url($words[0].'_application');
                                     }elseif($words[0] == 'bus'){
                                         $url = url($words[0].'_concession_application');
+                                    }elseif($words[0] == 'education'){
+                                        $url = url('all_'.$words[0].'_scheme');
                                     }else{
                                         $url = url($words[0].'_scheme_application');
                                     }
