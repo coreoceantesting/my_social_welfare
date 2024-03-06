@@ -10,6 +10,7 @@ use App\Models\HayatFormModel;
 use App\Models\FinancialMst;
 use App\Models\DisabilityApplication;
 use App\Models\Ward;
+use App\Models\CategoryMst;
 use App\Models\DivyangSchemeDocuments_model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -41,6 +42,7 @@ class DivyangSchemeController extends Controller
     {
         $scheme_id = session('scheme_id');
         $data = HayatFormModel::where('user_id', Auth::user()->id)->latest()->first();
+        $role_category_list = CategoryMst::whereNull('deleted_by')->take(2)->get();
 
         if (empty($data)) {
             //  echo "fdg"; die;
@@ -64,7 +66,7 @@ class DivyangSchemeController extends Controller
                     ->orderBy('created_at', 'DESC')
                     ->get();
 
-                return view('users.divyang_scheme.scheme_form')->with(['wards' => $wards, 'document' => $document]);
+                return view('users.divyang_scheme.scheme_form')->with(['wards' => $wards, 'document' => $document, 'role_category_list' => $role_category_list]);
             }
         }
     }
@@ -119,6 +121,7 @@ class DivyangSchemeController extends Controller
     {
         $wards = Ward::latest()->get();
         $scheme_form->load(['wardss', 'divyangSchemeDocuments.document']);
+        $role_category_list = CategoryMst::whereNull('deleted_by')->take(2)->get();
         // $scheme_form->load('wardss')->first();
 
         if ($scheme_form) {
@@ -130,10 +133,19 @@ class DivyangSchemeController extends Controller
             endforeach;
             $wardHtml .= '</span>';
 
+            $categoryListHtml = '<span>
+            <option value="">--Select Category--</option>';
+            foreach ($role_category_list as $list) :
+                $is_select = $list->id == $scheme_form->category_id ? "selected" : "";
+                $categoryListHtml .= '<option value="' . $list->id . '" ' . $is_select . '>' . $list->category_name . '</option>';
+            endforeach;
+            $categoryListHtml .= '</span>';
+
             $response = [
                 'result' => 1,
                 'scheme_form' => $scheme_form,
                 'wardHtml' => $wardHtml,
+                'categoryListHtml' => $categoryListHtml,
                 'documents' => $scheme_form->divyangSchemeDocuments,
             ];
         } else {

@@ -44,7 +44,8 @@ class DisabilityApplication extends BaseModel
         'poverty_number',
         'caste',
         'candidate_signature',
-        'passport_size_photo'
+        'passport_size_photo',
+        'category_id'
 
     ];
 

@@ -30,8 +30,8 @@ class StoreApplicationRequest extends FormRequest
             'age'=>'required',
             'father_name'=>'required',
             'father_address'=>'required',
-            'contact'=>'required',
-            'alternate_contact_no'=>'required',
+            'contact'=>'required|max:10',
+            'alternate_contact_no'=>'max:10',
             'type_of_disability'=>'required',
             'percentage'=>'required',
             'bank_name'=>'required',
@@ -39,7 +39,7 @@ class StoreApplicationRequest extends FormRequest
             'account_no'=>'required',
             'ifsc_code'=>'required',
             'authority_name'=>'required',
-            'adhaar_no'=>'required',
+            'adhaar_no'=>'required|max:12',
             'profession'=>'required',
             'number_of_family'=>'required',
             'agriculture'=>'required',
@@ -54,6 +54,7 @@ class StoreApplicationRequest extends FormRequest
             'divyang_id'=>'nullable',
             'document_id'=>'nullable',
             'document_file'=>'nullable',
+            'category_id'=>'required',
         ];
     }
 }

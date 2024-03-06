@@ -83,6 +83,14 @@
                         </div>
 
                         <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="category_id">Category Type (श्रेणी प्रकार)<span class="text-danger">*</span></label>
+                                <select class="form-control" id="category_id" name="category_id" >
+
+                                </select>
+                                <span class="text-danger is-invalid  category_id_err"></span>
+                        </div>
+
+                        <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="type_of_disability">Type of disability (दिव्यांगत्वाचा प्रकार)<span class="text-danger">*</span><span class="text-danger">*</span></label>
                             <input class="form-control" id="type_of_disability" name="type_of_disability" type="text" placeholder="Enter Type of disability">
                             <span class="text-danger is-invalid type_of_disability_err"></span>
@@ -419,6 +427,7 @@
                     $("#editForm input[name='caste']").val(data.scheme_form.caste);
                     $("#editForm input[name='ward_no']").val(data.scheme_form.ward_no);
                     $("#ward_id").html(data.wardHtml);
+                    $("#category_id").html(data.categoryListHtml);
                     $("#editForm a#candidate_signature").attr('href', "{{ asset('storage/') }}/" + data.scheme_form.candidate_signature);
                     $("#editForm a#passport_size_photo").attr('href', "{{ asset('storage/') }}/" + data.scheme_form.passport_size_photo);
 

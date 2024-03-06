@@ -20,7 +20,7 @@
                                 <div class="col-md-8 text-center">
                                     <h1><strong>पनवेल महानगरपालिका</strong></h1>
                                     <h4><strong>ता. पनवेल, जि. रायगड, पिन नं. ४१० २०६</strong></h4>
-                                    <h4><strong>(दिव्यांग कल्याण विभाग)</strong></h4>
+                                    <h4><strong>(दिव्यांग/कुष्ट रोग कल्याण विभाग)</strong></h4>
 
                                 </div>
                             </div>

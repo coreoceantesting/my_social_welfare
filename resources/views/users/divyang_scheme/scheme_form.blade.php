@@ -1,6 +1,6 @@
 <x-admin.layout>
-    <x-slot name="title">Divyang Scheme Form</x-slot>
-    <x-slot name="heading">Divyang Scheme Form (दिव्यांग योजना फॉर्म)</x-slot>
+    <x-slot name="title">Registration Application</x-slot>
+    <x-slot name="heading"> Registration Application (नोंदणी अर्ज)</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
 
@@ -12,14 +12,14 @@
                         @csrf
 
                         <div class="card-header">
-                            <h4 class="card-title">Add Divyang Scheme Form (दिव्यांग योजना फॉर्म जोडा) </h4>
+                            <h4 class="card-title">Registration Application Form (नोंदणी अर्ज फॉर्म) </h4>
                         </div>
                         <div class="card-body">
                             <div class="mb-3 row">
                                 {{-- <input type="hidden" id="h_id" name="h_id" value=""> --}}
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="full_name">Name of disabled person (दिव्यांग व्यक्‍तीचे नाव)<span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="full_name">Person Name (व्यक्‍तीचे नाव)<span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text"  name="full_name"  value="" placeholder="Enter Name of disabled person">
                                     <span class="text-danger is-invalid full_name_err"></span>
                                 </div>
@@ -86,8 +86,19 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="type_of_disability">Type of disability (दिव्यांगत्वाचा प्रकार)<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="type_of_disability" name="type_of_disability" type="text" placeholder="Enter Type of disability">
+                                    <label class="col-form-label" for="category_id">Category Type (श्रेणी प्रकार)</label>
+                                    <select class="form-control" name="category_id" id="category_id">
+                                        <option value="">Select Category</option>
+                                        @foreach($role_category_list as $list)
+                                            <option value="{{$list->id}}">{{$list->category_name}}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="text-danger is-invalid category_id_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="type_of_disability">Type of disability/ Type of leprosy (दिव्यांगत्वाचा प्रकार / कुष्ठरोगाचा प्रकार)<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="type_of_disability" name="type_of_disability" type="text" placeholder="Enter detail">
                                     <span class="text-danger is-invalid type_of_disability_err"></span>
                                 </div>
 
@@ -104,7 +115,7 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="adhaar_no">Aadhaar Card Number (दिव्यांग व्यक्तीचा आधारकार्ड नंबर) <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="adhaar_no">Aadhaar Card Number (व्यक्तीचा आधारकार्ड नंबर) <span class="text-danger">*</span></label>
                                     <input class="form-control" id="adhaar_no" name="adhaar_no" type="text"  placeholder="Enter Aadhaar Card Number">
                                     <span class="text-danger is-invalid adhaar_no_err"></span>
                                 </div>
