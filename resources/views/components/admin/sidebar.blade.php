@@ -264,7 +264,7 @@
 
 
 
-                                        @if(isset($scheme->id))
+                                        @if(isset($scheme->scheme_id))
                                         @if($scheme->id == 1)
                                         <li class="nav-item">
                                             <a href="{{ url('divyang_registration_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -309,6 +309,10 @@
                                         <li class="nav-item">
                                         <a href="{{ url('vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                     </li>
+                                        @elseif($scheme->scheme_id == 12)
+                                        <li class="nav-item">
+                                            <a href="{{ url('pending_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                        </li>
                                         @endif
                                         @endif
 
@@ -339,7 +343,7 @@
                                     @foreach ($category_wise_scheme as $scheme)
                                         @if (in_array($category->id, explode(',', $scheme->category_id)))
 
-                                        @if(isset($scheme->id))
+                                        @if(isset($scheme->scheme_id))
                                         @if($scheme->id == 1)
                                         <li class="nav-item">
                                             <a href="{{ url('divyang_registration_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -382,7 +386,11 @@
                                         @elseif($scheme->id == 8)
                                         <li class="nav-item">
                                         <a href="{{ url('vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
-                                    </li>
+                                        </li>
+                                        @elseif($scheme->scheme_id == 12)
+                                        <li class="nav-item">
+                                            <a href="{{ url('approved_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                        </li>
                                         @endif
                                         @endif
 
@@ -413,7 +421,7 @@
                                     @foreach ($category_wise_scheme as $scheme)
                                         @if (in_array($category->id, explode(',', $scheme->category_id)))
 
-                                        @if(isset($scheme->id))
+                                        @if(isset($scheme->scheme_id))
                                         @if($scheme->id == 1)
                                         <li class="nav-item">
                                             <a href="{{ url('divyang_registration_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -456,6 +464,10 @@
                                         <li class="nav-item">
                                         <a href="{{ url('vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                       </li>
+                                        @elseif($scheme->scheme_id == 12)
+                                        <li class="nav-item">
+                                            <a href="{{ url('rejected_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                        </li>
                                         @endif
                                         @endif
 
@@ -490,7 +502,7 @@
                                         @foreach ($category_wise_scheme as $scheme)
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
-                                            @if(isset($scheme->id))
+                                            @if(isset($scheme->scheme_id))
                                             @if($scheme->id == 1)
                                             <li class="nav-item">
                                                 <a href="{{ url('ac_divyang_registration_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -533,6 +545,10 @@
                                             <li class="nav-item">
                                             <a href="{{ url('ac_vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
+                                           @elseif($scheme->scheme_id == 12)
+                                            <li class="nav-item">
+                                                <a href="{{ url('pending_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            </li>
                                             @endif
                                             @endif
 
@@ -563,7 +579,7 @@
                                         @foreach ($category_wise_scheme as $scheme)
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
-                                            @if(isset($scheme->id))
+                                            @if(isset($scheme->scheme_id))
                                             @if($scheme->id == 1)
                                             <li class="nav-item">
                                                 <a href="{{ url('ac_divyang_registration_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -606,6 +622,10 @@
                                             <li class="nav-item">
                                             <a href="{{ url('ac_vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
+                                            @elseif($scheme->scheme_id == 12)
+                                            <li class="nav-item">
+                                                <a href="{{ url('approved_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            </li>
                                             @endif
                                             @endif
 
@@ -636,7 +656,7 @@
                                         @foreach ($category_wise_scheme as $scheme)
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
-                                            @if(isset($scheme->id))
+                                            @if(isset($scheme->scheme_id))
                                             @if($scheme->id == 1)
                                             <li class="nav-item">
                                                 <a href="{{ url('ac_divyang_registration_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -679,6 +699,10 @@
                                             <li class="nav-item">
                                             <a href="{{ url('ac_vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
+                                            @elseif($scheme->scheme_id == 12)
+                                            <li class="nav-item">
+                                                <a href="{{ url('rejected_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            </li>
                                             @endif
                                             @endif
 
@@ -715,7 +739,7 @@
                                         @foreach ($category_wise_scheme as $scheme)
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
-                                            @if(isset($scheme->id))
+                                            @if(isset($scheme->scheme_id))
                                             @if($scheme->id == 1)
                                             <li class="nav-item">
                                                 <a href="{{ url('amc_divyang_registration_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -758,6 +782,10 @@
                                             <li class="nav-item">
                                             <a href="{{ url('amc_vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
+                                            @elseif($scheme->scheme_id == 12)
+                                            <li class="nav-item">
+                                                <a href="{{ url('pending_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            </li>
                                             @endif
                                             @endif
 
@@ -787,7 +815,7 @@
                                         @foreach ($category_wise_scheme as $scheme)
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
-                                            @if(isset($scheme->id))
+                                            @if(isset($scheme->scheme_id))
                                             @if($scheme->id == 1)
                                             <li class="nav-item">
                                                 <a href="{{ url('amc_divyang_registration_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -830,6 +858,10 @@
                                             <li class="nav-item">
                                             <a href="{{ url('amc_vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
+                                            @elseif($scheme->scheme_id == 12)
+                                            <li class="nav-item">
+                                                <a href="{{ url('approved_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            </li>
                                             @endif
                                             @endif
 
@@ -859,7 +891,7 @@
                                         @foreach ($category_wise_scheme as $scheme)
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
-                                            @if(isset($scheme->id))
+                                            @if(isset($scheme->scheme_id))
                                             @if($scheme->id == 1)
                                             <li class="nav-item">
                                                 <a href="{{ url('amc_divyang_registration_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -902,6 +934,10 @@
                                             <li class="nav-item">
                                             <a href="{{ url('amc_vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
+                                            @elseif($scheme->scheme_id == 12)
+                                            <li class="nav-item">
+                                                <a href="{{ url('rejected_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            </li>
                                             @endif
                                             @endif
 
@@ -940,7 +976,7 @@
                                         @foreach ($category_wise_scheme as $scheme)
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
-                                            @if(isset($scheme->id))
+                                            @if(isset($scheme->scheme_id))
                                             @if($scheme->id == 1)
                                             <li class="nav-item">
                                                 <a href="{{ url('dmc_divyang_registration_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -983,6 +1019,10 @@
                                             <li class="nav-item">
                                             <a href="{{ url('dmc_vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
+                                            @elseif($scheme->scheme_id == 12)
+                                            <li class="nav-item">
+                                                <a href="{{ url('pending_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            </li>
                                             @endif
                                             @endif
 
@@ -1012,7 +1052,7 @@
                                         @foreach ($category_wise_scheme as $scheme)
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
-                                            @if(isset($scheme->id))
+                                            @if(isset($scheme->scheme_id))
                                             @if($scheme->id == 1)
                                             <li class="nav-item">
                                                 <a href="{{ url('dmc_divyang_registration_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -1055,6 +1095,10 @@
                                             <li class="nav-item">
                                             <a href="{{ url('dmc_vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
+                                            @elseif($scheme->scheme_id == 12)
+                                            <li class="nav-item">
+                                                <a href="{{ url('approved_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            </li>
                                             @endif
                                             @endif
 
@@ -1085,7 +1129,7 @@
                                         @foreach ($category_wise_scheme as $scheme)
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
-                                            @if(isset($scheme->id))
+                                            @if(isset($scheme->scheme_id))
                                             @if($scheme->id == 1)
                                             <li class="nav-item">
                                                 <a href="{{ url('dmc_divyang_registration_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -1128,6 +1172,10 @@
                                             <li class="nav-item">
                                             <a href="{{ url('dmc_vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
+                                           @elseif($scheme->scheme_id == 12)
+                                            <li class="nav-item">
+                                                <a href="{{ url('rejected_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            </li>
                                             @endif
                                             @endif
 

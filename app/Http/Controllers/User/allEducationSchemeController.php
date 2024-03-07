@@ -17,7 +17,7 @@ class allEducationSchemeController extends Controller
      */
     public function index()
     {
-        $scheme_detail = DB::table('all_education_scheme_details')->where('created_by', Auth::user()->id)->where('overall_status', '=', 'pending')->whereNull('deleted_by')->get();
+        $scheme_detail = DB::table('all_education_scheme_details')->where('created_by', Auth::user()->id)->whereNull('deleted_by')->get();
         $wards = Ward::latest()->get(['name']);
         $scheme_id = session('scheme_id');
         $document = DB::table('document_type_msts')

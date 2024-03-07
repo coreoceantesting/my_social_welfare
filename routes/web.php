@@ -303,6 +303,11 @@ Route::middleware(['auth', 'PreventBackHistory'])->group(function () {
     // all Education Scheme
     Route::resource('all_education_scheme', App\Http\Controllers\User\allEducationSchemeController::class);
     Route::post('update-details', [App\Http\Controllers\User\allEducationSchemeController::class, 'update_details'])->name('update_details');
+    // allEducationSchemeAction
+    Route::get('pending_application_list', [App\Http\Controllers\allListingController::class, 'pendingApplicationList']);
+    Route::get('approved_application_list', [App\Http\Controllers\allListingController::class, 'approvedApplicationList']);
+    Route::get('rejected_application_list', [App\Http\Controllers\allListingController::class, 'rejectedApplicationList']);
+    Route::post('change_status', [App\Http\Controllers\allListingController::class, 'changeStatus'])->name('changeStatus');
 });
 
 Route::get('/php', function (Request $request) {

@@ -486,6 +486,7 @@
                                         <th>Application No</th>
                                         <th>Full Name</th>
                                         <th>Mobile No</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -496,6 +497,7 @@
                                             <td>{{$scheme->application_no}}</td>
                                             <td>{{$scheme->full_name}}</td>
                                             <td>{{$scheme->mobile_no}}</td>
+                                            <td>{{$scheme->overall_status}}</td>
                                             <td>
                                                 <button class="edit-element btn btn-primary text-white px-2 py-1" title="Edit category" data-id="{{ $scheme->all_education_scheme_detail_id }}"><i data-feather="edit"></i></button>
                                                 <button class="btn btn-danger text-white rem-element px-2 py-1" title="Delete category" data-id="{{ $scheme->all_education_scheme_detail_id }}"><i data-feather="trash-2"></i> </button>
