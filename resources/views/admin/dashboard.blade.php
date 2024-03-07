@@ -45,7 +45,7 @@
             <div class="d-flex flex-column h-100">
 
                                 <div class="row">
-                                    @if(auth()->user()->name != "Admin")
+                                    @if(auth()->user()->roles->pluck('name')[0] == "User")
                                     @foreach ($scheme as $schemes)
 
                                         <div class="col-lg-3 mb-3">
