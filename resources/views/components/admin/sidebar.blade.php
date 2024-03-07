@@ -280,14 +280,14 @@
 
                                          @endif
                                         </li>
-                                        @elseif($scheme->id == 3)
+                                        {{-- @elseif($scheme->id == 3)
                                         <li class="nav-item">
                                         @if ($category->id == 1 || $category->id == 2)
                                         <a href="{{ url('education_scheme_application_list?category='.$category->id, 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                         @elseif ($category->id == 4)
                                         <a href="{{ url('education_scheme_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                         @endif
-                                      </li>
+                                      </li> --}}
 
                                         @elseif($scheme->id == 4)
                                         <li class="nav-item">
@@ -359,14 +359,14 @@
 
                                         @endif
 
-                                        @elseif($scheme->id == 3)
+                                        {{-- @elseif($scheme->id == 3)
                                         <li class="nav-item">
                                             @if ($category->id == 1 || $category->id == 2)
                                             <a href="{{ url('education_scheme_application_list?category='.$category->id, 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             @elseif ($category->id == 4)
                                             <a href="{{ url('education_scheme_application_list?category=women', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             @endif
-                                          </li>
+                                          </li> --}}
                                         @elseif($scheme->id == 4)
                                         <li class="nav-item">
                                         <a href="{{ url('marriage_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -436,14 +436,14 @@
 
                                          @endif
 
-                                        @elseif($scheme->id == 3)
+                                        {{-- @elseif($scheme->id == 3)
                                         <li class="nav-item">
                                             @if ($category->id == 1 || $category->id == 2)
                                             <a href="{{ url('education_scheme_application_list?category='.$category->id, 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             @elseif ($category->id == 4)
                                             <a href="{{ url('education_scheme_application_list?category=women', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             @endif
-                                          </li>
+                                          </li> --}}
                                         @elseif($scheme->id == 4)
                                         <li class="nav-item">
                                         <a href="{{ url('marriage_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -517,13 +517,13 @@
                                             <a href="{{ url('ac_bus_concession_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             @endif
                                           </li>
-                                            @elseif($scheme->id == 3)
+                                            {{-- @elseif($scheme->id == 3)
                                             <li class="nav-item">
                                                 @if ($category->id == 1 || $category->id == 2)
                                             <a href="{{ url('ac_education_scheme_application_list?category='.$category->id, 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             @elseif ($category->id == 4)
                                             <a href="{{ url('ac_education_scheme_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
-                                            @endif
+                                            @endif --}}
                                         </li>
                                             @elseif($scheme->id == 4)
                                             <li class="nav-item">
@@ -594,13 +594,13 @@
                                                 <a href="{{ url('ac_bus_concession_application_list?category=women', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                                 @endif
                                               </li>
-                                            @elseif($scheme->id == 3)
+                                            {{-- @elseif($scheme->id == 3)
                                             <li class="nav-item">
                                                 @if ($category->id == 1 || $category->id == 2)
                                             <a href="{{ url('ac_education_scheme_application_list?category='.$category->id, 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             @elseif ($category->id == 4)
                                             <a href="{{ url('ac_education_scheme_application_list?category=women', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
-                                            @endif
+                                            @endif --}}
                                         </li>
                                             @elseif($scheme->id == 4)
                                             <li class="nav-item">
@@ -671,14 +671,14 @@
                                                 <a href="{{ url('ac_bus_concession_application_list?category=women', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                                 @endif
                                               </li>
-                                            @elseif($scheme->id == 3)
+                                            {{-- @elseif($scheme->id == 3)
                                             <li class="nav-item">
                                                 @if ($category->id == 1 || $category->id == 2)
                                             <a href="{{ url('ac_education_scheme_application_list?category='.$category->id, 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             @elseif ($category->id == 4)
                                             <a href="{{ url('ac_education_scheme_application_list?category=women', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             @endif
-                                        </li>
+                                        </li> --}}
                                             @elseif($scheme->id == 4)
                                             <li class="nav-item">
                                             <a href="{{ url('ac_marriage_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -754,14 +754,14 @@
                                             <a href="{{ url('amc_bus_concession_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                                 @endif
                                         </li>
-                                            @elseif($scheme->id == 3)
+                                            {{-- @elseif($scheme->id == 3)
                                             <li class="nav-item">
                                                 @if ($category->id == 1 || $category->id == 2)
                                             <a href="{{ url('amc_education_scheme_application_list?category='.$category->id, 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             @elseif ($category->id == 4)
                                             <a href="{{ url('amc_education_scheme_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             @endif
-                                        </li>
+                                        </li> --}}
                                             @elseif($scheme->id == 4)
                                             <li class="nav-item">
                                             <a href="{{ url('amc_marriage_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -830,14 +830,14 @@
                                                 <a href="{{ url('amc_bus_concession_application_list?category=women', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                                     @endif
                                           </li>
-                                            @elseif($scheme->id == 3)
+                                            {{-- @elseif($scheme->id == 3)
                                             <li class="nav-item">
                                                 @if ($category->id == 1 || $category->id == 2)
                                                 <a href="{{ url('amc_education_scheme_application_list?category='.$category->id, 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                                 @elseif ($category->id == 4)
                                                 <a href="{{ url('amc_education_scheme_application_list?category=women', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                                 @endif
-                                          </li>
+                                          </li> --}}
                                             @elseif($scheme->id == 4)
                                             <li class="nav-item">
                                             <a href="{{ url('amc_marriage_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -906,14 +906,14 @@
                                                 <a href="{{ url('amc_bus_concession_application_list?category=women', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                                     @endif
                                           </li>
-                                            @elseif($scheme->id == 3)
+                                            {{-- @elseif($scheme->id == 3)
                                             <li class="nav-item">
                                                 @if ($category->id == 1 || $category->id == 2)
                                                 <a href="{{ url('amc_education_scheme_application_list?category='.$category->id, 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                                 @elseif ($category->id == 4)
                                                 <a href="{{ url('amc_education_scheme_application_list?category=women', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                                 @endif
-                                          </li>
+                                          </li> --}}
                                             @elseif($scheme->id == 4)
                                             <li class="nav-item">
                                             <a href="{{ url('amc_marriage_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -991,14 +991,14 @@
                                             <a href="{{ url('dmc_bus_concession_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             @endif
                                         </li>
-                                            @elseif($scheme->id == 3)
+                                            {{-- @elseif($scheme->id == 3)
                                             <li class="nav-item">
                                                 @if ($category->id == 1 || $category->id == 2)
                                             <a href="{{ url('dmc_education_scheme_application_list?category='.$category->id, 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             @elseif ($category->id == 4)
                                             <a href="{{ url('dmc_education_scheme_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             @endif
-                                        </li>
+                                        </li> --}}
                                             @elseif($scheme->id == 4)
                                             <li class="nav-item">
                                             <a href="{{ url('dmc_marriage_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -1067,14 +1067,14 @@
                                                 <a href="{{ url('dmc_bus_concession_application_list?category=women', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                                 @endif
                                           </li>
-                                            @elseif($scheme->id == 3)
+                                            {{-- @elseif($scheme->id == 3)
                                             <li class="nav-item">
                                                 @if ($category->id == 1 || $category->id == 2)
                                             <a href="{{ url('dmc_education_scheme_application_list?category='.$category->id, 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             @elseif ($category->id == 4)
                                             <a href="{{ url('dmc_education_scheme_application_list?category=women', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             @endif
-                                        </li>
+                                        </li> --}}
                                             @elseif($scheme->id == 4)
                                             <li class="nav-item">
                                             <a href="{{ url('dmc_marriage_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -1144,13 +1144,13 @@
                                                 <a href="{{ url('dmc_bus_concession_application_list?category=women', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                                 @endif
                                           </li>
-                                            @elseif($scheme->id == 3)
+                                            {{-- @elseif($scheme->id == 3)
                                             <li class="nav-item">
                                              @if ($category->id == 1 || $category->id == 2)
                                             <a href="{{ url('dmc_education_scheme_application_list?category='.$category->id, 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             @elseif ($category->id == 4)
                                             <a href="{{ url('dmc_education_scheme_application_list?category=women', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
-                                            @endif
+                                            @endif --}}
                                         </li>
                                             @elseif($scheme->id == 4)
                                             <li class="nav-item">
