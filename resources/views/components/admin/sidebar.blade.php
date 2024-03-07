@@ -309,7 +309,7 @@
                                         <li class="nav-item">
                                         <a href="{{ url('vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                     </li>
-                                        @elseif($scheme->scheme_id == 12)
+                                        @elseif($scheme->scheme_name == 'Education Scheme')
                                         <li class="nav-item">
                                             <a href="{{ url('pending_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                         </li>
@@ -387,7 +387,7 @@
                                         <li class="nav-item">
                                         <a href="{{ url('vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                         </li>
-                                        @elseif($scheme->scheme_id == 12)
+                                        @elseif($scheme->scheme_name == 'Education Scheme')
                                         <li class="nav-item">
                                             <a href="{{ url('approved_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                         </li>
@@ -464,7 +464,7 @@
                                         <li class="nav-item">
                                         <a href="{{ url('vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                       </li>
-                                        @elseif($scheme->scheme_id == 12)
+                                        @elseif($scheme->scheme_name == 'Education Scheme')
                                         <li class="nav-item">
                                             <a href="{{ url('rejected_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                         </li>
@@ -545,7 +545,7 @@
                                             <li class="nav-item">
                                             <a href="{{ url('ac_vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
-                                           @elseif($scheme->scheme_id == 12)
+                                           @elseif($scheme->scheme_name == 'Education Scheme')
                                             <li class="nav-item">
                                                 <a href="{{ url('pending_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             </li>
@@ -622,7 +622,7 @@
                                             <li class="nav-item">
                                             <a href="{{ url('ac_vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
-                                            @elseif($scheme->scheme_id == 12)
+                                            @elseif($scheme->scheme_name == 'Education Scheme')
                                             <li class="nav-item">
                                                 <a href="{{ url('approved_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             </li>
@@ -699,7 +699,7 @@
                                             <li class="nav-item">
                                             <a href="{{ url('ac_vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
-                                            @elseif($scheme->scheme_id == 12)
+                                            @elseif($scheme->scheme_name == 'Education Scheme')
                                             <li class="nav-item">
                                                 <a href="{{ url('rejected_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             </li>
@@ -782,7 +782,7 @@
                                             <li class="nav-item">
                                             <a href="{{ url('amc_vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
-                                            @elseif($scheme->scheme_id == 12)
+                                            @elseif($scheme->scheme_name == 'Education Scheme')
                                             <li class="nav-item">
                                                 <a href="{{ url('pending_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             </li>
@@ -858,7 +858,7 @@
                                             <li class="nav-item">
                                             <a href="{{ url('amc_vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
-                                            @elseif($scheme->scheme_id == 12)
+                                            @elseif($scheme->scheme_name == 'Education Scheme')
                                             <li class="nav-item">
                                                 <a href="{{ url('approved_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             </li>
@@ -934,7 +934,7 @@
                                             <li class="nav-item">
                                             <a href="{{ url('amc_vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
-                                            @elseif($scheme->scheme_id == 12)
+                                            @elseif($scheme->scheme_name == 'Education Scheme')
                                             <li class="nav-item">
                                                 <a href="{{ url('rejected_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             </li>
@@ -1019,7 +1019,7 @@
                                             <li class="nav-item">
                                             <a href="{{ url('dmc_vehicle_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
-                                            @elseif($scheme->scheme_id == 12)
+                                            @elseif($scheme->scheme_name == 'Education Scheme')
                                             <li class="nav-item">
                                                 <a href="{{ url('pending_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             </li>
@@ -1095,7 +1095,7 @@
                                             <li class="nav-item">
                                             <a href="{{ url('dmc_vehicle_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
-                                            @elseif($scheme->scheme_id == 12)
+                                            @elseif($scheme->scheme_name == 'Education Scheme')
                                             <li class="nav-item">
                                                 <a href="{{ url('approved_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             </li>
@@ -1172,7 +1172,7 @@
                                             <li class="nav-item">
                                             <a href="{{ url('dmc_vehicle_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
-                                           @elseif($scheme->scheme_id == 12)
+                                           @elseif($scheme->scheme_name == 'Education Scheme')
                                             <li class="nav-item">
                                                 <a href="{{ url('rejected_application_list') }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                             </li>
