@@ -257,7 +257,7 @@ class BusConcessionSchemeController extends Controller
             ->where('t1.bus_concession_id', $data->id)
             ->get();
 
-        $scheme = DB::table('mst_scheme')->select('*')->where('id', 2)->whereNull('deleted_at')->first();
+        $scheme = DB::table('mst_scheme')->select('*')->where('id', session('scheme_id'))->whereNull('deleted_at')->first();
         return view('users.bus_concession.bus_concession_certificate_view', compact('data', 'document', 'scheme'));
     }
 }
