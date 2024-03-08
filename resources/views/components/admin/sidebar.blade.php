@@ -161,9 +161,9 @@
                                     $string = $list->scheme_name;
                                     $words = explode(' ', $string);
                                     $words[0] = strtolower($words[0]);
-                                    if($words[0] == 'divyang')
+                                    if($words[0] == 'nondani')
                                     {
-                                            $url = url($words[0].'_application');
+                                            $url = url('divyang_application');
                                     }elseif($words[0] == 'bus'){
                                         $url = url($words[0].'_concession_application');
                                     }elseif($words[0] == 'education'){
