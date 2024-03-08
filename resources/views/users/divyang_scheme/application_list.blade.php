@@ -104,7 +104,7 @@
 
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="agriculture">Agriculture (शेती)<span class="text-danger">*</span></label>
+                            <label class="col-form-label" for="agriculture">Agriculture (शेती)</label>
                             <input class="form-control" id="agriculture" name="agriculture" type="text" placeholder="Enter Agriculture">
                             <span class="text-danger is-invalid agriculture_err"></span>
                         </div>
@@ -230,6 +230,11 @@
 
                                 </select>
                                 <span class="text-danger is-invalid  ward_id_err"></span>
+                        </div>
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="corporator_name"> Ward Mr. Name of corporator / corporator(प्रभागातील मा. नगरसेवक / नगरसेविका यांचे नाव )<span class="text-danger">*</span></label>
+                            <input class="form-control" id="corporator_name" name="corporator_name" type="text" placeholder="Enter Corporator Name">
+                            <span class="text-danger is-invalid corporator_name_err"></span>
                         </div>
 
                         <div class="col-md-4 mt-3">
@@ -426,6 +431,7 @@
                     $("#editForm input[name='poverty_number']").val(data.scheme_form.poverty_number);
                     $("#editForm input[name='caste']").val(data.scheme_form.caste);
                     $("#editForm input[name='ward_no']").val(data.scheme_form.ward_no);
+                    $("#editForm input[name='corporator_name']").val(data.scheme_form.corporator_name);
                     $("#ward_id").html(data.wardHtml);
                     $("#category_id").html(data.categoryListHtml);
                     $("#editForm a#candidate_signature").attr('href', "{{ asset('storage/') }}/" + data.scheme_form.candidate_signature);

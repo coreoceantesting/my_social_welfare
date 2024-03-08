@@ -42,7 +42,7 @@ class StoreApplicationRequest extends FormRequest
             'adhaar_no'=>'required|max:12',
             'profession'=>'required',
             'number_of_family'=>'required',
-            'agriculture'=>'required',
+            // 'agriculture'=>'required',
             'personal_benefit'=>'required',
             'received_year'=>'required',
             'welfare_schemes'=>'required',
@@ -55,6 +55,7 @@ class StoreApplicationRequest extends FormRequest
             'document_id'=>'nullable',
             'document_file'=>'nullable',
             'category_id'=>'required',
+            'corporator_name'=>'required',
         ];
     }
 }
