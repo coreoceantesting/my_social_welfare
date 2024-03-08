@@ -118,9 +118,9 @@
                              <table class="table table-bordered nowrap align-middle">
                                 <thead>
                                 <tr>
-                                <th>Pending</th>
-                                <th>Approved</th>
-                                <th>Rejected</th>
+                                <th><a href="{{ url('bus_concession_application_list?category=1', 0) }}">Pending</a></th>
+                                <th><a href="{{ url('bus_concession_application_list?category=1', 1) }}">Approved</a></th>
+                                <th><a href="{{ url('bus_concession_application_list?category=1', 2) }}">Rejected</a></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -152,9 +152,9 @@
                                 <table class="table table-bordered nowrap align-middle">
                                     <thead>
                                     <tr>
-                                    <th>Pending</th>
-                                    <th>Approved</th>
-                                    <th>Rejected</th>
+                                    <th><a href="{{ url('divyang_registration_list', 0) }}">Pending</a></th>
+                                    <th><a href="{{ url('divyang_registration_list', 1) }}">Approved</a></th>
+                                    <th><a href="{{ url('divyang_registration_list', 2) }}">Rejected</a></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -170,6 +170,31 @@
                         </div>
                       </div>
 
+                      @php 
+                        $education_scheme_total_count =  DB::table('all_education_scheme_details AS t1')
+                            ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+                            ->where(function ($query) {
+                                $query->where('t2.category', 1)
+                                    ->orWhere('t2.category', 2);
+                            })
+                            ->whereNull('t1.deleted_at')
+                            ->get();
+                            $pending_count = [];
+                            $approved_count = [];
+                            $rejected_count = [];
+
+                            foreach ($education_scheme_total_count as $key => $list) {
+                                if($list->hod_status == 'pending')
+                                {
+                                    $pending_count[] = $list->application_no;
+                                }elseif ($list->hod_status == 'approved') {
+                                    $approved_count[] = $list->application_no;
+                                }elseif ($list->hod_status == 'rejected') {
+                                    $rejected_count[] = $list->application_no;
+                                }
+                            }
+                      @endphp
+
                       <div class="col-lg-3 mb-3">
                         <!-- Portlet card -->
                         <div class="card h-auto" style="border:solid 1px;">
@@ -181,21 +206,21 @@
                           <div id="cardCollpase5" class="collapse show">
                             <div class="card-body pb-0">
                                 <h4 style="text-align:center;">Total Count</h4>
-                                <h4 style="text-align:center;">{{ $education_scheme_total_count }}</h4>
+                                <h4 style="text-align:center;">{{ count($education_scheme_total_count) }}</h4>
 
                                 <table class="table table-bordered nowrap align-middle">
                                     <thead>
                                     <tr>
-                                    <th>Pending</th>
-                                    <th>Approved</th>
-                                    <th>Rejected</th>
+                                    <th><a href="{{ url('pending_application_list') }}">Pending</a></th>
+                                    <th><a href="{{ url('approved_application_list') }}">Approved</a></th>
+                                    <th><a href="{{ url('rejected_application_list') }}">Rejected</a></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><a href="{{ url('education_scheme_application_list?category=1', 0) }}">{{$education_scheme_pending}}</a></td>
-                                            <td><a href="{{ url('education_scheme_application_list?category=1', 1) }}">{{$education_scheme_approve}}</a></td>
-                                            <td><a href="{{ url('education_scheme_application_list?category=1', 2) }}">{{$education_scheme_reject}}</a></td>
+                                            <td><a href="{{ url('pending_application_list') }}">{{count($pending_count)}}</a></td>
+                                            <td><a href="{{ url('approved_application_list') }}">{{count($approved_count)}}</a></td>
+                                            <td><a href="{{ url('rejected_application_list') }}">{{count($rejected_count)}}</a></td>
                                         </tr>
                                     </tbody>
                                     </table>
@@ -221,9 +246,9 @@
                                 <table class="table table-bordered nowrap align-middle">
                                     <thead>
                                     <tr>
-                                    <th>Pending</th>
-                                    <th>Approved</th>
-                                    <th>Rejected</th>
+                                    <th><a href="{{ url('marriage_scheme_application_list', 0) }}">Pending</a></th>
+                                    <th><a href="{{ url('marriage_scheme_application_list', 1) }}">Approved</a></th>
+                                    <th><a href="{{ url('marriage_scheme_application_list', 2) }}">Rejected</a></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -1583,9 +1608,9 @@
                                                                 <table class="table table-bordered nowrap align-middle">
                                                                     <thead>
                                                                     <tr>
-                                                                    <th>Pending</th>
-                                                                    <th>Approved</th>
-                                                                    <th>Rejected</th>
+                                                                    <th><a href="{{ url('dmc_bus_concession_application_list?category=1', 0) }}">Pending</a></th>
+                                                                    <th><a href="{{ url('dmc_bus_concession_application_list?category=1', 1) }}">Approved</a></th>
+                                                                    <th><a href="{{ url('dmc_bus_concession_application_list?category=1', 2) }}">Rejected</a></th>
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody>
@@ -1617,9 +1642,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('dmc_divyang_registration_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('dmc_divyang_registration_list', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('dmc_divyang_registration_list', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -1635,6 +1660,31 @@
                                                             </div>
                                                         </div>
 
+                                                        @php 
+                                                            $dmc_education_scheme_total_count =  DB::table('all_education_scheme_details AS t1')
+                                                                ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+                                                                ->where(function ($query) {
+                                                                    $query->where('t2.category', 1)
+                                                                        ->orWhere('t2.category', 2);
+                                                                })
+                                                                ->whereNull('t1.deleted_at')
+                                                                ->get();
+                                                                $dmc_pending_count = [];
+                                                                $dmc_approved_count = [];
+                                                                $dmc_rejected_count = [];
+
+                                                                foreach ($dmc_education_scheme_total_count as $key => $list) {
+                                                                    if($list->dmc_status == 'pending')
+                                                                    {
+                                                                        $dmc_pending_count[] = $list->application_no;
+                                                                    }elseif ($list->dmc_status == 'approved') {
+                                                                        $dmc_approved_count[] = $list->application_no;
+                                                                    }elseif ($list->dmc_status == 'rejected') {
+                                                                        $dmc_rejected_count[] = $list->application_no;
+                                                                    }
+                                                                }
+                                                        @endphp
+
                                                         <div class="col-lg-3 mb-3">
                                                             <!-- Portlet card -->
                                                             <div class="card h-auto" style="border:solid 1px;">
@@ -1646,21 +1696,21 @@
                                                             <div id="cardCollpase5" class="collapse show">
                                                                 <div class="card-body pb-0">
                                                                     <h4 style="text-align:center;">Total Count</h4>
-                                                                    <h4 style="text-align:center;">{{ $dmc_education_scheme_total_count }}</h4>
+                                                                    <h4 style="text-align:center;">{{ count($dmc_education_scheme_total_count) }}</h4>
 
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('pending_application_list') }}">Pending</a></th>
+                                                                        <th><a href="{{ url('approved_application_list') }}">Approved</a></th>
+                                                                        <th><a href="{{ url('rejected_application_list') }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
                                                                             <tr>
-                                                                                <td><a href="{{ url('dmc_education_scheme_application_list?category=1', 0) }}">{{$dmc_education_scheme_pending}}</a></td>
-                                                                                <td><a href="{{ url('dmc_education_scheme_application_list?category=1', 1) }}">{{$dmc_education_scheme_approve}}</a></td>
-                                                                                <td><a href="{{ url('dmc_education_scheme_application_list?category=1', 2) }}">{{$dmc_education_scheme_reject}}</a></td>
+                                                                                <td><a href="{{ url('pending_application_list') }}">{{count($dmc_pending_count)}}</a></td>
+                                                                                <td><a href="{{ url('approved_application_list') }}">{{count($dmc_approved_count)}}</a></td>
+                                                                                <td><a href="{{ url('rejected_application_list') }}">{{count($dmc_rejected_count)}}</a></td>
                                                                             </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1686,9 +1736,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('dmc_marriage_scheme_application_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('dmc_marriage_scheme_application_list', 0) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('dmc_marriage_scheme_application_list', 0) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>

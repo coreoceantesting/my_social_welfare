@@ -43,7 +43,7 @@
                                     @foreach ($data as $value)
                                         <tr>
                                             <td>{{ $value->application_no }}</td>
-                                            <td>{{ $value->full_name }}</td>
+                                            <td>{{ $value->f_name }} {{ $value->m_name }} {{ $value->l_name }}</td>
                                             <td>{{ $value->full_address }}</td>
                                             <td>{{ $value->contact }}</td>
                                             @if($value->hod_status == '2')
