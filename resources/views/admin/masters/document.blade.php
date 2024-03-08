@@ -169,7 +169,7 @@
 
                                         <tr>
                                             <td>{{ $num++ }}</td>
-                                            <td>{{$row->scheme->scheme_name ?? ''}} ({{$row->scheme->scheme_marathi_name}})</td>
+                                            <td>{{$row->scheme->scheme_name ?? ''}} ({{$row->scheme->scheme_marathi_name ?? '' }})</td>
                                             <td>{{$row->document_name}}</td>
                                             <td>{{$row->document_initial}}</td>
                                             <td>{{ $require }}</td>

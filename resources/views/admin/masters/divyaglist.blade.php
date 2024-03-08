@@ -111,20 +111,13 @@
                                     <span class="text-danger is-invalid ifsc_code_err"></span>
                                 </div>
 
-
-
-                                <div class="col-md-4 mt-3">
-                                        <label for="formFile" lass="col-form-label">Upload Signature / thumb (अर्जदाराची सही / अगंठा) <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="file" name="signature" id="signature" accept=".png, .jpg, .jpeg">
-                                    <span class="text-danger is-invalid signature_err"></span>
-                                </div>
                                 <div class="col-md-4 mb-3">
-                                    <label class="col-form-label" for="name">Flat No./House No./ building No. / Apartmen (फ्लॅट क्र./घर क्र./ इमारत क्र./कंपनी क्र./ अपार्टमेंट) <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="name">Flat No./House No./ building No. / Apartment (फ्लॅट क्र./घर क्र./ इमारत क्र./कंपनी क्र./ अपार्टमेंट) <span class="text-danger">*</span></label>
                                     <input class="form-control" id="house_no" name="house_no" type="text" placeholder="Enter House No">
                                     <span class="text-danger is-invalid house_no_err"></span>
                                 </div>
 
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-6 mb-3">
                                     <label class="col-form-label" for="govt_benefit">I write on the affidavit that I am/are not getting two government benefits. Adding their details. (मी प्रतिज्ञेवर लिहुन देतो/देते की, मला दोन शासकीय लाभ मिळत नाही/मिळत आहेत. त्यांचा तपशिल जोडत आहे.) <span class="text-danger">*</span></label>
                                         <select class="js-example-basic-single" name="govt_benefit" >
                                             <option value="">--Select--</option>
@@ -134,7 +127,7 @@
                                         <span class="text-danger is-invalid  govt_benefit_err"></span>
                                 </div>
 
-                                <div class="col-md-4 mt-3">
+                                <div class="col-md-6 mt-3">
                                     <label class="col-form-label" for="disability_benefit">I write on the affidavit that I have / have not received Disability Fund Benefit in the past. (मी प्रतिज्ञेवर लिहुन देतो/देते की, मला यापूर्वी दिव्यांग निधी लाभ प्राप्त झाले आहे / नाही.) <span class="text-danger">*</span></label>
                                         <select class="js-example-basic-single" name="disability_benefit" >
                                             <option value="">--Select--</option>
@@ -143,7 +136,7 @@
                                         </select>
                                         <span class="text-danger is-invalid  disability_benefit_err"></span>
                                 </div>
-                                <div class="col-md-4 mb-5">
+                                <div class="col-md-6 mb-5">
                                     <label class="col-form-label" for="medical_benefit">I do on affidavit that, dt. / In the last 20 days, I did not mention the temptation of changing the government/Nimsar and fighting the battle. Also availed of all the facilities of Central Govt. in short term: (मी प्रतिज्ञापत्रावर जाहीर करतो/करते की, दि. / २० अखेर सपंणाऱ्या कालावधीत मी कोणतीही सरकारी/निमसरकारी व लष्करी नोकरी करुन त्याबद्दल मोहबदला घेतला नाही. तसेच वरील अल्पावधीत केंद्र शासनाच्या वैद्यकीय सुविधांचा लाभ घेतलेला आहे/ नाही ): <span class="text-danger">*</span></label>
                                         <select class="js-example-basic-single" name="medical_benefit" >
                                             <option value="">--Select--</option>
@@ -151,6 +144,12 @@
                                           <option value="no">No</option>
                                         </select>
                                         <span class="text-danger is-invalid  medical_benefit_err"></span>
+                                </div>
+
+                                <div class="col-md-6 mt-3">
+                                    <label for="formFile" lass="col-form-label">Upload Signature / thumb (अर्जदाराची सही / अगंठा) <span class="text-danger">*</span></label>
+                                    <input class="form-control" type="file" name="signature" id="signature" accept=".png, .jpg, .jpeg">
+                                    <span class="text-danger is-invalid signature_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
@@ -275,17 +274,7 @@
                                     <span class="text-danger is-invalid ifsc_code_err"></span>
                                 </div>
 
-
-                                <div class="col-md-4 mt-3">
-                                        <label for="formFile" lass="col-form-label">Upload Signature / thumb (अर्जदाराची सही / अगंठा) <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="file" name="signature" id="signature" accept=".png, .jpg, .jpeg">
-                                        <a class="btn btn-sm btn-primary" id="signature" target="_blank" href="" >View Document</a>
-                                    <span class="text-danger is-invalid signature_err"></span>
-                                </div>
-
-
-
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-6 mb-3">
                                     <label class="col-form-label" for="govt_benefit">I write on the affidavit that I am/are not getting two government benefits. Adding their details. (मी प्रतिज्ञेवर लिहुन देतो/देते की, मला दोन शासकीय लाभ मिळत नाही/मिळत आहेत. त्यांचा तपशिल जोडत आहे.) <span class="text-danger">*</span></label>
                                         <select class="js-example-basic-single" name="govt_benefit" >
                                             <option value="">--Select--</option>
@@ -297,7 +286,7 @@
 
 
 
-                                <div class="col-md-4 mt-3">
+                                <div class="col-md-6 mt-3">
                                     <label class="col-form-label" for="disability_benefit">I write on the affidavit that I have / have not received Disability Fund Benefit in the past./ मी प्रतिज्ञेवर लिहुन देतो/देते की, मला यापूर्वी दिव्यांग निधी लाभ प्राप्त झाले आहे / नाही. <span class="text-danger">*</span></label>
                                         <select class="js-example-basic-single" name="disability_benefit" >
                                             <option value="">--Select--</option>
@@ -307,7 +296,7 @@
                                         <span class="text-danger is-invalid  disability_benefit_err"></span>
                                 </div>
 
-                                <div class="col-md-4 mb-5">
+                                <div class="col-md-6 mb-5">
                                     <label class="col-form-label" for="medical_benefit">I declare on affidavit that, dt. / During the period ending 20th, I have not received any compensation for doing any government/semi-government and military job. Also availed / not availed the medical facilities of the Central Government during the above short period: (मी प्रतिज्ञापत्रावर जाहीर करतो/करते की, दि. / २० अखेर सपंणाऱ्या कालावधीत मी कोणतीही सरकारी/निमसरकारी व लष्करी नोकरी करुन त्याबद्दल मोहबदला घेतला नाही. तसेच वरील अल्पावधीत केंद्र शासनाच्या वैद्यकीय सुविधांचा लाभ घेतलेला आहे/ नाही) : <span class="text-danger">*</span></label>
                                         <select class="js-example-basic-single" name="medical_benefit" >
                                             <option value="">--Select--</option>
@@ -315,6 +304,13 @@
                                           <option value="no">No</option>
                                         </select>
                                         <span class="text-danger is-invalid  medical_benefit_err"></span>
+                                </div>
+
+                                <div class="col-md-6 mt-3">
+                                    <label for="formFile" lass="col-form-label">Upload Signature / thumb (अर्जदाराची सही / अगंठा) <span class="text-danger">*</span></label>
+                                    <input class="form-control" type="file" name="signature" id="signature" accept=".png, .jpg, .jpeg">
+                                    <a class="btn btn-sm btn-primary" id="signature" target="_blank" href="" >View Document</a>
+                                    <span class="text-danger is-invalid signature_err"></span>
                                 </div>
 
 

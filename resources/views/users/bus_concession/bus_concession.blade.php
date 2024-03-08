@@ -94,21 +94,7 @@
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="candidate_signature">Upload Signature (अर्जदाराची सही) / thumb (अगंठा)  <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="candidate_signature" name="candidate_signature" type="file" accept=".png, .jpg, .jpeg">
-                                    {{-- <a class="btn btn-sm btn-primary" id="candidate_signature" target="_blank" href="" >View Document</a> --}}
-                                    <span class="text-danger is-invalid candidate_signature_err"></span>
-                                </div>
-
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="passport_size_photo">Passport Size Photo (अर्जदाराची फोटो) <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="passport_size_photo" name="passport_size_photo" type="file" accept=".png, .jpg, .jpeg">
-                                    {{-- <a class="btn btn-sm btn-primary" id="passport_size_photo" target="_blank" href="" >View Document</a> --}}
-                                    <span class="text-danger is-invalid passport_size_photo_err"></span>
-                                </div>
-
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="is_bonafied_doc">Do You Have Bonafied Certificate? (तुमच्याकडे बोनाफाईड प्रमाणपत्र आहे का?) <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="is_bonafied_doc">Do You Have Bonafide Certificate? (तुमच्याकडे बोनाफाईड प्रमाणपत्र आहे का?) <span class="text-danger">*</span></label>
                                         <select class="js-example-basic-single" name="is_bonafied_doc" >
                                             <option value="">--Select--</option>
                                             <option value="yes">Yes</option>
@@ -136,6 +122,22 @@
                                             <option value="no">No</option>
                                         </select>
                                     <span class="text-danger is-invalid  is_divyang_doc_err"></span>
+                                </div>
+
+                                
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="candidate_signature">Upload Signature (अर्जदाराची सही) / thumb (अगंठा)  <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="candidate_signature" name="candidate_signature" type="file" accept=".png, .jpg, .jpeg">
+                                    {{-- <a class="btn btn-sm btn-primary" id="candidate_signature" target="_blank" href="" >View Document</a> --}}
+                                    <span class="text-danger is-invalid candidate_signature_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="passport_size_photo">Passport Size Photo (अर्जदाराची फोटो) <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="passport_size_photo" name="passport_size_photo" type="file" accept=".png, .jpg, .jpeg">
+                                    {{-- <a class="btn btn-sm btn-primary" id="passport_size_photo" target="_blank" href="" >View Document</a> --}}
+                                    <span class="text-danger is-invalid passport_size_photo_err"></span>
                                 </div>
 
                                 @foreach ($document as $doc)
