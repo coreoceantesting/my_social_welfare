@@ -14,7 +14,7 @@
                             <table>
                                 <tr>
                                     <th><img class="img-fluid " src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="Awesome Image" style="height:100px; width:150px;"></th>
-                                    <th><h1 style="padding-left: 50px;"><strong>पनवेल महानगरपालिका</strong></h1></th>
+                                    <th style="width: 55%"><h1><strong>पनवेल महानगरपालिका</strong></h1></th>
                                   </tr>
                             </table>
                             <div class="row d-none">
@@ -122,7 +122,7 @@
                                 <tr>
                                     <td><strong>५</strong></td>
                                     <td><strong>महानगरपालिका क्षेत्रातील वास्तव्याचा पुरावा : <br>भाडे करारनामा, कर भरल्याची पावती/ बिल,<br> रेशनकार्ड, लाईट बिल, मतदान ओळखपत्र  <br>(यापैकी कोणताही १ पुरावा जोडणे)</strong></td>
-                                    <td></td>
+                                    <td>{{ $data->is_residental_doc }}</td>
                                 </tr>
 
                                 <tr>
@@ -140,7 +140,7 @@
                                 <tr>
                                     <td><strong>८</strong></td>
                                     <td><strong>शाळा/महाविद्यालयात प्रवेश घेतल्याचे प्रमाणपत्र (Bonafied)</strong></td>
-                                    <td></td>
+                                    <td>{{ $data->is_bonafied_doc }}</td>
                                 </tr>
 
                                 <?php
