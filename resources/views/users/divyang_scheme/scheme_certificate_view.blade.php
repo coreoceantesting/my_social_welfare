@@ -11,7 +11,17 @@
 
                     <div class="card"  id="divToPrint">
                         <div class="body" style="padding:60px;">
-                            <div class="row">
+                            <table>
+                                <tr>
+                                    <th><img class="img-fluid " src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="Awesome Image" style="height:100px; width:150px;"></th>
+                                    <th style="width: 53%"><h1>
+                                        <h1><strong>पनवेल महानगरपालिका</strong></h1>
+                                        <h5 style="text-align: center"><strong>ता. पनवेल, जि. रायगड, पिन नं. ४१० २०६</strong></h5>
+                                        <h5 style="text-align: center"><strong>(दिव्यांग/कुष्ट रोग कल्याण विभाग)</strong></h5>
+                                    </th>
+                                  </tr>
+                            </table>
+                            <div class="row d-none">
                                 <div class="col-md-3" >
                                     <div class="icon-box">
                                         <img class="img-fluid " src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="Awesome Image" style="height:100px; width:150px;">
@@ -286,13 +296,13 @@
 
                             <br>
 
-                            <div class="row pt-3">
+                            <div class="row pt-3 d-none">
                                 <div class="col-md-12 col-sm-12">
                                     <h4><strong> <u>अर्जासोबत जोडावयाची कागदपत्रे :</u> </strong></h4>
                                 </div>
                             </div>
 
-                            <div class="row pt-3">
+                            <div class="row pt-3 d-none">
                                 <div class="col-md-12 col-sm-12">
                                     <p class="mb-0">
                                          १) अर्जदाराचे अपंगत्वाचे प्रमाणपत्र / कुष्ठरोगाचे प्रमाणपत्र  (४०% च्या वरील) फक्त online ग्राह्य धरली जातील
@@ -300,7 +310,7 @@
                                 </div>
                             </div>
 
-                            <div class="row pt-3">
+                            <div class="row pt-3 d-none">
                                 <div class="col-md-12 col-sm-12">
                                     <p class="mb-0">
                                          २) बँक पासबुक किंवा चेक ची झेरॉक्स
@@ -308,7 +318,7 @@
                                 </div>
                             </div>
 
-                            <div class="row pt-3">
+                            <div class="row pt-3 d-none">
                                 <div class="col-md-12 col-sm-12">
                                     <p class="mb-0">
                                          ३) तहसिलदार यांचे कडिल १ लाखाच्या आतील उत्पन्नाचा दाखला (दिव्यांग व्यक्तीचा /कुष्ठरोगी व्यक्तीचा )
@@ -316,7 +326,7 @@
                                 </div>
                             </div>
 
-                            <div class="row pt-3">
+                            <div class="row pt-3 d-none">
                                 <div class="col-md-12 col-sm-12">
                                     <p class="mb-0">
                                          ४) तहसिलदार / नगरसेवकाचा स्थानिक रहिवाशी दाखला.
@@ -324,7 +334,7 @@
                                 </div>
                             </div>
 
-                            <div class="row pt-3">
+                            <div class="row pt-3 d-none">
                                 <div class="col-md-12 col-sm-12">
                                     <p class="mb-0">
                                          ५) लाभार्थ्यांचे २ पासपोर्ट साईज फोटो ६) लाभार्थ्यांचे आधारकार्ड
@@ -332,7 +342,7 @@
                                 </div>
                             </div>
 
-                            <div class="row pt-3">
+                            <div class="row pt-3 d-none">
                                 <div class="col-md-12 col-sm-12">
                                     <p class="mb-0">
                                          ७) रेशनकार्ड / लाईटबील / मतदान ओळखपत्र / पॅनकार्ड
@@ -341,7 +351,7 @@
                             </div>
 
 
-                            <div class="row pt-3">
+                            <div class="row pt-3 d-none">
                                 <div class="col-md-12 col-sm-12">
                                     <h4><strong> सुचना :</strong></h4>
                                     <p class="mb-0">
