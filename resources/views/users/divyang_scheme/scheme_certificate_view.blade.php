@@ -275,7 +275,7 @@
                             <div class="row pt-3">
                                 <div class="col-md-12 col-sm-12">
                                     <p class="mb-0">
-                                        <strong>  प्रभागातील मा. नगरसेवक / नगरसेविका यांचे नाव : </strong> {{ $data->name }}
+                                        <strong>  प्रभागातील मा. नगरसेवक / नगरसेविका यांचे नाव : </strong> {{ $data->corporator_name }}
                                     </p>
                                 </div>
                             </div>
