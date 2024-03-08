@@ -44,7 +44,7 @@ class StoreApplicationRequest extends FormRequest
             'number_of_family'=>'required',
             // 'agriculture'=>'required',
             'personal_benefit'=>'required',
-            'received_year'=>'required',
+            // 'received_year'=>'required',
             'welfare_schemes'=>'required',
             'govt_scheme'=>'required',
             'poverty_number'=>'required',

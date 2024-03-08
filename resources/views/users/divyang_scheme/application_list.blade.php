@@ -189,7 +189,7 @@
 
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="welfare">What is the benefit of central / state governments poor and other schemes? (केंद्र / राज्य सरकारच्या निराधार व इतर योजनांचा लाभदायक आहे काय?.)<span class="text-danger">*</span></label>
-                            <select class="js-example-basic-single" name="welfare_schemes" >
+                            <select class="js-example-basic-single" name="welfare_schemes" id="welfare_schemes">
                                 <option value="">--Select--</option>
                                 <option value="yes">Yes</option>
                               <option value="no">No</option>
@@ -199,7 +199,7 @@
                         </div>
 
 
-                        <div class="col-md-4 mt-3">
+                        <div class="col-md-4 mt-3" id="year" style="display: none">
                             <label class="col-form-label" for="received_year"> When received (year) (कधी मिळालेला होता (वर्ष))<span class="text-danger">*</span></label>
                             <input class="form-control" id="received_year" name="received_year" type="text" placeholder="Enter When received">
 
@@ -574,5 +574,33 @@
                 });
             }
         });
+    });
+</script>
+
+{{-- hide show year field --}}
+
+<script>
+
+    $(document).ready(function() {
+        var status = $('#welfare_schemes').val();
+        if(status == 'yes')
+        {
+            $('#year').css('display','block');
+        }else{
+            $('#year').css('display','none');
+        }
+    });
+
+
+    $('#welfare_schemes').on('change', function(){
+        var status = $(this).val();
+
+        if(status == 'yes')
+        {
+            $('#year').css('display','block');
+        }else{
+            $('#year').css('display','none');
+        }
+
     });
 </script>
