@@ -1,6 +1,6 @@
 <x-admin.layout>
     <x-slot name="title">Document Type</x-slot>
-    <x-slot name="heading">Document Type test (दस्तऐवज प्रकार)</x-slot>
+    <x-slot name="heading">Document Type (दस्तऐवज प्रकार)</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
 
