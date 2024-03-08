@@ -53,7 +53,19 @@
 
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="cast_category">Caste Category ( जातीचा प्रवर्ग ) : <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="cast_category" name="cast_category" type="text" placeholder="Enter Cast Name" readonly>
+                                    {{-- <input class="form-control" id="cast_category" name="cast_category" type="text" placeholder="Enter Cast Name" readonly> --}}
+                                    <select class="form-control" name="cast_category" id="cast_category" disabled>
+                                        <option value="">Caste Category (जातीचा प्रवर्ग)</option>
+                                        <option value="open">Open</option>
+                                        <option value="obc">OBC</option>
+                                        <option value="sbc">SBC</option>
+                                        <option value="sc">SC</option>
+                                        <option value="nt-a">NT-A</option>
+                                        <option value="nt-b">NT-B</option>
+                                        <option value="nt-c">NT-C</option>
+                                        <option value="nt-d">NT-D</option>
+                                        <option value="st">ST</option>
+                                    </select>
                                     <span class="text-danger is-invalid cast_category_err"></span>
                                 </div>
 
@@ -357,7 +369,7 @@
                     $("#editForm select[name='gender']").val(data.formDetail.gender);
                     $("#editForm input[name='dob']").val(data.formDetail.dob);
                     $("#editForm select[name='marital_status']").val(data.formDetail.marital_status);
-                    $("#editForm input[name='cast_category']").val(data.formDetail.cast_category);
+                    $("#editForm select[name='cast_category']").val(data.formDetail.cast_category);
                     $("#editForm input[name='mobile_no']").val(data.formDetail.mobile_no);
                     $("#editForm input[name='aadhar_no']").val(data.formDetail.aadhar_no);
                     $("#editForm input[name='father_or_husband_full_name']").val(data.formDetail.father_or_husband_full_name);

@@ -214,7 +214,19 @@
 
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="caste"> Caste Category (जातीचा प्रवर्ग)<span class="text-danger">*</span></label>
-                            <input class="form-control" id="caste" name="caste" type="text"  placeholder="Enter Caste Category">
+                            {{-- <input class="form-control" id="caste" name="caste" type="text"  placeholder="Enter Caste Category"> --}}
+                            <select class="form-control" name="caste" id="caste">
+                                <option value="">Caste Category (जातीचा प्रवर्ग)</option>
+                                <option value="open">Open</option>
+                                <option value="obc">OBC</option>
+                                <option value="sbc">SBC</option>
+                                <option value="sc">SC</option>
+                                <option value="nt-a">NT-A</option>
+                                <option value="nt-b">NT-B</option>
+                                <option value="nt-c">NT-C</option>
+                                <option value="nt-d">NT-D</option>
+                                <option value="st">ST</option>
+                            </select>
                             <span class="text-danger is-invalid caste_err"></span>
                         </div>
 
@@ -429,7 +441,7 @@
                     $("#editForm select[name='govt_scheme']").val(data.scheme_form.govt_scheme).trigger('change');
                     $("#editForm select[name='govt_scheme']").val();
                     $("#editForm input[name='poverty_number']").val(data.scheme_form.poverty_number);
-                    $("#editForm input[name='caste']").val(data.scheme_form.caste);
+                    $("#editForm select[name='caste']").val(data.scheme_form.caste);
                     $("#editForm input[name='ward_no']").val(data.scheme_form.ward_no);
                     $("#editForm input[name='corporator_name']").val(data.scheme_form.corporator_name);
                     $("#ward_id").html(data.wardHtml);
