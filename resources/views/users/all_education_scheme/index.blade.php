@@ -470,7 +470,9 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="">
-                                    <button id="addToTable" class="btn btn-primary">Fill Education Form <i class="fa fa-plus"></i></button>
+                                    @if(count($scheme_detail) == '0')
+                                        <button id="addToTable" class="btn btn-primary">Fill Education Form <i class="fa fa-plus"></i></button>
+                                    @endif
                                     <button id="btnCancel" class="btn btn-danger" style="display:none;">Cancel</button>
                                 </div>
                             </div>
