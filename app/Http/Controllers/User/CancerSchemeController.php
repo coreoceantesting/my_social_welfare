@@ -54,6 +54,7 @@ class CancerSchemeController extends Controller
 
             $unique_id = "CAN-SCH" . rand(100000, 10000000);
             $input['application_no'] = $unique_id;
+            $input['relation_name'] = $request->input('relation_name');
             $cancer = CancerScheme::create(Arr::only($input, CancerScheme::getFillables()));
 
             $documentTypeIds = $request->input('document_id');
@@ -129,6 +130,7 @@ class CancerSchemeController extends Controller
                 $input['passport_size_photo'] = $imagePath1;
             }
 
+            $input['relation_name'] = $request->input('relation_name');
 
             $cancer_scheme->update(Arr::only($input, CancerScheme::getFillables()));
             // Update dynamic Document

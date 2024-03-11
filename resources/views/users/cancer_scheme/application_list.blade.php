@@ -114,21 +114,14 @@
                                 <span class="text-danger is-invalid  financial_help_err"></span>
                         </div>
 
-
-                        <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="candidate_signature">Upload Signature / thumb /अर्जदाराची सही / अगंठा<span class="text-danger">*</span></label>
-                            <input class="form-control" id="candidate_signature" name="candidate_signature" type="file" accept=".png, .jpg, .jpeg"><br>
-                            <a class="btn btn-sm btn-primary" id="candidate_signature" target="_blank" href="" >View Document</a>
-                            <span class="text-danger is-invalid candidate_signature_err"></span>
+                        <div class="col-md-4 mt-3 relation_name">
+                            <label class="col-form-label" for="relation_name">Relation Name<span class="text-danger">*</span></label>
+                            <input class="form-control" id="relation_name" name="relation_name" type="text" placeholder="Enter Relation Name">
+                            <span class="text-danger is-invalid relation_name_err"></span>
                         </div>
 
-                        <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="passport_size_photo">Passport Size Photo/अर्जदाराची फोटो<span class="text-danger">*</span></label>
-                            <input class="form-control" id="passport_size_photo" name="passport_size_photo" type="file" accept=".png, .jpg, .jpeg"><br>
-                            <a class="btn btn-sm btn-primary" id="passport_size_photo" target="_blank" href="" >View Document</a>
-                            <span class="text-danger is-invalid passport_size_photo_err"></span>
-                        </div>
 
+                        
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="bank_name">Bank Name/बँकेचे नाव<span class="text-danger">*</span></label>
                             <input class="form-control" id="bank_name" name="bank_name" type="text" placeholder="Enter Bank Name">
@@ -179,6 +172,21 @@
                                 </select>
                             <span class="text-danger is-invalid  is_medical_doc_err"></span>
                         </div>
+
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="candidate_signature">Upload Signature / thumb /अर्जदाराची सही / अगंठा<span class="text-danger">*</span></label>
+                            <input class="form-control" id="candidate_signature" name="candidate_signature" type="file" accept=".png, .jpg, .jpeg"><br>
+                            <a class="btn btn-sm btn-primary" id="candidate_signature" target="_blank" href="" >View Document</a>
+                            <span class="text-danger is-invalid candidate_signature_err"></span>
+                        </div>
+
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="passport_size_photo">Passport Size Photo/अर्जदाराची फोटो<span class="text-danger">*</span></label>
+                            <input class="form-control" id="passport_size_photo" name="passport_size_photo" type="file" accept=".png, .jpg, .jpeg"><br>
+                            <a class="btn btn-sm btn-primary" id="passport_size_photo" target="_blank" href="" >View Document</a>
+                            <span class="text-danger is-invalid passport_size_photo_err"></span>
+                        </div>
+
 
                     </div>
 
@@ -324,6 +332,7 @@
                     $("#editForm select[name='financial_help']").val(data.cancer_scheme.financial_help).trigger('change');
                     $("#editForm select[name='financial_help']").val();
                     $("#editForm input[name='full_name']").val(data.cancer_scheme.full_name);
+                    $("#editForm input[name='relation_name']").val(data.cancer_scheme.relation_name);
                     $("#editForm input[name='full_address']").val(data.cancer_scheme.full_address);
                     $("#editForm input[name='contact']").val(data.cancer_scheme.contact);
                     $("#editForm input[name='age']").val(data.cancer_scheme.age);
@@ -473,5 +482,37 @@
                 });
             }
         });
+    });
+</script>
+
+{{-- hide and show relation name field --}}
+<script>
+
+    $(document).ready(function(){
+        var value = $('#financial_help').val();
+        if(value == 'relationship')
+        {
+            $('.relation_name').css('display','block');
+            document.getElementById("relation_name").required = true;
+            
+        }else{
+            $('.relation_name').css('display','none');
+            document.getElementById("relation_name").required = false;
+        }
+    });
+
+
+
+    $('#financial_help').on('change', function(){
+        var value = this.value;
+        if(value == 'relationship')
+        {
+            $('.relation_name').css('display','block');
+            document.getElementById("relation_name").required = true;
+            
+        }else{
+            $('.relation_name').css('display','none');
+            document.getElementById("relation_name").required = false;
+        }
     });
 </script>

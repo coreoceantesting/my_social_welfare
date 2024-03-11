@@ -109,12 +109,18 @@
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="financial_help">Applicant's relationship with the beneficiary/ अर्जदाराचे लाभार्थ्याशी असलेले नाते<span class="text-danger">*</span></label>
-                                        <select class="js-example-basic-single" name="financial_help" >
+                                        <select class="form-control" name="financial_help" id='relation_type'>
                                             <option value="">--Select--</option>
                                             <option value="self">Self/स्वतः </option>
                                           <option value="relationship">Relationship/नाते</option>
                                         </select>
                                         <span class="text-danger is-invalid  financial_help_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3 relation_name" style="display: none">
+                                    <label class="col-form-label" for="relation_name">Relation Name<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="relation_name" name="relation_name" type="text" placeholder="Enter Relation Name">
+                                    <span class="text-danger is-invalid relation_name_err"></span>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
@@ -147,17 +153,6 @@
                                     <span class="text-danger is-invalid ifsc_code_err"></span>
                                 </div>
 
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="candidate_signature">Upload Signature / thumb /अर्जदाराची सही / अगंठा<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="candidate_signature" name="candidate_signature" type="file" accept=".png, .jpg, .jpeg">
-                                    <span class="text-danger is-invalid candidate_signature_err"></span>
-                                </div>
-
-                                <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="passport_size_photo">Passport Size Photo/अर्जदाराची फोटो<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="passport_size_photo" name="passport_size_photo" type="file" accept=".png, .jpg, .jpeg">
-                                    <span class="text-danger is-invalid passport_size_photo_err"></span>
-                                </div>
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="is_income_doc">Do you have income tax return? (तुमच्याकडे उत्पन्नाचा दाखल आहे ?) <span class="text-danger">*</span></label>
@@ -178,6 +173,19 @@
                                             <option value="no">No</option>
                                         </select>
                                     <span class="text-danger is-invalid  is_medical_doc_err"></span>
+                                </div>
+
+                                
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="candidate_signature">Upload Signature / thumb /अर्जदाराची सही / अगंठा<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="candidate_signature" name="candidate_signature" type="file" accept=".png, .jpg, .jpeg">
+                                    <span class="text-danger is-invalid candidate_signature_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="passport_size_photo">Passport Size Photo/अर्जदाराची फोटो<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="passport_size_photo" name="passport_size_photo" type="file" accept=".png, .jpg, .jpeg">
+                                    <span class="text-danger is-invalid passport_size_photo_err"></span>
                                 </div>
 
 
@@ -269,6 +277,22 @@
     });
 
 
+</script>
+
+{{-- hide and show relation name field --}}
+<script>
+    $('#relation_type').on('change', function(){
+        var value = this.value;
+        if(value == 'relationship')
+        {
+            $('.relation_name').css('display','block');
+            document.getElementById("relation_name").required = true;
+            
+        }else{
+            $('.relation_name').css('display','none');
+            document.getElementById("relation_name").required = false;
+        }
+    });
 </script>
 
 
