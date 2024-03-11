@@ -17,8 +17,18 @@
                             <div class="mb-3 row">
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="name">Full Name/संपूर्ण नाव</label>
-                                    <input class="form-control"  type="text"  name="full_name"  value="{{ $data->full_name }}" readonly>
+                                    <label class="col-form-label" for="name">First Name/पहिले नाव<span class="text-danger">*</span></label>
+                                    <input class="form-control"  type="text"  name="f_name"  value="{{ $data->f_name }}" readonly>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="name">Middle Name/मधले नाव<span class="text-danger">*</span></label>
+                                    <input class="form-control"  type="text"  name="m_name"  value="{{ $data->m_name }}" readonly>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="name">Last Name/आडनाव<span class="text-danger">*</span></label>
+                                    <input class="form-control"  type="text"  name="l_name"  value="{{ $data->l_name }}" readonly>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
