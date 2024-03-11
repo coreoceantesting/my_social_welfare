@@ -15,8 +15,9 @@ class HodBusConcessionSchemeController extends Controller
         $category = $request->input('category', null);
 
         $query = DB::table('trans_bus_concession_scheme AS t1')
-            ->select('t1.*')
+            ->select('t1.*', 't2.category', 't4.sign_uploaded_live_certificate')
             ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->leftJoin('hayticha_form AS t4', 't2.id', '=', 't4.user_id')
             ->where('t1.hod_status', '=', $status)
             ->whereNull('t1.deleted_at')
             ->orderBy('t1.id', 'DESC');

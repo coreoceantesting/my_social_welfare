@@ -13,7 +13,9 @@ class HodMarriageSchemeController extends Controller
     public function marriageSchemeApplicationList($status){
 
         $data =  DB::table('trans_marriage_scheme AS t1')
-                    ->select('t1.*', 't2.name')
+                    ->select('t1.*', 't2.name','t3.id as user_id', 't3.category','t4.sign_uploaded_live_certificate')
+                    ->leftJoin('users AS t3', 't1.created_by', '=', 't3.id')
+                    ->leftJoin('hayticha_form AS t4', 't3.id', '=', 't4.user_id')
                     ->leftJoin('wards AS t2', 't2.id', '=', 't1.ward_id')
                     ->where('t1.hod_status', '=', $status)
                     ->whereNull('t1.deleted_at')

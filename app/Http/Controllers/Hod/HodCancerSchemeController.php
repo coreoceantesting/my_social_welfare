@@ -13,10 +13,12 @@ class HodCancerSchemeController extends Controller
     public function cancerSchemeApplicationList($status){
 
         $data =  DB::table('trans_cancer_scheme AS t1')
+                    ->leftJoin('users AS t3', 't3.id', '=', 't1.created_by')
+                    ->leftJoin('hayticha_form AS t4', 't3.id', '=', 't4.user_id')
                     ->where('t1.hod_status', '=', $status)
                     ->whereNull('t1.deleted_at')
                     ->orderBy('t1.id', 'DESC')
-                    ->get();
+                    ->get(['t1.*', 't3.category', 't4.sign_uploaded_live_certificate']);
 
         return view('hod.cancer_scheme.grid', compact('data', 'status'));
     }

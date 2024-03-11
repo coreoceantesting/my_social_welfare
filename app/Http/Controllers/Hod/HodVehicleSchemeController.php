@@ -13,10 +13,12 @@ class HodVehicleSchemeController extends Controller
     public function vehicleSchemeApplicationList($status){
 
         $data =  DB::table('trans_vehicle_scheme AS t1')
+                    ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+                    ->leftJoin('hayticha_form AS t4', 't2.id', '=', 't4.user_id')
                     ->where('t1.hod_status', '=', $status)
                     ->whereNull('t1.deleted_at')
                     ->orderBy('t1.id', 'DESC')
-                    ->get();
+                    ->get(['t1.*','t2.category','t4.sign_uploaded_live_certificate']);
 
         return view('hod.vehicle_scheme.grid', compact('data', 'status'));
     }
