@@ -234,6 +234,7 @@
                                             ->leftJoin('category_mst as c', function ($join) {
                                                 $join->on(DB::raw('FIND_IN_SET(c.id, t.category_id)'), '>', DB::raw('0'));
                                             })
+                                            ->whereNull('t.deleted_by')
                                             ->groupBy('t.id', 'm.scheme_name','t.scheme_id','t.category_id')
                                             ->get();
 
