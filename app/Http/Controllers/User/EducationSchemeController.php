@@ -55,7 +55,7 @@ class EducationSchemeController extends Controller
             }
 
             $document = DB::table('document_type_msts')
-                ->where('scheme_id', 3)
+                ->where('scheme_id', $scheme_id)
                 ->whereNull('deleted_at')
                 ->orderBy('created_at', 'DESC')
                 ->get();
