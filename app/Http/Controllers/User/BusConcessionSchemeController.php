@@ -47,7 +47,7 @@ class BusConcessionSchemeController extends Controller
                     ->whereNull('deleted_at')
                     ->orderBy('created_at', 'DESC')
                     ->get();
-
+                dd($document);
                 return view('users.bus_concession.bus_concession')->with(['document' => $document]);
             }
         } else {
