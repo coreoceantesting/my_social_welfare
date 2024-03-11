@@ -371,9 +371,9 @@
                                         <a href="{{ url('divyang_certificate_view/'.$value->id) }}" class="btn btn-primary shadow btn-xs sharp me-1"> <i class="fas fa-eye"></i></a>
                                        </td> --}}
 
-                                    @if($value->dmc_status == 1)
+                                    {{-- @if($value->dmc_status == 1)
                                     <td><a href="{{ url('divyang_certificate/'.$value->id) }}" class="btn btn-primary shadow btn-xs sharp me-1">Generate Certificate</a></td>
-                                    @endif
+                                    @endif --}}
 
 
                                 </tr>

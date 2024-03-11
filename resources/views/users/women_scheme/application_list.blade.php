@@ -189,9 +189,9 @@
 
                                                 {{-- <td>  <a href="{{ url('women_scheme_certificate_view') }}" class="btn btn-primary shadow btn-xs sharp me-1"> <i class="fas fa-eye"></i></a> </td> --}}
 
-                                            @if($row->dmc_status == 1)
+                                            {{-- @if($row->dmc_status == 1)
                                             <td><a href="{{ url('women_certificate/'.$row->id) }}" class="btn btn-primary shadow btn-xs sharp me-1">Generate Certificate</a></td>
-                                            @endif
+                                            @endif --}}
                                         </tr>
                                  @endforeach
                             </table>

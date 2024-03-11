@@ -287,9 +287,9 @@
                                                 <a href="{{ url('cancer_scheme_certificate_view/'.$row->id) }}" class="btn btn-primary shadow btn-sm sharp me-1"> <i class="fas fa-eye"></i></a>
                                             </td>
 
-                                            @if($row->dmc_status == 1)
+                                            {{-- @if($row->dmc_status == 1)
                                             <td><a href="{{ url('cancer_certificate/'.$row->id) }}" class="btn btn-primary shadow btn-xs sharp me-1">Generate Certificate</a></td>
-                                            @endif
+                                            @endif --}}
                                         </tr>
                                 @endforeach
                             </table>
