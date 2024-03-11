@@ -13,6 +13,9 @@ class AcCancerSchemeController extends Controller
     public function cancerSchemeApplicationList($status){
 
         $data =  DB::table('trans_cancer_scheme AS t1')
+                    ->select('t1.*', 't2.category', 't4.sign_uploaded_live_certificate')
+                    ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+                    ->leftJoin('hayticha_form AS t4', 't2.id', '=', 't4.user_id')
                     ->where('t1.hod_status', '=', 1)
                     ->where('t1.ac_status', '=', $status)
                     ->whereNull('t1.deleted_at')
