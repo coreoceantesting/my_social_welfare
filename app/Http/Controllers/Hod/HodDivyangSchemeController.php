@@ -14,7 +14,8 @@ class HodDivyangSchemeController extends Controller
     {
 
         $data =  DB::table('trans_disability_scheme AS t1')
-                    ->select('t1.*', 't2.name')
+                    ->select('t1.*', 't2.name', 't3.sign_uploaded_live_certificate')
+                    ->leftJoin('hayticha_form AS t3', 't3.h_id', '=', 't1.hayat_id')
                     ->leftJoin('wards AS t2', 't2.id', '=', 't1.ward_id')
                     // ->leftJoin('users AS t3', 't3.id', '=', 't1.created_by')
                     // ->where(function ($query) {
