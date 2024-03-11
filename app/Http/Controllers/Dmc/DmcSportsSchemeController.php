@@ -13,13 +13,15 @@ class DmcSportsSchemeController extends Controller
     public function sportsSchemeApplicationList($status){
 
         $data =  DB::table('trans_sports_scheme AS t1')
+                    ->leftJoin('users AS t3', 't3.id', '=', 't1.created_by')
+                    ->leftJoin('hayticha_form AS t4', 't3.id', '=', 't4.user_id')
                     ->where('t1.hod_status', '=', 1)
                     ->where('t1.ac_status', '=', 1)
                     ->where('t1.amc_status', '=', 1)
                     ->where('t1.dmc_status', '=', $status)
                     ->whereNull('t1.deleted_at')
                     ->orderBy('t1.id', 'DESC')
-                    ->get();
+                    ->get(['t1.*', 't3.category', 't4.sign_uploaded_live_certificate']);
 
         return view('dmc.sports_scheme.grid', compact('data', 'status'));
     }

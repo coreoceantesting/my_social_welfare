@@ -18,6 +18,7 @@ class DmcEducationSchemeController extends Controller
         $query =  DB::table('trans_education_scheme AS t1')
             ->select('t1.*')
             ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->leftJoin('hayticha_form AS t4', 't2.id', '=', 't4.user_id')
             ->where('t1.hod_status', '=', 1)
             ->where('t1.ac_status', '=', 1)
             ->where('t1.amc_status', '=', 1)
@@ -36,7 +37,7 @@ class DmcEducationSchemeController extends Controller
             }
         }
 
-        $data = $query->get();
+        $data = $query->get(['t1.*', 't2.category', 't4.sign_uploaded_live_certificate']);
 
         return view('dmc.education_scheme.grid', compact('data', 'status'));
     }
