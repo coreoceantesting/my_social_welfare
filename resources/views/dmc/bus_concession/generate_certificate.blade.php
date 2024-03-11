@@ -35,7 +35,7 @@
                         <div class="row pt-3">
                             <div class="col-md-6 col-sm-6">
                                 <p class="mb-0">
-                                    <strong>Name: </strong>{{ $data->full_name }}
+                                    <strong>Name: </strong>{{ $data->f_name }} {{ $data->m_name }} {{ $data->l_name }}
                                 </p>
                             </div>
                             <div class="col-md-6 col-sm-6">
