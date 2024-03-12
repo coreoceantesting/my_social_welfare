@@ -167,6 +167,13 @@
                             </div>
                         </div>
 
+                        <div class="mb-3 row">
+                            <label for="inputPassword" class="col-sm-2 col-form-label">Remark/शेरा :</label>
+                            <div class="col-sm-10">
+                                <textarea name="remark" class="form-control" id="remark" cols="30" rows="5"></textarea>
+                            </div>
+                        </div>
+
                         <div class="form-group row mt-4">
                             <label class="col-md-3"></label>
                             <div class="col-md-9" style="display: flex; justify-content: flex-end;">

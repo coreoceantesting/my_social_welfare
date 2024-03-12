@@ -75,6 +75,7 @@ class DmcWomenSchemeController extends Controller
         $update = [
             'dmc_status' => 1,
             'dmc_approval_date' => date("Y-m-d H:i:s"),
+            'dmc_remark' => $request->get('remark'),
             'approve_by_dmc' => Auth::user()->id,
             'dmc_sign'=>$imagePath
         ];
