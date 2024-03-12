@@ -201,11 +201,11 @@
                                         @endif
                                     @endif
                                         <th>Action</th>
-                                        @if (!empty($education_scheme) && count($education_scheme) > 0)
+                                        {{-- @if (!empty($education_scheme) && count($education_scheme) > 0)
         								@if($education_scheme[0]->dmc_status == 1)
                                         <th>Certificate</th>
         								@endif
-        								 @endif
+        								 @endif --}}
                                     </tr>
                                 </thead>
                                 <tbody>

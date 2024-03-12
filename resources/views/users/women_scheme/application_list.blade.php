@@ -131,11 +131,11 @@
                                     @endif
                                         <th>Action</th>
 
-                                        @if (!empty($women) && count($women) > 0)
+                                        {{-- @if (!empty($women) && count($women) > 0)
         								@if($women[0]->dmc_status == 1)
                                         <th>Certificate</th>
         								@endif
-        								 @endif
+        								 @endif --}}
                                     </tr>
                                 </thead>
                                 <tbody>

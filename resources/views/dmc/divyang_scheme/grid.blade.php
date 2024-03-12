@@ -38,9 +38,9 @@
                                         <th>Reasons for Rejection</th>
                                         @endif
                                         <th>Action</th>
-                                        @if (($status == '1'))
+                                        {{-- @if (($status == '1'))
                                         <th>Certificate</th>
-                                        @endif
+                                        @endif --}}
 
                                     </tr>
                                 </thead>

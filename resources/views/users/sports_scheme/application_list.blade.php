@@ -121,11 +121,11 @@
                                         @endif
                                     @endif
                                         <th>Action</th>
-                                        @if (!empty($sports) && count($sports) > 0)
+                                        {{-- @if (!empty($sports) && count($sports) > 0)
         								@if($sports[0]->dmc_status == 1)
                                         <th>Certificate</th>
         								@endif
-        								 @endif
+        								 @endif --}}
                                     </tr>
                                 </thead>
                                 <tbody>

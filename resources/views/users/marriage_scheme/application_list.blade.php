@@ -218,11 +218,11 @@
 
                                         <th>Action</th>
 
-                                        @if (!empty($marriage) && count($marriage) > 0)
+                                        {{-- @if (!empty($marriage) && count($marriage) > 0)
         								@if($marriage[0]->dmc_status == 1)
                                         <th>Certificate</th>
         								@endif
-        								 @endif
+        								 @endif --}}
                                     </tr>
                                 </thead>
                                 <tbody>

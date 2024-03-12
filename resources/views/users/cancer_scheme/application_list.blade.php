@@ -233,11 +233,11 @@
                                         @endif
                                     @endif
                                         <th>Action</th>
-                                        @if (!empty($cancer) && count($cancer) > 0)
+                                        {{-- @if (!empty($cancer) && count($cancer) > 0)
         								@if($cancer[0]->dmc_status == 1)
                                         <th>Certificate</th>
         								@endif
-        								 @endif
+        								 @endif --}}
                                     </tr>
                                 </thead>
                                 <tbody>
