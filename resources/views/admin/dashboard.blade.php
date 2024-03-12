@@ -315,9 +315,9 @@
                                 <table class="table table-bordered nowrap align-middle">
                                     <thead>
                                     <tr>
-                                    <th>Pending</th>
-                                    <th>Approved</th>
-                                    <th>Rejected</th>
+                                    <th><a href="{{ url('bus_concession_application_list?category=women', 0) }}">Pending</a></th>
+                                    <th><a href="{{ url('bus_concession_application_list?category=women', 1) }}">Approved</a></th>
+                                    <th><a href="{{ url('bus_concession_application_list?category=women', 2) }}">Rejected</a></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -350,9 +350,9 @@
                                 <table class="table table-bordered nowrap align-middle">
                                     <thead>
                                     <tr>
-                                    <th>Pending</th>
-                                    <th>Approved</th>
-                                    <th>Rejected</th>
+                                    <th><a href="{{ url('education_scheme_application_list?category=women', 0) }}">Pending</a></th>
+                                    <th><a href="{{ url('education_scheme_application_list?category=women', 1) }}">Approved</a></th>
+                                    <th><a href="{{ url('education_scheme_application_list?category=women', 2) }}">Rejected</a></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -383,9 +383,9 @@
                                 <table class="table table-bordered nowrap align-middle">
                                     <thead>
                                     <tr>
-                                    <th>Pending</th>
-                                    <th>Approved</th>
-                                    <th>Rejected</th>
+                                    <th><a href="{{ url('cancer_scheme_application_list', 0) }}">Pending</a></th>
+                                    <th><a href="{{ url('cancer_scheme_application_list', 1) }}">Approved</a></th>
+                                    <th><a href="{{ url('cancer_scheme_application_list', 2) }}">Rejected</a></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -418,9 +418,9 @@
                              <table class="table table-bordered nowrap align-middle">
                                     <thead>
                                     <tr>
-                                    <th>Pending</th>
-                                    <th>Approved</th>
-                                    <th>Rejected</th>
+                                    <th><a href="{{ url('sports_scheme_application_list', 0) }}">Pending</a></th>
+                                    <th><a href="{{ url('sports_scheme_application_list', 1) }}">Approved</a></th>
+                                    <th><a href={{ url('sports_scheme_application_list', 2) }}">Rejected</a></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -452,9 +452,9 @@
                                 <table class="table table-bordered nowrap align-middle">
                                     <thead>
                                     <tr>
-                                    <th>Pending</th>
-                                    <th>Approved</th>
-                                    <th>Rejected</th>
+                                    <th><a href="{{ url('vehicle_scheme_application_list', 0) }}">Pending</a></th>
+                                    <th><a href="{{ url('vehicle_scheme_application_list', 1) }}">Approved</a></th>
+                                    <th><a href="{{ url('vehicle_scheme_application_list', 2) }}">Rejected</a></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -486,9 +486,9 @@
                                 <table class="table table-bordered nowrap align-middle">
                                     <thead>
                                     <tr>
-                                    <th>Pending</th>
-                                    <th>Approved</th>
-                                    <th>Rejected</th>
+                                    <th><a href="{{ url('women_scheme_application_list', 0) }}">Pending</a></th>
+                                    <th><a href="{{ url('women_scheme_application_list', 1) }}">Approved</a></th>
+                                    <th><a href="{{ url('women_scheme_application_list', 2) }}">Rejected</a></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -554,9 +554,9 @@
                                 <table class="table table-bordered nowrap align-middle">
                                     <thead>
                                     <tr>
-                                    <th>Pending</th>
-                                    <th>Approved</th>
-                                    <th>Rejected</th>
+                                    <th><a href="{{ url('bus_concession_application_list?category=seniorCitizen', 0) }}">Pending</a></th>
+                                    <th><a href="{{ url('bus_concession_application_list?category=seniorCitizen', 1) }}">Approved</a></th>
+                                    <th><a href="{{ url('bus_concession_application_list?category=seniorCitizen', 2) }}">Rejected</a></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -583,6 +583,77 @@
     </div>
     <!--end col-->
 </div>
+
+{{-- Leprosy(कुष्ठरोग) --}}
+<div class="row justify-content-center">
+    <div class="col-xxl-12">
+        <div class="card" style="border:solid 1px;">
+            <form class="needs-validation" novalidate id="invoice_form">
+                <div class="card-body border-bottom border-bottom-dashed p-2">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="" style="text-align: center !important;">
+                                <button type="button" class="btn btn-primary btn-lg" style="width: 30%">Leprosy(कुष्ठरोग)</button>
+
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                        <!--end col-->
+
+                    </div>
+                    <!--end row-->
+                </div>
+
+                <div class="card-body p-3" style="margin-bottom: -25px">
+                    <!--end row-->
+                    <div class="row">
+                    <div class="col-lg-3 mb-3">
+                        <!-- Portlet card -->
+                        <div class="card h-auto" style="border:solid 1px;">
+                        <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
+                            <div class="card-widgets">
+                            </div>
+                            <h5 class="card-title mb-0 text-white" style="text-align:center;">Nondani Application</h5>
+                        </div>
+                        <div id="cardCollpase5" class="collapse show">
+                            <div class="card-body">
+                                <h4 style="text-align:center;">Total Count</h4>
+                                <h4 style="text-align:center;"> {{ $disability_scheme_total_count }}</h4>
+                                <table class="table table-bordered nowrap align-middle">
+                                    <thead>
+                                    <tr>
+                                    <th><a href="{{ url('divyang_registration_list', 0) }}">Pending</a></th>
+                                    <th><a href="{{ url('divyang_registration_list', 1) }}">Approved</a></th>
+                                    <th><a href="{{ url('divyang_registration_list', 2) }}">Rejected</a></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                    <td><a href="{{ url('divyang_registration_list', 0) }}">{{$disability_scheme_pending}}</a></td>
+                                    <td><a href="{{ url('divyang_registration_list', 1) }}">{{$disability_scheme_approve}}</a></td>
+                                    <td><a href="{{ url('divyang_registration_list', 2) }}">{{$disability_scheme_reject}}</a></td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+
+
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--end col-->
+</div>
+<!--end row-->
 <!--end row-->
 
 @endcan
@@ -630,9 +701,9 @@
                                                                 <table class="table table-bordered nowrap align-middle">
                                                                     <thead>
                                                                     <tr>
-                                                                    <th>Pending</th>
-                                                                    <th>Approved</th>
-                                                                    <th>Rejected</th>
+                                                                    <th><a href="{{ url('ac_bus_concession_application_list?category=1', 0) }}">Pending</a></th>
+                                                                    <th><a href="{{ url('ac_bus_concession_application_list?category=1', 1) }}">Approved</a></th>
+                                                                    <th><a href="{{ url('ac_bus_concession_application_list?category=1', 2) }}">Rejected</a></th>
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody>
@@ -664,9 +735,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('ac_divyang_registration_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('ac_divyang_registration_list', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('ac_divyang_registration_list', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -698,9 +769,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('ac_education_scheme_application_list?category=1', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('ac_education_scheme_application_list?category=1', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('ac_education_scheme_application_list?category=1', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -733,9 +804,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('ac_marriage_scheme_application_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('ac_marriage_scheme_application_list', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('ac_marriage_scheme_application_list', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -802,9 +873,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('ac_bus_concession_application_list?category=women', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('ac_bus_concession_application_list?category=women', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('ac_bus_concession_application_list?category=women', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -837,9 +908,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('ac_education_scheme_application_list?category=women', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('ac_education_scheme_application_list?category=women', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('ac_education_scheme_application_list?category=women', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -872,9 +943,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('ac_cancer_scheme_application_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('ac_cancer_scheme_application_list', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('ac_cancer_scheme_application_list', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -907,9 +978,9 @@
                                                                 <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('ac_sports_scheme_application_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('ac_sports_scheme_application_list', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('ac_sports_scheme_application_list', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -941,9 +1012,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('ac_vehicle_scheme_application_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('ac_vehicle_scheme_application_list', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('ac_vehicle_scheme_application_list', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -975,9 +1046,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('ac_women_scheme_application_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('ac_women_scheme_application_list', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('ac_women_scheme_application_list', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -1044,9 +1115,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('ac_bus_concession_application_list?category=seniorCitizen', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('ac_bus_concession_application_list?category=seniorCitizen', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('ac_bus_concession_application_list?category=seniorCitizen', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -1054,6 +1125,77 @@
                                                                         <td><a href="{{ url('ac_bus_concession_application_list?category=seniorCitizen', 0) }}">{{$ac_senior_bus_concession_scheme_pending}}</a></td>
                                                                         <td><a href="{{ url('ac_bus_concession_application_list?category=seniorCitizen', 1) }}">{{$ac_senior_bus_concession_scheme_approve}}</a></td>
                                                                         <td><a href="{{ url('ac_bus_concession_application_list?category=seniorCitizen', 2) }}">{{$ac_senior_bus_concession_scheme_reject}}</a></td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                        </table>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        </div>
+
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                    </div>
+                                    <!--end row-->
+
+                                    {{-- Leprosy(कुष्ठरोग) --}}
+                                    <div class="row justify-content-center">
+                                        <div class="col-xxl-12">
+                                            <div class="card" style="border:solid 1px;">
+                                                <form class="needs-validation" novalidate id="invoice_form">
+                                                    <div class="card-body border-bottom border-bottom-dashed p-2">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="" style="text-align: center !important;">
+                                                                    <button type="button" class="btn btn-primary btn-lg" style="width: 30%">Leprosy(कुष्ठरोग)</button>
+
+                                                                </div>
+                                                                <div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!--end col-->
+
+                                                        </div>
+                                                        <!--end row-->
+                                                    </div>
+
+                                                    <div class="card-body p-3" style="margin-bottom: -25px">
+                                                        <!--end row-->
+                                                        <div class="row">
+                                                        <div class="col-lg-3 mb-3">
+                                                            <!-- Portlet card -->
+                                                            <div class="card h-auto" style="border:solid 1px;">
+                                                            <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
+                                                                <div class="card-widgets">
+                                                                </div>
+                                                                <h5 class="card-title mb-0 text-white" style="text-align:center;">Nondani Application</h5>
+                                                            </div>
+                                                            <div id="cardCollpase5" class="collapse show">
+                                                                <div class="card-body">
+                                                                    <h4 style="text-align:center;">Total Count</h4>
+                                                                    <h4 style="text-align:center;"> {{ $ac_disability_scheme_total_count }}</h4>
+                                                                    <table class="table table-bordered nowrap align-middle">
+                                                                        <thead>
+                                                                        <tr>
+                                                                        <th><a href="{{ url('ac_divyang_registration_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('ac_divyang_registration_list', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('ac_divyang_registration_list', 2) }}">Rejected</a></th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <tr>
+                                                                        <td><a href="{{ url('ac_divyang_registration_list', 0) }}">{{$ac_disability_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('ac_divyang_registration_list', 1) }}">{{$ac_disability_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('ac_divyang_registration_list', 2) }}">{{$ac_disability_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1120,9 +1262,9 @@
                                                                 <table class="table table-bordered nowrap align-middle">
                                                                     <thead>
                                                                     <tr>
-                                                                    <th>Pending</th>
-                                                                    <th>Approved</th>
-                                                                    <th>Rejected</th>
+                                                                    <th><a href="{{ url('amc_bus_concession_application_list?category=1', 0) }}">Pending</a></th>
+                                                                    <th><a href="{{ url('amc_bus_concession_application_list?category=1', 1) }}">Approved</a></th>
+                                                                    <th><a href="{{ url('amc_bus_concession_application_list?category=1', 2) }}">Rejected</a></th>
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody>
@@ -1154,9 +1296,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('amc_divyang_registration_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('amc_divyang_registration_list', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('amc_divyang_registration_list', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -1188,9 +1330,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('amc_education_scheme_application_list?category=1', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('amc_education_scheme_application_list?category=1', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('amc_education_scheme_application_list?category=1', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -1223,9 +1365,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('amc_marriage_scheme_application_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('amc_marriage_scheme_application_list', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('amc_marriage_scheme_application_list', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -1292,9 +1434,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('amc_bus_concession_application_list?category=women', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('amc_bus_concession_application_list?category=women', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('amc_bus_concession_application_list?category=women', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -1328,9 +1470,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('amc_education_scheme_application_list?category=women', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('amc_education_scheme_application_list?category=women', 0) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('amc_education_scheme_application_list?category=women', 0) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -1362,9 +1504,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('amc_cancer_scheme_application_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('amc_cancer_scheme_application_list', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('amc_cancer_scheme_application_list', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -1397,9 +1539,9 @@
                                                                 <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('amc_sports_scheme_application_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('amc_sports_scheme_application_list', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('amc_sports_scheme_application_list', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -1431,9 +1573,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('amc_vehicle_scheme_application_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('amc_vehicle_scheme_application_list', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('amc_vehicle_scheme_application_list', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -1465,9 +1607,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('amc_women_scheme_application_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('amc_women_scheme_application_list', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('amc_women_scheme_application_list', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -1533,9 +1675,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('amc_bus_concession_application_list?category=seniorCitizen', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('amc_bus_concession_application_list?category=seniorCitizen', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('amc_bus_concession_application_list?category=seniorCitizen', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -1543,6 +1685,77 @@
                                                                         <td><a href="{{ url('amc_bus_concession_application_list?category=seniorCitizen', 0) }}">{{$amc_senior_bus_concession_scheme_pending}}</a></td>
                                                                         <td><a href="{{ url('amc_bus_concession_application_list?category=seniorCitizen', 1) }}">{{$amc_senior_bus_concession_scheme_approve}}</a></td>
                                                                         <td><a href="{{ url('amc_bus_concession_application_list?category=seniorCitizen', 2) }}">{{$amc_senior_bus_concession_scheme_reject}}</a></td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                        </table>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        </div>
+
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                    </div>
+                                    <!--end row-->
+
+                                    {{-- Leprosy(कुष्ठरोग) --}}
+                                    <div class="row justify-content-center">
+                                        <div class="col-xxl-12">
+                                            <div class="card" style="border:solid 1px;">
+                                                <form class="needs-validation" novalidate id="invoice_form">
+                                                    <div class="card-body border-bottom border-bottom-dashed p-2">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="" style="text-align: center !important;">
+                                                                    <button type="button" class="btn btn-primary btn-lg" style="width: 30%">Leprosy(कुष्ठरोग)</button>
+
+                                                                </div>
+                                                                <div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!--end col-->
+
+                                                        </div>
+                                                        <!--end row-->
+                                                    </div>
+
+                                                    <div class="card-body p-3" style="margin-bottom: -25px">
+                                                        <!--end row-->
+                                                        <div class="row">
+                                                        <div class="col-lg-3 mb-3">
+                                                            <!-- Portlet card -->
+                                                            <div class="card h-auto" style="border:solid 1px;">
+                                                            <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
+                                                                <div class="card-widgets">
+                                                                </div>
+                                                                <h5 class="card-title mb-0 text-white" style="text-align:center;">Nondani Application</h5>
+                                                            </div>
+                                                            <div id="cardCollpase5" class="collapse show">
+                                                                <div class="card-body">
+                                                                    <h4 style="text-align:center;">Total Count</h4>
+                                                                    <h4 style="text-align:center;"> {{ $amc_disability_scheme_total_count }}</h4>
+                                                                    <table class="table table-bordered nowrap align-middle">
+                                                                        <thead>
+                                                                        <tr>
+                                                                        <th><a href="{{ url('amc_divyang_registration_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('amc_divyang_registration_list', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('amc_divyang_registration_list', 2) }}">Rejected</a></th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <tr>
+                                                                        <td><a href="{{ url('amc_divyang_registration_list', 0) }}">{{$amc_disability_scheme_pending}}</a></td>
+                                                                        <td><a href="{{ url('amc_divyang_registration_list', 1) }}">{{$amc_disability_scheme_approve}}</a></td>
+                                                                        <td><a href="{{ url('amc_divyang_registration_list', 2) }}">{{$amc_disability_scheme_reject}}</a></td>
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
@@ -1806,9 +2019,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('dmc_bus_concession_application_list?category=women', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('dmc_bus_concession_application_list?category=women', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('dmc_bus_concession_application_list?category=women', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -1841,9 +2054,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('dmc_education_scheme_application_list?category=women', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('dmc_education_scheme_application_list?category=women', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('dmc_education_scheme_application_list?category=women', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -1874,9 +2087,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('dmc_cancer_scheme_application_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('dmc_cancer_scheme_application_list', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('dmc_cancer_scheme_application_list', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -1909,9 +2122,9 @@
                                                                 <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('dmc_sports_scheme_application_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('dmc_sports_scheme_application_list', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('dmc_sports_scheme_application_list', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -1943,9 +2156,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('dmc_vehicle_scheme_application_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('dmc_vehicle_scheme_application_list', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('dmc_vehicle_scheme_application_list', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -1977,9 +2190,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('dmc_women_scheme_application_list', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('dmc_women_scheme_application_list', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('dmc_women_scheme_application_list', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -2045,9 +2258,9 @@
                                                                     <table class="table table-bordered nowrap align-middle">
                                                                         <thead>
                                                                         <tr>
-                                                                        <th>Pending</th>
-                                                                        <th>Approved</th>
-                                                                        <th>Rejected</th>
+                                                                        <th><a href="{{ url('dmc_bus_concession_application_list?category=seniorCitizen', 0) }}">Pending</a></th>
+                                                                        <th><a href="{{ url('dmc_bus_concession_application_list?category=seniorCitizen', 1) }}">Approved</a></th>
+                                                                        <th><a href="{{ url('dmc_bus_concession_application_list?category=seniorCitizen', 2) }}">Rejected</a></th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -2075,6 +2288,77 @@
                                         <!--end col-->
                                     </div>
                                     <!--end row-->
+
+                                        {{-- Leprosy(कुष्ठरोग) --}}
+                                        <div class="row justify-content-center">
+                                            <div class="col-xxl-12">
+                                                <div class="card" style="border:solid 1px;">
+                                                    <form class="needs-validation" novalidate id="invoice_form">
+                                                        <div class="card-body border-bottom border-bottom-dashed p-2">
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <div class="" style="text-align: center !important;">
+                                                                        <button type="button" class="btn btn-primary btn-lg" style="width: 30%">Leprosy(कुष्ठरोग)</button>
+
+                                                                    </div>
+                                                                    <div>
+
+                                                                    </div>
+                                                                </div>
+                                                                <!--end col-->
+
+                                                            </div>
+                                                            <!--end row-->
+                                                        </div>
+
+                                                        <div class="card-body p-3" style="margin-bottom: -25px">
+                                                            <!--end row-->
+                                                            <div class="row">
+                                                            <div class="col-lg-3 mb-3">
+                                                                <!-- Portlet card -->
+                                                                <div class="card h-auto" style="border:solid 1px;">
+                                                                <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
+                                                                    <div class="card-widgets">
+                                                                    </div>
+                                                                    <h5 class="card-title mb-0 text-white" style="text-align:center;">Nondani Application</h5>
+                                                                </div>
+                                                                <div id="cardCollpase5" class="collapse show">
+                                                                    <div class="card-body">
+                                                                        <h4 style="text-align:center;">Total Count</h4>
+                                                                        <h4 style="text-align:center;"> {{ $dmc_disability_scheme_total_count }}</h4>
+                                                                        <table class="table table-bordered nowrap align-middle">
+                                                                            <thead>
+                                                                            <tr>
+                                                                            <th><a href="{{ url('dmc_divyang_registration_list', 0) }}">Pending</a></th>
+                                                                            <th><a href="{{ url('dmc_divyang_registration_list', 1) }}">Approved</a></th>
+                                                                            <th><a href="{{ url('dmc_divyang_registration_list', 2) }}">Rejected</a></th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            <tr>
+                                                                            <td><a href="{{ url('dmc_divyang_registration_list', 0) }}">{{$dmc_disability_scheme_pending}}</a></td>
+                                                                            <td><a href="{{ url('dmc_divyang_registration_list', 1) }}">{{$dmc_disability_scheme_approve}}</a></td>
+                                                                            <td><a href="{{ url('dmc_divyang_registration_list', 2) }}">{{$dmc_disability_scheme_reject}}</a></td>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                            </table>
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                            </div>
+
+
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                        </div>
+                                        <!--end row-->
                                       @endcan
 
                                       {{-- admin Dashboard --}}
