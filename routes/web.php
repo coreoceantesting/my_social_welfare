@@ -158,42 +158,42 @@ Route::middleware(['auth', 'PreventBackHistory'])->group(function () {
     Route::get('ac_divyang_registration_list/{status}', [App\Http\Controllers\Ac\AcDivyangSchemeController::class, 'divyangRegistrationList']);
     Route::get('ac_divyang_registration_view/{id}/{status}', [App\Http\Controllers\Ac\AcDivyangSchemeController::class, 'divyangRegistrationView']);
     Route::post('divyang_application_reject_by_ac/{id}', [App\Http\Controllers\Ac\AcDivyangSchemeController::class, 'rejectDivyangApplication']);
-    Route::get('divyang_application_approve_by_ac/{id}', [App\Http\Controllers\Ac\AcDivyangSchemeController::class, 'approveDivyangApplication']);
+    Route::post('divyang_application_approve_by_ac/{id}', [App\Http\Controllers\Ac\AcDivyangSchemeController::class, 'approveDivyangApplication']);
     // Bus Concession Scheme Application
     Route::get('ac_bus_concession_application_list/{status}', [App\Http\Controllers\Ac\AcBusConcessionSchemeController::class, 'busConcessionApplicationList']);
     Route::get('ac_bus_concession_application_view/{id}/{status}', [App\Http\Controllers\Ac\AcBusConcessionSchemeController::class, 'busConcessionApplicationView']);
     Route::post('bus_concession_application_reject_by_ac/{id}', [App\Http\Controllers\Ac\AcBusConcessionSchemeController::class, 'rejectBusConcessionApplication']);
-    Route::get('bus_concession_application_approve_by_ac/{id}', [App\Http\Controllers\Ac\AcBusConcessionSchemeController::class, 'approveBusConcessionApplication']);
+    Route::post('bus_concession_application_approve_by_ac/{id}', [App\Http\Controllers\Ac\AcBusConcessionSchemeController::class, 'approveBusConcessionApplication']);
     // Education Scheme Application
     Route::get('ac_education_scheme_application_list/{status}', [App\Http\Controllers\Ac\AcEducationSchemeController::class, 'eductationSchemeApplicationList']);
     Route::get('ac_education_scheme_application_view/{id}/{status}', [App\Http\Controllers\Ac\AcEducationSchemeController::class, 'eductationSchemeApplicationView']);
     Route::post('education_scheme_application_reject_by_ac/{id}', [App\Http\Controllers\Ac\AcEducationSchemeController::class, 'rejectEductationSchemeApplication']);
-    Route::get('education_scheme_application_approve_by_ac/{id}', [App\Http\Controllers\Ac\AcEducationSchemeController::class, 'approveEducationSchemeApplication']);
+    Route::post('education_scheme_application_approve_by_ac/{id}', [App\Http\Controllers\Ac\AcEducationSchemeController::class, 'approveEducationSchemeApplication']);
     // Marriage Scheme Application
     Route::get('ac_marriage_scheme_application_list/{status}', [App\Http\Controllers\Ac\AcMarriageSchemeController::class, 'marriageSchemeApplicationList']);
     Route::get('ac_marriage_scheme_application_view/{id}/{status}', [App\Http\Controllers\Ac\AcMarriageSchemeController::class, 'marriageSchemeApplicationView']);
     Route::post('marriage_scheme_application_reject_by_ac/{id}', [App\Http\Controllers\Ac\AcMarriageSchemeController::class, 'rejectMarriageSchemeApplication']);
-    Route::get('marriage_scheme_application_approve_by_ac/{id}', [App\Http\Controllers\Ac\AcMarriageSchemeController::class, 'approveMarriageSchemeApplication']);
+    Route::post('marriage_scheme_application_approve_by_ac/{id}', [App\Http\Controllers\Ac\AcMarriageSchemeController::class, 'approveMarriageSchemeApplication']);
     // Cancer Scheme Application
     Route::get('ac_cancer_scheme_application_list/{status}', [App\Http\Controllers\Ac\AcCancerSchemeController::class, 'cancerSchemeApplicationList']);
     Route::get('ac_cancer_scheme_application_view/{id}/{status}', [App\Http\Controllers\Ac\AcCancerSchemeController::class, 'cancerSchemeApplicationView']);
     Route::post('cancer_scheme_application_reject_by_ac/{id}', [App\Http\Controllers\Ac\AcCancerSchemeController::class, 'rejectCancerSchemeApplication']);
-    Route::get('cancer_scheme_application_approve_by_ac/{id}', [App\Http\Controllers\Ac\AcCancerSchemeController::class, 'approveCancerSchemeApplication']);
+    Route::post('cancer_scheme_application_approve_by_ac/{id}', [App\Http\Controllers\Ac\AcCancerSchemeController::class, 'approveCancerSchemeApplication']);
     // Sports Scheme Application
     Route::get('ac_sports_scheme_application_list/{status}', [App\Http\Controllers\Ac\AcSportsSchemeController::class, 'sportsSchemeApplicationList']);
     Route::get('ac_sports_scheme_application_view/{id}/{status}', [App\Http\Controllers\Ac\AcSportsSchemeController::class, 'sportsSchemeApplicationView']);
     Route::post('sports_scheme_application_reject_by_ac/{id}', [App\Http\Controllers\Ac\AcSportsSchemeController::class, 'rejectSportsSchemeApplication']);
-    Route::get('sports_scheme_application_approve_by_ac/{id}', [App\Http\Controllers\Ac\AcSportsSchemeController::class, 'approveSportsSchemeApplication']);
+    Route::post('sports_scheme_application_approve_by_ac/{id}', [App\Http\Controllers\Ac\AcSportsSchemeController::class, 'approveSportsSchemeApplication']);
     // Vehicle Scheme Application
     Route::get('ac_vehicle_scheme_application_list/{status}', [App\Http\Controllers\Ac\AcVehicleSchemeController::class, 'vehicleSchemeApplicationList']);
     Route::get('ac_vehicle_scheme_application_view/{id}/{status}', [App\Http\Controllers\Ac\AcVehicleSchemeController::class, 'vehicleSchemeApplicationView']);
     Route::post('vehicle_scheme_application_reject_by_ac/{id}', [App\Http\Controllers\Ac\AcVehicleSchemeController::class, 'rejectVehicleSchemeApplication']);
-    Route::get('vehicle_scheme_application_approve_by_ac/{id}', [App\Http\Controllers\Ac\AcVehicleSchemeController::class, 'approveVehicleSchemeApplication']);
+    Route::post('vehicle_scheme_application_approve_by_ac/{id}', [App\Http\Controllers\Ac\AcVehicleSchemeController::class, 'approveVehicleSchemeApplication']);
     // Women Sewing/Beautisians Scheme Application
     Route::get('ac_women_scheme_application_list/{status}', [App\Http\Controllers\Ac\AcWomenSchemeController::class, 'womenSchemeApplicationList']);
     Route::get('ac_women_scheme_application_view/{id}/{status}', [App\Http\Controllers\Ac\AcWomenSchemeController::class, 'womenSchemeApplicationView']);
     Route::post('women_scheme_application_reject_by_ac/{id}', [App\Http\Controllers\Ac\AcWomenSchemeController::class, 'rejectWomenSchemeApplication']);
-    Route::get('women_scheme_application_approve_by_ac/{id}', [App\Http\Controllers\Ac\AcWomenSchemeController::class, 'approveWomenSchemeApplication']);
+    Route::post('women_scheme_application_approve_by_ac/{id}', [App\Http\Controllers\Ac\AcWomenSchemeController::class, 'approveWomenSchemeApplication']);
 
     // AMC Panel
     // Divyang Scheme Application

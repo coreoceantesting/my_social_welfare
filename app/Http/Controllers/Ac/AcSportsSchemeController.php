@@ -63,6 +63,7 @@ class AcSportsSchemeController extends Controller
         $update = [
             'ac_status' => 1,
             'ac_approval_date' => date("Y-m-d H:i:s"),
+            'ac_remark' => $request->get('remark'),
             'approve_by_ac' => Auth::user()->id,
         ];
         SportsScheme::where('id', $id)->update($update);
