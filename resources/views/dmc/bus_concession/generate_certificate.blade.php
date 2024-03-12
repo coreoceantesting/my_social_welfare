@@ -71,7 +71,7 @@
     
             <div class="card" style="border: 1px solid black">
                 <div class="card-body">
-                    <ul style="list-style-type: none;padding-top:5px">
+                    <ul style="list-style-type: none;padding-top:5px;padding-left:17px;">
                         <li><strong>आधार कार्ड नंबर :</strong> {{$data->adhaar_no}} </li>
                         <li><strong>दूरध्वनी क्रमांक :</strong> {{$data->contact}} </li>
                     </ul>

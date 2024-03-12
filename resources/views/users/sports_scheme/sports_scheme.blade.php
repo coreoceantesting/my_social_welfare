@@ -63,7 +63,7 @@
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="financial_help">financial help/ आर्थिक मदत :<span class="text-danger">*</span></label>
-                                        <select class="js-example-basic-single" name="financial_help" >
+                                        <select class="form-control" name="financial_help" id="financial_help">
                                             <option value="">--Select--</option>
                                             <option value="personal">Personal/वैयक्तिक</option>
                                           <option value="relational">Relational/सांघिक</option>
@@ -83,14 +83,50 @@
                                     <span class="text-danger is-invalid passport_size_photo_err"></span>
                                 </div>
 
-                              @foreach ($document as $doc)
-                                <div class="col-md-4 mt-3">
-                                        <label class="col-form-label" for="document_name">{{$doc->document_name}} @if($doc->is_required==1) <span class="text-danger">*</span> @endif</label>
-                                        <input type="hidden" name="document_id[]" class="form-control" value="{{$doc->id}}">
-                                        <input type="file" name="document_file[]" class="form-control" @if($doc->is_required==1) required @endif multiple>
-                                        <span class="text-danger is-invalid document_file_err"></span>
+                                @foreach ($document as $doc)
+                                    <div class="col-md-4 mt-3">
+                                            <label class="col-form-label" for="document_name">{{$doc->document_name}} @if($doc->is_required==1) <span class="text-danger">*</span> @endif</label>
+                                            <input type="hidden" name="document_id[]" class="form-control" value="{{$doc->id}}">
+                                            <input type="file" name="document_file[]" class="form-control" @if($doc->is_required==1) required @endif multiple>
+                                            <span class="text-danger is-invalid document_file_err"></span>
+                                    </div>
+                                @endforeach
+
+                                <div class="player-details" style="display: none">
+                                    <h3 class="text-center mt-5"><Strong>Add Players Detail</Strong></h3>
+                                    <div class="add-players-details mt-5">
+                                        <div class="row">
+                                            <div class="col-md-4 mt-3">
+                                                <label for="player_name">Player Name / खेळाडूचे नाव: <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="player_name[]" id="player_name" placeholder="Enter Player Name" required>
+                                            </div>
+                                            <div class="col-md-4 mt-3">
+                                                <label for="player_mobile_no">Player Contact No / संपर्क क्र : <span class="text-danger">*</span></label>
+                                                <input type="number" class="form-control" name="player_mobile_no[]" id="player_mobile_no" placeholder="Enter Player Contact No" required>
+                                            </div>
+                                            <div class="col-md-4 mt-3">
+                                                <label for="player_name">Player Aadhar No / आधार क्र: <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="player_aadhar_no[]" id="player_aadhar_no" placeholder="Enter Player Aadhar No" required>
+                                            </div>
+                                            <div class="col-md-4 mt-3">
+                                                <label for="player_name">Player Signature /स्वाक्षरी: <span class="text-danger">*</span></label>
+                                                <input class="form-control" id="player_signature" name="player_signature[]" type="file" accept=".png, .jpg, .jpeg" required>
+                                            </div>
+                                            <div class="col-md-4 mt-3">
+                                                <label for="player_name">Player Photo / प्लेअर फोटो: <span class="text-danger">*</span></label>
+                                                <input class="form-control" id="player_photo" name="player_photo[]" type="file" accept=".png, .jpg, .jpeg" required>
+                                            </div>
+                                            <div class="col-md-4 mt-3">
+                                                <label for="player_name">Player Aadhar Card / आधार कार्ड: <span class="text-danger">*</span></label>
+                                                <input class="form-control" id="player_aadhar_photo" name="player_aadhar_photo[]" type="file" accept=".png, .jpg, .jpeg" required>
+                                            </div>
+                                            <hr class="mt-3">
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-primary mt-2" id="addPlayer">Add Player</button>
+                                    <button type="button" class="btn btn-danger mt-2" id="removePlayer" style="display:none;">Remove Player</button>
                                 </div>
-                            @endforeach
+                                
                             </div>
                         </div>
                         <div class="card-footer">
@@ -168,6 +204,36 @@
     });
 
 
+</script>
+
+{{-- add more player details --}}
+<script>
+    $(document).ready(function () {
+        // Show/hide player details based on the selected option
+        $("#financial_help").change(function () {
+            if ($(this).val() === "relational") {
+                $(".player-details").show();
+            } else {
+                $(".player-details").hide();
+            }
+        });
+
+        // Add player details fields dynamically
+        $("#addPlayer").click(function () {
+            $(".add-players-details .row:first").clone().appendTo(".add-players-details");
+            $("#removePlayer").show();
+        });
+
+        // Remove player details fields
+        $("#removePlayer").click(function () {
+            if ($(".add-players-details .row").length > 1) {
+                $(".add-players-details .row:last").remove();
+            }
+            if ($(".add-players-details .row").length === 1) {
+                $("#removePlayer").hide();
+            }
+        });
+    });
 </script>
 
 
