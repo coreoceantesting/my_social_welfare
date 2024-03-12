@@ -115,7 +115,10 @@
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#rejectModal">Reject</button>&nbsp;&nbsp;
 
                                         <!-- <button type="button" class="btn btn-success waves-effect m-r-20" data-toggle="modal" data-target="#largeModal">Approve</button> -->
-                                        <a href="{{ url('cancer_scheme_application_approve_by_amc/'.$data->id) }}"><button  type="button" class="btn btn-success">Approve </button> </a>
+                                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            Approve
+                                        </button>
+                                        {{-- <a href="{{ url('cancer_scheme_application_approve_by_amc/'.$data->id) }}"><button  type="button" class="btn btn-success">Approve </button> </a> --}}
                                     </div>
                                 </div>
                             <?php } elseif($data->amc_status == 1){ ?>
@@ -173,6 +176,31 @@
                 </div>
             </div>
         </div>
+
+        {{-- approved popup --}}
+  
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Approve Application</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form id="approve_form" action="{{ url('cancer_scheme_application_approve_by_amc', $data->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="modal-body">
+                                <label for="remark">Remark/शेरा</label>
+                                <textarea class="form-control" name="remark" id="remark" cols="30" rows="5"></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Approve</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
 
 

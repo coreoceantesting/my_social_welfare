@@ -63,6 +63,7 @@ class AmcVehicleSchemeController extends Controller
         $update = [
             'amc_status' => 1,
             'amc_approval_date' => date("Y-m-d H:i:s"),
+            'amc_remark' => $request->get('remark'),
             'approve_by_amc' => Auth::user()->id,
         ];
         VehicleScheme::where('id', $id)->update($update);
