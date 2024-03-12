@@ -220,7 +220,9 @@
 
         // Add player details fields dynamically
         $("#addPlayer").click(function () {
-            $(".add-players-details .row:first").clone().appendTo(".add-players-details");
+            var clonedRow = $(".add-players-details .row:first").clone();
+            clonedRow.find("input").val(""); // Clear input fields in the cloned row
+            clonedRow.appendTo(".add-players-details");
             $("#removePlayer").show();
         });
 
