@@ -32,7 +32,11 @@ class EducationScheme extends BaseModel
         'is_medical_admission_proof',
         'is_first_year_proof',
         'is_pass_book_doc',
-        'is_recommendation_doc'
+        'is_recommendation_doc',
+        'hod_remark',
+        'ac_remark',
+        'amc_remark',
+        'dmc_remark'
     ];
 
     public static function booted()

@@ -61,6 +61,7 @@ class HodVehicleSchemeController extends Controller
         $update = [
             'hod_status' => 1,
             'hod_approval_date' => date("Y-m-d H:i:s"),
+            'hod_remark' => $request->get('remark'),
             'approve_by_hod' => Auth::user()->id,
         ];
         VehicleScheme::where('id', $id)->update($update);

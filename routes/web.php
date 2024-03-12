@@ -116,42 +116,42 @@ Route::middleware(['auth', 'PreventBackHistory'])->group(function () {
     Route::get('divyang_registration_list/{status}', [App\Http\Controllers\Hod\HodDivyangSchemeController::class, 'divyangRegistrationList']);
     Route::get('divyang_registration_view/{id}/{status}', [App\Http\Controllers\Hod\HodDivyangSchemeController::class, 'divyangRegistrationView']);
     Route::post('divyang_application_reject_by_hod/{id}', [App\Http\Controllers\Hod\HodDivyangSchemeController::class, 'rejectDivyangApplication']);
-    Route::get('divyang_application_approve_by_hod/{id}', [App\Http\Controllers\Hod\HodDivyangSchemeController::class, 'approveDivyangApplication']);
+    Route::post('divyang_application_approve_by_hod/{id}', [App\Http\Controllers\Hod\HodDivyangSchemeController::class, 'approveDivyangApplication']);
     // Bus Concession Scheme Application
     Route::get('bus_concession_application_list/{status}', [App\Http\Controllers\Hod\HodBusConcessionSchemeController::class, 'busConcessionApplicationList']);
     Route::get('bus_concession_application_view/{id}/{status}', [App\Http\Controllers\Hod\HodBusConcessionSchemeController::class, 'busConcessionApplicationView']);
     Route::post('bus_concession_application_reject_by_hod/{id}', [App\Http\Controllers\Hod\HodBusConcessionSchemeController::class, 'rejectBusConcessionApplication']);
-    Route::get('bus_concession_application_approve_by_hod/{id}', [App\Http\Controllers\Hod\HodBusConcessionSchemeController::class, 'approveBusConcessionApplication']);
+    Route::post('bus_concession_application_approve_by_hod/{id}', [App\Http\Controllers\Hod\HodBusConcessionSchemeController::class, 'approveBusConcessionApplication']);
     // Education Scheme Application
     Route::get('education_scheme_application_list/{status}', [App\Http\Controllers\Hod\HodEducationSchemeController::class, 'eductationSchemeApplicationList']);
     Route::get('education_scheme_application_view/{id}/{status}', [App\Http\Controllers\Hod\HodEducationSchemeController::class, 'eductationSchemeApplicationView']);
     Route::post('education_scheme_application_reject_by_hod/{id}', [App\Http\Controllers\Hod\HodEducationSchemeController::class, 'rejectEductationSchemeApplication']);
-    Route::get('education_scheme_application_approve_by_hod/{id}', [App\Http\Controllers\Hod\HodEducationSchemeController::class, 'approveEducationSchemeApplication']);
+    Route::post('education_scheme_application_approve_by_hod/{id}', [App\Http\Controllers\Hod\HodEducationSchemeController::class, 'approveEducationSchemeApplication']);
     // Marriage Scheme Application
     Route::get('marriage_scheme_application_list/{status}', [App\Http\Controllers\Hod\HodMarriageSchemeController::class, 'marriageSchemeApplicationList']);
     Route::get('marriage_scheme_application_view/{id}/{status}', [App\Http\Controllers\Hod\HodMarriageSchemeController::class, 'marriageSchemeApplicationView']);
     Route::post('marriage_scheme_application_reject_by_hod/{id}', [App\Http\Controllers\Hod\HodMarriageSchemeController::class, 'rejectMarriageSchemeApplication']);
-    Route::get('marriage_scheme_application_approve_by_hod/{id}', [App\Http\Controllers\Hod\HodMarriageSchemeController::class, 'approveMarriageSchemeApplication']);
+    Route::post('marriage_scheme_application_approve_by_hod/{id}', [App\Http\Controllers\Hod\HodMarriageSchemeController::class, 'approveMarriageSchemeApplication']);
     // Cancer Scheme Application
     Route::get('cancer_scheme_application_list/{status}', [App\Http\Controllers\Hod\HodCancerSchemeController::class, 'cancerSchemeApplicationList']);
     Route::get('cancer_scheme_application_view/{id}/{status}', [App\Http\Controllers\Hod\HodCancerSchemeController::class, 'cancerSchemeApplicationView']);
     Route::post('cancer_scheme_application_reject_by_hod/{id}', [App\Http\Controllers\Hod\HodCancerSchemeController::class, 'rejectCancerSchemeApplication']);
-    Route::get('cancer_scheme_application_approve_by_hod/{id}', [App\Http\Controllers\Hod\HodCancerSchemeController::class, 'approveCancerSchemeApplication']);
+    Route::post('cancer_scheme_application_approve_by_hod/{id}', [App\Http\Controllers\Hod\HodCancerSchemeController::class, 'approveCancerSchemeApplication']);
     // Sports Scheme Application
     Route::get('sports_scheme_application_list/{status}', [App\Http\Controllers\Hod\HodSportsSchemeController::class, 'sportsSchemeApplicationList']);
     Route::get('sports_scheme_application_view/{id}/{status}', [App\Http\Controllers\Hod\HodSportsSchemeController::class, 'sportsSchemeApplicationView']);
     Route::post('sports_scheme_application_reject_by_hod/{id}', [App\Http\Controllers\Hod\HodSportsSchemeController::class, 'rejectSportsSchemeApplication']);
-    Route::get('sports_scheme_application_approve_by_hod/{id}', [App\Http\Controllers\Hod\HodSportsSchemeController::class, 'approveSportsSchemeApplication']);
+    Route::post('sports_scheme_application_approve_by_hod/{id}', [App\Http\Controllers\Hod\HodSportsSchemeController::class, 'approveSportsSchemeApplication']);
     // Vehicle Scheme Application
     Route::get('vehicle_scheme_application_list/{status}', [App\Http\Controllers\Hod\HodVehicleSchemeController::class, 'vehicleSchemeApplicationList']);
     Route::get('vehicle_scheme_application_view/{id}/{status}', [App\Http\Controllers\Hod\HodVehicleSchemeController::class, 'vehicleSchemeApplicationView']);
     Route::post('vehicle_scheme_application_reject_by_hod/{id}', [App\Http\Controllers\Hod\HodVehicleSchemeController::class, 'rejectVehicleSchemeApplication']);
-    Route::get('vehicle_scheme_application_approve_by_hod/{id}', [App\Http\Controllers\Hod\HodVehicleSchemeController::class, 'approveVehicleSchemeApplication']);
+    Route::post('vehicle_scheme_application_approve_by_hod/{id}', [App\Http\Controllers\Hod\HodVehicleSchemeController::class, 'approveVehicleSchemeApplication']);
     // Women Sewing/Beautisians Scheme Application
     Route::get('women_scheme_application_list/{status}', [App\Http\Controllers\Hod\HodWomenSchemeController::class, 'womenSchemeApplicationList']);
     Route::get('women_scheme_application_view/{id}/{status}', [App\Http\Controllers\Hod\HodWomenSchemeController::class, 'womenSchemeApplicationView']);
     Route::post('women_scheme_application_reject_by_hod/{id}', [App\Http\Controllers\Hod\HodWomenSchemeController::class, 'rejectWomenSchemeApplication']);
-    Route::get('women_scheme_application_approve_by_hod/{id}', [App\Http\Controllers\Hod\HodWomenSchemeController::class, 'approveWomenSchemeApplication']);
+    Route::post('women_scheme_application_approve_by_hod/{id}', [App\Http\Controllers\Hod\HodWomenSchemeController::class, 'approveWomenSchemeApplication']);
 
     // AC Panel
     // Divyang Scheme Application
