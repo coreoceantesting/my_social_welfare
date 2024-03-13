@@ -26,7 +26,13 @@
 
                     <div class="card"  id="divToPrint">
                         <div class="body" style="padding:60px;">
-                            <div class="row">
+                            <table style="border: none">
+                                <tr>
+                                    <th style="border: none"><img class="img-fluid " src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="Awesome Image" style="height:100px; width:150px;"></th>
+                                    <th style="width: 60%;border: none"><h1><strong>पनवेल महानगरपालिका</strong></h1> <h4><strong>ता. पनवेल जि. रायगड पिन नं. ४१० २०६</strong></h4></th>
+                                  </tr>
+                            </table>
+                            <div class="row d-none">
                                 <div class="col-md-3" >
                                     <div class="icon-box">
                                         <img class="img-fluid " src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="Awesome Image" style="height:100px; width:150px;">
@@ -245,6 +251,7 @@
                         </div>
 
                         @if(!empty($player_details))
+                        <p><strong>सांघिक:</strong></p>
                             <table style="width: 100%">
                                 <thead>
                                     <tr>
