@@ -270,7 +270,7 @@ class SportsSchemeController extends Controller
                         'player_mobile_no' => $playerMobileNos[$key],
                         'player_aadhar_no' => $playerAadharNos[$key],
                         'updated_by' => Auth::user()->id,
-                        'updated_at' => date('Y-m-d H:i:s'),
+                        'updated_at' => now(), // Use Carbon instance for current timestamp
                     ];
             
                     // Check if signature, photo, and Aadhar photo are provided for update
@@ -285,14 +285,21 @@ class SportsSchemeController extends Controller
                     }
                 }
             
-                // Update player details in the database
+                // Insert new player details into the database
                 foreach ($playerDetails as $detail) {
-                    DB::table('sport_scheme_player_details')
-                        ->where('sport_scheme_id', $sports_scheme['id'])
-                        ->where('player_id', $detail['player_id'])
-                        ->update($detail);
+                    if ($detail['player_id'] == '') {
+                        // Insert new player details
+                        DB::table('sport_scheme_player_details')->insert($detail);
+                    } else {
+                        // Update existing player details in the database
+                        DB::table('sport_scheme_player_details')
+                            ->where('sport_scheme_id', $sports_scheme['id'])
+                            ->where('player_id', $detail['player_id'])
+                            ->update($detail);
+                    }
                 }
             }
+            
 
             DB::commit();
             return response()->json(['success' => 'Sports Scheme updated successfully!']);
