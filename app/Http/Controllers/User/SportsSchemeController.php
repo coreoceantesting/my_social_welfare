@@ -315,6 +315,7 @@ class SportsSchemeController extends Controller
             DB::beginTransaction();
             $sports_scheme->sportsSchemeDocuments()->delete();
             $sports_scheme->delete();
+            DB::table('sport_scheme_player_details')->where('sport_scheme_id', $sports_scheme->id)->delete();
             DB::commit();
             return response()->json(['success' => 'Sports Scheme deleted successfully!']);
         } catch (\Exception $e) {
