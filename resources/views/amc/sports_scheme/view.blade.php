@@ -77,9 +77,43 @@
                                         <label class="col-form-label" for="document_name">{{$doc->document_name}}</label><br>
                                         <a href="{{ asset('sports_scheme_file/'.$doc->document_file) }}" class="btn btn-sm btn-primary"  target="_blank" >View Document</a>
                                 </div>
-                            @endforeach
+                                @endforeach
 
                             </div>
+                            <hr>
+                            <br>
+                            @if(!empty($player_details))
+                                <h4 class="text-center">Player Details</h4>
+                                <br>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered nowrap align-middle" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Sr.No</th>
+                                                <th>Name</th>
+                                                <th>Contact</th>
+                                                <th>Aadhar No</th>
+                                                <th>Photo</th>
+                                                <th>Aadhar Card</th>
+                                                <th>Signature</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($player_details as $index => $detail)
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>{{$detail->player_name}}</td>
+                                                <td>{{$detail->player_mobile_no}}</td>
+                                                <td>{{$detail->player_aadhar_no}}</td>
+                                                <td><img src="{{ asset('storage/' . $detail->player_photo) }}" height="100" width="100" alt="test"></td>
+                                                <td><img src="{{ asset('storage/'. $detail->player_aadhar_photo) }}" height="100" width="100" alt="test"></td>
+                                                <td><img src="{{ asset('storage/'. $detail->player_signature) }}" height="100" width="100" alt="test"></td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            @endif
                         </div>
 
 

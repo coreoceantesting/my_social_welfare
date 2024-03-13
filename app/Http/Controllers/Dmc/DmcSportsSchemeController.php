@@ -41,8 +41,11 @@ class DmcSportsSchemeController extends Controller
                         ->whereNull('t1.deleted_at')
                         ->where('t1.sports_id',$data->id)
                         ->get();
+        $player_details = DB::table('sport_scheme_player_details')
+        ->where('sport_scheme_id', $id)
+        ->get();
 
-      return view('dmc.sports_scheme.view', compact('data', 'document'));
+      return view('dmc.sports_scheme.view', compact('data', 'document', 'player_details'));
 
     }
 
