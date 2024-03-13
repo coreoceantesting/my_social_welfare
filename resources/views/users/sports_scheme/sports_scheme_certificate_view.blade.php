@@ -230,33 +230,36 @@
                         </div>
 
                         @if(!empty($player_details))
-
-                        <div class="table-responsive">
-                            <table class="table table-bordered nowrap align-middle">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Contact</th>
-                                        <th>Aadhar No</th>
-                                        <th>Photo</th>
-                                        <th>Aadhar card</th>
-                                        <th>Signature</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($player_details as $detail)
-                                        <tr>
-                                            <td>{{$detail->player_name}}</td>
-                                            <td>{{$detail->player_mobile_no}}</td>
-                                            <td>{{$detail->player_aadhar_no}}</td>
-                                            <td><img src="{{ asset('storage/' . $detail->player_photo) }}" height="100" width="100" alt="test"></td>
-                                            <td><img src="{{ asset('storage/'. $detail->player_aadhar_photo) }}" height="100" width="100" alt="test"></td>
-                                            <td><img src="{{ asset('storage/'. $detail->player_signature) }}" height="100" width="100" alt="test"></td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                            <div class="container">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered nowrap align-middle">
+                                        <thead>
+                                            <tr>
+                                                <th>SR.No</th>
+                                                <th>Name</th>
+                                                <th>Contact</th>
+                                                <th>Aadhar No</th>
+                                                <th>Photo</th>
+                                                <th>Aadhar card</th>
+                                                <th>Signature</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($player_details as $index => $detail)
+                                                <tr>
+                                                    <td>{{ $index + 1 }}</td>
+                                                    <td>{{$detail->player_name}}</td>
+                                                    <td>{{$detail->player_mobile_no}}</td>
+                                                    <td>{{$detail->player_aadhar_no}}</td>
+                                                    <td><img src="{{ asset('storage/' . $detail->player_photo) }}" height="100" width="100" alt="test"></td>
+                                                    <td><img src="{{ asset('storage/'. $detail->player_aadhar_photo) }}" height="100" width="100" alt="test"></td>
+                                                    <td><img src="{{ asset('storage/'. $detail->player_signature) }}" height="100" width="100" alt="test"></td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         @endif
 
                     </div>
