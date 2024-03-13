@@ -71,6 +71,45 @@ class SportsSchemeController extends Controller
                 }
             }
 
+            if ($request->input('financial_help') == 'relational') {
+
+                // Validate the input data
+                $request->validate([
+                    'player_name.*' => 'required',
+                    'player_mobile_no.*' => 'required|max:10',
+                    'player_aadhar_no.*' => 'required|max:12',
+                    'player_signature.*' => 'required|file|mimes:png,jpg,jpeg',
+                    'player_photo.*' => 'required|file|mimes:png,jpg,jpeg',
+                    'player_aadhar_photo.*' => 'required|file|mimes:png,jpg,jpeg',
+                ]);
+
+                // Store player details
+                $playerDetails = [];
+                $playerNames = $request->input('player_name');
+                $playerMobileNos = $request->input('player_mobile_no');
+                $playerAadharNos = $request->input('player_aadhar_no');
+                $playerSignatures = $request->file('player_signature');
+                $playerPhotos = $request->file('player_photo');
+                $playerAadharPhotos = $request->file('player_aadhar_photo');
+                
+                foreach ($playerNames as $key => $playerName) {
+                    $playerDetails[] = [
+                        'sport_scheme_id' => $sports->id,
+                        'player_name' => $playerName,
+                        'player_mobile_no' => $playerMobileNos[$key],
+                        'player_aadhar_no' => $playerAadharNos[$key],
+                        'player_signature' => $playerSignatures[$key]->store('player_details/player_signature', 'public'),
+                        'player_photo' => $playerPhotos[$key]->store('player_details/player_photo', 'public'),
+                        'player_aadhar_photo' => $playerAadharPhotos[$key]->store('player_details/aadhar_photo', 'public'),
+                        'created_by' => Auth::user()->id,
+                        'created_at' => date('Y-m-d H:i:s'),
+                    ];
+                }
+                
+                // Store player details in the database
+                DB::table('sport_scheme_player_details')->insert($playerDetails);
+            }
+
             DB::commit();
             return response()->json(['success' => 'Sports Scheme created successfully!']);
         } catch (\Exception $e) {
@@ -81,11 +120,62 @@ class SportsSchemeController extends Controller
     public function edit(SportsScheme $sports_scheme)
     {
         $sports_scheme->load(['sportsSchemeDocuments.document']);
+        $player_details = DB::table('sport_scheme_player_details')
+        ->select('player_id', 'player_name', 'player_mobile_no', 'player_aadhar_no', 'player_signature', 'player_photo', 'player_aadhar_photo')
+        ->where('sport_scheme_id', $sports_scheme->id)
+        ->get();
+
+        $player_details_html = ''; 
+        if (!empty($player_details)) {
+            foreach ($player_details as $player) {
+                // $player_details_html .=  '<div class="add-players-details mt-5">';
+
+                $player_details_html .=  '<div class="row">';
+                $player_details_html .=  '<input type="hidden" class="form-control" name="player_id[]" id="player_id" value="' . $player->player_id . '" required>';
+                $player_details_html .=  '<div class="col-md-4 mt-3">';
+                $player_details_html .=  '<label for="player_name">Player Name / खेळाडूचे नाव: <span class="text-danger">*</span></label>';
+                $player_details_html .=  '<input type="text" class="form-control" name="player_name[]" id="player_name" placeholder="Enter Player Name" value="' . $player->player_name . '" required>';
+                $player_details_html .=  '</div>';
+
+                $player_details_html .=  '<div class="col-md-4 mt-3">';
+                $player_details_html .=  '<label for="player_mobile_no">Player Contact No / संपर्क क्र : <span class="text-danger">*</span></label>';
+                $player_details_html .=  '<input type="number" class="form-control" name="player_mobile_no[]" id="player_mobile_no" value="' . $player->player_mobile_no . '" placeholder="Enter Player Contact No" required>';
+                $player_details_html .=  '</div>';
+
+                $player_details_html .=  '<div class="col-md-4 mt-3">';
+                $player_details_html .=  '<label for="player_name">Player Aadhar No / आधार क्र: <span class="text-danger">*</span></label>';
+                $player_details_html .=  '<input type="text" class="form-control" name="player_aadhar_no[]" id="player_aadhar_no" value="' . $player->player_aadhar_no . '" placeholder="Enter Player Aadhar No" required>';
+                $player_details_html .=  '</div>';
+
+                $player_details_html .=  '<div class="col-md-4 mt-3">';
+                $player_details_html .=  '<label for="player_name">Player Signature /स्वाक्षरी: <span class="text-danger">*</span></label>';
+                $player_details_html .=  '<input class="form-control" id="player_signature" name="player_signature[]" type="file" accept=".png, .jpg, .jpeg">';
+                $player_details_html .= '<small><a href="storage/' . $player->player_signature . '" target="_blank">View Document</a></small>';
+                $player_details_html .=  '</div>';
+
+                $player_details_html .=  '<div class="col-md-4 mt-3">';
+                $player_details_html .=  '<label for="player_name">Player Photo / प्लेअर फोटो: <span class="text-danger">*</span></label>';
+                $player_details_html .=  '<input class="form-control" id="player_photo" name="player_photo[]" type="file" accept=".png, .jpg, .jpeg">';
+                $player_details_html .= '<small><a href="storage/' . $player->player_photo . '" target="_blank">View Document</a></small>';
+                $player_details_html .=  '</div>';
+
+                $player_details_html .=  '<div class="col-md-4 mt-3">';
+                $player_details_html .=  '<label for="player_name">Player Aadhar Card / आधार कार्ड: <span class="text-danger">*</span></label>';
+                $player_details_html .=  '<input class="form-control" id="player_aadhar_photo" name="player_aadhar_photo[]" type="file" accept=".png, .jpg, .jpeg">';
+                $player_details_html .= '<small><a href="storage/' . $player->player_aadhar_photo . '" target="_blank">View Document</a></small>';
+                $player_details_html .=  '</div>';
+
+                $player_details_html .=  '<hr class="mt-3"></div>';
+
+            }
+        }
+
         if ($sports_scheme) {
             $response = [
                 'result' => 1,
                 'sports_scheme' => $sports_scheme,
                 'documents' => $sports_scheme->sportsSchemeDocuments,
+                'player_details_html' => $player_details_html
             ];
         } else {
             $response = ['result' => 0];
@@ -145,6 +235,62 @@ class SportsSchemeController extends Controller
                         "updated_by" => Auth::user()->id,
                         "updated_at" => date('Y-m-d H:i:s'),
                     ]);
+                }
+            }
+
+            // update players details
+            if ($request->input('financial_help') == 'relational') {
+
+                // Validate the input data
+                $request->validate([
+                    'player_name.*' => 'required',
+                    'player_mobile_no.*' => 'required|max:10',
+                    'player_aadhar_no.*' => 'required|max:12',
+                    'player_signature.*' => 'nullable|file|mimes:png,jpg,jpeg',
+                    'player_photo.*' => 'nullable|file|mimes:png,jpg,jpeg',
+                    'player_aadhar_photo.*' => 'nullable|file|mimes:png,jpg,jpeg',
+                ]);
+            
+                // Update player details
+                $playerDetails = [];
+                $playerIds = $request->input('player_id');
+                $playerNames = $request->input('player_name');
+                $playerMobileNos = $request->input('player_mobile_no');
+                $playerAadharNos = $request->input('player_aadhar_no');
+                $playerSignatures = $request->file('player_signature');
+                $playerPhotos = $request->file('player_photo');
+                $playerAadharPhotos = $request->file('player_aadhar_photo');
+            
+                // Iterate over the updated player details
+                foreach ($playerNames as $key => $playerName) {
+                    $playerDetails[] = [
+                        'player_id' => $playerIds[$key],
+                        'sport_scheme_id' => $sports_scheme['id'],
+                        'player_name' => $playerName,
+                        'player_mobile_no' => $playerMobileNos[$key],
+                        'player_aadhar_no' => $playerAadharNos[$key],
+                        'updated_by' => Auth::user()->id,
+                        'updated_at' => date('Y-m-d H:i:s'),
+                    ];
+            
+                    // Check if signature, photo, and Aadhar photo are provided for update
+                    if (isset($playerSignatures[$key])) {
+                        $playerDetails[$key]['player_signature'] = $playerSignatures[$key]->store('player_details/player_signature', 'public');
+                    }
+                    if (isset($playerPhotos[$key])) {
+                        $playerDetails[$key]['player_photo'] = $playerPhotos[$key]->store('player_details/player_photo', 'public');
+                    }
+                    if (isset($playerAadharPhotos[$key])) {
+                        $playerDetails[$key]['player_aadhar_photo'] = $playerAadharPhotos[$key]->store('player_details/aadhar_photo', 'public');
+                    }
+                }
+            
+                // Update player details in the database
+                foreach ($playerDetails as $detail) {
+                    DB::table('sport_scheme_player_details')
+                        ->where('sport_scheme_id', $sports_scheme['id'])
+                        ->where('player_id', $detail['player_id'])
+                        ->update($detail);
                 }
             }
 
@@ -215,7 +361,10 @@ class SportsSchemeController extends Controller
             ->whereNull('t1.deleted_at')
             ->where('t1.sports_id', $data->id)
             ->get();
+        $player_details = DB::table('sport_scheme_player_details')
+        ->where('sport_scheme_id',$id)
+        ->get();
 
-        return view('users.sports_scheme.sports_scheme_certificate_view', compact('data', 'document'));
+        return view('users.sports_scheme.sports_scheme_certificate_view', compact('data', 'document','player_details'));
     }
 }

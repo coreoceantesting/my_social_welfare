@@ -58,7 +58,7 @@
 
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="financial_help">financial help/ आर्थिक मदत :<span class="text-danger">*</span></label>
-                                <select class="js-example-basic-single" name="financial_help" >
+                                <select class="form-control" name="financial_help" id='financial_help'>
                                     <option value="">--Select--</option>
                                     <option value="personal">Personal/वैयक्तिक</option>
                                   <option value="relational">Relational/सांघिक</option>
@@ -83,6 +83,16 @@
                     <div class="mb-3 row" id="yourDocumentsContainer">
 
                     </div>
+
+                    <div class="player-details" style="display: none">
+                        <h3 class="text-center mt-5"><Strong>Add Players Detail</Strong></h3>
+                        <div class="add-players-details mt-5">
+
+                        </div>
+                        {{-- <button type="button" class="btn btn-primary mt-2" id="addPlayer">Add Player</button>
+                        <button type="button" class="btn btn-danger mt-2" id="removePlayer" style="display:none;">Remove Player</button> --}}
+                    </div>
+
                 </div>
                 <div class="card-footer">
                     <button class="btn btn-primary" id="editSubmit">Submit</button>
@@ -252,6 +262,13 @@
                     });
 
                     $("#yourDocumentsContainer").append(documentsHtml);
+
+                    // player details
+                    if(data.sports_scheme.financial_help == 'relational')
+                    {
+                        $('.player-details').css('display','block');
+                        $(".add-players-details").append(data.player_details_html);
+                    }
                 }
 
                 }
@@ -354,6 +371,39 @@
                         swal("Error!", "Something went wrong", "error");
                     },
                 });
+            }
+        });
+    });
+</script>
+
+
+{{-- add more player details --}}
+<script>
+    $(document).ready(function () {
+        // Show/hide player details based on the selected option
+        $("#financial_help").change(function () {
+            if ($(this).val() === "relational") {
+                $(".player-details").show();
+            } else {
+                $(".player-details").hide();
+            }
+        });
+
+        // Add player details fields dynamically
+        $("#addPlayer").click(function () {
+            var clonedRow = $(".add-players-details .row:first").clone();
+            clonedRow.find("input").val(""); // Clear input fields in the cloned row
+            clonedRow.appendTo(".add-players-details");
+            $("#removePlayer").show();
+        });
+
+        // Remove player details fields
+        $("#removePlayer").click(function () {
+            if ($(".add-players-details .row").length > 1) {
+                $(".add-players-details .row:last").remove();
+            }
+            if ($(".add-players-details .row").length === 1) {
+                $("#removePlayer").hide();
             }
         });
     });
