@@ -2,6 +2,21 @@
     <x-slot name="title">Sports Scheme Application</x-slot>
     <x-slot name="heading">Sports Scheme Application</x-slot>
 
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+    </style>
+
 <section class="content">
     <div class="body_scroll">
 
@@ -230,42 +245,38 @@
                         </div>
 
                         @if(!empty($player_details))
-                            <div class="container">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered nowrap align-middle">
-                                        <thead>
-                                            <tr>
-                                                <th>SR.No</th>
-                                                <th>Name</th>
-                                                <th>Contact</th>
-                                                <th>Aadhar No</th>
-                                                <th>Photo</th>
-                                                <th>Aadhar card</th>
-                                                <th>Signature</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($player_details as $index => $detail)
-                                                <tr>
-                                                    <td>{{ $index + 1 }}</td>
-                                                    <td>{{$detail->player_name}}</td>
-                                                    <td>{{$detail->player_mobile_no}}</td>
-                                                    <td>{{$detail->player_aadhar_no}}</td>
-                                                    <td><img src="{{ asset('storage/' . $detail->player_photo) }}" height="100" width="100" alt="test"></td>
-                                                    <td><img src="{{ asset('storage/'. $detail->player_aadhar_photo) }}" height="100" width="100" alt="test"></td>
-                                                    <td><img src="{{ asset('storage/'. $detail->player_signature) }}" height="100" width="100" alt="test"></td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                            <table style="width: 100%">
+                                <thead>
+                                    <tr>
+                                        <th>SR.No</th>
+                                        <th>Name</th>
+                                        <th>Contact</th>
+                                        <th>Aadhar No</th>
+                                        <th>Photo</th>
+                                        <th>Aadhar card</th>
+                                        <th>Signature</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($player_details as $index => $detail)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{$detail->player_name}}</td>
+                                            <td>{{$detail->player_mobile_no}}</td>
+                                            <td>{{$detail->player_aadhar_no}}</td>
+                                            <td><img src="{{ asset('storage/' . $detail->player_photo) }}" height="100" width="100" alt="test"></td>
+                                            <td><img src="{{ asset('storage/'. $detail->player_aadhar_photo) }}" height="100" width="100" alt="test"></td>
+                                            <td><img src="{{ asset('storage/'. $detail->player_signature) }}" height="100" width="100" alt="test"></td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         @endif
 
                     </div>
                     <div class="submit-section text-right pt-5" style="float:right;margin-bottom:50px;">
 					    <a href="{{ route('sports_scheme.application') }}" class="btn btn-danger btn-lg text-light" >Cancel</a>
-
+                        <button  class="btn btn-success btn-lg" type="button" onClick="printDiv('divToPrint')" ><i class="fa fa-print fa-lg text-light"></i> &nbsp;&nbsp;Print</button>
 					</div>
                 </div>
             </div>
@@ -275,3 +286,16 @@
 
 </x-admin.layout>
 
+<script>
+    function printDiv(divName) {
+        $("#print").css("display", "none");
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+        $("#print").css("display", "block");
+        // location.reload();
+
+    }
+</script>

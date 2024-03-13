@@ -89,8 +89,8 @@
                         <div class="add-players-details mt-5">
 
                         </div>
-                        {{-- <button type="button" class="btn btn-primary mt-2" id="addPlayer">Add Player</button>
-                        <button type="button" class="btn btn-danger mt-2" id="removePlayer" style="display:none;">Remove Player</button> --}}
+                        <button type="button" class="btn btn-primary mt-2" id="addPlayer">Add Player</button>
+                        <button type="button" class="btn btn-danger mt-2" id="removePlayer" style="display:none;">Remove Player</button>
                     </div>
 
                 </div>
