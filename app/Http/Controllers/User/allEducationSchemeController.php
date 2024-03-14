@@ -220,6 +220,21 @@ class allEducationSchemeController extends Controller
                 return response()->json(['error' => 'Form details not found.']);
             }
 
+            if($formDetails->overall_status == 'rejected')
+            {
+                DB::table('all_education_scheme_details')->where('all_education_scheme_detail_id', $id)->update([
+                    'overall_status' => 'pending',
+                    'hod_status' => 'pending',
+                    'ac_status' => 'pending',
+                    'amc_status' => 'pending',
+                    'dmc_status' => 'pending',
+                    'hod_approval_date' => null,
+                    'ac_approval_date' => null,
+                    'amc_approval_date' => null,
+                    'dmc_approval_date' => null,
+                ]);
+            }
+
             if ($request->hasFile('candidate_signature')) {
                 $candidate_signature_file = $request->file('candidate_signature');
                 $candidate_signature_file_path = $candidate_signature_file->store('allEducationDetails/candidate_signature_files', 'public');
