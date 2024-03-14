@@ -1,7 +1,6 @@
 <x-admin.layout>
     <x-slot name="title">Education Schemes (शिक्षण योजना)</x-slot>
     <x-slot name="heading">Education Schemes (शिक्षण योजना)</x-slot>
-    {{-- <x-slot name="subheading">Test</x-slot> --}}
 
 
         <!-- Add Form -->
@@ -485,61 +484,6 @@
             </div>
         </div>
 
-
-        {{-- Scheme Listing --}}
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="">
-                                    @if(count($scheme_detail) == '0')
-                                        <button id="addToTable" class="btn btn-primary">Fill Education Form <i class="fa fa-plus"></i></button>
-                                    @endif
-                                    <button id="btnCancel" class="btn btn-danger" style="display:none;">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>Sr.No</th>
-                                        <th>Application No</th>
-                                        <th>Full Name</th>
-                                        <th>Mobile No</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($scheme_detail as $index => $scheme)
-                                        <tr>
-                                            <td>{{ $index + 1 }}</td>
-                                            <td>{{$scheme->application_no}}</td>
-                                            <td>{{$scheme->full_name}}</td>
-                                            <td>{{$scheme->mobile_no}}</td>
-                                            <td>{{$scheme->overall_status}}</td>
-                                            <td>
-                                                @if($scheme->overall_status == 'rejected' || $scheme->hod_status == 'pending')
-                                                    <button class="edit-element btn btn-primary text-white px-2 py-1" title="Edit category" data-id="{{ $scheme->all_education_scheme_detail_id }}"><i data-feather="edit"></i></button>
-                                                    <button class="btn btn-danger text-white rem-element px-2 py-1" title="Delete category" data-id="{{ $scheme->all_education_scheme_detail_id }}"><i data-feather="trash-2"></i> </button>
-                                                @endif
-                                                <button class="view-element btn btn-primary text-white px-2 py-1" title="View" data-id="{{ $scheme->all_education_scheme_detail_id }}"><i data-feather="eye"></i></button>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         {{-- View Form --}}
         <div class="row" id="viewDetailsContainer" style="display:none;">
             <div class="col">
@@ -774,8 +718,59 @@
             </div>
         </div>
 
+        {{-- Scheme Listing --}}
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="">
+                                    @if(count($scheme_detail) == '0')
+                                        <button id="addToTable" class="btn btn-primary">Fill Education Form <i class="fa fa-plus"></i></button>
+                                    @endif
+                                    <button id="btnCancel" class="btn btn-danger" style="display:none;">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Sr.No</th>
+                                        <th>Application No</th>
+                                        <th>Full Name</th>
+                                        <th>Mobile No</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($scheme_detail as $index => $scheme)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{$scheme->application_no}}</td>
+                                            <td>{{$scheme->full_name}}</td>
+                                            <td>{{$scheme->mobile_no}}</td>
+                                            <td>{{$scheme->overall_status}}</td>
+                                            <td>
+                                                @if($scheme->overall_status == 'rejected' || $scheme->hod_status == 'pending')
+                                                    <button class="edit-element btn btn-primary text-white px-2 py-1" title="Edit category" data-id="{{ $scheme->all_education_scheme_detail_id }}"><i data-feather="edit"></i></button>
+                                                    <button class="btn btn-danger text-white rem-element px-2 py-1" title="Delete category" data-id="{{ $scheme->all_education_scheme_detail_id }}"><i data-feather="trash-2"></i> </button>
+                                                @endif
+                                                <button class="view-element btn btn-primary text-white px-2 py-1" title="View" data-id="{{ $scheme->all_education_scheme_detail_id }}"><i data-feather="eye"></i></button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 </x-admin.layout>
 
