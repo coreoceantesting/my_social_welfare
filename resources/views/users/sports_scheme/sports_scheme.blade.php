@@ -98,27 +98,27 @@
                                         <div class="row">
                                             <div class="col-md-4 mt-3">
                                                 <label for="player_name">Player Name / खेळाडूचे नाव: <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="player_name[]" id="player_name" placeholder="Enter Player Name" required>
+                                                <input type="text" class="form-control" name="player_name[]" id="player_name" placeholder="Enter Player Name">
                                             </div>
                                             <div class="col-md-4 mt-3">
                                                 <label for="player_mobile_no">Player Contact No / संपर्क क्र : <span class="text-danger">*</span></label>
-                                                <input type="number" class="form-control" name="player_mobile_no[]" id="player_mobile_no" placeholder="Enter Player Contact No" required>
+                                                <input type="number" class="form-control" name="player_mobile_no[]" id="player_mobile_no" placeholder="Enter Player Contact No">
                                             </div>
                                             <div class="col-md-4 mt-3">
                                                 <label for="player_name">Player Aadhar No / आधार क्र: <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="player_aadhar_no[]" id="player_aadhar_no" placeholder="Enter Player Aadhar No" required>
+                                                <input type="text" class="form-control" name="player_aadhar_no[]" id="player_aadhar_no" placeholder="Enter Player Aadhar No">
                                             </div>
                                             <div class="col-md-4 mt-3">
                                                 <label for="player_name">Player Signature /स्वाक्षरी: <span class="text-danger">*</span></label>
-                                                <input class="form-control" id="player_signature" name="player_signature[]" type="file" accept=".png, .jpg, .jpeg" required>
+                                                <input class="form-control" id="player_signature" name="player_signature[]" type="file" accept=".png, .jpg, .jpeg">
                                             </div>
                                             <div class="col-md-4 mt-3">
                                                 <label for="player_name">Player Photo / प्लेअर फोटो: <span class="text-danger">*</span></label>
-                                                <input class="form-control" id="player_photo" name="player_photo[]" type="file" accept=".png, .jpg, .jpeg" required>
+                                                <input class="form-control" id="player_photo" name="player_photo[]" type="file" accept=".png, .jpg, .jpeg">
                                             </div>
                                             <div class="col-md-4 mt-3">
                                                 <label for="player_name">Player Aadhar Card / आधार कार्ड: <span class="text-danger">*</span></label>
-                                                <input class="form-control" id="player_aadhar_photo" name="player_aadhar_photo[]" type="file" accept=".png, .jpg, .jpeg" required>
+                                                <input class="form-control" id="player_aadhar_photo" name="player_aadhar_photo[]" type="file" accept=".png, .jpg, .jpeg">
                                             </div>
                                             <hr class="mt-3">
                                         </div>

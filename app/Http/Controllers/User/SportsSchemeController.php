@@ -75,12 +75,12 @@ class SportsSchemeController extends Controller
 
                 // Validate the input data
                 $request->validate([
-                    'player_name.*' => 'required',
-                    'player_mobile_no.*' => 'required|max:10',
-                    'player_aadhar_no.*' => 'required|max:12',
-                    'player_signature.*' => 'required|file|mimes:png,jpg,jpeg',
-                    'player_photo.*' => 'required|file|mimes:png,jpg,jpeg',
-                    'player_aadhar_photo.*' => 'required|file|mimes:png,jpg,jpeg',
+                    'player_name.*' => 'nullable',
+                    'player_mobile_no.*' => 'nullable|max:10',
+                    'player_aadhar_no.*' => 'nullable|max:12',
+                    'player_signature.*' => 'nullable|file|mimes:png,jpg,jpeg',
+                    'player_photo.*' => 'nullable|file|mimes:png,jpg,jpeg',
+                    'player_aadhar_photo.*' => 'nullable|file|mimes:png,jpg,jpeg',
                 ]);
 
                 // Store player details
@@ -243,9 +243,9 @@ class SportsSchemeController extends Controller
 
                 // Validate the input data
                 $request->validate([
-                    'player_name.*' => 'required',
-                    'player_mobile_no.*' => 'required|max:10',
-                    'player_aadhar_no.*' => 'required|max:12',
+                    'player_name.*' => 'nullable',
+                    'player_mobile_no.*' => 'nullable|max:10',
+                    'player_aadhar_no.*' => 'nullable|max:12',
                     'player_signature.*' => 'nullable|file|mimes:png,jpg,jpeg',
                     'player_photo.*' => 'nullable|file|mimes:png,jpg,jpeg',
                     'player_aadhar_photo.*' => 'nullable|file|mimes:png,jpg,jpeg',
