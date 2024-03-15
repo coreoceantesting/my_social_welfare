@@ -39,7 +39,7 @@
                             </th>
                             <!-- Right side with the image -->
                             <th style="width: 20%;">
-                            <img src="{{ asset('storage/' . $data->candidate_signature) }}" alt="logo" style="max-width: 60%;">
+                            <img src="{{ asset('storage/' . $data->passport_size_photo) }}" alt="logo" style="max-width: 60%;">
                             </th>
                         </tr>
                         </thead>
@@ -61,7 +61,7 @@
                         <thead>
                           <tr>
                             <th style="text-align:left;width: 50%; padding-left:20px"">NMMT प्रवाश्यानसाठी वैध</th>
-                            <th>विभाग प्रमुख </th>
+                            <th><img src="{{ asset('storage/' . $data->dmc_sign) }}" alt="signature" height="50" width="80"><br> विभाग प्रमुख </th>
                           </tr>
                         </thead>
                     </table>
