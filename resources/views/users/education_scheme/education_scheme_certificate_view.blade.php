@@ -11,7 +11,16 @@
 
                     <div class="card"  id="divToPrint">
                         <div class="body" style="padding:60px;">
-                            <div class="row">
+                            <table>
+                                <tr>
+                                    <th><img class="img-fluid " src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="Awesome Image" style="height:100px; width:150px;"></th>
+                                    <th style="width: 60%"><h1>
+                                        <h1 style="text-align: center"><strong>पनवेल महानगरपालिका</strong></h1>
+                                        <h5 style="text-align: center"><strong>ता. पनवेल जि. रायगड पिन नं. ४१० २०६</strong></h5>
+                                    </th>
+                                  </tr>
+                            </table>
+                            <div class="row d-none">
                                 <div class="col-md-3" >
                                     <div class="icon-box">
                                         <img class="img-fluid " src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="Awesome Image" style="height:100px; width:150px;">
@@ -152,7 +161,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>६) महानगरपालिका क्षेत्रातील ३ वर्ष वास्तव्याचा पुरावा : </strong>
+                                    <strong>६) महानगरपालिका क्षेत्रातील ३ वर्ष वास्तव्याचा पुरावा : </strong> @if($data->is_residence_proof == 'yes') हो @else नाही @endif
                                 </p>
                             </div>
                         </div>
@@ -160,7 +169,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>७)  तहसिलदाराकडील अल्प उत्पन्नाचा दाखला : </strong>
+                                    <strong>७)  तहसिलदाराकडील अल्प उत्पन्नाचा दाखला : </strong> @if($data->is_low_income_proof == 'yes') हो @else नाही @endif
                                 </p>
                             </div>
                         </div>
@@ -168,7 +177,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>८) वैद्यकिय महाविद्यालयात प्रवेश घेतल्याचे प्रमाणपत्र : </strong>
+                                    <strong>८) वैद्यकिय महाविद्यालयात प्रवेश घेतल्याचे प्रमाणपत्र : </strong> @if($data->is_medical_admission_proof == 'yes') हो @else नाही @endif
                                 </p>
                             </div>
                         </div>
@@ -176,7 +185,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>९) पहिल्या शैक्षणिक वर्षाच्या निकालाची प्रत : </strong>
+                                    <strong>९) पहिल्या शैक्षणिक वर्षाच्या निकालाची प्रत : </strong> @if($data->is_first_year_proof == 'yes') हो @else नाही @endif
                                 </p>
                             </div>
                         </div>
@@ -184,7 +193,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>१०) राष्ट्रियकृत बँकेच्या पासबूकची छायांकित प्रतः- </strong>
+                                    <strong>१०) राष्ट्रियकृत बँकेच्या पासबूकची छायांकित प्रतः- </strong> @if($data->is_pass_book_doc == 'yes') हो @else नाही @endif
                                 </p>
                             </div>
                         </div>
@@ -200,7 +209,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>१२) मा. नगरसेवक / नगरसेविका यांचे शिफारस पत्र : </strong>
+                                    <strong>१२) मा. नगरसेवक / नगरसेविका यांचे शिफारस पत्र : </strong> @if($data->is_recommendation_doc == 'yes') हो @else नाही @endif
                                 </p>
                             </div>
                         </div>
