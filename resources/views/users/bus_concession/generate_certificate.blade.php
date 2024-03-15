@@ -16,8 +16,8 @@
                             </td>
                             <td style="width: 70%; text-align: center;">
                                 <!-- Company Name and Additional Info -->
-                                <h1><strong>पनवेल महानगरपालिका</strong></h1>
-                                <h4><strong>जेष्ठ नागरिक / दिव्यांग / विद्यार्थी </strong></h4>
+                                <h1 style="color: red"><strong>पनवेल महानगरपालिका</strong></h1>
+                                <h4 style="color: blue"><strong>जेष्ठ नागरिक / दिव्यांग / विद्यार्थी </strong></h4>
                             </td>
                             <td style="width: 20%;">
                                 <!-- Any content you want on the right side -->
@@ -61,7 +61,7 @@
                         <thead>
                           <tr>
                             <th style="text-align:left;width: 50%; padding-left:20px"">NMMT प्रवाश्यानसाठी वैध</th>
-                            <th><img src="{{ asset('storage/' . $data->dmc_sign) }}" alt="signature" height="50" width="80"><br> विभाग प्रमुख </th>
+                            <th><span style="margin-left:25px"><img src="{{ asset('storage/' . $data->dmc_sign) }}" alt="signature" height="50" width="80"></span><br> <span style="margin-left:25px">विभाग प्रमुख</span> <br> समाज विकास विभाग  </th>
                           </tr>
                         </thead>
                     </table>
