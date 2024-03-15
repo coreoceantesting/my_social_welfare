@@ -35,6 +35,9 @@ class StoreSportsRequest extends FormRequest
             'sports_id'=>'nullable',
             'document_id'=>'nullable',
             'document_file'=>'nullable',
+            'recommendation_letter' => 'required',
+            'state_or_national_certificate' => 'required',
+            'school_certificate' => 'required',
         ];
     }
 }

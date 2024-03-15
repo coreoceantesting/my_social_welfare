@@ -60,6 +60,36 @@
                                     <span class="text-danger is-invalid school_name_err"></span>
                                 </div>
 
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="school_certificate">Consent letter from school/college?/ शाळा / महाविद्यालयाचे  संमतीपत्रक आहे ? :<span class="text-danger">*</span></label>
+                                        <select class="form-control" name="school_certificate" id="school_certificate">
+                                            <option value="">--Select--</option>
+                                            <option value="yes">Yes / हो</option>
+                                          <option value="no">No / नाही</option>
+                                        </select>
+                                        <span class="text-danger is-invalid  school_certificate_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="state_or_national_certificate">Photocopy of Certificate of Specialization in State Level / National Level ?/ राज्यस्तर / राष्ट्रीयस्तर यामध्ये विशेष प्राविण्य  मिळवल्याचे प्रमाणपत्राची  छायांकित प्रत आहे ? :<span class="text-danger">*</span></label>
+                                        <select class="form-control" name="state_or_national_certificate" id="state_or_national_certificate">
+                                            <option value="">--Select--</option>
+                                            <option value="yes">Yes / हो</option>
+                                          <option value="no">No / नाही</option>
+                                        </select>
+                                        <span class="text-danger is-invalid  state_or_national_certificate_err"></span>
+                                </div>
+
+                                <div class="col-md-4 mt-3">
+                                    <label class="col-form-label" for="recommendation_letter">Have a letter of recommendation from a councillor? / नगरसेवकांचे शिफारस पत्र आहे?:<span class="text-danger">*</span></label>
+                                        <select class="form-control" name="recommendation_letter" id="recommendation_letter">
+                                            <option value="">--Select--</option>
+                                            <option value="yes">Yes / हो</option>
+                                          <option value="no">No / नाही</option>
+                                        </select>
+                                        <span class="text-danger is-invalid  recommendation_letter_err"></span>
+                                </div>
+
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="financial_help">financial help/ आर्थिक मदत :<span class="text-danger">*</span></label>

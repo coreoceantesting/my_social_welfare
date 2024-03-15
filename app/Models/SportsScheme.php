@@ -25,9 +25,12 @@ class SportsScheme extends BaseModel
     'candidate_signature',
     'passport_size_photo',
     'hod_remark',
-        'ac_remark',
-        'amc_remark',
-        'dmc_remark'
+    'ac_remark',
+    'amc_remark',
+    'dmc_remark',
+    'recommendation_letter',
+    'state_or_national_certificate',
+    'school_certificate'
    ];
 
    public static function booted()

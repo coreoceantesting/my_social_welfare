@@ -32,6 +32,9 @@ class UpdateSportsRequest extends FormRequest
             'school_name'=>'required',
             'candidate_signature'=> 'nullable',
             'passport_size_photo'=> 'nullable',
+            'recommendation_letter' => 'required',
+            'state_or_national_certificate' => 'required',
+            'school_certificate' => 'required',
         ];
     }
 }

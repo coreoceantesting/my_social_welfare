@@ -57,6 +57,36 @@
                         </div>
 
                         <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="school_certificate">Consent letter from school/college?/ शाळा / महाविद्यालयाचे  संमतीपत्रक आहे ? :<span class="text-danger">*</span></label>
+                                <select class="form-control" name="school_certificate" id="school_certificate">
+                                    <option value="">--Select--</option>
+                                    <option value="yes">Yes / हो</option>
+                                  <option value="no">No / नाही</option>
+                                </select>
+                                <span class="text-danger is-invalid  school_certificate_err"></span>
+                        </div>
+
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="state_or_national_certificate">Photocopy of Certificate of Specialization in State Level / National Level ?/ राज्यस्तर / राष्ट्रीयस्तर यामध्ये विशेष प्राविण्य  मिळवल्याचे प्रमाणपत्राची  छायांकित प्रत आहे ? :<span class="text-danger">*</span></label>
+                                <select class="form-control" name="state_or_national_certificate" id="state_or_national_certificate">
+                                    <option value="">--Select--</option>
+                                    <option value="yes">Yes / हो</option>
+                                  <option value="no">No / नाही</option>
+                                </select>
+                                <span class="text-danger is-invalid  state_or_national_certificate_err"></span>
+                        </div>
+
+                        <div class="col-md-4 mt-3">
+                            <label class="col-form-label" for="recommendation_letter">Have a letter of recommendation from a councillor? / नगरसेवकांचे शिफारस पत्र आहे?:<span class="text-danger">*</span></label>
+                                <select class="form-control" name="recommendation_letter" id="recommendation_letter">
+                                    <option value="">--Select--</option>
+                                    <option value="yes">Yes / हो</option>
+                                  <option value="no">No / नाही</option>
+                                </select>
+                                <span class="text-danger is-invalid  recommendation_letter_err"></span>
+                        </div>
+
+                        <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="financial_help">financial help/ आर्थिक मदत :<span class="text-danger">*</span></label>
                                 <select class="form-control" name="financial_help" id='financial_help'>
                                     <option value="">--Select--</option>
@@ -177,14 +207,14 @@
 
                                             <td>
                                                 @if($row->hod_status == 0 && $row->ac_status == 0 && $row->amc_status == 0 && $row->dmc_status == 0)
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $row->id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $row->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn btn-success btn-sm text-white px-2 py-1" title="Edit category" data-id="{{ $row->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn text-white btn-danger btn-sm rem-element px-2 py-1" title="Delete category" data-id="{{ $row->id }}"><i data-feather="trash-2"></i> </button>
                                                 @elseif($row->hod_status == 2 || $row->ac_status == 2|| $row->amc_status == 2 || $row->dmc_status == 2)
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $row->id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $row->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn btn-success btn-sm text-white px-2 py-1" title="Edit category" data-id="{{ $row->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn text-white btn-danger btn-sm rem-element px-2 py-1" title="Delete category" data-id="{{ $row->id }}"><i data-feather="trash-2"></i> </button>
                                                 @endif
 
-                                                <a href="{{ url('sports_scheme_certificate_view/'.$row->id) }}" class="btn btn-primary shadow btn-xs sharp me-1"> <i class="fas fa-eye"></i></a>
+                                                <a href="{{ url('sports_scheme_certificate_view/'.$row->id) }}" class="btn btn-primary shadow btn-sm sharp me-1"> <i class="fas fa-eye"></i></a>
                                             </td>
 
                                             {{-- @if($row->dmc_status == 1)
@@ -237,6 +267,9 @@
                     $("#editForm input[name='email']").val(data.sports_scheme.email);
                     $("#editForm select[name='financial_help']").val(data.sports_scheme.financial_help).trigger('change');
                     $("#editForm select[name='financial_help']").val();
+                    $("#editForm select[name='recommendation_letter']").val(data.sports_scheme.recommendation_letter);
+                    $("#editForm select[name='state_or_national_certificate']").val(data.sports_scheme.state_or_national_certificate);
+                    $("#editForm select[name='school_certificate']").val(data.sports_scheme.school_certificate);
 
                     $("#editForm a#candidate_signature").attr('href', "{{ asset('storage/') }}/" + data.sports_scheme.candidate_signature);
                     $("#editForm a#passport_size_photo").attr('href', "{{ asset('storage/') }}/" + data.sports_scheme.passport_size_photo);

@@ -158,7 +158,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>५) शाळा / महाविद्यालयाचे संमतीपत्रक : </strong>
+                                    <strong>५) शाळा / महाविद्यालयाचे संमतीपत्रक : </strong> @if($data->school_certificate == 'yes') हो @else नाही @endif
                                 </p>
                             </div>
                         </div>
@@ -182,7 +182,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>८) राज्य स्तर / राष्ट्रीय स्तर यामध्ये विशेष प्राविण्य मिळविल्याचे प्रमाणपत्राची छायांकित प्रत : </strong>
+                                    <strong>८) राज्य स्तर / राष्ट्रीय स्तर यामध्ये विशेष प्राविण्य मिळविल्याचे प्रमाणपत्राची छायांकित प्रत : </strong> @if($data->state_or_national_certificate == 'yes') हो @else नाही @endif
                                 </p>
                             </div>
                         </div>
@@ -190,7 +190,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>९)  नगरसेवकांचे शिफारस पत्र : </strong>
+                                    <strong>९)  नगरसेवकांचे शिफारस पत्र : </strong> @if($data->recommendation_letter == 'yes') हो @else नाही @endif
                                 </p>
                             </div>
                         </div>
