@@ -249,13 +249,13 @@
                                             <td>
                                                 @if($value->hod_status == '0' && $value->ac_status == '0' && $value->amc_status == '0' && $value->dmc_status == '0')
                                                 <button class="edit-element btn btn-sm btn-primary text-white px-2 py-1" title="Edit category" data-id="{{ $value->id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn text-white btn-sm btn-primary rem-element px-2 py-1" title="Delete category" data-id="{{ $value->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="btn text-white btn-sm btn-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $value->id }}"><i data-feather="trash-2"></i> </button>
                                                 @elseif($value->hod_status == '2' || $value->ac_status == '2'|| $value->amc_status == '2' || $value->dmc_status == '2')
-                                                <button class="edit-element btn btn-sm btn-danger text-white px-2 py-1" title="Edit category" data-id="{{ $value->id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn text-white btn-sm rem-element btn-primary px-2 py-1" title="Delete category" data-id="{{ $value->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn btn-sm btn-primary text-white px-2 py-1" title="Edit category" data-id="{{ $value->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn text-white btn-sm rem-element btn-danger px-2 py-1" title="Delete category" data-id="{{ $value->id }}"><i data-feather="trash-2"></i> </button>
                                                 @endif
 
-                                                <a href="{{ url('education_scheme_certificate_view/'.$value->id) }}" class="btn btn-primary shadow btn-sm sharp me-1"> <i class="fas fa-eye"></i></a>
+                                                <a href="{{ url('education_scheme_certificate_view/'.$value->id) }}" class="btn btn-success shadow btn-sm sharp me-1"> <i class="fas fa-eye"></i></a>
                                             </td>
 
                                             {{-- @if($value->dmc_status == 1)
