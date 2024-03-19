@@ -235,15 +235,15 @@
                                                 <button class="edit-element btn btn-primary text-white px-2 py-1" title="Edit category" data-id="{{ $value->id }}"><i data-feather="edit"></i></button>
                                                 <button class="btn text-white btn-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $value->id }}"><i data-feather="trash-2"></i> </button>
                                                 @elseif($value->hod_status == 2 || $value->ac_status == 2|| $value->amc_status == 2 || $value->dmc_status == 2)
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit category" data-id="{{ $value->id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $value->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn btn-primary text-white px-2 py-1" title="Edit category" data-id="{{ $value->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn text-white btn-danger rem-element px-2 py-1" title="Delete category" data-id="{{ $value->id }}"><i data-feather="trash-2"></i> </button>
                                                 @endif
-                                                <a href="{{ url('bus_concession_certificate_view/'.$value->id) }}" class="btn btn-info shadow btn-xs sharp me-1 px-2 py-1"> <i class="fas fa-eye"></i></a>
+                                                <a href="{{ url('bus_concession_certificate_view/'.$value->id) }}" class="btn btn-success px-2 py-1"> <i class="fas fa-eye"></i></a>
                                             </td>
 
 
                                             @if($value->dmc_status == 1)
-                                            <td><a href="{{ url('bus_concession_certificate/'.$value->id) }}" class="btn btn-primary shadow btn-xs sharp me-1">Generate Certificate</a></td>
+                                            <td><a href="{{ url('bus_concession_certificate/'.$value->id) }}" class="btn btn-success px-2 py-1">Generate Certificate</a></td>
                                             @endif
                                         </tr>
                                     @endforeach
