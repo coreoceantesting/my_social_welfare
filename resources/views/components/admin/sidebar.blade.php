@@ -142,9 +142,10 @@
                         $categoryId = Auth::user()->category;
 
                         $schemes_list = DB::table('category_wise_scheme AS t')
-                            ->select('t.id', 'm.scheme_name', 'm.scheme_marathi_name', 't.scheme_id', 't.category_id')
+                            ->select('t.id', 'm.scheme_name', 'm.deleted_by', 'm.scheme_marathi_name', 't.scheme_id', 't.category_id')
                             ->join('mst_scheme as m', 'm.id', '=', 't.scheme_id')
                             ->whereRaw('FIND_IN_SET(?, t.category_id)', [$categoryId])
+                            ->whereNull('m.deleted_by')
                             ->get();
                                 // dd($schemes_list);
                     @endphp
