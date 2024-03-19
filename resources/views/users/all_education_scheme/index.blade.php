@@ -745,6 +745,9 @@
                                         <th>Full Name</th>
                                         <th>Mobile No</th>
                                         <th>Status</th>
+                                        @if($scheme_detail->contains('overall_status', 'rejected'))
+                                            <th>Rejected Reason</th>
+                                        @endif
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -755,7 +758,34 @@
                                             <td>{{$scheme->application_no}}</td>
                                             <td>{{$scheme->full_name}}</td>
                                             <td>{{$scheme->mobile_no}}</td>
-                                            <td>{{$scheme->overall_status}}</td>
+                                            <td>
+                                                @php
+                                                    if($scheme->overall_status == 'approved')
+                                                    {
+                                                        $class = 'bg-success';
+                                                    }elseif($scheme->overall_status == 'rejected')
+                                                    {
+                                                        $class = 'bg-danger';
+                                                    }else{
+                                                        $class = 'bg-primary';
+                                                    }
+
+                                                @endphp
+                                                <span class="badge {{ $class }}">{{$scheme->overall_status}}</span>
+                                            </td>
+                                            @if($scheme->overall_status == 'rejected')
+                                                @if($scheme->hod_status == 'rejected')
+                                                    <td>{{$scheme->hod_remark}}</td>
+                                                @elseif ($scheme->ac_status == 'rejected')
+                                                    <td>{{$scheme->ac_remark}}</td>
+                                                @elseif($scheme->amc_status == 'rejected')
+                                                    <td>{{$scheme->amc_remark}}</td>
+                                                @elseif($scheme->dmc_status == 'rejected')
+                                                    <td>{{$scheme->dmc_remark}}</td>
+                                                @else
+                                                    <td>NA</td>
+                                                @endif
+                                            @endif
                                             <td>
                                                 @if($scheme->overall_status == 'rejected' || $scheme->hod_status == 'pending')
                                                     <button class="edit-element btn btn-primary text-white px-2 py-1" title="Edit category" data-id="{{ $scheme->all_education_scheme_detail_id }}"><i data-feather="edit"></i></button>
