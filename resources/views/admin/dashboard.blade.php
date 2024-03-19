@@ -2395,9 +2395,9 @@
                                                     <table class="table table-bordered nowrap align-middle">
                                                         <thead>
                                                             <tr>
-                                                            <th>Pending</th>
-                                                            <th>Approved</th>
-                                                            <th>Rejected</th>
+                                                            <th><a href="{{ url('dmc_bus_concession_application_list?category=1', 0) }}">Pending</a></th>
+                                                            <th><a href="{{ url('dmc_bus_concession_application_list?category=1', 1) }}">Approved</a></th>
+                                                            <th><a href="{{ url('dmc_bus_concession_application_list?category=1', 2) }}">Rejected</a></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -2427,9 +2427,9 @@
                                                     <table class="table table-bordered nowrap align-middle">
                                                         <thead>
                                                             <tr>
-                                                            <th>Pending</th>
-                                                            <th>Approved</th>
-                                                            <th>Rejected</th>
+                                                            <th><a href="{{ url('dmc_divyang_registration_list', 0) }}">Pending</a></th>
+                                                            <th><a href="{{ url('dmc_divyang_registration_list', 1) }}">Approved</a></th>
+                                                            <th><a href="{{ url('dmc_divyang_registration_list', 2) }}">Rejected</a></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -2459,9 +2459,9 @@
                                                     <table class="table table-bordered nowrap align-middle">
                                                         <thead>
                                                             <tr>
-                                                            <th>Pending</th>
-                                                            <th>Approved</th>
-                                                            <th>Rejected</th>
+                                                            <th><a href="{{ url('dmc_education_scheme_application_list?category=1', 0) }}">Pending</a></th>
+                                                            <th><a href="{{ url('dmc_education_scheme_application_list?category=1', 1) }}">Approved</a></th>
+                                                            <th><a href="{{ url('dmc_education_scheme_application_list?category=1', 2) }}">Rejected</a></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -2491,9 +2491,9 @@
                                                     <table class="table table-bordered nowrap align-middle">
                                                         <thead>
                                                             <tr>
-                                                            <th>Pending</th>
-                                                            <th>Approved</th>
-                                                            <th>Rejected</th>
+                                                            <th><a href="{{ url('dmc_marriage_scheme_application_list', 0) }}">Pending</a></th>
+                                                            <th><a href="{{ url('dmc_marriage_scheme_application_list', 0) }}">Approved</a></th>
+                                                            <th><a href="{{ url('dmc_marriage_scheme_application_list', 0) }}">Rejected</a></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -2551,9 +2551,9 @@
                                                     <table class="table table-bordered nowrap align-middle">
                                                         <thead>
                                                             <tr>
-                                                            <th>Pending</th>
-                                                            <th>Approved</th>
-                                                            <th>Rejected</th>
+                                                            <th><a href="{{ url('dmc_bus_concession_application_list?category=women', 0) }}">Pending</a></th>
+                                                            <th><a href="{{ url('dmc_bus_concession_application_list?category=women', 1) }}">Approved</a></th>
+                                                            <th><a href="{{ url('dmc_bus_concession_application_list?category=women', 2) }}">Rejected</a></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -2583,9 +2583,9 @@
                                                     <table class="table table-bordered nowrap align-middle">
                                                         <thead>
                                                             <tr>
-                                                            <th>Pending</th>
-                                                            <th>Approved</th>
-                                                            <th>Rejected</th>
+                                                            <th><a href="{{ url('dmc_education_scheme_application_list?category=women', 0) }}">Pending</a></th>
+                                                            <th><a href="{{ url('dmc_education_scheme_application_list?category=women', 1) }}">Approved</a></th>
+                                                            <th><a href="{{ url('dmc_education_scheme_application_list?category=women', 2) }}">Rejected</a></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -2615,9 +2615,9 @@
                                                     <table class="table table-bordered nowrap align-middle">
                                                         <thead>
                                                             <tr>
-                                                            <th>Pending</th>
-                                                            <th>Approved</th>
-                                                            <th>Rejected</th>
+                                                            <th><a href="{{ url('dmc_cancer_scheme_application_list', 0) }}">Pending</a></th>
+                                                            <th><a href="{{ url('dmc_cancer_scheme_application_list', 1) }}">Approved</a></th>
+                                                            <th><a href="{{ url('dmc_cancer_scheme_application_list', 2) }}">Rejected</a></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -2647,9 +2647,9 @@
                                                     <table class="table table-bordered nowrap align-middle">
                                                         <thead>
                                                             <tr>
-                                                            <th>Pending</th>
-                                                            <th>Approved</th>
-                                                            <th>Rejected</th>
+                                                            <th><a href="{{ url('dmc_sports_scheme_application_list', 0) }}">Pending</a></th>
+                                                            <th><a href="{{ url('dmc_sports_scheme_application_list', 1) }}">Approved</a></th>
+                                                            <th><a href="{{ url('dmc_sports_scheme_application_list', 2) }}">Rejected</a></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -2679,9 +2679,9 @@
                                                     <table class="table table-bordered nowrap align-middle">
                                                         <thead>
                                                             <tr>
-                                                            <th>Pending</th>
-                                                            <th>Approved</th>
-                                                            <th>Rejected</th>
+                                                            <th><a href="{{ url('dmc_vehicle_scheme_application_list', 0) }}">Pending</a></th>
+                                                            <th><a href="{{ url('dmc_vehicle_scheme_application_list', 1) }}">Approved</a></th>
+                                                            <th><a href="{{ url('dmc_vehicle_scheme_application_list', 2) }}">Rejected</a></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -2711,9 +2711,9 @@
                                                     <table class="table table-bordered nowrap align-middle">
                                                         <thead>
                                                             <tr>
-                                                            <th>Pending</th>
-                                                            <th>Approved</th>
-                                                            <th>Rejected</th>
+                                                            <th><a href="{{ url('dmc_women_scheme_application_list', 0) }}">Pending</a></th>
+                                                            <th><a href="{{ url('dmc_women_scheme_application_list', 1) }}">Approved</a></th>
+                                                            <th><a href="{{ url('dmc_women_scheme_application_list', 2) }}">Rejected</a></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -2771,9 +2771,9 @@
                                                     <table class="table table-bordered nowrap align-middle">
                                                         <thead>
                                                             <tr>
-                                                            <th>Pending</th>
-                                                            <th>Approved</th>
-                                                            <th>Rejected</th>
+                                                            <th><a href="{{ url('dmc_bus_concession_application_list?category=seniorCitizen', 0) }}">Pending</a></th>
+                                                            <th><a href="{{ url('dmc_bus_concession_application_list?category=seniorCitizen', 1) }}">Approved</a></th>
+                                                            <th><a href="{{ url('dmc_bus_concession_application_list?category=seniorCitizen', 2) }}">Rejected</a></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
