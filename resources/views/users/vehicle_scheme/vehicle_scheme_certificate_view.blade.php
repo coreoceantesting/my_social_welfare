@@ -11,7 +11,13 @@
 
                     <div class="card"  id="divToPrint">
                         <div class="body" style="padding:60px;">
-                            <div class="row">
+                            <table style="border: none">
+                                <tr>
+                                    <th style="border: none"><img class="img-fluid " src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="Awesome Image" style="height:100px; width:150px;"></th>
+                                    <th style="width: 60%;border: none"><h1><strong>पनवेल महानगरपालिका</strong></h1> <h4><strong>ता. पनवेल जि. रायगड पिन नं. ४१० २०६</strong></h4></th>
+                                  </tr>
+                            </table>
+                            <div class="row d-none">
                                 <div class="col-md-3" >
                                     <div class="icon-box">
                                         <img class="img-fluid " src="{{ asset('admin/images/users/PMC-logo.png') }}" alt="Awesome Image" style="height:100px; width:150px;">
@@ -204,7 +210,7 @@
                     </div>
                     <div class="submit-section text-right pt-5" style="float:right;margin-bottom:50px;">
 					    <a href="{{ route('vehicle_scheme.application') }}" class="btn btn-danger btn-lg text-light" >Cancel</a>
-
+                        <button  class="btn btn-success btn-lg" type="button" onClick="printDiv('divToPrint')" ><i class="fa fa-print fa-lg text-light"></i> &nbsp;&nbsp;Print</button>
 					</div>
                 </div>
             </div>
@@ -213,4 +219,18 @@
 </section>
 
 </x-admin.layout>
+
+<script>
+    function printDiv(divName) {
+        $("#print").css("display", "none");
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+        $("#print").css("display", "block");
+        // location.reload();
+
+    }
+</script>
 

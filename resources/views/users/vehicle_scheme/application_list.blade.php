@@ -45,7 +45,7 @@
                         </div>
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="duration_of_residence">{{-- Duration of residence in Panvel Municipal Corporation area/ --}} पनवेल महानगरपालिका क्षेत्रातील वास्तव्याचा कालावधी  <span class="text-danger">*</span></label>
+                            <label class="col-form-label" for="duration_of_residence">{{-- Duration of residence in Panvel Municipal Corporation area/ --}}Duration of residence in Panvel Municipal Corporation area / पनवेल महानगरपालिका क्षेत्रातील वास्तव्याचा कालावधी  <span class="text-danger">*</span></label>
                             <input class="form-control" id="duration_of_residence" name="duration_of_residence" type="text" placeholder="Enter Duration of residence">
                             <span class="text-danger is-invalid duration_of_residence_err"></span>
                         </div>
@@ -58,7 +58,7 @@
 
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="details">{{-- Details if received training under the said scheme earlier / --}} यापुर्वी सदर योजने अंतर्गत प्रशिक्षण घेतले असल्यास त्याचा तपशिल<span class="text-danger">*</span></label>
+                            <label class="col-form-label" for="details">Details if received training under the said scheme earlier / यापुर्वी सदर योजने अंतर्गत प्रशिक्षण घेतले असल्यास त्याचा तपशिल<span class="text-danger">*</span></label>
                             <input class="form-control" id="details" name="details" type="text" placeholder="Enter Details if received training under the said scheme earlier">
                             <span class="text-danger is-invalid details_err"></span>
                         </div>
@@ -71,7 +71,7 @@
                         </div>
 
                         <div class="col-md-4 mt-3">
-                            <label class="col-form-label" for="receipt_no">{{-- Receipt No. of payment of 10% of training amount.  --}}प्रशिक्षणाची १० टक्के रक्कम भरल्याची पावती क्रमांक.<span class="text-danger">*</span></label>
+                            <label class="col-form-label" for="receipt_no">Receipt No. of payment of 10% of training amount./प्रशिक्षणाची १० टक्के रक्कम भरल्याची पावती क्रमांक.<span class="text-danger">*</span></label>
                             <input class="form-control" id="receipt_no" name="receipt_no" type="text" placeholder="Receipt No. of payment of 10% of training amount">
                             <span class="text-danger is-invalid receipt_no_err"></span>
                         </div>
