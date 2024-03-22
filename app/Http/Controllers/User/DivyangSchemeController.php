@@ -93,6 +93,8 @@ class DivyangSchemeController extends Controller
             $unique_id = "DIS-SCH" . rand(100000, 10000000);
             $input['application_no'] = $unique_id;
             $input['hayat_id'] = $data->h_id;
+            $input['agriculture'] = $request->input('agriculture');
+            $input['received_year'] = $request->input('received_year');
             $disable = DisabilityApplication::create(Arr::only($input, DisabilityApplication::getFillables()));
 
             $documentTypeIds = $request->input('document_id');
@@ -187,6 +189,9 @@ class DivyangSchemeController extends Controller
                 $imagePath1 = $request->file('passport_size_photo')->store('divyang_nodani_file/passport_size_photo', 'public');
                 $input['passport_size_photo'] = $imagePath1;
             }
+
+            $input['agriculture'] = $request->input('agriculture');
+            $input['received_year'] = $request->input('received_year');
 
             $scheme_form->update(Arr::only($input, DisabilityApplication::getFillables()));
 
