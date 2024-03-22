@@ -33,7 +33,7 @@
                                         <th>Name</th>
                                         <th>Full Address</th>
                                         <th>Contact</th>
-                                        <th>Signed Document(Hayaticha)</th>
+                                        {{-- <th>Signed Document(Hayaticha)</th> --}}
                                         @if (($status == '2'))
                                         <th>Reasons for Rejection</th>
                                         @endif
@@ -50,7 +50,7 @@
                                             <td>{{ $value->full_name }}</td>
                                             <td>{{ $value->full_address }}</td>
                                             <td>{{ $value->contact }}</td>
-                                            <td><a href="{{ asset('storage/'.$value->sign_uploaded_live_certificate)}}" class="btn btn-primary shadow btn-xs sharp me-1" target="_blank"> <i class="fas fa-eye"></i></a></td>
+                                            {{-- <td><a href="{{ asset('storage/'.$value->sign_uploaded_live_certificate)}}" class="btn btn-primary shadow btn-xs sharp me-1" target="_blank"> <i class="fas fa-eye"></i></a></td> --}}
                                             @if($value->dmc_status == '2')
                                             <td>{{ $value->dmc_reject_reason }}</td>
                                             @endif
