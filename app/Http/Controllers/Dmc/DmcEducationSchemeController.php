@@ -38,6 +38,7 @@ class DmcEducationSchemeController extends Controller
         }
 
         $data = $query->get(['t1.*', 't2.category', 't4.sign_uploaded_live_certificate']);
+        dd($data);
 
         return view('dmc.education_scheme.grid', compact('data', 'status'));
     }
