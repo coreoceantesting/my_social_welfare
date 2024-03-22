@@ -139,15 +139,15 @@
                                                 <input type="text" class="form-control" name="player_aadhar_no[]" id="player_aadhar_no" placeholder="Enter Player Aadhar No">
                                             </div>
                                             <div class="col-md-4 mt-3">
-                                                <label for="player_name">Player Signature /स्वाक्षरी: <span class="text-danger">*</span></label>
+                                                <label for="player_name">Player Signature /स्वाक्षरी: <span class="text-danger">* (Required only png,jpg,jpeg)</span></label>
                                                 <input class="form-control" id="player_signature" name="player_signature[]" type="file" accept=".png, .jpg, .jpeg">
                                             </div>
                                             <div class="col-md-4 mt-3">
-                                                <label for="player_name">Player Photo / प्लेअर फोटो: <span class="text-danger">*</span></label>
+                                                <label for="player_name">Player Photo / प्लेअर फोटो: <span class="text-danger">* (Required only png,jpg,jpeg)</span></label>
                                                 <input class="form-control" id="player_photo" name="player_photo[]" type="file" accept=".png, .jpg, .jpeg">
                                             </div>
                                             <div class="col-md-4 mt-3">
-                                                <label for="player_name">Player Aadhar Card / आधार कार्ड: <span class="text-danger">*</span></label>
+                                                <label for="player_name">Player Aadhar Card / आधार कार्ड: <span class="text-danger">* (Required only png,jpg,jpeg)</span></label>
                                                 <input class="form-control" id="player_aadhar_photo" name="player_aadhar_photo[]" type="file" accept=".png, .jpg, .jpeg">
                                             </div>
                                             <hr class="mt-3">
