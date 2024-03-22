@@ -161,7 +161,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>६) महानगरपालिका क्षेत्रातील ३ वर्ष वास्तव्याचा पुरावा : </strong> @if($data->is_residence_proof == 'yes') हो @else नाही @endif
+                                    <strong>६) महानगरपालिका क्षेत्रातील ३ वर्ष वास्तव्याचा पुरावा : </strong> @if($data->is_residence_proof == 'yes') होय @else नाही @endif
                                 </p>
                             </div>
                         </div>
@@ -169,7 +169,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>७)  तहसिलदाराकडील अल्प उत्पन्नाचा दाखला : </strong> @if($data->is_low_income_proof == 'yes') हो @else नाही @endif
+                                    <strong>७)  तहसिलदाराकडील अल्प उत्पन्नाचा दाखला : </strong> @if($data->is_low_income_proof == 'yes') होय @else नाही @endif
                                 </p>
                             </div>
                         </div>
@@ -177,7 +177,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>८) वैद्यकिय महाविद्यालयात प्रवेश घेतल्याचे प्रमाणपत्र : </strong> @if($data->is_medical_admission_proof == 'yes') हो @else नाही @endif
+                                    <strong>८) वैद्यकिय महाविद्यालयात प्रवेश घेतल्याचे प्रमाणपत्र : </strong> @if($data->is_medical_admission_proof == 'yes') होय @else नाही @endif
                                 </p>
                             </div>
                         </div>
@@ -185,7 +185,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>९) पहिल्या शैक्षणिक वर्षाच्या निकालाची प्रत : </strong> @if($data->is_first_year_proof == 'yes') हो @else नाही @endif
+                                    <strong>९) पहिल्या शैक्षणिक वर्षाच्या निकालाची प्रत : </strong> @if($data->is_first_year_proof == 'yes') होय @else नाही @endif
                                 </p>
                             </div>
                         </div>
@@ -193,7 +193,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>१०) राष्ट्रियकृत बँकेच्या पासबूकची छायांकित प्रतः- </strong> @if($data->is_pass_book_doc == 'yes') हो @else नाही @endif
+                                    <strong>१०) राष्ट्रियकृत बँकेच्या पासबूकची छायांकित प्रतः- </strong> @if($data->is_pass_book_doc == 'yes') होय @else नाही @endif
                                 </p>
                             </div>
                         </div>
@@ -209,7 +209,7 @@
                         <div class="row pt-3">
                             <div class="col-md-12 col-sm-12">
                                 <p class="mb-0">
-                                    <strong>१२) मा. नगरसेवक / नगरसेविका यांचे शिफारस पत्र : </strong> @if($data->is_recommendation_doc == 'yes') हो @else नाही @endif
+                                    <strong>१२) मा. नगरसेवक / नगरसेविका यांचे शिफारस पत्र : </strong> @if($data->is_recommendation_doc == 'yes') होय @else नाही @endif
                                 </p>
                             </div>
                         </div>
