@@ -426,6 +426,7 @@
         $("#addPlayer").click(function () {
             var clonedRow = $(".add-players-details .row:first").clone();
             clonedRow.find("input").val(""); // Clear input fields in the cloned row
+            clonedRow.find(".documents").css('display', 'none');
             clonedRow.appendTo(".add-players-details");
             $("#removePlayer").show();
         });

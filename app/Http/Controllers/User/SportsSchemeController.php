@@ -150,19 +150,19 @@ class SportsSchemeController extends Controller
                 $player_details_html .=  '<div class="col-md-4 mt-3">';
                 $player_details_html .=  '<label for="player_name">Player Signature /स्वाक्षरी: <span class="text-danger">* (Required only png,jpg,jpeg)</span></label>';
                 $player_details_html .=  '<input class="form-control" id="player_signature" name="player_signature[]" type="file" accept=".png, .jpg, .jpeg">';
-                $player_details_html .= '<small><a href="storage/' . $player->player_signature . '" target="_blank">View Document</a></small>';
+                $player_details_html .= '<small><a class="documents" href="storage/' . $player->player_signature . '" target="_blank">View Document</a></small>';
                 $player_details_html .=  '</div>';
 
                 $player_details_html .=  '<div class="col-md-4 mt-3">';
                 $player_details_html .=  '<label for="player_name">Player Photo / प्लेअर फोटो: <span class="text-danger">* (Required only png,jpg,jpeg)</span></label>';
                 $player_details_html .=  '<input class="form-control" id="player_photo" name="player_photo[]" type="file" accept=".png, .jpg, .jpeg">';
-                $player_details_html .= '<small><a href="storage/' . $player->player_photo . '" target="_blank">View Document</a></small>';
+                $player_details_html .= '<small><a class="documents" href="storage/' . $player->player_photo . '" target="_blank">View Document</a></small>';
                 $player_details_html .=  '</div>';
 
                 $player_details_html .=  '<div class="col-md-4 mt-3">';
                 $player_details_html .=  '<label for="player_name">Player Aadhar Card / आधार कार्ड: <span class="text-danger">* (Required only png,jpg,jpeg)</span></label>';
                 $player_details_html .=  '<input class="form-control" id="player_aadhar_photo" name="player_aadhar_photo[]" type="file" accept=".png, .jpg, .jpeg">';
-                $player_details_html .= '<small><a href="storage/' . $player->player_aadhar_photo . '" target="_blank">View Document</a></small>';
+                $player_details_html .= '<small><a class="documents" href="storage/' . $player->player_aadhar_photo . '" target="_blank">View Document</a></small>';
                 $player_details_html .=  '</div>';
 
                 $player_details_html .=  '<hr class="mt-3"></div>';
