@@ -174,7 +174,7 @@
                                     }
                                 @endphp
                                 <li class="nav-item">
-                                    <a href="{{ $url }}" class="nav-link" data-key="t-horizontal">{{$list->scheme_name}} List ({{$list->scheme_marathi_name}})</a>
+                                    <a href="{{ $url }}" class="nav-link" data-key="t-horizontal">{{ $list->scheme_name }} List ({{ Illuminate\Support\Str::limit($list->scheme_marathi_name, 30, '...') }})</a>
                                 </li>
                             @endforeach
 
