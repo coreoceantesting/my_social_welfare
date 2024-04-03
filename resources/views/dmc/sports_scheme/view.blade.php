@@ -106,9 +106,9 @@
                                                 <td>{{$detail->player_name}}</td>
                                                 <td>{{$detail->player_mobile_no}}</td>
                                                 <td>{{$detail->player_aadhar_no}}</td>
-                                                <td><img src="{{ asset('storage/' . $detail->player_photo) }}" height="100" width="100" alt="test"></td>
-                                                <td><img src="{{ asset('storage/'. $detail->player_aadhar_photo) }}" height="100" width="100" alt="test"></td>
-                                                <td><img src="{{ asset('storage/'. $detail->player_signature) }}" height="100" width="100" alt="test"></td>
+                                                <td><a href="{{ asset('storage/' . $detail->player_photo) }}" target="_blank"><img src="{{ asset('storage/' . $detail->player_photo) }}" height="100" width="100" alt="test"></a></td>
+                                                <td><a href="{{ asset('storage/' . $detail->player_aadhar_photo) }}" target="_blank"><img src="{{ asset('storage/'. $detail->player_aadhar_photo) }}" height="100" width="100" alt="test"></a></td>
+                                                <td><a href="{{ asset('storage/' . $detail->player_signature) }}" target="_blank"><img src="{{ asset('storage/'. $detail->player_signature) }}" height="100" width="100" alt="test"></a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>
