@@ -9,6 +9,7 @@ use App\Models\Ward;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Storage;
+use App\Models\HayatFormModel;
 
 class allEducationSchemeController extends Controller
 {
@@ -18,6 +19,12 @@ class allEducationSchemeController extends Controller
     public function index()
     {
         $scheme_detail = DB::table('all_education_scheme_details')->where('created_by', Auth::user()->id)->whereNull('deleted_by')->get();
+        $hyatiformDetail = HayatFormModel::where('user_id', Auth::user()->id)->latest()->first();
+        if (empty($hyatiformDetail)) 
+        {
+            return redirect()->route('hayatichaDakhlaform.index')->with('warning', 'Fill the Hayatika form before proceeding.');
+        }
+
         $wards = Ward::latest()->get(['name']);
         $scheme_id = session('scheme_id');
         $document = DB::table('document_type_msts')
