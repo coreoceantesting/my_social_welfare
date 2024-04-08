@@ -33,9 +33,9 @@
                                         <th>Name</th>
                                         <th>Full Address</th>
                                         <th>Contact</th>
-                                        {{-- @if($_GET['category'] != "women" && $_GET['category'] != "seniorCitizen") --}}
+                                        @if(isset($_GET['category']) && ($_GET['category'] != "women" && $_GET['category'] != "seniorCitizen"))
                                         <th>Signed Document(Hayaticha)</th>
-                                        {{-- @endif --}}
+                                        @endif
                                         @if (($status == '2'))
                                         <th>Reasons for Rejection</th>
                                         @endif
@@ -49,9 +49,9 @@
                                             <td>{{ $value->f_name }} {{ $value->m_name }} {{ $value->l_name }}</td>
                                             <td>{{ $value->full_address }}</td>
                                             <td>{{ $value->contact }}</td>
-                                            {{-- @if($_GET['category'] != "women" && $_GET['category'] != "seniorCitizen") --}}
+                                            @if(isset($_GET['category']) && ($_GET['category'] != "women" && $_GET['category'] != "seniorCitizen"))
                                             <td><a href="{{ asset('storage/'.$value->sign_uploaded_live_certificate)}}" class="btn btn-primary shadow btn-xs sharp me-1" target="_blank"> <i class="fas fa-eye"></i></a></td>
-                                            {{-- @endif --}}
+                                            @endif
                                             @if($value->amc_status == '2')
                                             <td>{{ $value->amc_reject_reason }}</td>
                                             @endif
