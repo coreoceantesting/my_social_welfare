@@ -220,6 +220,7 @@
                                     <th>Sr No</th>
                                     <th>Full Name</th>
                                     <th>Email</th>
+                                    <th>Category</th>
                                     <th>Mobile</th>
                                     {{-- <th style="min-width: 100px;">Status</th> --}}
                                     <th>Registered On</th>
@@ -232,6 +233,19 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
+                                        <td>
+                                            @if ($user->category == '1')
+                                                Divyang(दिव्यांग)
+                                            @elseif($user->category == '2')
+                                                Leprosy(कुष्ठरोग)
+                                            @elseif($user->category == '3')
+                                                Senior Citizen(ज्येष्ठ नागरिक)
+                                            @elseif($user->category == '4')
+                                                Women and Child Walfare(महिला आणि बालकल्याण)
+                                            @else
+                                                NA
+                                            @endif
+                                        </td>
                                         <td>{{ $user->mobile }}</td>
                                         {{-- <td>
                                             <div class="media-body text-end icon-state">
