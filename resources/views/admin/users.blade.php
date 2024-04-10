@@ -95,6 +95,74 @@
                             </div>
 
                             <div class="col-md-4">
+                                <label class="col-form-label" for="name">First Name (प्रथम नाव)<span class="text-danger">*</span></label>
+                                <input class="form-control" id="f_name" name="f_name" type="text" placeholder="Enter First Name">
+                                <span class="text-danger is-invalid f_name_err"></span>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-form-label" for="initial">Middle Name(मधले नाव) <span class="text-danger">*</span></label>
+                                <input class="form-control" id="m_name" name="m_name" type="text" placeholder="Enter Middle Name">
+                                <span class="text-danger is-invalid m_name_err"></span>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-form-label" for="initial">Last Name (आडनाव)<span class="text-danger">*</span></label>
+                                <input class="form-control" id="l_name" name="l_name" type="text" placeholder="Enter Last Name">
+                                <span class="text-danger is-invalid l_name_err"></span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="col-form-label" for="name">Gender(लिंग) <span class="text-danger">*</span></label>
+                                <select class="form-control" name="gender" id="gender">
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                                <span class="text-danger is-invalid gender_err"></span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="col-form-label" for="initial">Date Of Birth(जन्मतारीख) <span class="text-danger">*</span></label>
+                                <input class="form-control" id="dob" name="dob" type="date" placeholder="Select Date Of Birth">
+                                <span class="text-danger is-invalid dob_err"></span>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-form-label" for="initial">Age(वय) <span class="text-danger">*</span></label>
+                                <input class="form-control" id="Age" name="Age" type="text" placeholder="Enter Age">
+                                <span class="text-danger is-invalid Age_err"></span>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-form-label" for="name">Father First Name(वडिलांचे नाव) <span class="text-danger">*</span></label>
+                                <input class="form-control" id="father_fname" name="father_fname" type="text" placeholder="Enter Father First Name">
+                                <span class="text-danger is-invalid father_fname_err"></span>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-form-label" for="initial">Father Middle Name(वडिलांचे मधले नाव) <span class="text-danger">*</span></label>
+                                <input class="form-control" id="father_mname" name="father_mname" type="text" placeholder="Enter Father Middle Name">
+                                <span class="text-danger is-invalid father_mname_err"></span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="col-form-label" for="initial">Father Last Name(वडिलांचे आडनाव) <span class="text-danger">*</span></label>
+                                <input class="form-control" id="father_lname" name="father_lname" type="text" placeholder="Enter Father Last Name">
+                                <span class="text-danger is-invalid father_lname_err"></span>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-form-label" for="name">Mother Name (आईचे नाव)<span class="text-danger">*</span></label>
+                                <input class="form-control" id="mother_name" name="mother_name" type="text" placeholder="Enter Mother Name">
+                                <span class="text-danger is-invalid mother_err"></span>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-form-label" for="initial">Category(श्रेणी) <span class="text-danger">*</span></label>
+                                <select class="form-select mb-3" aria-label="Default select example" name="category" id="category">
+                                    <option value="">--Select Category--</option>
+                                    @foreach($category as $row)
+                                    <option value="{{ $row->id }}">{{ $row->category_name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger is-invalid category_err"></span>
+                            </div>
+
+                            <div class="col-md-4">
                                 <label class="col-form-label" for="email">User Email (वापरकर्ता ईमेल)<span class="text-danger">*</span></label>
                                 <input class="form-control" name="email" type="email" placeholder="Enter User Email">
                                 <span class="text-danger is-invalid email_err"></span>
@@ -465,11 +533,21 @@
                 if (!data.error) {
                     $("#editForm input[name='edit_model_id']").val(data.user.id);
                     $("#editForm input[name='dob']").val(data.user.dob);
-                    data.user.gender == 'm' ? $("#editForm input[name='gender'][value='m']").prop("checked", true) : $("#editForm input[name='gender'][value='f']").prop("checked", true);
+                    // data.user.gender == 'm' ? $("#editForm input[name='gender'][value='m']").prop("checked", true) : $("#editForm input[name='gender'][value='f']").prop("checked", true);
                     $("#editForm select[name='role']").html(data.roleHtml);
                     $("#editForm input[name='name']").val(data.user.name);
                     $("#editForm input[name='email']").val(data.user.email);
                     $("#editForm input[name='mobile']").val(data.user.mobile);
+                    $("#editForm input[name='f_name']").val(data.user.f_name);
+                    $("#editForm input[name='m_name']").val(data.user.m_name);
+                    $("#editForm input[name='l_name']").val(data.user.l_name);
+                    $("#editForm select[name='gender']").val(data.user.gender);
+                    $("#editForm input[name='Age']").val(data.user.Age);
+                    $("#editForm input[name='father_fname']").val(data.user.father_fname);
+                    $("#editForm input[name='father_mname']").val(data.user.father_mname);
+                    $("#editForm input[name='father_lname']").val(data.user.father_lname);
+                    $("#editForm input[name='mother_name']").val(data.user.mother_name);
+                    $("#editForm select[name='category']").val(data.user.category);
                     $("#editForm select[name='ward_id']").html(data.wardHtml);
                 } else {
                     swal("Error!", data.error, "error");
