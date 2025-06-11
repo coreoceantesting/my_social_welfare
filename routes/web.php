@@ -113,7 +113,7 @@ Route::middleware(['auth', 'PreventBackHistory'])->group(function () {
 
     // Hod Panel
     // Divyang Scheme Application
-    Route::get('divyang_registration_list/{status}', [App\Http\Controllers\Hod\HodDivyangSchemeController::class, 'divyangRegistrationList']);
+    Route::get('divyang_registration_list/{status}/{type}', [App\Http\Controllers\Hod\HodDivyangSchemeController::class, 'divyangRegistrationList']);
     Route::get('divyang_registration_view/{id}/{status}', [App\Http\Controllers\Hod\HodDivyangSchemeController::class, 'divyangRegistrationView']);
     Route::post('divyang_application_reject_by_hod/{id}', [App\Http\Controllers\Hod\HodDivyangSchemeController::class, 'rejectDivyangApplication']);
     Route::post('divyang_application_approve_by_hod/{id}', [App\Http\Controllers\Hod\HodDivyangSchemeController::class, 'approveDivyangApplication']);
@@ -155,7 +155,7 @@ Route::middleware(['auth', 'PreventBackHistory'])->group(function () {
 
     // AC Panel
     // Divyang Scheme Application
-    Route::get('ac_divyang_registration_list/{status}', [App\Http\Controllers\Ac\AcDivyangSchemeController::class, 'divyangRegistrationList']);
+    Route::get('ac_divyang_registration_list/{status}/{type}', [App\Http\Controllers\Ac\AcDivyangSchemeController::class, 'divyangRegistrationList']);
     Route::get('ac_divyang_registration_view/{id}/{status}', [App\Http\Controllers\Ac\AcDivyangSchemeController::class, 'divyangRegistrationView']);
     Route::post('divyang_application_reject_by_ac/{id}', [App\Http\Controllers\Ac\AcDivyangSchemeController::class, 'rejectDivyangApplication']);
     Route::post('divyang_application_approve_by_ac/{id}', [App\Http\Controllers\Ac\AcDivyangSchemeController::class, 'approveDivyangApplication']);
@@ -197,7 +197,7 @@ Route::middleware(['auth', 'PreventBackHistory'])->group(function () {
 
     // AMC Panel
     // Divyang Scheme Application
-    Route::get('amc_divyang_registration_list/{status}', [App\Http\Controllers\Amc\AmcDivyangSchemeController::class, 'divyangRegistrationList']);
+    Route::get('amc_divyang_registration_list/{status}/{type}', [App\Http\Controllers\Amc\AmcDivyangSchemeController::class, 'divyangRegistrationList']);
     Route::get('amc_divyang_registration_view/{id}/{status}', [App\Http\Controllers\Amc\AmcDivyangSchemeController::class, 'divyangRegistrationView']);
     Route::post('divyang_application_reject_by_amc/{id}', [App\Http\Controllers\Amc\AmcDivyangSchemeController::class, 'rejectDivyangApplication']);
     Route::post('divyang_application_approve_by_amc/{id}', [App\Http\Controllers\Amc\AmcDivyangSchemeController::class, 'approveDivyangApplication']);
@@ -240,7 +240,7 @@ Route::middleware(['auth', 'PreventBackHistory'])->group(function () {
 
     // DMC Panel
     // Divyang Scheme Application
-    Route::get('dmc_divyang_registration_list/{status}', [App\Http\Controllers\Dmc\DmcDivyangSchemeController::class, 'divyangRegistrationList']);
+    Route::get('dmc_divyang_registration_list/{status}/{type}', [App\Http\Controllers\Dmc\DmcDivyangSchemeController::class, 'divyangRegistrationList']);
     Route::get('dmc_divyang_registration_view/{id}/{status}', [App\Http\Controllers\Dmc\DmcDivyangSchemeController::class, 'divyangRegistrationView']);
     Route::post('divyang_application_reject_by_dmc/{id}', [App\Http\Controllers\Dmc\DmcDivyangSchemeController::class, 'rejectDivyangApplication']);
     Route::post('divyang_application_approve_by_dmc/{id}', [App\Http\Controllers\Dmc\DmcDivyangSchemeController::class, 'approveDivyangApplication']);

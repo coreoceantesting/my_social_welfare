@@ -346,6 +346,9 @@
                             <div class="col-sm-9" style="max-height: 60px">
                                 <select class="js-example-basic-single" id="edit_role" name="edit_role">
                                     <option value="">--Select Role--</option>
+                                    @foreach($roles as $key => $role)
+                                        <option value="{{ $role->id}}">{{ $role->name}}</option>
+                                    @endforeach
                                 </select>
                                 <span class="text-danger is-invalid edit_role_err"></span>
                             </div>
@@ -656,7 +659,7 @@
 
                 if (!data.error) {
                     $("#editForm input[name='edit_model_id']").val(data.user.id);
-                    $("#edit_role").html(data.roleHtml);
+                    //$("#edit_role").html(data.roleHtml);
                     $("#role_user_name").text(data.user.name);
                 } else {
                     swal("Error!", data.error, "error");

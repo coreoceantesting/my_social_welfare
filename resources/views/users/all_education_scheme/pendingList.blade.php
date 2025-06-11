@@ -312,11 +312,11 @@
 
                                             <td>
                                                 <button class="view-element btn btn-primary text-white px-2 py-1" title="View" data-id="{{ $list->all_education_scheme_detail_id }}"><i data-feather="eye"></i></button>
-                                                @if(auth()->user()->roles->pluck('name')[0] == 'Hod')
+                                                @if(auth()->user()->roles->pluck('name')[0] == 'Ac')
                                                     @if($list->hod_status == 'pending')
                                                     <button class="action-element btn btn-warning text-white px-2 py-1" title="View" data-id="{{ $list->all_education_scheme_detail_id }}">Take Action</button>
                                                     @endif
-                                                @elseif(auth()->user()->roles->pluck('name')[0] == 'Ac')   
+                                                @elseif(auth()->user()->roles->pluck('name')[0] == 'Hod')   
                                                     @if($list->hod_status == 'approved' && $list->ac_status == 'pending')
                                                     <button class="action-element btn btn-warning text-white px-2 py-1" title="View" data-id="{{ $list->all_education_scheme_detail_id }}">Take Action</button>
                                                     @endif

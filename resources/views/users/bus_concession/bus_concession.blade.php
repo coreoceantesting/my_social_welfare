@@ -87,7 +87,8 @@
                                         <select class="js-example-basic-single" name="type_of_discount" >
                                             <option value="">--Select--</option>
                                             <option value="daily_commute">daily commute/ दैनंदिन </option>
-                                          <option value="mothly_pass">monthly pass/मासिक पास</option>
+                                            <option value="mothly_pass">monthly pass/मासिक पास</option>
+                                            <option value="yearly_pass">yearly pass/वार्षिक पास</option>
                                         </select>
                                         <span class="text-danger is-invalid  type_of_discount_err"></span>
                                 </div>

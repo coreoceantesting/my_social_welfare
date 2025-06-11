@@ -13,17 +13,17 @@ class allListingController extends Controller
     public function pendingApplicationList()
     {
         switch (auth()->user()->roles->pluck('name')[0]) {
-            case 'Hod':
+            case 'AC':
                 $application_list = DB::table('all_education_scheme_details')->where('overall_status','pending')->where('hod_status','pending');
                 break;
-            case 'Ac':
-                $application_list = DB::table('all_education_scheme_details')->where('overall_status','pending')->where('ac_status','pending');
+            case 'Hod':
+                $application_list = DB::table('all_education_scheme_details')->where('overall_status','pending')->where('hod_status','pending')->where('ac_status','pending');
                 break;
             case 'AMC':
-                $application_list = DB::table('all_education_scheme_details')->where('overall_status','pending')->where('amc_status','pending');
+                $application_list = DB::table('all_education_scheme_details')->where('overall_status','pending')->where('hod_status','approved')->where('ac_status','approved')->where('amc_status','pending');
                 break;
             case 'DMC':
-                $application_list = DB::table('all_education_scheme_details')->where('overall_status','pending')->where('dmc_status','pending');
+                $application_list = DB::table('all_education_scheme_details')->where('overall_status','pending')->where('hod_status','approved')->where('ac_status','approved')->where('amc_status','approved')->where('dmc_status','pending');
                 break;
             
             default:
@@ -31,6 +31,7 @@ class allListingController extends Controller
                 break;
         }
         $application_list = $application_list->get();
+        // dd($application_list->get()->toArray());
         $wards = DB::table('wards')->whereNull('deleted_by')->latest()->get(['name']);
 
         return view('users.all_education_scheme.pendingList')->with(['application_list' => $application_list, 'wards' => $wards]);
@@ -48,6 +49,8 @@ class allListingController extends Controller
                 'status_new.required' => 'The status field is required.',
                 'remark_new.required' => 'The remark field is required.',
             ]);
+            
+            dd(auth()->user()->roles->pluck('name')[0]);
 
             $id = $request->input('action_model_id');
 
@@ -58,7 +61,7 @@ class allListingController extends Controller
             }
 
             switch (auth()->user()->roles->pluck('name')[0]) {
-                case 'Hod':
+                case 'Ac':
                     if($request->input('status_new') == 'rejected')
                     {
                         DB::table('all_education_scheme_details')->where('all_education_scheme_detail_id', $id)->update([
@@ -72,10 +75,11 @@ class allListingController extends Controller
                             'hod_status' => $request->input('status_new'),
                             'hod_remark' => $request->input('remark_new'),
                             'hod_approval_date' => date('Y-m-d'),
+                            'overall_status' => 'review'
                         ]);
                     }
                     break;
-                case 'Ac':
+                case 'Hod':
                     if($request->input('status_new') == 'rejected')
                     {
                         DB::table('all_education_scheme_details')->where('all_education_scheme_detail_id', $id)->update([
@@ -141,10 +145,10 @@ class allListingController extends Controller
     public function approvedApplicationList()
     {
         switch (auth()->user()->roles->pluck('name')[0]) {
-            case 'Hod':
+            case 'Ac':
                 $application_list = DB::table('all_education_scheme_details')->where('hod_status','approved');
                 break;
-            case 'Ac':
+            case 'Hod':
                 $application_list = DB::table('all_education_scheme_details')->where('ac_status','approved');
                 break;
             case 'AMC':
@@ -168,10 +172,10 @@ class allListingController extends Controller
     public function rejectedApplicationList()
     {
         switch (auth()->user()->roles->pluck('name')[0]) {
-            case 'Hod':
+            case 'Ac':
                 $application_list = DB::table('all_education_scheme_details')->where('hod_status','rejected')->orWhere('overall_status','rejected');
                 break;
-            case 'Ac':
+            case 'Hod':
                 $application_list = DB::table('all_education_scheme_details')->where('ac_status','rejected')->orWhere('overall_status','rejected');
                 break;
             case 'AMC':

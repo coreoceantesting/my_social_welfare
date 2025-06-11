@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AmcDivyangSchemeController extends Controller
 {
-    public function divyangRegistrationList($status){
+    public function divyangRegistrationList($status, $type){
 
         $data =  DB::table('trans_disability_scheme AS t1')
                     ->select('t1.*', 't2.name', 't3.sign_uploaded_live_certificate')
@@ -19,6 +19,7 @@ class AmcDivyangSchemeController extends Controller
                     ->where('t1.hod_status', '=', 1)
                     ->where('t1.ac_status', '=', 1)
                     ->where('t1.amc_status', '=', $status)
+                    ->where('t1.category_id', '=', $type)
                     ->whereNull('t1.deleted_at')
                     ->whereNull('t2.deleted_at')
                     ->orderBy('t1.id', 'DESC')
@@ -60,7 +61,7 @@ class AmcDivyangSchemeController extends Controller
             'reject_by_amc' => Auth::user()->id,
         ];
         DisabilityApplication::where('id', $id)->update($update);
-        return redirect('amc_divyang_registration_list/2')->with('message', 'Divyang Application Rejected by AMC Successfully');
+        return redirect('amc_divyang_registration_list/2/1')->with('message', 'Divyang Application Rejected by AMC Successfully');
     }
 
     public function approveDivyangApplication(request $request, $id){
@@ -72,6 +73,21 @@ class AmcDivyangSchemeController extends Controller
             'approve_by_amc' => Auth::user()->id,
         ];
         DisabilityApplication::where('id', $id)->update($update);
-        return redirect('amc_divyang_registration_list/1')->with('message', 'Divyang Application Approved by AMC Successfully');
+        return redirect('amc_divyang_registration_list/1/1')->with('message', 'Divyang Application Approved by AMC Successfully');
+    }
+    
+    public function newsendsms($sms,$number) 
+    { 
+
+        $key = "kbf8IN83hIxNTVgs";	
+        $mbl=$number; 	/*or $mbl="XXXXXXXXXX,XXXXXXXXXX";*/
+        $message=$sms;
+        $message_content=urlencode($message);
+        
+        $senderid="CoreOC";	$route= 1;
+        $url = "http://sms.adityahost.com/vb/apikey.php?apikey=$key&senderid=$senderid&number=$mbl&message=$message_content";
+        					
+        $output = file_get_contents($url);	/*default function for push any url*/
+    		
     }
 }

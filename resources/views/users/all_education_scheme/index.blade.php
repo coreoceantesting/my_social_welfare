@@ -106,6 +106,8 @@
                                         <option value="job">Job(नोकरी)</option>
                                         <option value="unemployed">Unemployed(बेरोजगार)</option>
                                         <option value="student">Student(विद्यार्थी)</option>
+                                        <option value="farming">Farming(शेती)</option>
+                                        <option value="housewife">House Wife(गृहिणी)</option>
                                     </select>
                                     <span class="text-danger is-invalid occupation_err"></span>
                                 </div>
@@ -182,31 +184,31 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="bank_name">Name Of The Bank (बँकेचे नाव) :</label>
+                                    <label class="col-form-label" for="bank_name">Name Of The Bank (बँकेचे नाव) : <span class="text-danger">*</span></label>
                                     <input class="form-control" id="bank_name" name="bank_name" type="text" placeholder="Enter Bank Name">
                                     <span class="text-danger is-invalid bank_name_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="branch_name">Branch (शाखा ):</label>
+                                    <label class="col-form-label" for="branch_name">Branch (शाखा ): <span class="text-danger">*</span></label>
                                     <input class="form-control" id="branch_name" name="branch_name" type="text" placeholder="Enter Branch Name">
                                     <span class="text-danger is-invalid branch_name_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="account_holder_name">Name Of The Account Holder (खातेदाराचे नाव):</label>
+                                    <label class="col-form-label" for="account_holder_name">Name Of The Account Holder (खातेदाराचे नाव): <span class="text-danger">*</span></label>
                                     <input class="form-control" id="account_holder_name" name="account_holder_name" type="text" placeholder="Enter Name Of The Account Holder">
                                     <span class="text-danger is-invalid account_holder_name_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="account_no">Account Number(खाते क्रमांक):</label>
+                                    <label class="col-form-label" for="account_no">Account Number(खाते क्रमांक): <span class="text-danger">*</span></label>
                                     <input class="form-control" id="account_no" name="account_no" type="text" placeholder="Enter Account Number">
                                     <span class="text-danger is-invalid account_no_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="ifsc_code">IFSC Code(आय.एफ.एस.सी कोड) :</label>
+                                    <label class="col-form-label" for="ifsc_code">IFSC Code(आय.एफ.एस.सी कोड) : <span class="text-danger">*</span></label>
                                     <input class="form-control" id="ifsc_code" name="ifsc_code" type="text" placeholder="Enter IFSC Code">
                                     <span class="text-danger is-invalid ifsc_code_err"></span>
                                 </div>
@@ -349,6 +351,8 @@
                                         <option value="job">Job(नोकरी)</option>
                                         <option value="unemployed">Unemployed(बेरोजगार)</option>
                                         <option value="student">Student(विद्यार्थी)</option>
+                                        <option value="farming">Farming(शेती)</option>
+                                        <option value="housewife">House Wife(गृहिणी)</option>
                                     </select>
                                     <span class="text-danger is-invalid occupation_err"></span>
                                 </div>
@@ -425,31 +429,31 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="bank_name">Name Of The Bank (बँकेचे नाव) :</label>
+                                    <label class="col-form-label" for="bank_name">Name Of The Bank (बँकेचे नाव) : <span class="text-danger">*</span></label>
                                     <input class="form-control" id="bank_name" name="bank_name" type="text" placeholder="Enter Bank Name">
                                     <span class="text-danger is-invalid bank_name_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="branch_name">Branch (शाखा ):</label>
+                                    <label class="col-form-label" for="branch_name">Branch (शाखा ): <span class="text-danger">*</span></label>
                                     <input class="form-control" id="branch_name" name="branch_name" type="text" placeholder="Enter Branch Name">
                                     <span class="text-danger is-invalid branch_name_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="account_holder_name">Name Of The Account Holder (खातेदाराचे नाव):</label>
+                                    <label class="col-form-label" for="account_holder_name">Name Of The Account Holder (खातेदाराचे नाव): <span class="text-danger">*</span></label>
                                     <input class="form-control" id="account_holder_name" name="account_holder_name" type="text" placeholder="Enter Name Of The Account Holder">
                                     <span class="text-danger is-invalid account_holder_name_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="account_no">Account Number(खाते क्रमांक):</label>
+                                    <label class="col-form-label" for="account_no">Account Number(खाते क्रमांक): <span class="text-danger">*</span></label>
                                     <input class="form-control" id="account_no" name="account_no" type="text" placeholder="Enter Account Number">
                                     <span class="text-danger is-invalid account_no_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="ifsc_code">IFSC Code(आय.एफ.एस.सी कोड) :</label>
+                                    <label class="col-form-label" for="ifsc_code">IFSC Code(आय.एफ.एस.सी कोड) : <span class="text-danger">*</span></label>
                                     <input class="form-control" id="ifsc_code" name="ifsc_code" type="text" placeholder="Enter IFSC Code">
                                     <span class="text-danger is-invalid ifsc_code_err"></span>
                                 </div>
@@ -663,31 +667,31 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="bank_name">Name Of The Bank (बँकेचे नाव) :</label>
+                                    <label class="col-form-label" for="bank_name">Name Of The Bank (बँकेचे नाव) : <span class="text-danger">*</span></label>
                                     <input class="form-control" id="bank_name" name="bank_name" type="text" placeholder="Enter Bank Name" readonly>
                                     <span class="text-danger is-invalid bank_name_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="branch_name">Branch (शाखा ):</label>
+                                    <label class="col-form-label" for="branch_name">Branch (शाखा ): <span class="text-danger">*</span></label>
                                     <input class="form-control" id="branch_name" name="branch_name" type="text" placeholder="Enter Branch Name" readonly>
                                     <span class="text-danger is-invalid branch_name_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="account_holder_name">Name Of The Account Holder (खातेदाराचे नाव):</label>
+                                    <label class="col-form-label" for="account_holder_name">Name Of The Account Holder (खातेदाराचे नाव): <span class="text-danger">*</span></label>
                                     <input class="form-control" id="account_holder_name" name="account_holder_name" type="text" placeholder="Enter Name Of The Account Holder" readonly>
                                     <span class="text-danger is-invalid account_holder_name_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="account_no">Account Number(खाते क्रमांक):</label>
+                                    <label class="col-form-label" for="account_no">Account Number(खाते क्रमांक): <span class="text-danger">*</span></label>
                                     <input class="form-control" id="account_no" name="account_no" type="text" placeholder="Enter Account Number" readonly>
                                     <span class="text-danger is-invalid account_no_err"></span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="ifsc_code">IFSC Code(आय.एफ.एस.सी कोड) :</label>
+                                    <label class="col-form-label" for="ifsc_code">IFSC Code(आय.एफ.एस.सी कोड) : <span class="text-danger">*</span></label>
                                     <input class="form-control" id="ifsc_code" name="ifsc_code" type="text" placeholder="Enter IFSC Code" readonly>
                                     <span class="text-danger is-invalid ifsc_code_err"></span>
                                 </div>
@@ -771,7 +775,17 @@
                                                     }
 
                                                 @endphp
-                                                <span class="badge {{ $class }}">{{$scheme->overall_status}}</span>
+                                                @if($scheme->hod_status == 'approved')
+                                                    <span class="badge {{ $class }}">Approved by Hod</span>
+                                                @elseif ($scheme->ac_status == 'approved')
+                                                    <span class="badge {{ $class }}">Approved by Ac</span>
+                                                @elseif ($scheme->amc_status == 'approved')
+                                                    <span class="badge {{ $class }}">Approved by AMC</span>
+                                                @elseif ($scheme->dmc_status == 'approved')
+                                                    <span class="badge {{ $class }}">Approved by DMC</span>
+                                                @else
+                                                    <span class="badge {{ $class }}">{{$scheme->overall_status}}</span>
+                                                @endif
                                             </td>
                                             @if($scheme->overall_status == 'rejected')
                                                 @if($scheme->hod_status == 'rejected')

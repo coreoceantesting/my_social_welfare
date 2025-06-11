@@ -175,7 +175,7 @@
                             <img class="rounded-circle header-profile-user" src="{{ asset('admin/images/users/user-dummy-img.jpg') }}" alt="Header Avatar" />
                             <span class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-semibold user-name-text">{{ ucfirst(auth()->user()->name) }}</span>
-                                <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">{{ auth()->user()->roles[0]->name }}</span>
+                                <!--<span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">{{ auth()->user()->roles[0]->name }}</span>-->
                             </span>
                         </span>
                     </button>

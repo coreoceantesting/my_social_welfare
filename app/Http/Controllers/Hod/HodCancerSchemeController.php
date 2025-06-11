@@ -67,4 +67,19 @@ class HodCancerSchemeController extends Controller
         CancerScheme::where('id', $id)->update($update);
         return redirect('cancer_scheme_application_list/1')->with('message', 'Cancer Scheme Application Approved by HOD Successfully');
     }
+    
+    public function newsendsms($sms,$number) 
+    { 
+
+        $key = "kbf8IN83hIxNTVgs";	
+        $mbl=$number; 	/*or $mbl="XXXXXXXXXX,XXXXXXXXXX";*/
+        $message=$sms;
+        $message_content=urlencode($message);
+        
+        $senderid="CoreOC";	$route= 1;
+        $url = "http://sms.adityahost.com/vb/apikey.php?apikey=$key&senderid=$senderid&number=$mbl&message=$message_content";
+        					
+        $output = file_get_contents($url);	/*default function for push any url*/
+    		
+    }
 }

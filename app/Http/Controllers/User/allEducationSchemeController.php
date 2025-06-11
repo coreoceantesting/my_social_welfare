@@ -20,9 +20,12 @@ class allEducationSchemeController extends Controller
     {
         $scheme_detail = DB::table('all_education_scheme_details')->where('created_by', Auth::user()->id)->whereNull('deleted_by')->get();
         $hyatiformDetail = HayatFormModel::where('user_id', Auth::user()->id)->latest()->first();
+        
         if (empty($hyatiformDetail)) 
         {
             return redirect()->route('hayatichaDakhlaform.index')->with('warning', 'Fill the Hayatika form before proceeding.');
+        }else if($hyatiformDetail->sign_uploaded_live_certificate == ""){
+            return redirect()->route('hayatichaDakhlaform.index')->with('warning', 'Your Application status is still Pending');
         }
 
         $wards = Ward::latest()->get(['name']);
@@ -292,21 +295,23 @@ class allEducationSchemeController extends Controller
             // update dynamic document
             $documentTypeIds = $request->input('document_id');
             if ($request->hasFile("document_file")) {
-                DB::table('all_education_scheme_documents')->where('all_education_scheme_id',$id)->delete();
                 $files = $request->file("document_file");
 
                 foreach ($files as $key => $file) {
                     $documentTypeId = $documentTypeIds[$key];
                     $imageName = time() . '_' . $file->getClientOriginalName();
                     $file->move('education_scheme_file/', $imageName);
-                    DB::table('all_education_scheme_documents')->insert([
-                        "document_file" => $imageName,
-                        'document_id' => $documentTypeId,
-                        "all_education_scheme_id" => $id,
-                        "updated_by" => Auth::user()->id,
-                        "updated_at" => date('Y-m-d H:i:s'),
-                    ]);
+                    
+                    DB::table('all_education_scheme_documents')->where('document_id',$documentTypeId)
+                        ->where('all_education_scheme_id', $id)
+                        ->update([
+                            "document_file" => $imageName,
+                            "updated_by" => Auth::user()->id,
+                            "updated_at" => date('Y-m-d H:i:s'),
+                        ]);
                 }
+                
+                
             }
     
             return response()->json(['success' => 'Forn Details Updated successfully!']);

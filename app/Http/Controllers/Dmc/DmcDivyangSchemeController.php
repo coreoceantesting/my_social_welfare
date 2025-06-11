@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class DmcDivyangSchemeController extends Controller
 {
-    public function divyangRegistrationList($status){
+    public function divyangRegistrationList($status, $type){
 
         $data =  DB::table('trans_disability_scheme AS t1')
                     ->select('t1.*', 't2.name', 't3.sign_uploaded_live_certificate')
@@ -20,6 +20,7 @@ class DmcDivyangSchemeController extends Controller
                     ->where('t1.ac_status', '=', 1)
                     ->where('t1.amc_status', '=', 1)
                     ->where('t1.dmc_status', '=', $status)
+                    ->where('t1.category_id', '=', $type)
                     ->whereNull('t1.deleted_at')
                     ->whereNull('t2.deleted_at')
                     ->whereNull('t3.deleted_at')
@@ -62,7 +63,7 @@ class DmcDivyangSchemeController extends Controller
             'reject_by_dmc' => Auth::user()->id,
         ];
         DisabilityApplication::where('id', $id)->update($update);
-        return redirect('dmc_divyang_registration_list/2')->with('message', 'Divyang Application Rejected by DMC Successfully');
+        return redirect('dmc_divyang_registration_list/2/1')->with('message', 'Divyang Application Rejected by DMC Successfully');
     }
 
     public function approveDivyangApplication(request $request, $id){
@@ -79,7 +80,7 @@ class DmcDivyangSchemeController extends Controller
             'dmc_sign'=>$imagePath
         ];
         DisabilityApplication::where('id', $id)->update($update);
-        return redirect('dmc_divyang_registration_list/1')->with('message', 'Divyang Application Approved by DMC Successfully');
+        return redirect('dmc_divyang_registration_list/1/1')->with('message', 'Divyang Application Approved by DMC Successfully');
     }
 
     public function generateCertificate($id, $status){
@@ -95,5 +96,20 @@ class DmcDivyangSchemeController extends Controller
                     ->first();
 
         return view('dmc.divyang_scheme.generate_certificate', compact('data'));
+    }
+    
+    public function newsendsms($sms,$number) 
+    { 
+
+        $key = "kbf8IN83hIxNTVgs";	
+        $mbl=$number; 	/*or $mbl="XXXXXXXXXX,XXXXXXXXXX";*/
+        $message=$sms;
+        $message_content=urlencode($message);
+        
+        $senderid="CoreOC";	$route= 1;
+        $url = "http://sms.adityahost.com/vb/apikey.php?apikey=$key&senderid=$senderid&number=$mbl&message=$message_content";
+        					
+        $output = file_get_contents($url);	/*default function for push any url*/
+    		
     }
 }

@@ -1,21 +1,21 @@
 <x-admin.layout>
     <x-slot name="title">
         @if ($status == 0)
-        Pending Divyang Scheme Application
+        Pending Nondani Scheme Application
        @elseif ($status == 1)
-        Approve Divyang Scheme Application
+        Approve Nondani Scheme Application
        @elseif ($status == 2)
-        Reject Divyang Scheme Application
+        Reject Nondani Scheme Application
        @endif
     </x-slot>
 
     <x-slot name="heading">
     @if ($status == 0)
-        Pending Divyang Scheme Application
+        Pending Nondani Scheme Application
     @elseif ($status == 1)
-        Approve Divyang Scheme Application
+        Approve Nondani Scheme Application
     @elseif ($status == 2)
-        Reject Divyang Scheme Application
+        Reject Nondani Scheme Application
     @endif
   </x-slot>
 
