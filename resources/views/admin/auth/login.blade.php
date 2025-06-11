@@ -45,7 +45,7 @@
                                             <form id="loginForm">
                                                 @csrf
                                                 <div class="mb-3">
-                                                    <label for="username" class="form-label">Usernamess (वापरकर्ता नाव)</label>
+                                                    <label for="username" class="form-label">Username (वापरकर्ता नाव)</label>
                                                     <input type="text" class="form-control" name="username" id="username" placeholder="Enter username">
                                                      <span class="text-danger is-invalid username_err"></span>
                                                 </div>
