@@ -203,16 +203,16 @@
                                                     <table class="table table-bordered nowrap align-middle">
                                                         <thead>
                                                         <tr>
-                                                        <th><a href="{{ url('divyang_registration_list', 0) }}">Pending</a></th>
-                                                        <th><a href="{{ url('divyang_registration_list', 1) }}">Approved</a></th>
-                                                        <th><a href="{{ url('divyang_registration_list', 2) }}">Rejected</a></th>
+                                                        <th><a href="{{ url('divyang_registration_list', [0, 1]) }}">Pending</a></th>
+                                                        <th><a href="{{ url('divyang_registration_list', [1, 1]) }}">Approved</a></th>
+                                                        <th><a href="{{ url('divyang_registration_list', [2, 1]) }}">Rejected</a></th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td><a href="{{ url('divyang_registration_list', 0) }}">{{$disability_scheme_pending}}</a></td>
-                                                                <td><a href="{{ url('divyang_registration_list', 1) }}">{{$disability_scheme_approve}}</a></td>
-                                                                <td><a href="{{ url('divyang_registration_list', 2) }}">{{$disability_scheme_reject}}</a></td>
+                                                                <td><a href="{{ url('divyang_registration_list', [0, 1]) }}">{{$disability_scheme_pending}}</a></td>
+                                                                <td><a href="{{ url('divyang_registration_list', [1, 1]) }}">{{$disability_scheme_approve}}</a></td>
+                                                                <td><a href="{{ url('divyang_registration_list', [2, 1]) }}">{{$disability_scheme_reject}}</a></td>
                                                             </tr>
                                                         </tbody>
                                                         </table>
@@ -462,7 +462,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3 mb-3">
+                                        <div class="col-lg-3 mb-3 d-none">
                                             <!-- Portlet card -->
                                             <div class="card h-auto" style="border:solid 1px;">
                                             <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
@@ -496,7 +496,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3 mb-3">
+                                        <div class="col-lg-3 mb-3 d-none">
                                             <!-- Portlet card -->
                                             <div class="card h-auto" style="border:solid 1px;">
                                             <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
@@ -646,20 +646,20 @@
                                             <div id="cardCollpase5" class="collapse show">
                                                 <div class="card-body">
                                                     <h4 style="text-align:center;">Total Count</h4>
-                                                    <h4 style="text-align:center;"> {{ $disability_scheme_total_count }}</h4>
+                                                    <h4 style="text-align:center;"> {{ $disability_scheme_total_count_new }}</h4>
                                                     <table class="table table-bordered nowrap align-middle">
                                                         <thead>
                                                         <tr>
-                                                        <th><a href="{{ url('divyang_registration_list', 0) }}">Pending</a></th>
-                                                        <th><a href="{{ url('divyang_registration_list', 1) }}">Approved</a></th>
-                                                        <th><a href="{{ url('divyang_registration_list', 2) }}">Rejected</a></th>
+                                                        <th><a href="{{ url('divyang_registration_list', [0, 2]) }}">Pending</a></th>
+                                                        <th><a href="{{ url('divyang_registration_list', [1, 2]) }}">Approved</a></th>
+                                                        <th><a href="{{ url('divyang_registration_list', [2, 2]) }}">Rejected</a></th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
                                                         <tr>
-                                                        <td><a href="{{ url('divyang_registration_list', 0) }}">{{$disability_scheme_pending}}</a></td>
-                                                        <td><a href="{{ url('divyang_registration_list', 1) }}">{{$disability_scheme_approve}}</a></td>
-                                                        <td><a href="{{ url('divyang_registration_list', 2) }}">{{$disability_scheme_reject}}</a></td>
+                                                        <td><a href="{{ url('divyang_registration_list', [0, 2]) }}">{{$disability_scheme_pending_new}}</a></td>
+                                                        <td><a href="{{ url('divyang_registration_list', [1, 2]) }}">{{$disability_scheme_approve_new}}</a></td>
+                                                        <td><a href="{{ url('divyang_registration_list', [2, 2]) }}">{{$disability_scheme_reject_new}}</a></td>
                                                         </tr>
                                                         </tbody>
                                                         </table>
@@ -758,16 +758,16 @@
                                                     <table class="table table-bordered nowrap align-middle">
                                                         <thead>
                                                         <tr>
-                                                        <th><a href="{{ url('ac_divyang_registration_list', 0) }}">Pending</a></th>
-                                                        <th><a href="{{ url('ac_divyang_registration_list', 1) }}">Approved</a></th>
-                                                        <th><a href="{{ url('ac_divyang_registration_list', 2) }}">Rejected</a></th>
+                                                        <th><a href="{{ url('ac_divyang_registration_list', [0, 1]) }}">Pending</a></th>
+                                                        <th><a href="{{ url('ac_divyang_registration_list', [1, 1]) }}">Approved</a></th>
+                                                        <th><a href="{{ url('ac_divyang_registration_list', [2, 1]) }}">Rejected</a></th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td><a href="{{ url('ac_divyang_registration_list', 0) }}">{{$ac_disability_scheme_pending}}</a></td>
-                                                                <td><a href="{{ url('ac_divyang_registration_list', 1) }}">{{$ac_disability_scheme_approve}}</a></td>
-                                                                <td><a href="{{ url('ac_divyang_registration_list', 2) }}">{{$ac_disability_scheme_reject}}</a></td>
+                                                                <td><a href="{{ url('ac_divyang_registration_list', [0, 1]) }}">{{$ac_disability_scheme_pending}}</a></td>
+                                                                <td><a href="{{ url('ac_divyang_registration_list', [1, 1]) }}">{{$ac_disability_scheme_approve}}</a></td>
+                                                                <td><a href="{{ url('ac_divyang_registration_list', [2, 1]) }}">{{$ac_disability_scheme_reject}}</a></td>
                                                             </tr>
                                                         </tbody>
                                                         </table>
@@ -1019,7 +1019,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3 mb-3">
+                                        <div class="col-lg-3 mb-3 d-none">
                                             <!-- Portlet card -->
                                             <div class="card h-auto" style="border:solid 1px;">
                                             <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
@@ -1053,7 +1053,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3 mb-3">
+                                        <div class="col-lg-3 mb-3 d-none">
                                             <!-- Portlet card -->
                                             <div class="card h-auto" style="border:solid 1px;">
                                             <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
@@ -1205,20 +1205,20 @@
                                             <div id="cardCollpase5" class="collapse show">
                                                 <div class="card-body">
                                                     <h4 style="text-align:center;">Total Count</h4>
-                                                    <h4 style="text-align:center;"> {{ $ac_disability_scheme_total_count }}</h4>
+                                                    <h4 style="text-align:center;"> {{ $ac_disability_scheme_total_count_new }}</h4>
                                                     <table class="table table-bordered nowrap align-middle">
                                                         <thead>
                                                         <tr>
-                                                        <th><a href="{{ url('ac_divyang_registration_list', 0) }}">Pending</a></th>
-                                                        <th><a href="{{ url('ac_divyang_registration_list', 1) }}">Approved</a></th>
-                                                        <th><a href="{{ url('ac_divyang_registration_list', 2) }}">Rejected</a></th>
+                                                        <th><a href="{{ url('ac_divyang_registration_list', [0, 2]) }}">Pending</a></th>
+                                                        <th><a href="{{ url('ac_divyang_registration_list', [1, 2]) }}">Approved</a></th>
+                                                        <th><a href="{{ url('ac_divyang_registration_list', [2, 2]) }}">Rejected</a></th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
                                                         <tr>
-                                                        <td><a href="{{ url('ac_divyang_registration_list', 0) }}">{{$ac_disability_scheme_pending}}</a></td>
-                                                        <td><a href="{{ url('ac_divyang_registration_list', 1) }}">{{$ac_disability_scheme_approve}}</a></td>
-                                                        <td><a href="{{ url('ac_divyang_registration_list', 2) }}">{{$ac_disability_scheme_reject}}</a></td>
+                                                        <td><a href="{{ url('ac_divyang_registration_list', [0, 2]) }}">{{$ac_disability_scheme_pending_new}}</a></td>
+                                                        <td><a href="{{ url('ac_divyang_registration_list', [1, 2]) }}">{{$ac_disability_scheme_approve_new}}</a></td>
+                                                        <td><a href="{{ url('ac_divyang_registration_list', [2, 2]) }}">{{$ac_disability_scheme_reject_new}}</a></td>
                                                         </tr>
                                                         </tbody>
                                                         </table>
@@ -1318,16 +1318,16 @@
                                                     <table class="table table-bordered nowrap align-middle">
                                                         <thead>
                                                         <tr>
-                                                        <th><a href="{{ url('amc_divyang_registration_list', 0) }}">Pending</a></th>
-                                                        <th><a href="{{ url('amc_divyang_registration_list', 1) }}">Approved</a></th>
-                                                        <th><a href="{{ url('amc_divyang_registration_list', 2) }}">Rejected</a></th>
+                                                        <th><a href="{{ url('amc_divyang_registration_list', [0, 1]) }}">Pending</a></th>
+                                                        <th><a href="{{ url('amc_divyang_registration_list', [1, 1]) }}">Approved</a></th>
+                                                        <th><a href="{{ url('amc_divyang_registration_list', [2, 1]) }}">Rejected</a></th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td><a href="{{ url('amc_divyang_registration_list', 0) }}">{{$amc_disability_scheme_pending}}</a></td>
-                                                                <td><a href="{{ url('amc_divyang_registration_list', 1) }}">{{$amc_disability_scheme_approve}}</a></td>
-                                                                <td><a href="{{ url('amc_divyang_registration_list', 2) }}">{{$amc_disability_scheme_reject}}</a></td>
+                                                                <td><a href="{{ url('amc_divyang_registration_list', [0, 1]) }}">{{$amc_disability_scheme_pending}}</a></td>
+                                                                <td><a href="{{ url('amc_divyang_registration_list', [1, 1]) }}">{{$amc_disability_scheme_approve}}</a></td>
+                                                                <td><a href="{{ url('amc_divyang_registration_list', [2, 1]) }}">{{$amc_disability_scheme_reject}}</a></td>
                                                             </tr>
                                                         </tbody>
                                                         </table>
@@ -1579,7 +1579,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3 mb-3">
+                                        <div class="col-lg-3 mb-3 d-none">
                                             <!-- Portlet card -->
                                             <div class="card h-auto" style="border:solid 1px;">
                                             <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
@@ -1613,7 +1613,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3 mb-3">
+                                        <div class="col-lg-3 mb-3 d-none">
                                             <!-- Portlet card -->
                                             <div class="card h-auto" style="border:solid 1px;">
                                             <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
@@ -1764,20 +1764,20 @@
                                             <div id="cardCollpase5" class="collapse show">
                                                 <div class="card-body">
                                                     <h4 style="text-align:center;">Total Count</h4>
-                                                    <h4 style="text-align:center;"> {{ $amc_disability_scheme_total_count }}</h4>
+                                                    <h4 style="text-align:center;"> {{ $amc_disability_scheme_total_count_new }}</h4>
                                                     <table class="table table-bordered nowrap align-middle">
                                                         <thead>
                                                         <tr>
-                                                        <th><a href="{{ url('amc_divyang_registration_list', 0) }}">Pending</a></th>
-                                                        <th><a href="{{ url('amc_divyang_registration_list', 1) }}">Approved</a></th>
-                                                        <th><a href="{{ url('amc_divyang_registration_list', 2) }}">Rejected</a></th>
+                                                        <th><a href="{{ url('amc_divyang_registration_list', [0, 2]) }}">Pending</a></th>
+                                                        <th><a href="{{ url('amc_divyang_registration_list', [1, 2]) }}">Approved</a></th>
+                                                        <th><a href="{{ url('amc_divyang_registration_list', [2, 2]) }}">Rejected</a></th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
                                                         <tr>
-                                                        <td><a href="{{ url('amc_divyang_registration_list', 0) }}">{{$amc_disability_scheme_pending}}</a></td>
-                                                        <td><a href="{{ url('amc_divyang_registration_list', 1) }}">{{$amc_disability_scheme_approve}}</a></td>
-                                                        <td><a href="{{ url('amc_divyang_registration_list', 2) }}">{{$amc_disability_scheme_reject}}</a></td>
+                                                        <td><a href="{{ url('amc_divyang_registration_list', [0, 2]) }}">{{$amc_disability_scheme_pending_new}}</a></td>
+                                                        <td><a href="{{ url('amc_divyang_registration_list', [1, 2]) }}">{{$amc_disability_scheme_approve_new}}</a></td>
+                                                        <td><a href="{{ url('amc_divyang_registration_list', [2, 2]) }}">{{$amc_disability_scheme_reject_new}}</a></td>
                                                         </tr>
                                                         </tbody>
                                                         </table>
@@ -1876,16 +1876,16 @@
                                                     <table class="table table-bordered nowrap align-middle">
                                                         <thead>
                                                         <tr>
-                                                        <th><a href="{{ url('dmc_divyang_registration_list', 0) }}">Pending</a></th>
-                                                        <th><a href="{{ url('dmc_divyang_registration_list', 1) }}">Approved</a></th>
-                                                        <th><a href="{{ url('dmc_divyang_registration_list', 2) }}">Rejected</a></th>
+                                                        <th><a href="{{ url('dmc_divyang_registration_list', [0, 1]) }}">Pending</a></th>
+                                                        <th><a href="{{ url('dmc_divyang_registration_list', [1, 1]) }}">Approved</a></th>
+                                                        <th><a href="{{ url('dmc_divyang_registration_list', [2, 1]) }}">Rejected</a></th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td><a href="{{ url('dmc_divyang_registration_list', 0) }}">{{$dmc_disability_scheme_pending}}</a></td>
-                                                                <td><a href="{{ url('dmc_divyang_registration_list', 1) }}">{{$dmc_disability_scheme_approve}}</a></td>
-                                                                <td><a href="{{ url('dmc_divyang_registration_list', 2) }}">{{$dmc_disability_scheme_reject}}</a></td>
+                                                                <td><a href="{{ url('dmc_divyang_registration_list', [0, 1]) }}">{{$dmc_disability_scheme_pending}}</a></td>
+                                                                <td><a href="{{ url('dmc_divyang_registration_list', [1, 1]) }}">{{$dmc_disability_scheme_approve}}</a></td>
+                                                                <td><a href="{{ url('dmc_divyang_registration_list', [2, 1]) }}">{{$dmc_disability_scheme_reject}}</a></td>
                                                             </tr>
                                                         </tbody>
                                                         </table>
@@ -2161,7 +2161,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3 mb-3">
+                                        <div class="col-lg-3 mb-3 d-none">
                                             <!-- Portlet card -->
                                             <div class="card h-auto" style="border:solid 1px;">
                                             <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
@@ -2195,7 +2195,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3 mb-3">
+                                        <div class="col-lg-3 mb-3 d-none">
                                             <!-- Portlet card -->
                                             <div class="card h-auto" style="border:solid 1px;">
                                             <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
@@ -2346,20 +2346,20 @@
                                             <div id="cardCollpase5" class="collapse show">
                                                 <div class="card-body">
                                                     <h4 style="text-align:center;">Total Count</h4>
-                                                    <h4 style="text-align:center;"> {{ $dmc_disability_scheme_total_count }}</h4>
+                                                    <h4 style="text-align:center;"> {{ $dmc_disability_scheme_total_count_new }}</h4>
                                                     <table class="table table-bordered nowrap align-middle">
                                                         <thead>
                                                         <tr>
-                                                        <th><a href="{{ url('dmc_divyang_registration_list', 0) }}">Pending</a></th>
-                                                        <th><a href="{{ url('dmc_divyang_registration_list', 1) }}">Approved</a></th>
-                                                        <th><a href="{{ url('dmc_divyang_registration_list', 2) }}">Rejected</a></th>
+                                                        <th><a href="{{ url('dmc_divyang_registration_list', [0, 2]) }}">Pending</a></th>
+                                                        <th><a href="{{ url('dmc_divyang_registration_list', [1, 2]) }}">Approved</a></th>
+                                                        <th><a href="{{ url('dmc_divyang_registration_list', [2, 2]) }}">Rejected</a></th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
                                                         <tr>
-                                                        <td><a href="{{ url('dmc_divyang_registration_list', 0) }}">{{$dmc_disability_scheme_pending}}</a></td>
-                                                        <td><a href="{{ url('dmc_divyang_registration_list', 1) }}">{{$dmc_disability_scheme_approve}}</a></td>
-                                                        <td><a href="{{ url('dmc_divyang_registration_list', 2) }}">{{$dmc_disability_scheme_reject}}</a></td>
+                                                        <td><a href="{{ url('dmc_divyang_registration_list', [0, 2]) }}">{{$dmc_disability_scheme_pending_new}}</a></td>
+                                                        <td><a href="{{ url('dmc_divyang_registration_list', [1, 2]) }}">{{$dmc_disability_scheme_approve_new}}</a></td>
+                                                        <td><a href="{{ url('dmc_divyang_registration_list', [2, 2]) }}">{{$dmc_disability_scheme_reject_new}}</a></td>
                                                         </tr>
                                                         </tbody>
                                                         </table>
@@ -2689,7 +2689,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 mb-3">
+                                        <div class="col-lg-3 mb-3 d-none">
                                             <!-- Portlet card -->
                                             <div class="card h-auto" style="border:solid 1px;">
                                                 <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">
@@ -2721,7 +2721,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 mb-3">
+                                        <div class="col-lg-3 mb-3 d-none">
                                             <!-- Portlet card -->
                                             <div class="card h-auto" style="border:solid 1px;">
                                                 <div class="card-header d-flex justify-content-center align-items-center h-100  text-white" style="background-color:#8c68cd;">

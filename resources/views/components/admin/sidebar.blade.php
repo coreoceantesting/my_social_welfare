@@ -146,6 +146,7 @@
                             ->join('mst_scheme as m', 'm.id', '=', 't.scheme_id')
                             ->whereRaw('FIND_IN_SET(?, t.category_id)', [$categoryId])
                             ->whereNull('m.deleted_by')
+                            ->whereNull('t.deleted_by')
                             ->get();
                                 // dd($schemes_list);
                     @endphp
@@ -158,7 +159,7 @@
                         <ul class="nav nav-sm flex-column">
 
                             @foreach($schemes_list as $list)
-                                @php 
+                                @php
                                     $string = $list->scheme_name;
                                     $words = explode(' ', $string);
                                     $words[0] = strtolower($words[0]);
@@ -169,6 +170,8 @@
                                         $url = url($words[0].'_concession_application');
                                     }elseif($words[0] == 'education'){
                                         $url = url('all_'.$words[0].'_scheme');
+                                    }elseif($words[1] == 'Medical'){
+                                        $url = url('education_scheme_application');
                                     }else{
                                         $url = url($words[0].'_scheme_application');
                                     }
@@ -269,7 +272,11 @@
                                         @if(isset($scheme->scheme_id))
                                         @if($scheme->scheme_name == 'Nondani Application')
                                         <li class="nav-item">
-                                            <a href="{{ url('divyang_registration_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @if($scheme->category_names == 'Divyang(दिव्यांग)')
+                                            <a href="{{ url('divyang_registration_list', [0, 1]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @else
+                                            <a href="{{ url('divyang_registration_list', [0, 2]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @endif
                                         </li>
                                         @elseif($scheme->scheme_name == 'Bus Concession Scheme')
                                         <li class="nav-item">
@@ -299,9 +306,9 @@
                                         <li class="nav-item">
                                         <a href="{{ url('sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                     </li>
-                                        @elseif($scheme->scheme_name == 'Women Vocational training Scheme')
+                                        @elseif($scheme->scheme_name == 'Women Medical Education Scheme')
                                         <li class="nav-item">
-                                        <a href="{{ url('women_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                        <a href="{{ url('education_scheme_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                     </li>
                                         @elseif($scheme->scheme_name == 'Cancer Scheme')
                                         <li class="nav-item">
@@ -348,7 +355,11 @@
                                         @if(isset($scheme->scheme_id))
                                         @if($scheme->scheme_name == 'Nondani Application')
                                         <li class="nav-item">
-                                            <a href="{{ url('divyang_registration_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @if($scheme->category_names == 'Divyang(दिव्यांग)')
+                                            <a href="{{ url('divyang_registration_list', [1, 1]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @else
+                                            <a href="{{ url('divyang_registration_list', [1, 2]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @endif
                                         </li>
                                         @elseif($scheme->scheme_name == 'Bus Concession Scheme')
 
@@ -377,9 +388,9 @@
                                         <li class="nav-item">
                                         <a href="{{ url('sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                     </li>
-                                        @elseif($scheme->scheme_name == 'Women Vocational training Scheme')
+                                        @elseif($scheme->scheme_name == 'Women Medical Education Scheme')
                                         <li class="nav-item">
-                                        <a href="{{ url('women_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                        <a href="{{ url('education_scheme_application_list?category=women', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                     </li>
                                         @elseif($scheme->scheme_name == 'Cancer Scheme')
                                         <li class="nav-item">
@@ -426,7 +437,11 @@
                                         @if(isset($scheme->scheme_id))
                                         @if($scheme->scheme_name == 'Nondani Application')
                                         <li class="nav-item">
-                                            <a href="{{ url('divyang_registration_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @if($scheme->category_names == 'Divyang(दिव्यांग)')
+                                            <a href="{{ url('divyang_registration_list', [2, 1]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @else
+                                            <a href="{{ url('divyang_registration_list', [2, 2]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            @endif
                                         </li>
                                         @elseif($scheme->scheme_name == 'Bus Concession Scheme')
                                         @if ($category->id == 1 || $category->id == 2)
@@ -454,9 +469,9 @@
                                         <li class="nav-item">
                                         <a href="{{ url('sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                       </li>
-                                        @elseif($scheme->scheme_name == 'Women Vocational training Scheme')
+                                        @elseif($scheme->scheme_name == 'Women Medical Education Scheme')
                                         <li class="nav-item">
-                                        <a href="{{ url('women_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                        <a href="{{ url('education_scheme_application_list?category=women', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                       </li>
                                         @elseif($scheme->scheme_name == 'Cancer Scheme')
                                         <li class="nav-item">
@@ -507,7 +522,11 @@
                                             @if(isset($scheme->scheme_id))
                                             @if($scheme->scheme_name == 'Nondani Application')
                                             <li class="nav-item">
-                                                <a href="{{ url('ac_divyang_registration_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @if($scheme->category_names == 'Divyang(दिव्यांग)')
+                                                <a href="{{ url('ac_divyang_registration_list', [0, 1]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @else
+                                                <a href="{{ url('ac_divyang_registration_list', [0, 2]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @endif
                                             </li>
                                             @elseif($scheme->scheme_name == 'Bus Concession Scheme')
                                             <li class="nav-item">
@@ -535,9 +554,9 @@
                                             <li class="nav-item">
                                             <a href="{{ url('ac_sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
-                                            @elseif($scheme->scheme_name == 'Women Vocational training Scheme')
+                                            @elseif($scheme->scheme_name == 'Women Medical Education Scheme')
                                             <li class="nav-item">
-                                            <a href="{{ url('ac_women_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            <a href="{{ url('ac_education_scheme_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
                                             @elseif($scheme->scheme_name == 'Cancer Scheme')
                                             <li class="nav-item">
@@ -584,7 +603,11 @@
                                             @if(isset($scheme->scheme_id))
                                             @if($scheme->scheme_name == 'Nondani Application')
                                             <li class="nav-item">
-                                                <a href="{{ url('ac_divyang_registration_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @if($scheme->category_names == 'Divyang(दिव्यांग)')
+                                                <a href="{{ url('ac_divyang_registration_list', [1, 1]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @else
+                                                <a href="{{ url('ac_divyang_registration_list', [1, 2]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @endif
                                             </li>
                                             @elseif($scheme->scheme_name == 'Bus Concession Scheme')
                                             <li class="nav-item">
@@ -612,9 +635,9 @@
                                             <li class="nav-item">
                                             <a href="{{ url('ac_sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
-                                            @elseif($scheme->scheme_name == 'Women Vocational training Scheme')
+                                            @elseif($scheme->scheme_name == 'Women Medical Education Scheme')
                                             <li class="nav-item">
-                                            <a href="{{ url('ac_women_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            <a href="{{ url('ac_education_scheme_application_list?category=women', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
                                             @elseif($scheme->scheme_name == 'Cancer Scheme')
                                             <li class="nav-item">
@@ -661,7 +684,11 @@
                                             @if(isset($scheme->scheme_id))
                                             @if($scheme->scheme_name == 'Nondani Application')
                                             <li class="nav-item">
-                                                <a href="{{ url('ac_divyang_registration_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @if($scheme->category_names == 'Divyang(दिव्यांग)')
+                                                <a href="{{ url('ac_divyang_registration_list', [2, 1]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @else
+                                                <a href="{{ url('ac_divyang_registration_list', [2, 2]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @endif
                                             </li>
                                             @elseif($scheme->scheme_name == 'Bus Concession Scheme')
                                             <li class="nav-item">
@@ -689,9 +716,9 @@
                                             <li class="nav-item">
                                             <a href="{{ url('ac_sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
-                                            @elseif($scheme->scheme_name == 'Women Vocational training Scheme')
+                                            @elseif($scheme->scheme_name == 'Women Medical Education Scheme')
                                             <li class="nav-item">
-                                            <a href="{{ url('ac_women_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            <a href="{{ url('ac_education_scheme_application_list?category=women', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
                                             @elseif($scheme->scheme_name == 'Cancer Scheme')
                                             <li class="nav-item">
@@ -744,7 +771,11 @@
                                             @if(isset($scheme->scheme_id))
                                             @if($scheme->scheme_name == 'Nondani Application')
                                             <li class="nav-item">
-                                                <a href="{{ url('amc_divyang_registration_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @if($scheme->category_names == 'Divyang(दिव्यांग)')
+                                                <a href="{{ url('amc_divyang_registration_list', [0, 1]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @else
+                                                <a href="{{ url('amc_divyang_registration_list', [0, 2]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @endif
                                             </li>
                                             @elseif($scheme->scheme_name == 'Bus Concession Scheme')
                                             <li class="nav-item">
@@ -772,9 +803,9 @@
                                             <li class="nav-item">
                                             <a href="{{ url('amc_sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
-                                            @elseif($scheme->scheme_name == 'Women Vocational training Scheme')
+                                            @elseif($scheme->scheme_name == 'Women Medical Education Scheme')
                                             <li class="nav-item">
-                                            <a href="{{ url('amc_women_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            <a href="{{ url('amc_bus_concession_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
                                             @elseif($scheme->scheme_name == 'Cancer Scheme')
                                             <li class="nav-item">
@@ -820,7 +851,11 @@
                                             @if(isset($scheme->scheme_id))
                                             @if($scheme->scheme_name == 'Nondani Application')
                                             <li class="nav-item">
-                                                <a href="{{ url('amc_divyang_registration_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                 @if($scheme->category_names == 'Divyang(दिव्यांग)')
+                                                <a href="{{ url('amc_divyang_registration_list', [1, 1]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @else
+                                                <a href="{{ url('amc_divyang_registration_list', [1, 2]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @endif
                                             </li>
                                             @elseif($scheme->scheme_name == 'Bus Concession Scheme')
                                             <li class="nav-item">
@@ -848,9 +883,9 @@
                                             <li class="nav-item">
                                             <a href="{{ url('amc_sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
-                                            @elseif($scheme->scheme_name == 'Women Vocational training Scheme')
+                                            @elseif($scheme->scheme_name == 'Women Medical Education Scheme')
                                             <li class="nav-item">
-                                            <a href="{{ url('amc_women_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            <a href="{{ url('amc_education_scheme_application_list?category=women', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
                                             @elseif($scheme->scheme_name == 'Cancer Scheme')
                                             <li class="nav-item">
@@ -896,7 +931,11 @@
                                             @if(isset($scheme->scheme_id))
                                             @if($scheme->scheme_name == 'Nondani Application')
                                             <li class="nav-item">
-                                                <a href="{{ url('amc_divyang_registration_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                 @if($scheme->category_names == 'Divyang(दिव्यांग)')
+                                                <a href="{{ url('amc_divyang_registration_list', [2, 1]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @else
+                                                <a href="{{ url('amc_divyang_registration_list', [2, 2]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @endif
                                             </li>
                                             @elseif($scheme->scheme_name == 'Bus Concession Scheme')
                                             <li class="nav-item">
@@ -924,9 +963,9 @@
                                             <li class="nav-item">
                                             <a href="{{ url('amc_sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
-                                            @elseif($scheme->scheme_name == 'Women Vocational training Scheme')
+                                            @elseif($scheme->scheme_name == 'Women Medical Education Scheme')
                                             <li class="nav-item">
-                                            <a href="{{ url('amc_women_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            <a href="{{ url('amc_education_scheme_application_list?category=women', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
                                             @elseif($scheme->scheme_name == 'Cancer Scheme')
                                             <li class="nav-item">
@@ -981,7 +1020,11 @@
                                             @if(isset($scheme->scheme_id))
                                             @if($scheme->scheme_name == 'Nondani Application')
                                             <li class="nav-item">
-                                                <a href="{{ url('dmc_divyang_registration_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                 @if($scheme->category_names == 'Divyang(दिव्यांग)')
+                                                <a href="{{ url('dmc_divyang_registration_list', [0, 1]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @else
+                                                <a href="{{ url('dmc_divyang_registration_list', [0, 2]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @endif
                                             </li>
                                             @elseif($scheme->scheme_name == 'Bus Concession Scheme')
                                             <li class="nav-item">
@@ -1009,9 +1052,9 @@
                                             <li class="nav-item">
                                             <a href="{{ url('dmc_sports_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
-                                            @elseif($scheme->scheme_name == 'Women Vocational training Scheme')
+                                            @elseif($scheme->scheme_name == 'Women Medical Education Scheme')
                                             <li class="nav-item">
-                                            <a href="{{ url('dmc_women_scheme_application_list', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            <a href="{{ url('dmc_education_scheme_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
                                             @elseif($scheme->scheme_name == 'Cancer Scheme')
                                             <li class="nav-item">
@@ -1057,7 +1100,11 @@
                                             @if(isset($scheme->scheme_id))
                                             @if($scheme->scheme_name == 'Nondani Application')
                                             <li class="nav-item">
-                                                <a href="{{ url('dmc_divyang_registration_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @if($scheme->category_names == 'Divyang(दिव्यांग)')
+                                                <a href="{{ url('dmc_divyang_registration_list', [1, 1]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @else
+                                                <a href="{{ url('dmc_divyang_registration_list', [1, 2]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @endif
                                             </li>
                                             @elseif($scheme->scheme_name == 'Bus Concession Scheme')
                                             <li class="nav-item">
@@ -1085,9 +1132,9 @@
                                             <li class="nav-item">
                                             <a href="{{ url('dmc_sports_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
-                                            @elseif($scheme->scheme_name == 'Women Vocational training Scheme')
+                                            @elseif($scheme->scheme_name == 'Women Medical Education Scheme')
                                             <li class="nav-item">
-                                            <a href="{{ url('dmc_women_scheme_application_list', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            <a href="{{ url('dmc_education_scheme_application_list?category=women', 1) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
                                             @elseif($scheme->scheme_name == 'Cancer Scheme')
                                             <li class="nav-item">
@@ -1134,7 +1181,11 @@
                                             @if(isset($scheme->scheme_id))
                                             @if($scheme->scheme_name == 'Nondani Application')
                                             <li class="nav-item">
-                                                <a href="{{ url('dmc_divyang_registration_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @if($scheme->category_names == 'Divyang(दिव्यांग)')
+                                                <a href="{{ url('dmc_divyang_registration_list', [2, 1]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @else
+                                                <a href="{{ url('dmc_divyang_registration_list', [2, 2]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                                @endif
                                             </li>
                                             @elseif($scheme->scheme_name == 'Bus Concession Scheme')
                                             <li class="nav-item">
@@ -1162,9 +1213,9 @@
                                             <li class="nav-item">
                                             <a href="{{ url('dmc_sports_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
-                                            @elseif($scheme->scheme_name == 'Women Vocational training Scheme')
+                                            @elseif($scheme->scheme_name == 'Women Medical Education Scheme')
                                             <li class="nav-item">
-                                            <a href="{{ url('dmc_women_scheme_application_list', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            <a href="{{ url('dmc_education_scheme_application_list?category=women', 2) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
                                             @elseif($scheme->scheme_name == 'Cancer Scheme')
                                             <li class="nav-item">

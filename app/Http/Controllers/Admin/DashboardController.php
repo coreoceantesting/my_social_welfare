@@ -86,6 +86,17 @@ class DashboardController extends Controller
                 $query->where('t2.category', 1)
                     ->orWhere('t2.category', 2);
             })
+            ->where('t1.category_id', '=', '1')
+            ->whereNull('t1.deleted_at')
+            ->count();
+            
+            $disability_scheme_total_count_new =  DB::table('trans_disability_scheme AS t1')
+            ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->where(function ($query) {
+                $query->where('t2.category', 1)
+                    ->orWhere('t2.category', 2);
+            })
+            ->where('t1.category_id', '=', '2')
             ->whereNull('t1.deleted_at')
             ->count();
 
@@ -95,6 +106,18 @@ class DashboardController extends Controller
                 $query->where('t2.category', 1)
                     ->orWhere('t2.category', 2);
             })
+            ->where('t1.category_id', '=', '1')
+            ->where('t1.hod_status', '=', 0)
+            ->whereNull('t1.deleted_at')
+            ->count();
+            
+        $disability_scheme_pending_new =  DB::table('trans_disability_scheme AS t1')
+            ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->where(function ($query) {
+                $query->where('t2.category', 1)
+                    ->orWhere('t2.category', 2);
+            })
+            ->where('t1.category_id', '=', '2')
             ->where('t1.hod_status', '=', 0)
             ->whereNull('t1.deleted_at')
             ->count();
@@ -105,6 +128,17 @@ class DashboardController extends Controller
                 $query->where('t2.category', 1)
                     ->orWhere('t2.category', 2);
             })
+            ->where('t1.category_id', '=', '1')
+            ->where('t1.hod_status', '=', 1)
+            ->whereNull('t1.deleted_at')
+            ->count();
+        $disability_scheme_approve_new =  DB::table('trans_disability_scheme AS t1')
+            ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->where(function ($query) {
+                $query->where('t2.category', 1)
+                    ->orWhere('t2.category', 2);
+            })
+			->where('t1.category_id', '=', '2')
             ->where('t1.hod_status', '=', 1)
             ->whereNull('t1.deleted_at')
             ->count();
@@ -115,6 +149,18 @@ class DashboardController extends Controller
                 $query->where('t2.category', 1)
                     ->orWhere('t2.category', 2);
             })
+            ->where('t1.category_id', '=', '1')
+            ->where('t1.hod_status', '=', 2)
+            ->whereNull('t1.deleted_at')
+            ->count();
+            
+        $disability_scheme_reject_new =  DB::table('trans_disability_scheme AS t1')
+            ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->where(function ($query) {
+                $query->where('t2.category', 1)
+                    ->orWhere('t2.category', 2);
+            })
+			->where('t1.category_id', '=', '2')
             ->where('t1.hod_status', '=', 2)
             ->whereNull('t1.deleted_at')
             ->count();
@@ -419,6 +465,7 @@ class DashboardController extends Controller
                 $query->where('t2.category', 1)
                     ->orWhere('t2.category', 2);
             })
+            ->where('t1.category_id', '=', '1')
             ->where('t1.hod_status', '=', 1)
             ->whereNull('t1.deleted_at')
             ->count();
@@ -429,6 +476,7 @@ class DashboardController extends Controller
                 $query->where('t2.category', 1)
                     ->orWhere('t2.category', 2);
             })
+            ->where('t1.category_id', '=', '1')
             ->where('t1.hod_status', '=', 1)
             ->where('t1.ac_status', '=', 0)
             ->whereNull('t1.deleted_at')
@@ -440,6 +488,7 @@ class DashboardController extends Controller
                 $query->where('t2.category', 1)
                     ->orWhere('t2.category', 2);
             })
+            ->where('t1.category_id', '=', '1')
             ->where('t1.hod_status', '=', 1)
             ->where('t1.ac_status', '=', 1)
             ->whereNull('t1.deleted_at')
@@ -451,6 +500,55 @@ class DashboardController extends Controller
                 $query->where('t2.category', 1)
                     ->orWhere('t2.category', 2);
             })
+            ->where('t1.category_id', '=', '1')
+            ->where('t1.hod_status', '=', 1)
+            ->where('t1.ac_status', '=', 2)
+            ->whereNull('t1.deleted_at')
+            ->count();
+            
+        // new
+        $ac_disability_scheme_total_count_new =  DB::table('trans_disability_scheme AS t1')
+            ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->where(function ($query) {
+                $query->where('t2.category', 1)
+                    ->orWhere('t2.category', 2);
+            })
+            ->where('t1.category_id', '=', '2')
+            ->where('t1.hod_status', '=', 1)
+            ->whereNull('t1.deleted_at')
+            ->count();
+
+        $ac_disability_scheme_pending_new =  DB::table('trans_disability_scheme AS t1')
+            ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->where(function ($query) {
+                $query->where('t2.category', 1)
+                    ->orWhere('t2.category', 2);
+            })
+            ->where('t1.category_id', '=', '2')
+            ->where('t1.hod_status', '=', 1)
+            ->where('t1.ac_status', '=', 0)
+            ->whereNull('t1.deleted_at')
+            ->count();
+
+        $ac_disability_scheme_approve_new =  DB::table('trans_disability_scheme AS t1')
+            ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->where(function ($query) {
+                $query->where('t2.category', 1)
+                    ->orWhere('t2.category', 2);
+            })
+            ->where('t1.category_id', '=', '2')
+            ->where('t1.hod_status', '=', 1)
+            ->where('t1.ac_status', '=', 1)
+            ->whereNull('t1.deleted_at')
+            ->count();
+
+        $ac_disability_scheme_reject_new =  DB::table('trans_disability_scheme AS t1')
+            ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->where(function ($query) {
+                $query->where('t2.category', 1)
+                    ->orWhere('t2.category', 2);
+            })
+            ->where('t1.category_id', '=', '2')
             ->where('t1.hod_status', '=', 1)
             ->where('t1.ac_status', '=', 2)
             ->whereNull('t1.deleted_at')
@@ -795,6 +893,7 @@ class DashboardController extends Controller
                 $query->where('t2.category', 1)
                     ->orWhere('t2.category', 2);
             })
+            ->where('t1.category_id', '=', '1')
             ->where('t1.hod_status', '=', 1)
             ->where('t1.ac_status', '=', 1)
             ->whereNull('t1.deleted_at')
@@ -806,6 +905,7 @@ class DashboardController extends Controller
                 $query->where('t2.category', 1)
                     ->orWhere('t2.category', 2);
             })
+            ->where('t1.category_id', '=', '1')
             ->where('t1.hod_status', '=', 1)
             ->where('t1.ac_status', '=', 1)
             ->where('t1.amc_status', '=', 0)
@@ -818,6 +918,7 @@ class DashboardController extends Controller
                 $query->where('t2.category', 1)
                     ->orWhere('t2.category', 2);
             })
+            ->where('t1.category_id', '=', '1')
             ->where('t1.hod_status', '=', 1)
             ->where('t1.ac_status', '=', 1)
             ->where('t1.amc_status', '=', 1)
@@ -830,6 +931,59 @@ class DashboardController extends Controller
                 $query->where('t2.category', 1)
                     ->orWhere('t2.category', 2);
             })
+            ->where('t1.category_id', '=', '1')
+            ->where('t1.hod_status', '=', 1)
+            ->where('t1.ac_status', '=', 1)
+            ->where('t1.amc_status', '=', 2)
+            ->whereNull('t1.deleted_at')
+            ->count();
+            
+            // new
+            $amc_disability_scheme_total_count_new =  DB::table('trans_disability_scheme AS t1')
+            ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->where(function ($query) {
+                $query->where('t2.category', 1)
+                    ->orWhere('t2.category', 2);
+            })
+			->where('t1.category_id', '=', '2')
+            ->where('t1.hod_status', '=', 1)
+            ->where('t1.ac_status', '=', 1)
+            ->whereNull('t1.deleted_at')
+            ->count();
+
+        $amc_disability_scheme_pending_new =  DB::table('trans_disability_scheme AS t1')
+            ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->where(function ($query) {
+                $query->where('t2.category', 1)
+                    ->orWhere('t2.category', 2);
+            })
+			->where('t1.category_id', '=', '2')
+            ->where('t1.hod_status', '=', 1)
+            ->where('t1.ac_status', '=', 1)
+            ->where('t1.amc_status', '=', 0)
+            ->whereNull('t1.deleted_at')
+            ->count();
+
+        $amc_disability_scheme_approve_new =  DB::table('trans_disability_scheme AS t1')
+            ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->where(function ($query) {
+                $query->where('t2.category', 1)
+                    ->orWhere('t2.category', 2);
+            })
+			->where('t1.category_id', '=', '2')
+            ->where('t1.hod_status', '=', 1)
+            ->where('t1.ac_status', '=', 1)
+            ->where('t1.amc_status', '=', 1)
+            ->whereNull('t1.deleted_at')
+            ->count();
+
+        $amc_disability_scheme_reject_new =  DB::table('trans_disability_scheme AS t1')
+            ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->where(function ($query) {
+                $query->where('t2.category', 1)
+                    ->orWhere('t2.category', 2);
+            })
+			->where('t1.category_id', '=', '2')
             ->where('t1.hod_status', '=', 1)
             ->where('t1.ac_status', '=', 1)
             ->where('t1.amc_status', '=', 2)
@@ -1215,6 +1369,7 @@ class DashboardController extends Controller
                 $query->where('t2.category', 1)
                     ->orWhere('t2.category', 2);
             })
+            ->where('t1.category_id', '=', '1')
             ->where('t1.hod_status', '=', 1)
             ->where('t1.ac_status', '=', 1)
             ->where('t1.amc_status', '=', 1)
@@ -1227,6 +1382,7 @@ class DashboardController extends Controller
                 $query->where('t2.category', 1)
                     ->orWhere('t2.category', 2);
             })
+            ->where('t1.category_id', '=', '1')
             ->where('t1.hod_status', '=', 1)
             ->where('t1.ac_status', '=', 1)
             ->where('t1.amc_status', '=', 1)
@@ -1240,6 +1396,7 @@ class DashboardController extends Controller
                 $query->where('t2.category', 1)
                     ->orWhere('t2.category', 2);
             })
+            ->where('t1.category_id', '=', '1')
             ->where('t1.hod_status', '=', 1)
             ->where('t1.ac_status', '=', 1)
             ->where('t1.amc_status', '=', 1)
@@ -1253,6 +1410,62 @@ class DashboardController extends Controller
                 $query->where('t2.category', 1)
                     ->orWhere('t2.category', 2);
             })
+            ->where('t1.category_id', '=', '1')
+            ->where('t1.hod_status', '=', 1)
+            ->where('t1.ac_status', '=', 1)
+            ->where('t1.amc_status', '=', 1)
+            ->where('t1.dmc_status', '=', 2)
+            ->whereNull('t1.deleted_at')
+            ->count();
+            
+            $dmc_disability_scheme_total_count_new =  DB::table('trans_disability_scheme AS t1')
+            ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->where(function ($query) {
+                $query->where('t2.category', 1)
+                    ->orWhere('t2.category', 2);
+            })
+            ->where('t1.category_id', '=', '2')
+            ->where('t1.hod_status', '=', 1)
+            ->where('t1.ac_status', '=', 1)
+            ->where('t1.amc_status', '=', 1)
+            ->whereNull('t1.deleted_at')
+            ->count();
+
+        $dmc_disability_scheme_pending_new =  DB::table('trans_disability_scheme AS t1')
+            ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->where(function ($query) {
+                $query->where('t2.category', 1)
+                    ->orWhere('t2.category', 2);
+            })
+            ->where('t1.category_id', '=', '2')
+            ->where('t1.hod_status', '=', 1)
+            ->where('t1.ac_status', '=', 1)
+            ->where('t1.amc_status', '=', 1)
+            ->where('t1.dmc_status', '=', 0)
+            ->whereNull('t1.deleted_at')
+            ->count();
+
+        $dmc_disability_scheme_approve_new =  DB::table('trans_disability_scheme AS t1')
+            ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->where(function ($query) {
+                $query->where('t2.category', 1)
+                    ->orWhere('t2.category', 2);
+            })
+            ->where('t1.category_id', '=', '2')
+            ->where('t1.hod_status', '=', 1)
+            ->where('t1.ac_status', '=', 1)
+            ->where('t1.amc_status', '=', 1)
+            ->where('t1.dmc_status', '=', 1)
+            ->whereNull('t1.deleted_at')
+            ->count();
+
+        $dmc_disability_scheme_reject_new =  DB::table('trans_disability_scheme AS t1')
+            ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->where(function ($query) {
+                $query->where('t2.category', 1)
+                    ->orWhere('t2.category', 2);
+            })
+            ->where('t1.category_id', '=', '2')
             ->where('t1.hod_status', '=', 1)
             ->where('t1.ac_status', '=', 1)
             ->where('t1.amc_status', '=', 1)
@@ -1797,7 +2010,23 @@ class DashboardController extends Controller
             'dmc_senior_bus_concession_scheme_count',
             'dmc_senior_bus_concession_scheme_pending',
             'dmc_senior_bus_concession_scheme_approve',
-            'dmc_senior_bus_concession_scheme_reject'
+            'dmc_senior_bus_concession_scheme_reject',
+            'disability_scheme_pending_new',
+            'disability_scheme_total_count_new',
+            'disability_scheme_approve_new',
+            'disability_scheme_reject_new',
+            'ac_disability_scheme_total_count_new',
+            'ac_disability_scheme_pending_new',
+            'ac_disability_scheme_approve_new',
+            'ac_disability_scheme_reject_new',
+            'amc_disability_scheme_total_count_new',
+            'amc_disability_scheme_pending_new',
+            'amc_disability_scheme_approve_new',
+            'amc_disability_scheme_reject_new',
+            'dmc_disability_scheme_total_count_new',
+            'dmc_disability_scheme_pending_new',
+            'dmc_disability_scheme_approve_new',
+            'dmc_disability_scheme_reject_new'
         ));
     }
 

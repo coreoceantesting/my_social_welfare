@@ -148,7 +148,10 @@
                                 if($data->type_of_discount == 'daily_commute')
                                 {
                                     $type_of_discount='दैनंदिन';
-                                }else{
+                                }elseif($data->type_of_discount == 'yearly_pass'){
+                                	$type_of_discount='वार्षिक पास';
+                                }
+                                else{
                                     $type_of_discount='मासिक पास';
                                 }
                                 ?>
@@ -157,7 +160,8 @@
                                     <td><strong>सवलतीचा प्रकार<br>
 
                                         १ दैनंदिन प्रवास<br>
-                                        २ मासिक पास</strong></td>
+                                        २ मासिक पास<br>
+                                        3 वार्षिक पास</strong></td>
                                     <td>{{ $type_of_discount }}</td>
                                 </tr>
 

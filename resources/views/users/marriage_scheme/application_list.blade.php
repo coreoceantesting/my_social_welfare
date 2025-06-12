@@ -75,7 +75,6 @@
                             <span class="text-danger is-invalid contact_err"></span>
                         </div>
 
-
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="adhaar_no"> Aadhaar Card Number (आधारकार्ड नंबर):<span class="text-danger">*</span></label>
                             <input class="form-control" id="adhaar_no" name="adhaar_no" type="text"  placeholder="Enter Aadhaar Card Number">
@@ -240,7 +239,7 @@
                                                 @if($row->hod_status == 0 && $row->ac_status == 0 && $row->amc_status == 0 && $row->dmc_status == 0)
                                                 <button type="button" class="btn btn-primary waves-effect m-r-20">Pending</button>
                                                 @elseif($row->hod_status == 1 && $row->ac_status == 0 && $row->amc_status == 0)
-                                                <button type="button" class="btn btn-primary waves-effect m-r-20">Review</button>
+                                                <button type="button" class="btn btn-primary waves-effect m-r-20">Approved by HOD</button>
                                                 @elseif($row->hod_status == 1 && $row->ac_status == 1 && $row->amc_status == 0)
                                                 <button type="button" class="btn btn-primary waves-effect m-r-20">Review</button>
                                                 @elseif($row->hod_status == 1 && $row->ac_status == 1 && $row->amc_status == 1 && $row->dmc_status == 0)
@@ -309,6 +308,7 @@
                 editFormBehaviour();
                 if (!data.error)
                 {
+                    console.log(data);
                     $("#editForm input[name='edit_model_id']").val(data.marriage_scheme.id);
                     $("#editForm input[name='full_name']").val(data.marriage_scheme.full_name);
                     $("#editForm input[name='full_address']").val(data.marriage_scheme.full_address);

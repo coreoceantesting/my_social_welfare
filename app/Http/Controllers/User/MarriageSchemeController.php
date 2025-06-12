@@ -112,13 +112,12 @@ class MarriageSchemeController extends Controller
 
 
         if ($marriage_scheme) {
-            $wardHtml = '<span>
-            <option value="">--Select Scheme--</option>';
+            $wardHtml = '<option value="">--Select Scheme--</option>';
             foreach ($wards as $ward) :
                 $is_select = $ward->id == $marriage_scheme->ward_id ? "selected" : "";
                 $wardHtml .= '<option value="' . $ward->id . '" ' . $is_select . '>' . $ward->name . '</option>';
             endforeach;
-            $wardHtml .= '</span>';
+            // $wardHtml .= '</span>';
 
             $response = [
                 'result' => 1,

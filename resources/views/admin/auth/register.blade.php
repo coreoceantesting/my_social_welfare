@@ -129,7 +129,9 @@
                                                         <select class="form-select mb-3" aria-label="Default select example" name="category" id="category">
                                                             <option value="">--Select Category--</option>
                                                             @foreach($category as $row)
-                                                            <option value="{{ $row->id }}">{{ $row->category_name }}</option>
+                                                                @if($row->id != 6)
+                                                                    <option value="{{ $row->id }}">{{ $row->category_name }}</option>
+                                                                @endif
                                                             @endforeach
                                                             {{-- <option value="1">Divyang</option>
                                                             <option value="2">Senior Sitizen</option>

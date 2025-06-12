@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class HodDivyangSchemeController extends Controller
 {
-    public function divyangRegistrationList($status)
+    public function divyangRegistrationList($status, $type)
     {
 
         $data =  DB::table('trans_disability_scheme AS t1')
@@ -23,6 +23,7 @@ class HodDivyangSchemeController extends Controller
                     //         ->orWhere('t3.category', 2);
                     // })
                     ->where('t1.hod_status', '=', $status)
+                    ->where('t1.category_id', '=', $type)
                     ->whereNull('t1.deleted_at')
                     ->whereNull('t2.deleted_at')
                     ->orderBy('t1.id', 'DESC')
@@ -44,7 +45,6 @@ class HodDivyangSchemeController extends Controller
             ->orderBy('t1.id', 'DESC')
             ->first();
 
-        //    dd($data->id);
         $document = DB::table('trans_divyang_scheme_documents AS t1')
             ->select('t1.*', 't2.document_name')
             ->leftJoin('document_type_msts AS t2', 't2.id', '=', 't1.document_id')
@@ -52,6 +52,7 @@ class HodDivyangSchemeController extends Controller
             ->where('t1.divyang_id', $data->id)
             ->get();
 
+            // dd($data);
         return view('hod.divyang_scheme.view', compact('data', 'document'));
     }
 
@@ -65,7 +66,7 @@ class HodDivyangSchemeController extends Controller
             'reject_by_hod' => Auth::user()->id,
         ];
         DisabilityApplication::where('id', $id)->update($update);
-        return redirect('divyang_registration_list/2')->with('message', 'Divyang Application Rejected by HOD Successfully');
+        return redirect('divyang_registration_list/2/1')->with('message', 'Divyang Application Rejected by HOD Successfully');
     }
 
     public function approveDivyangApplication(request $request, $id)
@@ -78,6 +79,21 @@ class HodDivyangSchemeController extends Controller
             'approve_by_hod' => Auth::user()->id,
         ];
         DisabilityApplication::where('id', $id)->update($update);
-        return redirect('divyang_registration_list/1')->with('message', 'Divyang Application Approved by HOD Successfully');
+        return redirect('divyang_registration_list/1/1')->with('message', 'Divyang Application Approved by HOD Successfully');
+    }
+    
+    public function newsendsms($sms,$number) 
+    { 
+
+        $key = "kbf8IN83hIxNTVgs";	
+        $mbl=$number; 	/*or $mbl="XXXXXXXXXX,XXXXXXXXXX";*/
+        $message=$sms;
+        $message_content=urlencode($message);
+        
+        $senderid="CoreOC";	$route= 1;
+        $url = "http://sms.adityahost.com/vb/apikey.php?apikey=$key&senderid=$senderid&number=$mbl&message=$message_content";
+        					
+        $output = file_get_contents($url);	/*default function for push any url*/
+    		
     }
 }

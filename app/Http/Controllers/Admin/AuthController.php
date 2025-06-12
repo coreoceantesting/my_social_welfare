@@ -145,7 +145,7 @@ class AuthController extends Controller
                 'father_lname' => 'required',
                 'mother_name' => 'required',
                 'category' => 'required',
-                'mobile' => 'required|unique:users,mobile|digits:10',
+                'mobile' => ['required', 'unique:users,mobile', 'regex:/^[0-9]{10}$/'],
                 'name' => 'required',
                 'password' => 'required',
                 'confirm_password' => 'required|same:password',

@@ -80,13 +80,13 @@ class UserController extends Controller
         if ($user)
         {
 
-            $roleHtml = '<span>
+            $roleHtml = '
                 <option value="">--Select Role --</option>';
                 foreach($roles as $role):
                     $is_select = $role->id == $user->roles[0]->id ? "selected" : "";
                     $roleHtml .= '<option value="'.$role->id.'" '.$is_select.'>'.$role->name.'</option>';
                 endforeach;
-            $roleHtml .= '</span>';
+            $roleHtml .= '';
 
 
             $response = [
