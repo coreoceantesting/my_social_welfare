@@ -25,7 +25,7 @@ class allListingController extends Controller
             case 'DMC':
                 $application_list = DB::table('all_education_scheme_details')->where('overall_status','pending')->where('hod_status','approved')->where('ac_status','approved')->where('amc_status','approved')->where('dmc_status','pending');
                 break;
-            
+
             default:
                 $application_list = DB::table('all_education_scheme_details')->where('overall_status','pending')->where('overall_status','pending');
                 break;
@@ -55,7 +55,7 @@ class allListingController extends Controller
             $id = $request->input('action_model_id');
 
             $formDetails = DB::table('all_education_scheme_details')->where('all_education_scheme_detail_id', $id)->first();
-    
+
             if (!$formDetails) {
                 return response()->json(['error' => 'Form details not found.']);
             }
@@ -133,8 +133,8 @@ class allListingController extends Controller
                     break;
             }
 
-            
-    
+
+
             return response()->json(['success' => 'Form Status Updated successfully!']);
         } catch (ValidationException $e) {
             return response()->json(['errors' => $e->errors()]);
@@ -157,7 +157,7 @@ class allListingController extends Controller
             case 'DMC':
                 $application_list = DB::table('all_education_scheme_details')->where('dmc_status','approved');
                 break;
-            
+
             default:
                 $application_list = DB::table('all_education_scheme_details')->where('overall_status','approved');
                 break;
@@ -184,7 +184,7 @@ class allListingController extends Controller
             case 'DMC':
                 $application_list = DB::table('all_education_scheme_details')->where('dmc_status','rejected')->orWhere('overall_status','rejected');
                 break;
-            
+
             default:
                 $application_list = DB::table('all_education_scheme_details')->where('overall_status','rejected');
                 break;
