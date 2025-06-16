@@ -14,10 +14,10 @@ class allListingController extends Controller
     {
         switch (auth()->user()->roles->pluck('name')[0]) {
             case 'AC':
-                $application_list = DB::table('all_education_scheme_details')->where('overall_status','pending')->where('hod_status','pending');
+                $application_list = DB::table('all_education_scheme_details')->where('overall_status','pending')->where('ac_status','pending');
                 break;
             case 'Hod':
-                $application_list = DB::table('all_education_scheme_details')->where('overall_status','pending')->where('hod_status','pending')->where('ac_status','pending');
+                $application_list = DB::table('all_education_scheme_details')->where('overall_status','pending')->where('hod_status','pending')->where('ac_status','approved');
                 break;
             case 'AMC':
                 $application_list = DB::table('all_education_scheme_details')->where('overall_status','pending')->where('hod_status','approved')->where('ac_status','approved')->where('amc_status','pending');
@@ -49,7 +49,7 @@ class allListingController extends Controller
                 'status_new.required' => 'The status field is required.',
                 'remark_new.required' => 'The remark field is required.',
             ]);
-            
+
             dd(auth()->user()->roles->pluck('name')[0]);
 
             $id = $request->input('action_model_id');

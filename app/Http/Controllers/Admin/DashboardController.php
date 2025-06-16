@@ -28,8 +28,6 @@ class DashboardController extends Controller
             ->orderBy('t1.scheme_name', 'ASC')
             ->get();
 
-        // dd($scheme);
-
         // $scheme_name = DB::table('mst_scheme as t1')
         //     ->select('t1.*')
         //     ->whereNull('t1.deleted_at')
@@ -89,7 +87,7 @@ class DashboardController extends Controller
             ->where('t1.category_id', '=', '1')
             ->whereNull('t1.deleted_at')
             ->count();
-            
+
             $disability_scheme_total_count_new =  DB::table('trans_disability_scheme AS t1')
             ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
             ->where(function ($query) {
@@ -110,7 +108,7 @@ class DashboardController extends Controller
             ->where('t1.hod_status', '=', 0)
             ->whereNull('t1.deleted_at')
             ->count();
-            
+
         $disability_scheme_pending_new =  DB::table('trans_disability_scheme AS t1')
             ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
             ->where(function ($query) {
@@ -153,7 +151,7 @@ class DashboardController extends Controller
             ->where('t1.hod_status', '=', 2)
             ->whereNull('t1.deleted_at')
             ->count();
-            
+
         $disability_scheme_reject_new =  DB::table('trans_disability_scheme AS t1')
             ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
             ->where(function ($query) {
@@ -505,7 +503,7 @@ class DashboardController extends Controller
             ->where('t1.ac_status', '=', 2)
             ->whereNull('t1.deleted_at')
             ->count();
-            
+
         // new
         $ac_disability_scheme_total_count_new =  DB::table('trans_disability_scheme AS t1')
             ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
@@ -937,7 +935,7 @@ class DashboardController extends Controller
             ->where('t1.amc_status', '=', 2)
             ->whereNull('t1.deleted_at')
             ->count();
-            
+
             // new
             $amc_disability_scheme_total_count_new =  DB::table('trans_disability_scheme AS t1')
             ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
@@ -1417,7 +1415,7 @@ class DashboardController extends Controller
             ->where('t1.dmc_status', '=', 2)
             ->whereNull('t1.deleted_at')
             ->count();
-            
+
             $dmc_disability_scheme_total_count_new =  DB::table('trans_disability_scheme AS t1')
             ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
             ->where(function ($query) {
@@ -2044,7 +2042,6 @@ class DashboardController extends Controller
 
     public function terms_conditions($id,$scheme_name)
     {
-
         // print_r('hii');exit;
         $terms = DB::table('terms_conditions as t1')
             ->select('t1.rules_regulations', 't2.id', 't2.scheme_name')
