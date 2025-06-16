@@ -36,10 +36,6 @@
     }
 </style>
 
-
-
-
-
     <div class="row">
         <div class="col-xxl-12">
             <div class="d-flex flex-column h-100">
@@ -130,6 +126,7 @@
 
                 {{-- HOD panel --}}
                 @canany(['hod.application'])
+                @if(auth()->user()->roles->pluck('name')[0] == "Hod")
                     <div class="row justify-content-center">
                         <div class="col-xxl-12">
                             <div class="card" style="border:solid 1px;">
@@ -300,7 +297,6 @@
                         <!--end col-->
                     </div>
                     <!--end row-->
-
 
                     <div class="row justify-content-center">
                         <div class="col-xxl-12">
@@ -680,11 +676,13 @@
                         <!--end col-->
                     </div>
                     <!--end row-->
+                @endif
                 @endcan
 
 
                 {{-- AC Panel --}}
                 @canany(['ac.application'])
+                @if(auth()->user()->roles->pluck('name')[0] == "Ac")
                     <div class="row justify-content-center">
                         <div class="col-xxl-12">
                             <div class="card" style="border:solid 1px;">
@@ -1239,12 +1237,13 @@
                         <!--end col-->
                     </div>
                     <!--end row-->
+                @endif
                 @endcan
 
 
                 {{-- AMC Panel --}}
                 @canany(['amc.application'])
-
+                @if(auth()->user()->roles->pluck('name')[0] == "AMC")
                     <div class="row justify-content-center">
                         <div class="col-xxl-12">
                             <div class="card" style="border:solid 1px;">
@@ -1798,11 +1797,12 @@
                         <!--end col-->
                     </div>
                     <!--end row-->
-
+                @endif
                 @endcan
 
                 {{-- DMC Panel --}}
                 @canany(['dmc.application'])
+                @if(auth()->user()->roles->pluck('name')[0] == "DMC")
                     <div class="row justify-content-center">
                         <div class="col-xxl-12">
                             <div class="card" style="border:solid 1px;">
@@ -2380,6 +2380,7 @@
                         <!--end col-->
                     </div>
                     <!--end row-->
+                @endif
                 @endcan
 
                 {{-- admin Dashboard --}}

@@ -41,83 +41,85 @@
 
 
 
-                @canany(['wards.view', 'category.view', 'scheme.view', 'document-type.view', 'financial-year.view', 'terms-conditions.view'])
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                        <i class="ri-layout-3-line"></i>
-                        <span data-key="t-layouts">Masters</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarLayouts">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                @can('wards.view')
-                                <a href="{{ route('wards.index') }}" class="nav-link" data-key="t-horizontal">Wards</a>
+                @if(Auth::user()->roles[0]->id == 1 || Auth::user()->roles[0]->id == 2)
+                    @canany(['wards.view', 'category.view', 'scheme.view', 'document-type.view', 'financial-year.view', 'terms-conditions.view'])
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
+                            <i class="ri-layout-3-line"></i>
+                            <span data-key="t-layouts">Masters</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarLayouts">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    @can('wards.view')
+                                    <a href="{{ route('wards.index') }}" class="nav-link" data-key="t-horizontal">Wards</a>
+                                    @endcan
+                                </li>
+
+                                @can('category.view')
+                                <li class="nav-item">
+                                    <a href="{{ route('category.index') }}" class="nav-link" data-key="t-horizontal">Categories</a>
+                                </li>
                                 @endcan
-                            </li>
 
-                            @can('category.view')
-                            <li class="nav-item">
-                                <a href="{{ route('category.index') }}" class="nav-link" data-key="t-horizontal">Categories</a>
-                            </li>
-                            @endcan
-
-                            @can('scheme.view')
-                            <li class="nav-item">
-                                <a href="{{ route('scheme.index') }}" class="nav-link" data-key="t-horizontal">Schemes</a>
-                            </li>
-                            @endcan
-
-                            @can('category-wise-scheme.view')
-                            <li class="nav-item">
-                                <a href="{{ route('category_wise_scheme.index') }}" class="nav-link" data-key="t-horizontal">Category Wise Schemes</a>
-                            </li>
-                            @endcan
-
-                            @can('document-type.view')
-                            <li class="nav-item">
-                                <a href="{{ route('document.index') }}" class="nav-link" data-key="t-horizontal">Document Type</a>
-                            </li>
-                            @endcan
-
-                            @can('financial-year.view')
-                            <li class="nav-item">
-                                <a href="{{ route('financial.index') }}" class="nav-link" data-key="t-horizontal">Financial Year</a>
-                            </li>
-                            @endcan
-
-                            @can('terms-conditions.view')
-                            <li class="nav-item">
-                                <a href="{{ route('terms-conditions.index') }}" class="nav-link" data-key="t-horizontal">Terms And Conditions</a>
-                            </li>
-                            @endcan
-
-                        </ul>
-                    </div>
-                </li>
-                @endcan
-
-                @canany(['users.view', 'roles.view'])
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                        <i class="bx bx-user-circle"></i>
-                        <span data-key="t-layouts">User Management</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarLayouts">
-                        <ul class="nav nav-sm flex-column">
-                            @can('users.view')
+                                @can('scheme.view')
                                 <li class="nav-item">
-                                    <a href="{{ route('users.index') }}" class="nav-link" data-key="t-horizontal">Users</a>
+                                    <a href="{{ route('scheme.index') }}" class="nav-link" data-key="t-horizontal">Schemes</a>
                                 </li>
-                            @endcan
-                            @can('roles.view')
+                                @endcan
+
+                                @can('category-wise-scheme.view')
                                 <li class="nav-item">
-                                    <a href="{{ route('roles.index') }}" class="nav-link" data-key="t-horizontal">Roles</a>
+                                    <a href="{{ route('category_wise_scheme.index') }}" class="nav-link" data-key="t-horizontal">Category Wise Schemes</a>
                                 </li>
-                            @endcan
-                        </ul>
-                    </div>
-                </li>
-                @endcan
+                                @endcan
+
+                                @can('document-type.view')
+                                <li class="nav-item">
+                                    <a href="{{ route('document.index') }}" class="nav-link" data-key="t-horizontal">Document Type</a>
+                                </li>
+                                @endcan
+
+                                @can('financial-year.view')
+                                <li class="nav-item">
+                                    <a href="{{ route('financial.index') }}" class="nav-link" data-key="t-horizontal">Financial Year</a>
+                                </li>
+                                @endcan
+
+                                @can('terms-conditions.view')
+                                <li class="nav-item">
+                                    <a href="{{ route('terms-conditions.index') }}" class="nav-link" data-key="t-horizontal">Terms And Conditions</a>
+                                </li>
+                                @endcan
+
+                            </ul>
+                        </div>
+                    </li>
+                    @endcan
+
+                    @canany(['users.view', 'roles.view'])
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
+                            <i class="bx bx-user-circle"></i>
+                            <span data-key="t-layouts">User Management</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarLayouts">
+                            <ul class="nav nav-sm flex-column">
+                                @can('users.view')
+                                    <li class="nav-item">
+                                        <a href="{{ route('users.index') }}" class="nav-link" data-key="t-horizontal">Users</a>
+                                    </li>
+                                @endcan
+                                @can('roles.view')
+                                    <li class="nav-item">
+                                        <a href="{{ route('roles.index') }}" class="nav-link" data-key="t-horizontal">Roles</a>
+                                    </li>
+                                @endcan
+                            </ul>
+                        </div>
+                    </li>
+                    @endcan
+                @endif
 
 
                 @if(Auth::user()->category == 1 || Auth::user()->category == 2)
@@ -136,8 +138,7 @@
                 </li>
                 @endif
 
-                  @canany(['users.applicationList'])
-
+                @canany(['users.applicationList'])
                     @php
                         $categoryId = Auth::user()->category;
 
@@ -241,15 +242,11 @@
                                             ->whereNull('t.deleted_by')
                                             ->groupBy('t.id', 'm.scheme_name','t.scheme_id','t.category_id')
                                             ->get();
-
-
                 @endphp
 
-                  {{-- HOD Panel --}}
-                @canany(['hod.application'])
-
-
-
+              {{-- HOD Panel --}}
+            @canany(['hod.application'])
+            @if(Auth::user()->roles[0]->id == 1 || Auth::user()->roles[0]->id == 3)
             <li class="nav-item">
                 <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
                     <i class="ri-apps-2-line"></i> <span data-key="t-apps">Pending Scheme Application</span>
@@ -266,8 +263,6 @@
                                     @foreach ($category_wise_scheme as $scheme)
 
                                         @if (in_array($category->id, explode(',', $scheme->category_id)))
-
-
 
                                         @if(isset($scheme->scheme_id))
                                         @if($scheme->scheme_name == 'Nondani Application')
@@ -334,7 +329,6 @@
                     </ul>
                 </div>
             </li>
-
 
             <li class="nav-item">
                 <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
@@ -497,12 +491,12 @@
                     </ul>
                 </div>
             </li>
-
-                @endcan
+            @endif
+            @endcan
 
               {{-- AC Panel --}}
                 @canany(['ac.application'])
-
+                @if(Auth::user()->roles[0]->id == 1 || Auth::user()->roles[0]->id == 4)
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
                         <i class="ri-apps-2-line"></i> <span data-key="t-apps">Pending Scheme Application</span>
@@ -744,14 +738,13 @@
                         </ul>
                     </div>
                 </li>
-
-
+                @endif
                 @endcan
 
                 {{-- AMC Panel --}}
 
                 @canany(['amc.application'])
-
+                @if(Auth::user()->roles[0]->id == 1 || Auth::user()->roles[0]->id == 5)
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
                         <i class="ri-apps-2-line"></i> <span data-key="t-apps">Pending Scheme Application</span>
@@ -991,16 +984,13 @@
                         </ul>
                     </div>
                 </li>
-
-
-
-
+                @endif
                 @endcan
 
                   {{-- DMC Panel --}}
 
                 @canany(['dmc.application'])
-
+                @if(Auth::user()->roles[0]->id == 1 || Auth::user()->roles[0]->id == 6)
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
                         <i class="ri-apps-2-line"></i> <span data-key="t-apps">Pending Scheme Application</span>
@@ -1161,7 +1151,6 @@
                     </div>
                 </li>
 
-
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
                         <i class="ri-apps-2-line"></i> <span data-key="t-apps">Rejected Scheme Application</span>
@@ -1241,9 +1230,7 @@
                         </ul>
                     </div>
                 </li>
-
-
-
+                @endif
                 @endcan
 
             </ul>
@@ -1254,7 +1241,6 @@
 
     <div class="sidebar-background"></div>
 </div>
-
 
 <div class="vertical-overlay"></div>
 
