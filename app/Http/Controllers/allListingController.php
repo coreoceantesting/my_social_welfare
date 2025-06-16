@@ -50,8 +50,6 @@ class allListingController extends Controller
                 'remark_new.required' => 'The remark field is required.',
             ]);
 
-            dd(auth()->user()->roles->pluck('name')[0]);
-
             $id = $request->input('action_model_id');
 
             $formDetails = DB::table('all_education_scheme_details')->where('all_education_scheme_detail_id', $id)->first();
@@ -62,6 +60,23 @@ class allListingController extends Controller
 
             switch (auth()->user()->roles->pluck('name')[0]) {
                 case 'Ac':
+                    if($request->input('status_new') == 'rejected')
+                    {
+                        DB::table('all_education_scheme_details')->where('all_education_scheme_detail_id', $id)->update([
+                            'ac_status' => $request->input('status_new'),
+                            'ac_remark' => $request->input('remark_new'),
+                            'ac_approval_date' => date('Y-m-d'),
+                            'overall_status' => 'rejected'
+                        ]);
+                    }else{
+                        DB::table('all_education_scheme_details')->where('all_education_scheme_detail_id', $id)->update([
+                            'ac_status' => $request->input('status_new'),
+                            'ac_remark' => $request->input('remark_new'),
+                            'ac_approval_date' => date('Y-m-d'),
+                        ]);
+                    }
+                    break;
+                case 'Hod':
                     if($request->input('status_new') == 'rejected')
                     {
                         DB::table('all_education_scheme_details')->where('all_education_scheme_detail_id', $id)->update([
@@ -76,23 +91,6 @@ class allListingController extends Controller
                             'hod_remark' => $request->input('remark_new'),
                             'hod_approval_date' => date('Y-m-d'),
                             'overall_status' => 'review'
-                        ]);
-                    }
-                    break;
-                case 'Hod':
-                    if($request->input('status_new') == 'rejected')
-                    {
-                        DB::table('all_education_scheme_details')->where('all_education_scheme_detail_id', $id)->update([
-                            'ac_status' => $request->input('status_new'),
-                            'ac_remark' => $request->input('remark_new'),
-                            'ac_approval_date' => date('Y-m-d'),
-                            'overall_status' => 'rejected'
-                        ]);
-                    }else{
-                        DB::table('all_education_scheme_details')->where('all_education_scheme_detail_id', $id)->update([
-                            'ac_status' => $request->input('status_new'),
-                            'ac_remark' => $request->input('remark_new'),
-                            'ac_approval_date' => date('Y-m-d'),
                         ]);
                     }
                     break;
