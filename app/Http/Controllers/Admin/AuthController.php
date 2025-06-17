@@ -146,7 +146,7 @@ class AuthController extends Controller
                 'mother_name' => 'required',
                 'category' => 'required',
                 'mobile' => ['required', 'unique:users,mobile', 'regex:/^[0-9]{10}$/'],
-                'name' => 'required',
+                'name' => ['required', 'unique:users,name'],
                 'password' => 'required',
                 'confirm_password' => 'required|same:password',
             ],
@@ -164,6 +164,7 @@ class AuthController extends Controller
                 'category.required' => 'Please Select Category',
                 'mobile.required' => 'Please enter Contact Number',
                 'name.required' => 'Please enter Username',
+                'name.unique' => 'This Username is already taken',
                 'password.required' => 'Please enter Password',
                 'confirm_password' => 'Please enter Confirm Password',
             ]
