@@ -14,15 +14,24 @@ class AcBusConcessionSchemeController extends Controller
     {
         $category = $request->input('category', null);
 
-        $query =  DB::table('trans_bus_concession_scheme AS t1')
+        $sub = DB::table('hayticha_form')
+            ->select('user_id', 'sign_uploaded_live_certificate')
+            ->whereRaw('h_id = (SELECT MAX(h_id) FROM hayticha_form AS sub WHERE sub.user_id = hayticha_form.user_id)');
+
+        $query = DB::table('trans_bus_concession_scheme AS t1')
             ->select('t1.*', 't2.category', 't4.sign_uploaded_live_certificate')
             ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
-            ->leftJoin('hayticha_form AS t4', 't2.id', '=', 't4.user_id')
-            ->where('t1.hod_status', '=', 1)
-            ->where('t1.ac_status', '=', $status)
-            ->whereNull('t1.deleted_at')
+            ->leftJoinSub($sub, 't4', 't2.id', '=', 't4.user_id')
             ->orderBy('t1.id', 'DESC');
 
+        // $query =  DB::table('trans_bus_concession_scheme AS t1')
+        //     ->select('t1.*', 't2.category', 't4.sign_uploaded_live_certificate')
+        //     ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+        //     ->leftJoin('hayticha_form AS t4', 't2.id', '=', 't4.user_id');
+            // ->where('t1.hod_status', '=', 0)
+            // ->where('t1.ac_status', '=', $status)
+            // ->whereNull('t1.deleted_at')
+            // ->orderBy('t1.id', 'DESC');
 
         if (!is_null($category)) {
             if ($category == 'women') {
@@ -87,19 +96,19 @@ class AcBusConcessionSchemeController extends Controller
         BusConcession::where('id', $id)->update($update);
         return redirect('ac_bus_concession_application_list/1')->with('message', 'Bus Concession Application Approved by AC Successfully');
     }
-    
-    public function newsendsms($sms,$number) 
-    { 
 
-        $key = "kbf8IN83hIxNTVgs";	
+    public function newsendsms($sms,$number)
+    {
+
+        $key = "kbf8IN83hIxNTVgs";
         $mbl=$number; 	/*or $mbl="XXXXXXXXXX,XXXXXXXXXX";*/
         $message=$sms;
         $message_content=urlencode($message);
-        
+
         $senderid="CoreOC";	$route= 1;
         $url = "http://sms.adityahost.com/vb/apikey.php?apikey=$key&senderid=$senderid&number=$mbl&message=$message_content";
-        					
+
         $output = file_get_contents($url);	/*default function for push any url*/
-    		
+
     }
 }

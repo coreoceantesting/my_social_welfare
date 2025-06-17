@@ -35,23 +35,23 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="full_address">Full Address / संपूर्ण पत्ता</label>
+                                    <label class="col-form-label" for="full_address">Full Address / संपूर्ण पत्ता <span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text"  name="full_address" value="{{ $data->full_address }}" readonly>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="dob">Date Of Birth/ जन्म तारीख  </label>
+                                    <label class="col-form-label" for="dob">Date Of Birth/ जन्म तारीख <span class="text-danger">*</span>  </label>
                                     <input class="form-control"  type="text"  name="dob" value="{{ $data->dob }}" readonly>
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="Age"> Age/ वय </label>
+                                    <label class="col-form-label" for="Age"> Age/ वय <span class="text-danger">*</span> </label>
                                     <input class="form-control"  type="text"  name="age" value="{{ $data->age }}" readonly>
                                 </div>
 
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="contact">Mobile No/ मोबाईल नं.:</label>
+                                    <label class="col-form-label" for="contact">Mobile No/ मोबाईल नं.: <span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text" name="contact"  value="{{ $data->contact }}" readonly>
                                 </div>
 
@@ -67,7 +67,7 @@
                                 </div>
 
                                 <div class="col-md-4 mt-3">
-                                    <label class="col-form-label" for="school_name">Name of school college/सद्या शिकत शाळा कॉलेजचे नाव <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="school_name">Name of school college/सद्या शिकत शाळा कॉलेजचे नाव </label>
                                     <input class="form-control"  name="school_name" type="text" value="{{ $data->school_name }}" readonly>
                                 </div>
 
@@ -171,7 +171,7 @@
         </div>
 
         {{-- approved popup --}}
-  
+
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
