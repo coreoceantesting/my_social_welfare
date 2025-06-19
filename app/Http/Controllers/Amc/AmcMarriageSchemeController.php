@@ -22,6 +22,7 @@ class AmcMarriageSchemeController extends Controller
                     ->where('t1.amc_status', '=', $status)
                     ->whereNull('t1.deleted_at')
                     ->whereNull('t2.deleted_at')
+                    ->whereNull('t4.deleted_at')
                     ->orderBy('t1.id', 'DESC')
                     ->get();
 
@@ -76,19 +77,19 @@ class AmcMarriageSchemeController extends Controller
         MarriageScheme::where('id', $id)->update($update);
         return redirect('amc_marriage_scheme_application_list/1')->with('message', 'Marriage Scheme Application Approved by AMC Successfully');
     }
-    
-    public function newsendsms($sms,$number) 
-    { 
 
-        $key = "kbf8IN83hIxNTVgs";	
+    public function newsendsms($sms,$number)
+    {
+
+        $key = "kbf8IN83hIxNTVgs";
         $mbl=$number; 	/*or $mbl="XXXXXXXXXX,XXXXXXXXXX";*/
         $message=$sms;
         $message_content=urlencode($message);
-        
+
         $senderid="CoreOC";	$route= 1;
         $url = "http://sms.adityahost.com/vb/apikey.php?apikey=$key&senderid=$senderid&number=$mbl&message=$message_content";
-        					
+
         $output = file_get_contents($url);	/*default function for push any url*/
-    		
+
     }
 }
