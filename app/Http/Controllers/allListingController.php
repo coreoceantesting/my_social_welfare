@@ -13,17 +13,17 @@ class allListingController extends Controller
     public function pendingApplicationList()
     {
         switch (auth()->user()->roles->pluck('name')[0]) {
-            case 'AC':
+            case 'Ac':
                 $application_list = DB::table('all_education_scheme_details')->where('overall_status','pending')->where('ac_status','pending');
                 break;
             case 'Hod':
                 $application_list = DB::table('all_education_scheme_details')->where('overall_status','pending')->where('hod_status','pending')->where('ac_status','approved');
                 break;
             case 'AMC':
-                $application_list = DB::table('all_education_scheme_details')->where('overall_status','pending')->where('hod_status','approved')->where('ac_status','approved')->where('amc_status','pending');
+                $application_list = DB::table('all_education_scheme_details')->where('overall_status','review')->where('hod_status','approved')->where('ac_status','approved')->where('amc_status','pending');
                 break;
             case 'DMC':
-                $application_list = DB::table('all_education_scheme_details')->where('overall_status','pending')->where('hod_status','approved')->where('ac_status','approved')->where('amc_status','approved')->where('dmc_status','pending');
+                $application_list = DB::table('all_education_scheme_details')->where('overall_status','review')->where('hod_status','approved')->where('ac_status','approved')->where('amc_status','approved')->where('dmc_status','pending');
                 break;
 
             default:
@@ -144,10 +144,10 @@ class allListingController extends Controller
     {
         switch (auth()->user()->roles->pluck('name')[0]) {
             case 'Ac':
-                $application_list = DB::table('all_education_scheme_details')->where('hod_status','approved');
+                $application_list = DB::table('all_education_scheme_details')->where('ac_status','approved');
                 break;
             case 'Hod':
-                $application_list = DB::table('all_education_scheme_details')->where('ac_status','approved');
+                $application_list = DB::table('all_education_scheme_details')->where('hod_status','approved');
                 break;
             case 'AMC':
                 $application_list = DB::table('all_education_scheme_details')->where('amc_status','approved');

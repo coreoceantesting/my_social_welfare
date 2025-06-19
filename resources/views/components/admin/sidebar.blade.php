@@ -149,7 +149,6 @@
                             ->whereNull('m.deleted_by')
                             ->whereNull('t.deleted_by')
                             ->get();
-                                // dd($schemes_list);
                     @endphp
                   <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
@@ -164,7 +163,7 @@
                                     $string = $list->scheme_name;
                                     $words = explode(' ', $string);
                                     $words[0] = strtolower($words[0]);
-                                    if($words[0] == 'nondani')
+                                    if($words[0] == 'divyang')
                                     {
                                             $url = url('divyang_application');
                                     }elseif($words[0] == 'bus'){
@@ -265,7 +264,7 @@
                                         @if (in_array($category->id, explode(',', $scheme->category_id)))
 
                                         @if(isset($scheme->scheme_id))
-                                        @if($scheme->scheme_name == 'Nondani Application')
+                                        @if($scheme->scheme_name == 'Divyang Nondani Application')
                                         <li class="nav-item">
                                             @if($scheme->category_names == 'Divyang(दिव्यांग)')
                                             <a href="{{ url('divyang_registration_list', [0, 1]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -514,7 +513,7 @@
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
                                             @if(isset($scheme->scheme_id))
-                                            @if($scheme->scheme_name == 'Nondani Application')
+                                            @if($scheme->scheme_name == 'Divyang Nondani Application')
                                             <li class="nav-item">
                                                 @if($scheme->category_names == 'Divyang(दिव्यांग)')
                                                 <a href="{{ url('ac_divyang_registration_list', [0, 1]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -762,7 +761,7 @@
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
                                             @if(isset($scheme->scheme_id))
-                                            @if($scheme->scheme_name == 'Nondani Application')
+                                            @if($scheme->scheme_name == 'Divyang Nondani Application')
                                             <li class="nav-item">
                                                 @if($scheme->category_names == 'Divyang(दिव्यांग)')
                                                 <a href="{{ url('amc_divyang_registration_list', [0, 1]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
@@ -1008,7 +1007,7 @@
                                             @if (in_array($category->id, explode(',', $scheme->category_id)))
 
                                             @if(isset($scheme->scheme_id))
-                                            @if($scheme->scheme_name == 'Nondani Application')
+                                            @if($scheme->scheme_name == 'Divyang Nondani Application')
                                             <li class="nav-item">
                                                  @if($scheme->category_names == 'Divyang(दिव्यांग)')
                                                 <a href="{{ url('dmc_divyang_registration_list', [0, 1]) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>

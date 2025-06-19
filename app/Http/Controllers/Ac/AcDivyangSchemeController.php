@@ -16,7 +16,7 @@ class AcDivyangSchemeController extends Controller
                     ->select('t1.*', 't2.name', 't3.sign_uploaded_live_certificate')
                     ->leftJoin('hayticha_form AS t3', 't3.h_id', '=', 't1.hayat_id')
                     ->leftJoin('wards AS t2', 't2.id', '=', 't1.ward_id')
-                    ->where('t1.hod_status', '=', 1)
+                    ->where('t1.hod_status', '=', 0)
                     ->where('t1.ac_status', '=', $status)
                     ->where('t1.category_id', '=', $type)
                     ->whereNull('t1.deleted_at')
@@ -74,19 +74,19 @@ class AcDivyangSchemeController extends Controller
         DisabilityApplication::where('id', $id)->update($update);
         return redirect('ac_divyang_registration_list/1/1')->with('message', 'Divyang Application Approved by AC Successfully');
     }
-    
-    public function newsendsms($sms,$number) 
-    { 
 
-        $key = "kbf8IN83hIxNTVgs";	
+    public function newsendsms($sms,$number)
+    {
+
+        $key = "kbf8IN83hIxNTVgs";
         $mbl=$number; 	/*or $mbl="XXXXXXXXXX,XXXXXXXXXX";*/
         $message=$sms;
         $message_content=urlencode($message);
-        
+
         $senderid="CoreOC";	$route= 1;
         $url = "http://sms.adityahost.com/vb/apikey.php?apikey=$key&senderid=$senderid&number=$mbl&message=$message_content";
-        					
+
         $output = file_get_contents($url);	/*default function for push any url*/
-    		
+
     }
 }

@@ -73,7 +73,7 @@
                                     <input class="form-control" id="mobile_no" name="mobile_no" type="number" placeholder="Enter Mobile No">
                                     <span class="text-danger is-invalid mobile_no_err"></span>
                                 </div>
-                                
+
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="aadhar_no">Aadhar Card No ( आधार क्रमांक ) : <span class="text-danger">*</span></label>
                                     <input class="form-control" id="aadhar_no" name="aadhar_no" type="number" placeholder="Enter Aadhar No">
@@ -318,7 +318,7 @@
                                     <input class="form-control" id="mobile_no" name="mobile_no" type="number" placeholder="Enter Mobile No">
                                     <span class="text-danger is-invalid mobile_no_err"></span>
                                 </div>
-                                
+
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="aadhar_no">Aadhar Card No ( आधार क्रमांक ) : <span class="text-danger">*</span></label>
                                     <input class="form-control" id="aadhar_no" name="aadhar_no" type="number" placeholder="Enter Aadhar No">
@@ -558,7 +558,7 @@
                                     <input class="form-control" id="mobile_no" name="mobile_no" type="number" placeholder="Enter Mobile No" readonly>
                                     <span class="text-danger is-invalid mobile_no_err"></span>
                                 </div>
-                                
+
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="aadhar_no">Aadhar Card No ( आधार क्रमांक ) : <span class="text-danger">*</span></label>
                                     <input class="form-control" id="aadhar_no" name="aadhar_no" type="number" placeholder="Enter Aadhar No" readonly>
@@ -650,7 +650,7 @@
 
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="disability_certificate_no">Disability Certificate No(दिव्यांगत्व प्रमाणपत्राचा क्र. ) (If Required) :</label>
-                                    <input class="form-control" id="disability_certificate_no" name="disability_certificate_no" type="text" placeholder="Enter Disability Certificate No" readonly> 
+                                    <input class="form-control" id="disability_certificate_no" name="disability_certificate_no" type="text" placeholder="Enter Disability Certificate No" readonly>
                                     <span class="text-danger is-invalid disability_certificate_no_err"></span>
                                 </div>
 
@@ -775,14 +775,12 @@
                                                     }
 
                                                 @endphp
-                                                @if($scheme->hod_status == 'approved')
+                                                @if($scheme->hod_status == 'approved' && $scheme->amc_status == 'pending')
                                                     <span class="badge {{ $class }}">Approved by Hod</span>
-                                                @elseif ($scheme->ac_status == 'approved')
+                                                @elseif ($scheme->ac_status == 'approved' && $scheme->hod_status == 'pending')
                                                     <span class="badge {{ $class }}">Approved by Ac</span>
-                                                @elseif ($scheme->amc_status == 'approved')
+                                                @elseif ($scheme->amc_status == 'approved' && $scheme->dmc_status == 'pending')
                                                     <span class="badge {{ $class }}">Approved by AMC</span>
-                                                @elseif ($scheme->dmc_status == 'approved')
-                                                    <span class="badge {{ $class }}">Approved by DMC</span>
                                                 @else
                                                     <span class="badge {{ $class }}">{{$scheme->overall_status}}</span>
                                                 @endif
@@ -969,7 +967,7 @@
 
         // Make an AJAX request with FormData
         $.ajax({
-            url: $(this).attr('action'), 
+            url: $(this).attr('action'),
             type: 'POST',
             data: formData,
             contentType: false,

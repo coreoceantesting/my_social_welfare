@@ -74,7 +74,7 @@
                                     <input class="form-control" id="mobile_no" name="mobile_no" type="number" placeholder="Enter Mobile No" readonly>
                                     <span class="text-danger is-invalid mobile_no_err"></span>
                                 </div>
-                                
+
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="aadhar_no">Aadhar Card No ( आधार क्रमांक ) : <span class="text-danger">*</span></label>
                                     <input class="form-control" id="aadhar_no" name="aadhar_no" type="number" placeholder="Enter Aadhar No" readonly>
@@ -166,7 +166,7 @@
 
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="disability_certificate_no">Disability Certificate No(दिव्यांगत्व प्रमाणपत्राचा क्र. ) (If Required) :</label>
-                                    <input class="form-control" id="disability_certificate_no" name="disability_certificate_no" type="text" placeholder="Enter Disability Certificate No" readonly> 
+                                    <input class="form-control" id="disability_certificate_no" name="disability_certificate_no" type="text" placeholder="Enter Disability Certificate No" readonly>
                                     <span class="text-danger is-invalid disability_certificate_no_err"></span>
                                 </div>
 
@@ -273,7 +273,7 @@
                 </form>
             </div>
         </div>
-        
+
 
         {{-- listing --}}
         <div class="row">
@@ -316,15 +316,15 @@
                                                     @if($list->hod_status == 'pending')
                                                     <button class="action-element btn btn-warning text-white px-2 py-1" title="View" data-id="{{ $list->all_education_scheme_detail_id }}">Take Action</button>
                                                     @endif
-                                                @elseif(auth()->user()->roles->pluck('name')[0] == 'Hod')   
-                                                    @if($list->hod_status == 'approved' && $list->ac_status == 'pending')
+                                                @elseif(auth()->user()->roles->pluck('name')[0] == 'Hod')
+                                                    @if($list->ac_status == 'approved' && $list->hod_status == 'pending')
                                                     <button class="action-element btn btn-warning text-white px-2 py-1" title="View" data-id="{{ $list->all_education_scheme_detail_id }}">Take Action</button>
                                                     @endif
-                                                @elseif(auth()->user()->roles->pluck('name')[0] == 'AMC')   
+                                                @elseif(auth()->user()->roles->pluck('name')[0] == 'AMC')
                                                     @if($list->hod_status == 'approved' && $list->ac_status == 'approved' && $list->amc_status == 'pending')
                                                     <button class="action-element btn btn-warning text-white px-2 py-1" title="View" data-id="{{ $list->all_education_scheme_detail_id }}">Take Action</button>
                                                     @endif
-                                                @elseif(auth()->user()->roles->pluck('name')[0] == 'DMC')   
+                                                @elseif(auth()->user()->roles->pluck('name')[0] == 'DMC')
                                                     @if($list->hod_status == 'approved' && $list->ac_status == 'approved' && $list->amc_status == 'approved' && $list->dmc_status == 'pending')
                                                     <button class="action-element btn btn-warning text-white px-2 py-1" title="View" data-id="{{ $list->all_education_scheme_detail_id }}">Take Action</button>
                                                     @endif
@@ -479,7 +479,7 @@
 
         // Make an AJAX request with FormData
         $.ajax({
-            url: $(this).attr('action'), 
+            url: $(this).attr('action'),
             type: 'POST',
             data: formData,
             contentType: false,
