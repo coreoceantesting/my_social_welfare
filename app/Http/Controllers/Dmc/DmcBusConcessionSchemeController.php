@@ -22,6 +22,7 @@ class DmcBusConcessionSchemeController extends Controller
             ->where('t1.ac_status', '=', 1)
             ->where('t1.amc_status', '=', 1)
             ->where('t1.dmc_status', '=', $status)
+            ->whereNull('t4.deleted_at')
             ->whereNull('t1.deleted_at')
             ->orderBy('t1.id', 'DESC');
 
@@ -108,19 +109,19 @@ class DmcBusConcessionSchemeController extends Controller
 
         return view('dmc.bus_concession.generate_certificate', compact('data'));
     }
-    
-    public function sendsms($sms,$number) 
-    { 
 
-        $key = "kbf8IN83hIxNTVgs";	
+    public function sendsms($sms,$number)
+    {
+
+        $key = "kbf8IN83hIxNTVgs";
         $mbl=$number; 	/*or $mbl="XXXXXXXXXX,XXXXXXXXXX";*/
         $message=$sms;
         $message_content=urlencode($message);
-        
+
         $senderid="CoreOC";	$route= 1;
         $url = "http://sms.adityahost.com/vb/apikey.php?apikey=$key&senderid=$senderid&number=$mbl&message=$message_content";
-        					
+
         $output = file_get_contents($url);	/*default function for push any url*/
-    		
+
     }
 }
