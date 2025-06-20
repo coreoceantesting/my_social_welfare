@@ -25,7 +25,7 @@
                             <input class="form-control"  type="text"  name="m_name"  value="" placeholder="Enter Middle Name ">
                             <span class="text-danger is-invalid m_name_err"></span>
                         </div>
-                        
+
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="l_name">Last Name (आडनाव) <span class="text-danger">*</span></label>
                             <input class="form-control"  type="text"  name="l_name"  value="" placeholder="Enter Last Name ">
@@ -124,7 +124,7 @@
                             <span class="text-danger is-invalid  is_divyang_doc_err"></span>
                         </div>
 
-                        
+
                         <div class="col-md-4 mt-3">
                             <label class="col-form-label" for="candidate_signature">Upload Signature (अर्जदाराची सही) / thumb (अगंठा) <span class="text-danger">*</span></label>
                             <input class="form-control" id="candidate_signature" name="candidate_signature" type="file" accept=".png, .jpg, .jpeg"><br>
@@ -208,12 +208,12 @@
                                             <td>
                                                 @if($value->hod_status == 0 && $value->ac_status == 0 && $value->amc_status == 0 && $value->dmc_status == 0)
                                                 <button type="button" class="btn btn-primary waves-effect m-r-20">Pending</button>
-                                                @elseif($value->hod_status == 1 && $value->ac_status == 0 && $value->amc_status == 0)
-                                                <button type="button" class="btn btn-primary waves-effect m-r-20">Review</button>
+                                                @elseif($value->hod_status == 0 && $value->ac_status == 1 && $value->amc_status == 0)
+                                                <button type="button" class="btn btn-primary waves-effect m-r-20">Approved by Clerk</button>
                                                 @elseif($value->hod_status == 1 && $value->ac_status == 1 && $value->amc_status == 0)
-                                                <button type="button" class="btn btn-primary waves-effect m-r-20">Review</button>
+                                                <button type="button" class="btn btn-primary waves-effect m-r-20">Approved by HOD</button>
                                                 @elseif($value->hod_status == 1 && $value->ac_status == 1 && $value->amc_status == 1 && $value->dmc_status == 0)
-                                                <button type="button" class="btn btn-primary waves-effect m-r-20">Review</button>
+                                                <button type="button" class="btn btn-primary waves-effect m-r-20">Approved by AMC</button>
                                                 @elseif($value->hod_status == 1 && $value->ac_status == 1 && $value->amc_status == 1 && $value->dmc_status == 1)
                                                 <button type="button" class="btn btn-success waves-effect m-r-20">Approved</button>
                                                 @elseif($value->hod_status == 2 || $value->ac_status == 2|| $value->amc_status == 2 || $value->dmc_status == 2)

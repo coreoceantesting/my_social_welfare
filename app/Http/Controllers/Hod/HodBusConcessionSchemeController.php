@@ -14,26 +14,27 @@ class HodBusConcessionSchemeController extends Controller
     {
         $category = $request->input('category', null);
 
+        $query = DB::table('trans_bus_concession_scheme AS t1')
+            ->select('t1.*', 't2.category', 't4.sign_uploaded_live_certificate')
+            ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->leftJoin('hayticha_form AS t4', 't2.id', '=', 't4.user_id')
+            ->where('t1.hod_status', '=', $status)
+            ->whereNull('t1.deleted_at')
+            ->whereNull('t4.deleted_at')
+            ->orderBy('t1.id', 'DESC');
+
+        // $sub = DB::table('hayticha_form')
+        //     ->select('user_id', 'sign_uploaded_live_certificate')
+        //     ->whereRaw('h_id = (SELECT MAX(h_id) FROM hayticha_form AS sub WHERE sub.user_id = hayticha_form.user_id)');
+
         // $query = DB::table('trans_bus_concession_scheme AS t1')
         //     ->select('t1.*', 't2.category', 't4.sign_uploaded_live_certificate')
-        //     ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
-        //     ->leftJoin('hayticha_form AS t4', 't2.id', '=', 't4.user_id')
+        //     ->join('users AS t2', 't2.id', '=', 't1.created_by')
+        //     ->leftJoinSub($sub, 't4', 't2.id', '=', 't4.user_id')
+        //     ->whereNotNull('t4.sign_uploaded_live_certificate')
         //     ->where('t1.hod_status', '=', $status)
         //     ->whereNull('t1.deleted_at')
         //     ->orderBy('t1.id', 'DESC');
-
-        $sub = DB::table('hayticha_form')
-            ->select('user_id', 'sign_uploaded_live_certificate')
-            ->whereRaw('h_id = (SELECT MAX(h_id) FROM hayticha_form AS sub WHERE sub.user_id = hayticha_form.user_id)');
-
-        $query = DB::table('trans_bus_concession_scheme AS t1')
-            ->select('t1.*', 't2.category', 't4.sign_uploaded_live_certificate')
-            ->join('users AS t2', 't2.id', '=', 't1.created_by')
-            ->leftJoinSub($sub, 't4', 't2.id', '=', 't4.user_id')
-            ->whereNotNull('t4.sign_uploaded_live_certificate')
-            ->where('t1.hod_status', '=', $status)
-            ->whereNull('t1.deleted_at')
-            ->orderBy('t1.id', 'DESC');
 
         if (!is_null($category)) {
             if ($category == 'women') {
