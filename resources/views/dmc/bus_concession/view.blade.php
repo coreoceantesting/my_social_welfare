@@ -19,7 +19,7 @@
                         <div class="card-body">
                             <div class="mb-3 row">
 
-                                <<div class="col-md-4 mt-3">
+                                <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="name">First Name/पहिले नाव<span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text"  name="f_name"  value="{{ $data->f_name }}" readonly>
                                 </div>

@@ -93,8 +93,6 @@
                                         <span class="text-danger is-invalid  type_of_discount_err"></span>
                                 </div>
 
-
-                                @if()
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="is_bonafied_doc">Do You Have Bonafide Certificate? (तुमच्याकडे बोनाफाईड प्रमाणपत्र आहे का?) <span class="text-danger">*</span></label>
                                         <select class="js-example-basic-single" name="is_bonafied_doc" >
@@ -149,7 +147,7 @@
                                         <input type="file" name="document_file[]" class="form-control" multiple @if($doc->is_required==1) required @endif>
                                         <span class="text-danger is-invalid document_file_err"></span>
                                 </div>
-                            @endforeach
+                                @endforeach
 
                             </div>
                         </div>
