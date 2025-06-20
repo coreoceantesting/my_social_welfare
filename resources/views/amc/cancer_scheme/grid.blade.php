@@ -33,7 +33,11 @@
                                         <th>Name</th>
                                         <th>Full Address</th>
                                         <th>Contact</th>
-                                        <th>Signed Document(Hayaticha)</th>
+                                        @foreach ($data as $value)
+                                            @if($value->category != '4')
+                                            <th>Signed Document(Hayaticha)</th>
+                                            @endif
+                                        @endforeach
                                         @if (($status == '2'))
                                         <th>Reasons for Rejection</th>
                                         @endif
@@ -47,7 +51,9 @@
                                             <td>{{ $value->full_name }}</td>
                                             <td>{{ $value->full_address }}</td>
                                             <td>{{ $value->contact }}</td>
+                                            @if($value->category != '4')
                                             <td><a href="{{ asset('storage/'.$value->sign_uploaded_live_certificate)}}" class="btn btn-primary shadow btn-xs sharp me-1" target="_blank"> <i class="fas fa-eye"></i></a></td>
+                                            @endif
                                             @if($value->amc_status == '2')
                                             <td>{{ $value->amc_reject_reason }}</td>
                                             @endif

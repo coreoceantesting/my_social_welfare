@@ -797,7 +797,7 @@
                                            </li>
                                             @elseif($scheme->scheme_name == 'Women Medical Education Scheme')
                                             <li class="nav-item">
-                                            <a href="{{ url('amc_bus_concession_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
+                                            <a href="{{ url('amc_education_scheme_application_list?category=women', 0) }}" class="nav-link" data-key="t-main-calender"> {{ $scheme->scheme_name }}</a>
                                            </li>
                                             @elseif($scheme->scheme_name == 'Cancer Scheme')
                                             <li class="nav-item">

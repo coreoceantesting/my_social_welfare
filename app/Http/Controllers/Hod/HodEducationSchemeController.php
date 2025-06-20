@@ -18,6 +18,7 @@ class HodEducationSchemeController extends Controller
         $query =  DB::table('trans_education_scheme AS t1')
             ->select('t1.*')
             ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
+            ->where('t1.ac_status', '=', 1)
             ->where('t1.hod_status', '=', $status)
             ->whereNull('t1.deleted_at')
             ->orderBy('t1.id', 'DESC');
@@ -85,19 +86,19 @@ class HodEducationSchemeController extends Controller
         EducationScheme::where('id', $id)->update($update);
         return redirect('education_scheme_application_list/1')->with('message', 'Education Scheme Application Approved by HOD Successfully');
     }
-    
-    public function newsendsms($sms,$number) 
-    { 
 
-        $key = "kbf8IN83hIxNTVgs";	
+    public function newsendsms($sms,$number)
+    {
+
+        $key = "kbf8IN83hIxNTVgs";
         $mbl=$number; 	/*or $mbl="XXXXXXXXXX,XXXXXXXXXX";*/
         $message=$sms;
         $message_content=urlencode($message);
-        
+
         $senderid="CoreOC";	$route= 1;
         $url = "http://sms.adityahost.com/vb/apikey.php?apikey=$key&senderid=$senderid&number=$mbl&message=$message_content";
-        					
+
         $output = file_get_contents($url);	/*default function for push any url*/
-    		
+
     }
 }

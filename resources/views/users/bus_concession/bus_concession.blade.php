@@ -29,13 +29,13 @@
                                     <input class="form-control"  type="text"  name="m_name"  value="" placeholder="Enter Middle Name ">
                                     <span class="text-danger is-invalid m_name_err"></span>
                                 </div>
-                                
+
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="l_name">Last Name (आडनाव) <span class="text-danger">*</span></label>
                                     <input class="form-control"  type="text"  name="l_name"  value="" placeholder="Enter Last Name ">
                                     <span class="text-danger is-invalid l_name_err"></span>
                                 </div>
-                                
+
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="full_address">Full Address (संपूर्ण पत्ता) <span class="text-danger">*</span></label>
                                     <input class="form-control"   type="text" name="full_address" value=""  placeholder="Enter Full Address">
@@ -94,6 +94,7 @@
                                 </div>
 
 
+                                @if()
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="is_bonafied_doc">Do You Have Bonafide Certificate? (तुमच्याकडे बोनाफाईड प्रमाणपत्र आहे का?) <span class="text-danger">*</span></label>
                                         <select class="js-example-basic-single" name="is_bonafied_doc" >
@@ -125,7 +126,7 @@
                                     <span class="text-danger is-invalid  is_divyang_doc_err"></span>
                                 </div>
 
-                                
+
 
                                 <div class="col-md-4 mt-3">
                                     <label class="col-form-label" for="candidate_signature">Upload Signature (अर्जदाराची सही) / thumb (अगंठा)  <span class="text-danger">*</span></label>

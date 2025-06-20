@@ -16,7 +16,7 @@ class AcCancerSchemeController extends Controller
                     ->select('t1.*', 't2.category', 't4.sign_uploaded_live_certificate')
                     ->leftJoin('users AS t2', 't2.id', '=', 't1.created_by')
                     ->leftJoin('hayticha_form AS t4', 't2.id', '=', 't4.user_id')
-                    ->where('t1.hod_status', '=', 1)
+                    ->where('t1.hod_status', '=', 0)
                     ->where('t1.ac_status', '=', $status)
                     ->whereNull('t1.deleted_at')
                     ->orderBy('t1.id', 'DESC')
@@ -69,19 +69,19 @@ class AcCancerSchemeController extends Controller
         CancerScheme::where('id', $id)->update($update);
         return redirect('ac_cancer_scheme_application_list/1')->with('message', 'Cancer Scheme Application Approved by AC Successfully');
     }
-    
-    public function newsendsms($sms,$number) 
-    { 
 
-        $key = "kbf8IN83hIxNTVgs";	
+    public function newsendsms($sms,$number)
+    {
+
+        $key = "kbf8IN83hIxNTVgs";
         $mbl=$number; 	/*or $mbl="XXXXXXXXXX,XXXXXXXXXX";*/
         $message=$sms;
         $message_content=urlencode($message);
-        
+
         $senderid="CoreOC";	$route= 1;
         $url = "http://sms.adityahost.com/vb/apikey.php?apikey=$key&senderid=$senderid&number=$mbl&message=$message_content";
-        					
+
         $output = file_get_contents($url);	/*default function for push any url*/
-    		
+
     }
 }
