@@ -238,10 +238,10 @@
                                             <td>
                                                 @if($row->hod_status == 0 && $row->ac_status == 0 && $row->amc_status == 0 && $row->dmc_status == 0)
                                                 <button type="button" class="btn btn-primary waves-effect m-r-20">Pending</button>
-                                                @elseif($row->hod_status == 1 && $row->ac_status == 0 && $row->amc_status == 0)
-                                                <button type="button" class="btn btn-primary waves-effect m-r-20">Approved by HOD</button>
+                                                @elseif($row->ac_status == 1 && $row->hod_status == 0 && $row->amc_status == 0)
+                                                <button type="button" class="btn btn-primary waves-effect m-r-20">Approved by Clerk</button>
                                                 @elseif($row->hod_status == 1 && $row->ac_status == 1 && $row->amc_status == 0)
-                                                <button type="button" class="btn btn-primary waves-effect m-r-20">Review</button>
+                                                <button type="button" class="btn btn-primary waves-effect m-r-20">Approved by Hod</button>
                                                 @elseif($row->hod_status == 1 && $row->ac_status == 1 && $row->amc_status == 1 && $row->dmc_status == 0)
                                                 <button type="button" class="btn btn-primary waves-effect m-r-20">Review</button>
                                                 @elseif($row->hod_status == 1 && $row->ac_status == 1 && $row->amc_status == 1 && $row->dmc_status == 1)
